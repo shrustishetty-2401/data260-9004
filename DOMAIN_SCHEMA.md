@@ -17,7 +17,7 @@ Open-Source Package Vulnerability Report
 | description | Text | Yes | Details about the vulnerability; must contain more than 25 characters |
 | category | Text | Yes | One of the four approved vulnerability categories |
 | termsAccepted | Boolean | Yes | must be true before the form is successfully submitted |
-| submissionDate | date and time | Generated | Added by JavaScript after successful validation |
+| submissionDate | Date and time | Generated | Added by JavaScript after successful validation |
 
 ## Category Values
 

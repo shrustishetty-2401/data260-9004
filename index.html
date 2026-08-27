@@ -1,17 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HW1-Shrusti Shetty</title>
-</head>
-<body>
-    <h1>Open-Source Package Vulnerability Report</h1>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>HW1-Shrusti Shetty</title>
+    </head>
 
-    <form id="vulnerabilityForm">
+    <body>
+        <h1>Open-Source Package Vulnerability Report</h1>
 
-    </form>
+        <form id="vulnerabilityForm">
+            <div>
+                <label for="vulnerabilityTitle">Vulnerability Title:</label>
+                <input
+                    type="text"
+                    id="vulnerabilityTitle"
+                    name="vulnerabilityTitle"
+                    placeholder="Example: Unsafe deserialization in SampleLib"
+                    required
+                    autofocus
+                >
+            </div>
 
-    <script src="script.js"></script>
-</body>
+            <div>
+                <label for="packageName">Package Name:</label>
+                <input
+                    type="text"
+                    id="packageName"
+                    name="packageName"
+                    placeholder="Example: samplelib"
+                    required
+                >
+            </div>
+
+            <div>
+                <label for="submitterEmail">Submitter Email:</label>
+                <input
+                    type="email"
+                    id="submitterEmail"
+                    name="submitterEmail"
+                    placeholder="Example: student@sjsu.edu"
+                    required
+                >
+            </div>
+
+            <div>
+                <label for="description">Vulnerability Description:</label>
+                <textarea
+                    id="description"
+                    name="description"
+                    rows="5"
+                    cols="50"
+                    placeholder="Describe the vulnerability in more than 25 characters"
+                    required
+                ></textarea>
+            </div>
+
+            <div>
+                <label for="category">Vulnerability Category:</label>
+                <select id="category" name="category" required>
+                    <option value="">Select a category</option>
+                    <option value="Remote Code Execution">Remote Code Execution</option>
+                    <option value="Privilege Escalation">Privilege Escalation</option>
+                    <option value="Information Disclosure">Information Disclosure</option>
+                    <option value="Denial of Service">Denial of Service</option>
+                </select>
+            </div>
+
+            <div>
+                <input type="checkbox" id="termsAccepted" name="termsAccepted" required>
+                <label for="termsAccepted">I confirm that this vulnerability report is accurate.</label>
+            </div>
+
+            <button type="submit">Submit Report</button>
+        </form>
+
+        <section>
+            <h2>Submission Result</h2>
+            <pre id="output">No successful submission yet.</pre>
+        </section>
+
+        <script src="script.js"></script>
+    </body>
 </html>

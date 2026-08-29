@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "checks": {
+    "DOMAIN_SCHEMA.md": true,
+    "index.html": true,
+    "script.js": true,
+    "Dockerfile": true,
+    "agents_demo.py": true,
+    "AGENT.md": true,
+    "hw1_client.py": true,
+    "src/model_client.py": true,
+    "reports/hw01/cases/nondeterminism_input.json": true,
+    "reports/hw01/raw/nondeterminism_runs.json": true,
+    "reports/hw01/raw/nondeterminism_summary.json": true,
+    "reports/hw01/METRICS.md": true,
+    "reports/hw01/AI_USE.md": true,
+    "README.md": true,
+    "fixed_input_is_valid_json": true,
+    "exactly_40_runs": true,
+    "all_runs_successful": true,
+    "summary_has_both_temperatures": true,
+    "html_contains_form": true,
+    "html_links_javascript": true,
+    "javascript_uses_arrow_function": true
+  }
+}

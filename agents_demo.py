@@ -1,10 +1,8 @@
 import argparse
 import json
 
-from ollama import chat
+from src.model_client import complete
 
-
-MODEL = "qwen3:8b"
 
 PLANNER_SCHEMA = {
     "type": "object",
@@ -13,13 +11,14 @@ PLANNER_SCHEMA = {
             "type": "array",
             "items": {"type": "string"},
             "minItems": 3,
-            "maxItems": 3
+            "maxItems": 3,
         },
-        "summary": {"type": "string"}
+        "summary": {"type": "string"},
     },
     "required": ["tags", "summary"],
-    "additionalProperties": False
+    "additionalProperties": False,
 }
+
 
 REVIEWER_SCHEMA = {
     "type": "object",
@@ -28,30 +27,34 @@ REVIEWER_SCHEMA = {
             "type": "array",
             "items": {"type": "string"},
             "minItems": 3,
-            "maxItems": 3
+            "maxItems": 3,
         },
         "summary": {"type": "string"},
         "changed": {"type": "boolean"},
-        "explanation": {"type": "string"}
+        "explanation": {"type": "string"},
     },
     "required": ["tags", "summary", "changed", "explanation"],
-    "additionalProperties": False
+    "additionalProperties": False,
 }
 
 
 def ask_agent(system_message, user_message, schema, temperature):
-    response = chat(
-        model=MODEL,
+    response = complete(
         messages=[
             {"role": "system", "content": system_message},
-            {"role": "user", "content": user_message}
+            {"role": "user", "content": user_message},
         ],
         format=schema,
         options={"temperature": temperature},
-        think=False
     )
 
-    return json.loads(response.message.content)
+    print(
+        f"Tokens: input={response.input_tokens} "
+        f"output={response.output_tokens} "
+        f"total={response.total_tokens}"
+    )
+
+    return json.loads(response.content)
 
 
 def run_planner(title, content, temperature):
@@ -71,7 +74,7 @@ def run_planner(title, content, temperature):
         system_message,
         user_message,
         PLANNER_SCHEMA,
-        temperature
+        temperature,
     )
 
 
@@ -92,7 +95,7 @@ def run_reviewer(title, content, planner_output, temperature):
         system_message,
         user_message,
         REVIEWER_SCHEMA,
-        temperature
+        temperature,
     )
 
 
@@ -113,12 +116,16 @@ def finalize(reviewer_output):
 
     return {
         "tags": tags,
-        "summary": summary
+        "summary": summary,
     }
 
 
 def run_pipeline(title, content, temperature):
-    planner_output = run_planner(title, content, temperature)
+    planner_output = run_planner(
+        title,
+        content,
+        temperature,
+    )
 
     print("\nPlanner output:")
     print(json.dumps(planner_output, indent=2))
@@ -127,7 +134,7 @@ def run_pipeline(title, content, temperature):
         title,
         content,
         planner_output,
-        temperature
+        temperature,
     )
 
     print("\nReviewer output:")
@@ -158,7 +165,7 @@ def main():
     run_pipeline(
         args.title,
         args.content,
-        args.temperature
+        args.temperature,
     )
 
 

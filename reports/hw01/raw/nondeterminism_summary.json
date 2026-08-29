@@ -1,0 +1,55 @@
+{
+  "0.7": {
+    "successful_runs": 20,
+    "distinct_tag_sets": 5,
+    "tags_in_all_20_runs": [],
+    "tags_in_exactly_1_run": [
+      "open-source",
+      "package upgrades",
+      "security",
+      "security auditing",
+      "software security",
+      "vulnerability scanning"
+    ],
+    "latency_ms": {
+      "p50": 6946.11,
+      "p95": 7671.28,
+      "p99": 7816.91
+    },
+    "tag_occurrences": {
+      "dependency audit": 8,
+      "dependency management": 3,
+      "dependency_audit": 9,
+      "open-source": 1,
+      "package security": 8,
+      "package upgrades": 1,
+      "package_security": 9,
+      "security": 1,
+      "security auditing": 1,
+      "software security": 1,
+      "vulnerability management": 8,
+      "vulnerability scanning": 1,
+      "vulnerability_scanning": 9
+    }
+  },
+  "0.0": {
+    "successful_runs": 20,
+    "distinct_tag_sets": 1,
+    "tags_in_all_20_runs": [
+      "dependency audit",
+      "package security",
+      "vulnerability management"
+    ],
+    "tags_in_exactly_1_run": [],
+    "latency_ms": {
+      "p50": 7652.65,
+      "p95": 8587.59,
+      "p99": 8598.61
+    },
+    "tag_occurrences": {
+      "dependency audit": 20,
+      "package security": 20,
+      "vulnerability management": 20
+    }
+  }
+}

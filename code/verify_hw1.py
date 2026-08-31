@@ -4,12 +4,12 @@ from pathlib import Path
 
 required_files = [
     "DOMAIN_SCHEMA.md",
-    "index.html",
-    "script.js",
-    "Dockerfile",
-    "agents_demo.py",
+    "code/web_application/index.html",
+    "code/web_application/script.js",
+    "code/Dockerfile",
+    "code/agents_demo.py",
     "AGENT.md",
-    "hw1_client.py",
+    "code/hw1_client.py",
     "src/model_client.py",
     "reports/hw01/cases/nondeterminism_input.json",
     "reports/hw01/raw/nondeterminism_runs.json",
@@ -53,8 +53,8 @@ try:
         "0.7" in summary and "0.0" in summary
     )
 
-    html = Path("index.html").read_text()
-    javascript = Path("script.js").read_text()
+    html = Path("code/web_application/index.html").read_text()
+    javascript = Path("code/web_application/script.js").read_text()
     checks["html_contains_form"] = "<form" in html
     checks["html_links_javascript"] = "script.js" in html
     checks["javascript_uses_arrow_function"] = "=>" in javascript

@@ -15,5 +15,29 @@ Repository: `data260-9004`
 ## Run locally
 
 ```bash
-docker build -t data260-9004-hw1 .
+docker build -t data260-9004-hw1 -f code/Dockerfile .
 docker run --rm -p 8004:80 data260-9004-hw1
+```
+
+## Run the agent pipeline
+
+```bash
+python code/agents_demo.py --title "..." --content "..." --temperature 0.0
+```
+
+## Run the token-accounting demo
+
+```bash
+python code/hw1_client.py --demo
+```
+
+## Run verification
+
+```bash
+python code/verify_hw1.py
+```
+
+## Repository
+
+GitHub: https://github.com/shrustishetty-2401/data260-9004
+Collaborators: Sbnikitha, supriyaselvanganesan

@@ -1,0 +1,20 @@
+DATA-260 Homework 1 RUN LOG
+Repository: data260-9004
+
+Timestamp (UTC):
+Sat Aug 29 22:20:38 UTC 2026
+
+Part 3 command:
+40 runs of agents_demo.py: 20 at temperature 0.7 and 20 at temperature 0.0
+Result: 40/40 runs completed successfully.
+Raw output: reports/hw01/raw/nondeterminism_runs.json
+Summary: reports/hw01/raw/nondeterminism_summary.json
+
+Part 4 command:
+python hw1_client.py --demo
+Result: AGENT.md verification PASS; five turns completed.
+Token output: reports/hw01/raw/token_accounting_demo.json
+
+Verification command:
+python verify_hw1.py
+Result: passed=true

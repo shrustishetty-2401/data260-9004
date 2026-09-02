@@ -4,10 +4,14 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>HW1-Shrusti Shetty</title>
+        <link rel="stylesheet" href="styles.css">
     </head>
 
     <body>
-        <h1>Open-Source Package Vulnerability Report</h1>
+        <h1>
+            <span class="title-icon" aria-hidden="true">🛡️</span>
+            Open-Source Package Vulnerability Report
+        </h1>
 
         <form id="vulnerabilityForm">
             <div>
@@ -74,6 +78,24 @@
 
             <button type="submit">Submit Report</button>
         </form>
+
+        <section id="recordsSection">
+    <h2>Submitted Vulnerability Reports</h2>
+
+    <p id="loadingState" class="state loading-state" hidden>
+        Loading vulnerability reports...
+    </p>
+
+    <p id="emptyState" class="state empty-state">
+        No vulnerability reports have been submitted yet.
+    </p>
+
+    <p id="errorState" class="state error-state" hidden>
+        Unable to load vulnerability reports. Please try again.
+    </p>
+
+    <div id="recordList" aria-live="polite"></div>
+</section>
 
         <section>
             <h2>Submission Result</h2>

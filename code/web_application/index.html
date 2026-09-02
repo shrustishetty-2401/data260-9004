@@ -79,7 +79,23 @@
             <button type="submit">Submit Report</button>
         </form>
 
-        <section id="recordsSection">
+        <form id="searchForm" class="search-form">
+    <label for="searchInput">Search Reports</label>
+
+    <div class="search-row">
+        <input
+            type="search"
+            id="searchInput"
+            placeholder="Search by title or package name"
+        >
+
+        <button type="submit">Search</button>
+
+        <button type="button" id="clearSearch">Clear</button>
+    </div>
+</form>
+        
+<section id="recordsSection">
     <h2>Submitted Vulnerability Reports</h2>
 
     <p id="loadingState" class="state loading-state" hidden>

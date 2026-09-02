@@ -1,8 +1,8 @@
 from datetime import datetime, timezone
-from http.client import HTTPException
 from typing import Optional
 
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
 
@@ -113,3 +113,9 @@ def delete_highest_record():
         "deleted": highest_record,
         "remaining_records": records,
     }
+
+app.mount(
+    "/",
+    StaticFiles(directory="code/web_application", html=True),
+    name="web",
+)

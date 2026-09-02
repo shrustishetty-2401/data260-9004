@@ -169,3 +169,35 @@ button:hover {
 .record-card p {
     margin: 8px 0;
 }
+
+.search-row {
+    display: flex;
+    gap: 10px;
+}
+
+.search-row input {
+    flex: 1;
+}
+
+.search-row button {
+    width: auto;
+    padding: 11px 18px;
+}
+
+#clearSearch {
+    background: #718096;
+}
+
+#clearSearch:hover {
+    background: #4a5568;
+}
+
+@media (max-width: 375px) {
+    .search-row {
+        flex-direction: column;
+    }
+
+    .search-row button {
+        width: 100%;
+    }
+}

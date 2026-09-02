@@ -19,7 +19,7 @@ Frozen input:
 
 | Outcome | Count | Mean latency |
 |---|---:|---:|
-| Valid first attempt | 30 | 2411.01 ms |
+| Valid first attempt | 30 | 2375.73 ms |
 | Valid after 1 retry | 0 | N/A |
 | Valid after 2+ retries | 0 | N/A |
 | Hit turn ceiling | 0 | N/A |
@@ -30,8 +30,8 @@ Completion rate: 100%
 
 | Turn ceiling | Runs | Completion rate | Mean latency |
 |---:|---:|---:|---:|
-| 2 | 20 | 100% | 2395.71 ms |
-| 10 | 20 | 100% | 2426.13 ms |
+| 2 | 20 | 100% | 2342.93 ms |
+| 10 | 20 | 100% | 2350.98 ms |
 
 ### Deployment choice
 
@@ -52,7 +52,7 @@ Input:
 
 Completion rate: 0%
 
-Mean latency: 7449.36 ms
+Mean latency: 7390.14 ms
 
 The adversarial input instructed the model to violate the required output format. The generated summary exceeded 25 words, which Pydantic correctly rejected. The retry also failed, so all five runs reached the turn ceiling.
 

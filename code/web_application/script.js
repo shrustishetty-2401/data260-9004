@@ -1,6 +1,8 @@
 const form = document.getElementById("vulnerabilityForm");
 const searchForm = document.getElementById("searchForm");
 const clearSearchButton = document.getElementById("clearSearch");
+const updateForm = document.getElementById("updateForm");
+const deleteHighestButton = document.getElementById("deleteHighest");
 
 const output = document.getElementById("output");
 const recordList = document.getElementById("recordList");
@@ -143,4 +145,57 @@ clearSearchButton.addEventListener("click", async () => {
     await loadRecords();
 });
 
+updateForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const updateData = {
+        vulnerabilityTitle: document.getElementById("updateTitle").value.trim(),
+        packageName: document.getElementById("updatePackage").value.trim(),
+    };
+
+    try {
+        const response = await fetch("/api/reports/1", {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(updateData),
+        });
+
+        const result = await response.json();
+
+        if (!response.ok) {
+            throw new Error(result.detail || "The record could not be updated.");
+        }
+
+        output.textContent = JSON.stringify(result, null, 2);
+        updateForm.reset();
+
+        await loadRecords();
+    } catch (error) {
+        output.textContent = error.message;
+        setState("error");
+    }
+});
+
+deleteHighestButton.addEventListener("click", async () => {
+    try {
+        const response = await fetch("/api/reports/highest", {
+            method: "DELETE",
+        });
+
+        const result = await response.json();
+
+        if (!response.ok) {
+            throw new Error(result.detail || "The record could not be deleted.");
+        }
+
+        output.textContent = JSON.stringify(result, null, 2);
+
+        await loadRecords();
+    } catch (error) {
+        output.textContent = error.message;
+        setState("error");
+    }
+});
 loadRecords();

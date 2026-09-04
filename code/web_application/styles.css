@@ -201,3 +201,14 @@ button:hover {
         width: 100%;
     }
 }
+.delete-button {
+    display: block;
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto 24px;
+    background: #b83232;
+}
+
+.delete-button:hover {
+    background: #8f2424;
+}

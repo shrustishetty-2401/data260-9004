@@ -94,6 +94,36 @@
         <button type="button" id="clearSearch">Clear</button>
     </div>
 </form>
+
+<form id="updateForm" class="search-form">
+    <label for="updateTitle">Update Record ID 1</label>
+
+    <input
+        type="text"
+        id="updateTitle"
+        placeholder="New vulnerability title"
+        required
+    >
+
+    <input
+        type="text"
+        id="updatePackage"
+        placeholder="New package name"
+        required
+    >
+
+    <button type="submit">Update Record 1</button>
+</form>
+
+<button
+    type="button"
+    id="deleteHighest"
+    class="delete-button"
+>
+    Delete Highest-ID Record
+</button>
+
+<section id="recordsSection">
         
 <section id="recordsSection">
     <h2>Submitted Vulnerability Reports</h2>

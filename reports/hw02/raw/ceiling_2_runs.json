@@ -8,9 +8,9 @@
   },
   "runs": [
     {
-      "timestamp_utc": "2026-09-02T19:26:52.014959+00:00",
+      "timestamp_utc": "2026-09-06T21:59:48.894603+00:00",
       "ceiling": 2,
-      "latency_ms": 2546.84,
+      "latency_ms": 2815.13,
       "classification": "valid first attempt",
       "turn_count": 1,
       "final_output": {
@@ -25,9 +25,9 @@
       "run_number": 1
     },
     {
-      "timestamp_utc": "2026-09-02T19:26:54.419499+00:00",
+      "timestamp_utc": "2026-09-06T21:59:51.397986+00:00",
       "ceiling": 2,
-      "latency_ms": 2396.47,
+      "latency_ms": 2495.81,
       "classification": "valid first attempt",
       "turn_count": 1,
       "final_output": {
@@ -42,9 +42,9 @@
       "run_number": 2
     },
     {
-      "timestamp_utc": "2026-09-02T19:26:56.749409+00:00",
+      "timestamp_utc": "2026-09-06T21:59:53.991096+00:00",
       "ceiling": 2,
-      "latency_ms": 2323.66,
+      "latency_ms": 2578.63,
       "classification": "valid first attempt",
       "turn_count": 1,
       "final_output": {
@@ -59,9 +59,9 @@
       "run_number": 3
     },
     {
-      "timestamp_utc": "2026-09-02T19:26:59.078877+00:00",
+      "timestamp_utc": "2026-09-06T21:59:56.529235+00:00",
       "ceiling": 2,
-      "latency_ms": 2324.11,
+      "latency_ms": 2529.75,
       "classification": "valid first attempt",
       "turn_count": 1,
       "final_output": {
@@ -76,9 +76,9 @@
       "run_number": 4
     },
     {
-      "timestamp_utc": "2026-09-02T19:27:01.398775+00:00",
+      "timestamp_utc": "2026-09-06T21:59:58.974289+00:00",
       "ceiling": 2,
-      "latency_ms": 2314.54,
+      "latency_ms": 2441.28,
       "classification": "valid first attempt",
       "turn_count": 1,
       "final_output": {
@@ -93,9 +93,9 @@
       "run_number": 5
     },
     {
-      "timestamp_utc": "2026-09-02T19:27:03.741400+00:00",
+      "timestamp_utc": "2026-09-06T22:00:01.586151+00:00",
       "ceiling": 2,
-      "latency_ms": 2337.37,
+      "latency_ms": 2605.48,
       "classification": "valid first attempt",
       "turn_count": 1,
       "final_output": {
@@ -110,9 +110,9 @@
       "run_number": 6
     },
     {
-      "timestamp_utc": "2026-09-02T19:27:06.066871+00:00",
+      "timestamp_utc": "2026-09-06T22:00:04.097986+00:00",
       "ceiling": 2,
-      "latency_ms": 2320.17,
+      "latency_ms": 2503.32,
       "classification": "valid first attempt",
       "turn_count": 1,
       "final_output": {
@@ -127,9 +127,9 @@
       "run_number": 7
     },
     {
-      "timestamp_utc": "2026-09-02T19:27:08.409324+00:00",
+      "timestamp_utc": "2026-09-06T22:00:06.741685+00:00",
       "ceiling": 2,
-      "latency_ms": 2336.7,
+      "latency_ms": 2633.54,
       "classification": "valid first attempt",
       "turn_count": 1,
       "final_output": {
@@ -144,9 +144,9 @@
       "run_number": 8
     },
     {
-      "timestamp_utc": "2026-09-02T19:27:10.734392+00:00",
+      "timestamp_utc": "2026-09-06T22:00:09.151205+00:00",
       "ceiling": 2,
-      "latency_ms": 2319.76,
+      "latency_ms": 2394.04,
       "classification": "valid first attempt",
       "turn_count": 1,
       "final_output": {
@@ -161,9 +161,9 @@
       "run_number": 9
     },
     {
-      "timestamp_utc": "2026-09-02T19:27:13.062408+00:00",
+      "timestamp_utc": "2026-09-06T22:00:11.569600+00:00",
       "ceiling": 2,
-      "latency_ms": 2322.52,
+      "latency_ms": 2412.45,
       "classification": "valid first attempt",
       "turn_count": 1,
       "final_output": {
@@ -178,9 +178,9 @@
       "run_number": 10
     },
     {
-      "timestamp_utc": "2026-09-02T19:27:15.407758+00:00",
+      "timestamp_utc": "2026-09-06T22:00:14.030674+00:00",
       "ceiling": 2,
-      "latency_ms": 2340.06,
+      "latency_ms": 2450.16,
       "classification": "valid first attempt",
       "turn_count": 1,
       "final_output": {
@@ -195,9 +195,9 @@
       "run_number": 11
     },
     {
-      "timestamp_utc": "2026-09-02T19:27:17.741514+00:00",
+      "timestamp_utc": "2026-09-06T22:00:16.822145+00:00",
       "ceiling": 2,
-      "latency_ms": 2328.99,
+      "latency_ms": 2785.93,
       "classification": "valid first attempt",
       "turn_count": 1,
       "final_output": {
@@ -212,9 +212,9 @@
       "run_number": 12
     },
     {
-      "timestamp_utc": "2026-09-02T19:27:20.076206+00:00",
+      "timestamp_utc": "2026-09-06T22:00:19.907429+00:00",
       "ceiling": 2,
-      "latency_ms": 2329.71,
+      "latency_ms": 3077.58,
       "classification": "valid first attempt",
       "turn_count": 1,
       "final_output": {
@@ -229,9 +229,9 @@
       "run_number": 13
     },
     {
-      "timestamp_utc": "2026-09-02T19:27:22.405196+00:00",
+      "timestamp_utc": "2026-09-06T22:00:22.468131+00:00",
       "ceiling": 2,
-      "latency_ms": 2323.83,
+      "latency_ms": 2555.32,
       "classification": "valid first attempt",
       "turn_count": 1,
       "final_output": {
@@ -246,9 +246,9 @@
       "run_number": 14
     },
     {
-      "timestamp_utc": "2026-09-02T19:27:24.740514+00:00",
+      "timestamp_utc": "2026-09-06T22:00:24.948041+00:00",
       "ceiling": 2,
-      "latency_ms": 2328.6,
+      "latency_ms": 2474.14,
       "classification": "valid first attempt",
       "turn_count": 1,
       "final_output": {
@@ -263,9 +263,9 @@
       "run_number": 15
     },
     {
-      "timestamp_utc": "2026-09-02T19:27:27.090280+00:00",
+      "timestamp_utc": "2026-09-06T22:00:27.523745+00:00",
       "ceiling": 2,
-      "latency_ms": 2345.67,
+      "latency_ms": 2561.9,
       "classification": "valid first attempt",
       "turn_count": 1,
       "final_output": {
@@ -280,9 +280,9 @@
       "run_number": 16
     },
     {
-      "timestamp_utc": "2026-09-02T19:27:29.428878+00:00",
+      "timestamp_utc": "2026-09-06T22:00:29.914729+00:00",
       "ceiling": 2,
-      "latency_ms": 2333.48,
+      "latency_ms": 2384.54,
       "classification": "valid first attempt",
       "turn_count": 1,
       "final_output": {
@@ -297,9 +297,9 @@
       "run_number": 17
     },
     {
-      "timestamp_utc": "2026-09-02T19:27:31.760973+00:00",
+      "timestamp_utc": "2026-09-06T22:00:32.305455+00:00",
       "ceiling": 2,
-      "latency_ms": 2327.01,
+      "latency_ms": 2381.44,
       "classification": "valid first attempt",
       "turn_count": 1,
       "final_output": {
@@ -314,9 +314,9 @@
       "run_number": 18
     },
     {
-      "timestamp_utc": "2026-09-02T19:27:34.094218+00:00",
+      "timestamp_utc": "2026-09-06T22:00:34.664349+00:00",
       "ceiling": 2,
-      "latency_ms": 2328.15,
+      "latency_ms": 2351.68,
       "classification": "valid first attempt",
       "turn_count": 1,
       "final_output": {
@@ -331,9 +331,9 @@
       "run_number": 19
     },
     {
-      "timestamp_utc": "2026-09-02T19:27:36.430549+00:00",
+      "timestamp_utc": "2026-09-06T22:00:37.062083+00:00",
       "ceiling": 2,
-      "latency_ms": 2331.05,
+      "latency_ms": 2390.31,
       "classification": "valid first attempt",
       "turn_count": 1,
       "final_output": {

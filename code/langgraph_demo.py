@@ -60,8 +60,9 @@ PLANNER_SCHEMA = {
 }
 
 
-TURN_CEILING = 2
+TURN_CEILING = 10
 FORCE_REVIEWER_FAILURE = False
+
 
 def planner_node(state: AgentState) -> Dict[str, Any]:
     print("--- NODE: Planner ---")

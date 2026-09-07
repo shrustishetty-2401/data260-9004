@@ -1,0 +1,521 @@
+{
+  "homework": "DATA-260 Homework 2",
+  "input_file": "reports/hw02/cases/schema_input.json",
+  "input": {
+    "title": "Prototype pollution in WidgetKit",
+    "content": "A crafted input can modify object properties and affect application behavior.",
+    "email": "student@sjsu.edu"
+  },
+  "runs": [
+    {
+      "timestamp_utc": "2026-09-06T21:54:12.978201+00:00",
+      "ceiling": 2,
+      "latency_ms": 6454.04,
+      "classification": "valid first attempt",
+      "turn_count": 1,
+      "final_output": {
+        "tags": [
+          "Prototype pollution",
+          "Input validation",
+          "Object properties"
+        ],
+        "summary": "Prototype pollution in WidgetKit allows crafted input to modify object properties and affect application behavior."
+      },
+      "validation_error": "",
+      "run_number": 1
+    },
+    {
+      "timestamp_utc": "2026-09-06T21:54:15.414636+00:00",
+      "ceiling": 2,
+      "latency_ms": 2425.92,
+      "classification": "valid first attempt",
+      "turn_count": 1,
+      "final_output": {
+        "tags": [
+          "Prototype pollution",
+          "Input validation",
+          "Object properties"
+        ],
+        "summary": "Prototype pollution in WidgetKit allows crafted input to modify object properties and affect application behavior."
+      },
+      "validation_error": "",
+      "run_number": 2
+    },
+    {
+      "timestamp_utc": "2026-09-06T21:54:17.886609+00:00",
+      "ceiling": 2,
+      "latency_ms": 2464.53,
+      "classification": "valid first attempt",
+      "turn_count": 1,
+      "final_output": {
+        "tags": [
+          "Prototype pollution",
+          "Input validation",
+          "Object properties"
+        ],
+        "summary": "Prototype pollution in WidgetKit allows crafted input to modify object properties and affect application behavior."
+      },
+      "validation_error": "",
+      "run_number": 3
+    },
+    {
+      "timestamp_utc": "2026-09-06T21:54:20.485586+00:00",
+      "ceiling": 2,
+      "latency_ms": 2559.45,
+      "classification": "valid first attempt",
+      "turn_count": 1,
+      "final_output": {
+        "tags": [
+          "Prototype pollution",
+          "Input validation",
+          "Object properties"
+        ],
+        "summary": "Prototype pollution in WidgetKit allows crafted input to modify object properties and affect application behavior."
+      },
+      "validation_error": "",
+      "run_number": 4
+    },
+    {
+      "timestamp_utc": "2026-09-06T21:54:22.977469+00:00",
+      "ceiling": 2,
+      "latency_ms": 2480.73,
+      "classification": "valid first attempt",
+      "turn_count": 1,
+      "final_output": {
+        "tags": [
+          "Prototype pollution",
+          "Input validation",
+          "Object properties"
+        ],
+        "summary": "Prototype pollution in WidgetKit allows crafted input to modify object properties and affect application behavior."
+      },
+      "validation_error": "",
+      "run_number": 5
+    },
+    {
+      "timestamp_utc": "2026-09-06T21:54:25.484998+00:00",
+      "ceiling": 2,
+      "latency_ms": 2502.64,
+      "classification": "valid first attempt",
+      "turn_count": 1,
+      "final_output": {
+        "tags": [
+          "Prototype pollution",
+          "Input validation",
+          "Object properties"
+        ],
+        "summary": "Prototype pollution in WidgetKit allows crafted input to modify object properties and affect application behavior."
+      },
+      "validation_error": "",
+      "run_number": 6
+    },
+    {
+      "timestamp_utc": "2026-09-06T21:54:28.304072+00:00",
+      "ceiling": 2,
+      "latency_ms": 2807.13,
+      "classification": "valid first attempt",
+      "turn_count": 1,
+      "final_output": {
+        "tags": [
+          "Prototype pollution",
+          "Input validation",
+          "Object properties"
+        ],
+        "summary": "Prototype pollution in WidgetKit allows crafted input to modify object properties and affect application behavior."
+      },
+      "validation_error": "",
+      "run_number": 7
+    },
+    {
+      "timestamp_utc": "2026-09-06T21:54:30.903573+00:00",
+      "ceiling": 2,
+      "latency_ms": 2593.02,
+      "classification": "valid first attempt",
+      "turn_count": 1,
+      "final_output": {
+        "tags": [
+          "Prototype pollution",
+          "Input validation",
+          "Object properties"
+        ],
+        "summary": "Prototype pollution in WidgetKit allows crafted input to modify object properties and affect application behavior."
+      },
+      "validation_error": "",
+      "run_number": 8
+    },
+    {
+      "timestamp_utc": "2026-09-06T21:54:33.313664+00:00",
+      "ceiling": 2,
+      "latency_ms": 2397.12,
+      "classification": "valid first attempt",
+      "turn_count": 1,
+      "final_output": {
+        "tags": [
+          "Prototype pollution",
+          "Input validation",
+          "Object properties"
+        ],
+        "summary": "Prototype pollution in WidgetKit allows crafted input to modify object properties and affect application behavior."
+      },
+      "validation_error": "",
+      "run_number": 9
+    },
+    {
+      "timestamp_utc": "2026-09-06T21:54:35.768308+00:00",
+      "ceiling": 2,
+      "latency_ms": 2438.77,
+      "classification": "valid first attempt",
+      "turn_count": 1,
+      "final_output": {
+        "tags": [
+          "Prototype pollution",
+          "Input validation",
+          "Object properties"
+        ],
+        "summary": "Prototype pollution in WidgetKit allows crafted input to modify object properties and affect application behavior."
+      },
+      "validation_error": "",
+      "run_number": 10
+    },
+    {
+      "timestamp_utc": "2026-09-06T21:54:38.171073+00:00",
+      "ceiling": 2,
+      "latency_ms": 2396.43,
+      "classification": "valid first attempt",
+      "turn_count": 1,
+      "final_output": {
+        "tags": [
+          "Prototype pollution",
+          "Input validation",
+          "Object properties"
+        ],
+        "summary": "Prototype pollution in WidgetKit allows crafted input to modify object properties and affect application behavior."
+      },
+      "validation_error": "",
+      "run_number": 11
+    },
+    {
+      "timestamp_utc": "2026-09-06T21:54:40.765564+00:00",
+      "ceiling": 2,
+      "latency_ms": 2585.1,
+      "classification": "valid first attempt",
+      "turn_count": 1,
+      "final_output": {
+        "tags": [
+          "Prototype pollution",
+          "Input validation",
+          "Object properties"
+        ],
+        "summary": "Prototype pollution in WidgetKit allows crafted input to modify object properties and affect application behavior."
+      },
+      "validation_error": "",
+      "run_number": 12
+    },
+    {
+      "timestamp_utc": "2026-09-06T21:54:43.534314+00:00",
+      "ceiling": 2,
+      "latency_ms": 2761.82,
+      "classification": "valid first attempt",
+      "turn_count": 1,
+      "final_output": {
+        "tags": [
+          "Prototype pollution",
+          "Input validation",
+          "Object properties"
+        ],
+        "summary": "Prototype pollution in WidgetKit allows crafted input to modify object properties and affect application behavior."
+      },
+      "validation_error": "",
+      "run_number": 13
+    },
+    {
+      "timestamp_utc": "2026-09-06T21:54:46.223572+00:00",
+      "ceiling": 2,
+      "latency_ms": 2684.18,
+      "classification": "valid first attempt",
+      "turn_count": 1,
+      "final_output": {
+        "tags": [
+          "Prototype pollution",
+          "Input validation",
+          "Object properties"
+        ],
+        "summary": "Prototype pollution in WidgetKit allows crafted input to modify object properties and affect application behavior."
+      },
+      "validation_error": "",
+      "run_number": 14
+    },
+    {
+      "timestamp_utc": "2026-09-06T21:54:48.835537+00:00",
+      "ceiling": 2,
+      "latency_ms": 2602.37,
+      "classification": "valid first attempt",
+      "turn_count": 1,
+      "final_output": {
+        "tags": [
+          "Prototype pollution",
+          "Input validation",
+          "Object properties"
+        ],
+        "summary": "Prototype pollution in WidgetKit allows crafted input to modify object properties and affect application behavior."
+      },
+      "validation_error": "",
+      "run_number": 15
+    },
+    {
+      "timestamp_utc": "2026-09-06T21:54:51.700765+00:00",
+      "ceiling": 2,
+      "latency_ms": 2857.11,
+      "classification": "valid first attempt",
+      "turn_count": 1,
+      "final_output": {
+        "tags": [
+          "Prototype pollution",
+          "Input validation",
+          "Object properties"
+        ],
+        "summary": "Prototype pollution in WidgetKit allows crafted input to modify object properties and affect application behavior."
+      },
+      "validation_error": "",
+      "run_number": 16
+    },
+    {
+      "timestamp_utc": "2026-09-06T21:54:54.215489+00:00",
+      "ceiling": 2,
+      "latency_ms": 2508.58,
+      "classification": "valid first attempt",
+      "turn_count": 1,
+      "final_output": {
+        "tags": [
+          "Prototype pollution",
+          "Input validation",
+          "Object properties"
+        ],
+        "summary": "Prototype pollution in WidgetKit allows crafted input to modify object properties and affect application behavior."
+      },
+      "validation_error": "",
+      "run_number": 17
+    },
+    {
+      "timestamp_utc": "2026-09-06T21:54:56.643333+00:00",
+      "ceiling": 2,
+      "latency_ms": 2422.78,
+      "classification": "valid first attempt",
+      "turn_count": 1,
+      "final_output": {
+        "tags": [
+          "Prototype pollution",
+          "Input validation",
+          "Object properties"
+        ],
+        "summary": "Prototype pollution in WidgetKit allows crafted input to modify object properties and affect application behavior."
+      },
+      "validation_error": "",
+      "run_number": 18
+    },
+    {
+      "timestamp_utc": "2026-09-06T21:54:59.066381+00:00",
+      "ceiling": 2,
+      "latency_ms": 2414.39,
+      "classification": "valid first attempt",
+      "turn_count": 1,
+      "final_output": {
+        "tags": [
+          "Prototype pollution",
+          "Input validation",
+          "Object properties"
+        ],
+        "summary": "Prototype pollution in WidgetKit allows crafted input to modify object properties and affect application behavior."
+      },
+      "validation_error": "",
+      "run_number": 19
+    },
+    {
+      "timestamp_utc": "2026-09-06T21:55:01.565880+00:00",
+      "ceiling": 2,
+      "latency_ms": 2491.72,
+      "classification": "valid first attempt",
+      "turn_count": 1,
+      "final_output": {
+        "tags": [
+          "Prototype pollution",
+          "Input validation",
+          "Object properties"
+        ],
+        "summary": "Prototype pollution in WidgetKit allows crafted input to modify object properties and affect application behavior."
+      },
+      "validation_error": "",
+      "run_number": 20
+    },
+    {
+      "timestamp_utc": "2026-09-06T21:55:04.008885+00:00",
+      "ceiling": 2,
+      "latency_ms": 2435.4,
+      "classification": "valid first attempt",
+      "turn_count": 1,
+      "final_output": {
+        "tags": [
+          "Prototype pollution",
+          "Input validation",
+          "Object properties"
+        ],
+        "summary": "Prototype pollution in WidgetKit allows crafted input to modify object properties and affect application behavior."
+      },
+      "validation_error": "",
+      "run_number": 21
+    },
+    {
+      "timestamp_utc": "2026-09-06T21:55:06.812618+00:00",
+      "ceiling": 2,
+      "latency_ms": 2795.72,
+      "classification": "valid first attempt",
+      "turn_count": 1,
+      "final_output": {
+        "tags": [
+          "Prototype pollution",
+          "Input validation",
+          "Object properties"
+        ],
+        "summary": "Prototype pollution in WidgetKit allows crafted input to modify object properties and affect application behavior."
+      },
+      "validation_error": "",
+      "run_number": 22
+    },
+    {
+      "timestamp_utc": "2026-09-06T21:55:09.430701+00:00",
+      "ceiling": 2,
+      "latency_ms": 2604.22,
+      "classification": "valid first attempt",
+      "turn_count": 1,
+      "final_output": {
+        "tags": [
+          "Prototype pollution",
+          "Input validation",
+          "Object properties"
+        ],
+        "summary": "Prototype pollution in WidgetKit allows crafted input to modify object properties and affect application behavior."
+      },
+      "validation_error": "",
+      "run_number": 23
+    },
+    {
+      "timestamp_utc": "2026-09-06T21:55:11.914702+00:00",
+      "ceiling": 2,
+      "latency_ms": 2478.85,
+      "classification": "valid first attempt",
+      "turn_count": 1,
+      "final_output": {
+        "tags": [
+          "Prototype pollution",
+          "Input validation",
+          "Object properties"
+        ],
+        "summary": "Prototype pollution in WidgetKit allows crafted input to modify object properties and affect application behavior."
+      },
+      "validation_error": "",
+      "run_number": 24
+    },
+    {
+      "timestamp_utc": "2026-09-06T21:55:14.488689+00:00",
+      "ceiling": 2,
+      "latency_ms": 2569.71,
+      "classification": "valid first attempt",
+      "turn_count": 1,
+      "final_output": {
+        "tags": [
+          "Prototype pollution",
+          "Input validation",
+          "Object properties"
+        ],
+        "summary": "Prototype pollution in WidgetKit allows crafted input to modify object properties and affect application behavior."
+      },
+      "validation_error": "",
+      "run_number": 25
+    },
+    {
+      "timestamp_utc": "2026-09-06T21:55:17.270204+00:00",
+      "ceiling": 2,
+      "latency_ms": 2774.38,
+      "classification": "valid first attempt",
+      "turn_count": 1,
+      "final_output": {
+        "tags": [
+          "Prototype pollution",
+          "Input validation",
+          "Object properties"
+        ],
+        "summary": "Prototype pollution in WidgetKit allows crafted input to modify object properties and affect application behavior."
+      },
+      "validation_error": "",
+      "run_number": 26
+    },
+    {
+      "timestamp_utc": "2026-09-06T21:55:20.403167+00:00",
+      "ceiling": 2,
+      "latency_ms": 3119.21,
+      "classification": "valid first attempt",
+      "turn_count": 1,
+      "final_output": {
+        "tags": [
+          "Prototype pollution",
+          "Input validation",
+          "Object properties"
+        ],
+        "summary": "Prototype pollution in WidgetKit allows crafted input to modify object properties and affect application behavior."
+      },
+      "validation_error": "",
+      "run_number": 27
+    },
+    {
+      "timestamp_utc": "2026-09-06T21:55:23.433138+00:00",
+      "ceiling": 2,
+      "latency_ms": 3019.62,
+      "classification": "valid first attempt",
+      "turn_count": 1,
+      "final_output": {
+        "tags": [
+          "Prototype pollution",
+          "Input validation",
+          "Object properties"
+        ],
+        "summary": "Prototype pollution in WidgetKit allows crafted input to modify object properties and affect application behavior."
+      },
+      "validation_error": "",
+      "run_number": 28
+    },
+    {
+      "timestamp_utc": "2026-09-06T21:55:26.127379+00:00",
+      "ceiling": 2,
+      "latency_ms": 2686.57,
+      "classification": "valid first attempt",
+      "turn_count": 1,
+      "final_output": {
+        "tags": [
+          "Prototype pollution",
+          "Input validation",
+          "Object properties"
+        ],
+        "summary": "Prototype pollution in WidgetKit allows crafted input to modify object properties and affect application behavior."
+      },
+      "validation_error": "",
+      "run_number": 29
+    },
+    {
+      "timestamp_utc": "2026-09-06T21:55:28.857886+00:00",
+      "ceiling": 2,
+      "latency_ms": 2723.78,
+      "classification": "valid first attempt",
+      "turn_count": 1,
+      "final_output": {
+        "tags": [
+          "Prototype pollution",
+          "Input validation",
+          "Object properties"
+        ],
+        "summary": "Prototype pollution in WidgetKit allows crafted input to modify object properties and affect application behavior."
+      },
+      "validation_error": "",
+      "run_number": 30
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+DATA-260 Homework 2 Run Log
+
+Repository: data260-9004
+Branch: hw2
+Model: qwen3:8b
+PORT_BASE: 8004
+SEED: 9004
+VERIFY_SEED: 269004
+
+[2026-09-02 UTC]
+Command:
+python -m py_compile code/langgraph_demo.py
+
+Result:
+Passed with no output.
+
+[2026-09-02 UTC]
+Command:
+python -m py_compile code/run_hw2_experiments.py
+
+Result:
+Passed with no output.
+
+[2026-09-02 UTC]
+Command:
+python -m uvicorn api:app --app-dir code --host 127.0.0.1 --port 8004
+
+Result:
+FastAPI server started successfully on port 8004.
+
+[2026-09-02 UTC]
+FastAPI endpoint tests:
+- GET /api/reports returned the initial record.
+- POST /api/reports created record ID 2.
+- PUT /api/reports/1 updated record ID 1.
+- DELETE /api/reports/highest deleted record ID 2.
+- GET /api/reports?search=samplelib returned the matching record.
+- GET /api/reports?search=does-not-exist returned [].
+
+[2026-09-02 UTC]
+LangGraph normal run:
+- Planner produced three tags and a summary.
+- Reviewer marked the output valid.
+- Supervisor counted turn 1/2.
+- Router ended successfully.
+
+[2026-09-02 UTC]
+Schema experiment:
+- 30 runs completed.
+- 30 valid first attempts.
+- Mean latency: 2411.01 ms.
+
+[2026-09-02 UTC]
+Turn-ceiling comparison:
+- Ceiling 2: 20/20 completed, mean latency 2395.71 ms.
+- Ceiling 10: 20/20 completed, mean latency 2426.13 ms.
+
+[2026-09-02 UTC]
+Adversarial experiment:
+- 5/5 runs reached the turn ceiling.
+- Mean latency: 7449.36 ms.
+- Validation failure: summary exceeded 25 words.

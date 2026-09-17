@@ -1,0 +1,30 @@
+questions:
+  - id: q1
+    question: "What does the CISA Known Exploited Vulnerabilities Catalog contain?"
+    expected_answer: "It contains vulnerabilities known to be exploited in the wild."
+    source_files:
+      - corpus/cisa_kev.json
+
+  - id: q2
+    question: "Which CISA catalog fields describe the action needed and the deadline for remediation?"
+    expected_answer: "The requiredAction and dueDate fields."
+    source_files:
+      - corpus/cisa_kev.json
+
+  - id: q3
+    question: "What vulnerability category is OWASP A03:2021?"
+    expected_answer: "Injection."
+    source_files:
+      - corpus/owasp_top10.pdf
+
+  - id: q4
+    question: "What vulnerability category is OWASP A05:2021?"
+    expected_answer: "Security Misconfiguration."
+    source_files:
+      - corpus/owasp_top10.pdf
+
+  - id: q5
+    question: "What vulnerability category is OWASP A07:2021?"
+    expected_answer: "Identification and Authentication Failures."
+    source_files:
+      - corpus/owasp_top10.pdf

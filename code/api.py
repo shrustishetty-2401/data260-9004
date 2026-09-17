@@ -4,9 +4,21 @@ from typing import Optional
 from fastapi import FastAPI, HTTPException
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
+from starlette.middleware.sessions import SessionMiddleware
+
+from auth import router as auth_router
 
 
 app = FastAPI(title="Open-Source Vulnerability Reports")
+
+
+app.add_middleware(
+    SessionMiddleware,
+    secret_key="hw3-secret-key-9004",
+    max_age=900,
+    same_site="lax",
+    https_only=False
+)
 
 
 class VulnerabilityBase(BaseModel):
@@ -33,16 +45,19 @@ records = [
         "vulnerabilityTitle": "Unsafe deserialization in SampleLib",
         "packageName": "samplelib",
         "submitterEmail": "security@example.com",
-        "description": "An unsafe deserialization flaw allows attackers to execute unintended code.",
+        "description": (
+            "An unsafe deserialization flaw allows attackers "
+            "to execute unintended code."
+        ),
         "category": "Remote Code Execution",
         "termsAccepted": True,
         "submissionDate": datetime.now(timezone.utc).isoformat(),
     }
 ]
+
+
 @app.get("/api/reports")
 def list_records(search: Optional[str] = None):
-    """Return all records or only records matching the search text."""
-
     if not search:
         return records
 
@@ -58,15 +73,16 @@ def list_records(search: Optional[str] = None):
 
 @app.post("/api/reports", status_code=201)
 def create_record(payload: VulnerabilityCreate):
-    """Add a new vulnerability report."""
-
     if not payload.termsAccepted:
         raise HTTPException(
             status_code=400,
             detail="Terms must be accepted before submitting.",
         )
 
-    next_id = max((record["id"] for record in records), default=0) + 1
+    next_id = max(
+        (record["id"] for record in records),
+        default=0,
+    ) + 1
 
     new_record = {
         "id": next_id,
@@ -77,10 +93,10 @@ def create_record(payload: VulnerabilityCreate):
     records.append(new_record)
 
     return new_record
+
+
 @app.put("/api/reports/1")
 def update_first_record(payload: VulnerabilityUpdate):
-    """Update the record with ID 1."""
-
     record = next(
         (item for item in records if item["id"] == 1),
         None,
@@ -96,17 +112,21 @@ def update_first_record(payload: VulnerabilityUpdate):
     record["packageName"] = payload.packageName
 
     return record
+
+
 @app.delete("/api/reports/highest")
 def delete_highest_record():
-    """Delete the record with the highest ID."""
-
     if not records:
         raise HTTPException(
             status_code=404,
             detail="No records are available to delete.",
         )
 
-    highest_record = max(records, key=lambda record: record["id"])
+    highest_record = max(
+        records,
+        key=lambda record: record["id"],
+    )
+
     records.remove(highest_record)
 
     return {
@@ -114,8 +134,15 @@ def delete_highest_record():
         "remaining_records": records,
     }
 
+
+app.include_router(auth_router)
+
+
 app.mount(
     "/",
-    StaticFiles(directory="code/web_application", html=True),
+    StaticFiles(
+        directory="code/web_application",
+        html=True,
+    ),
     name="web",
 )

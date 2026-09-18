@@ -211,7 +211,17 @@ The retrieval experiment shows that sentence-window chunking produced the strong
 
 The experiment also shows that retrieval scores must be interpreted together with source validation because a high similarity score can still return an incorrect source.
 
-## 12. Evidence Screenshots
+## 12. Final Git Reference
+Repository: https://github.com/shrustishetty-2401/data260-9004
+
+Final branch: hw3
+
+Final tag: hw3
+
+Final commit: 6826904
+
+
+## 13. Evidence Screenshots
 
 ### Home Page
 

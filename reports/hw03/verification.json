@@ -1,0 +1,18 @@
+{
+  "assignment": "DATA-260 HW3",
+  "status": "passed",
+  "checks": {
+    "code/api.py": true,
+    "code/auth.py": true,
+    "code/templates/login.html": true,
+    "code/templates/dashboard.html": true,
+    "reports/hw03/CORPUS_MANIFEST.json": true,
+    "reports/hw03/questions.yaml": true,
+    "reports/hw03/METRICS.md": true,
+    "reports/hw03/SOURCES.md": true,
+    "reports/hw03/report.md": true,
+    "reports/hw03/Shetty_HW3.pdf": true,
+    "reports/hw03/raw/retrieval/metrics.json": true,
+    "metrics_json_valid": true
+  }
+}

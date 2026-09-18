@@ -1,0 +1,39 @@
+DATA-260 Homework 3 Run Log
+
+Configuration:
+- Branch: hw3
+- Student ID: 9004
+- Domain ID: 4
+- Port: 8004
+- Embedding model: sentence-transformers/all-MiniLM-L6-v2
+- Top-k: 3
+
+Corpus preparation:
+1. Downloaded the CISA Known Exploited Vulnerabilities JSON catalog.
+2. Downloaded the OWASP Top 10 introduction as Markdown.
+3. Verified file sizes and SHA-256 hashes.
+4. Recorded the files in CORPUS_MANIFEST.json.
+5. Recorded public source URLs in SOURCES.md.
+6. Created five questions in questions.yaml.
+
+Retrieval command:
+
+python code/hw3_retrieval.py
+
+Successful output:
+- Token chunks: 3329
+- Semantic chunks: 229
+- Sentence-window chunks: 4522
+- Retrieval results saved to reports/hw03/raw/retrieval/
+- Metrics saved to reports/hw03/raw/retrieval/metrics.json
+
+Measured results:
+- Token top-1 cosine: 0.589578
+- Semantic top-1 cosine: 0.596274
+- Sentence-window top-1 cosine: 0.625112
+- Sentence-window mean latency: 86.51 ms
+
+Validation:
+python -m py_compile code/hw3_retrieval.py
+
+The retrieval script completed successfully after correcting the OWASP source format and explicitly calculating chunk embeddings and cosine similarity.

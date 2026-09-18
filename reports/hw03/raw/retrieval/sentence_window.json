@@ -25,26 +25,26 @@
         "stored_score": 0.6096741915320055,
         "explicit_cosine_similarity": 0.562866,
         "source_file": "corpus/cisa_kev.json",
-        "chunk_length": 1319,
-        "chunk_preview": "\", \"dueDate\": \"2025-09-26\", \"knownRansomwareCampaignUse\": \"Unknown\", \"forensicTriage\": \"No\", \"notes\": \"CISA Mitigation Instructions: https:\\/\\/www.cisa.gov\\/news-events\\/directives\\/ed-25-03-identify-and-mitigate-potential-compromise-cisco-...",
-        "vector_dimension": 384,
-        "vector_shape": [
-          384
-        ],
-        "node_id": "9d2dd311-2f00-4547-810e-aab263908175"
-      },
-      {
-        "rank": 2,
-        "stored_score": 0.6096741915320055,
-        "explicit_cosine_similarity": 0.562866,
-        "source_file": "corpus/cisa_kev.json",
         "chunk_length": 1562,
         "chunk_preview": "\", \"dueDate\": \"2025-09-26\", \"knownRansomwareCampaignUse\": \"Unknown\", \"forensicTriage\": \"No\", \"notes\": \"CISA Mitigation Instructions: https:\\/\\/www.cisa.gov\\/news-events\\/directives\\/ed-25-03-identify-and-mitigate-potential-compromise-cisco-...",
         "vector_dimension": 384,
         "vector_shape": [
           384
         ],
-        "node_id": "cf8d52dd-3dd7-45b3-aa4d-ba24914a3cf1"
+        "node_id": "4ba660d6-84c5-4502-9eb1-be377a230ea4"
+      },
+      {
+        "rank": 2,
+        "stored_score": 0.6096741915320055,
+        "explicit_cosine_similarity": 0.562866,
+        "source_file": "corpus/cisa_kev.json",
+        "chunk_length": 1319,
+        "chunk_preview": "\", \"dueDate\": \"2025-09-26\", \"knownRansomwareCampaignUse\": \"Unknown\", \"forensicTriage\": \"No\", \"notes\": \"CISA Mitigation Instructions: https:\\/\\/www.cisa.gov\\/news-events\\/directives\\/ed-25-03-identify-and-mitigate-potential-compromise-cisco-...",
+        "vector_dimension": 384,
+        "vector_shape": [
+          384
+        ],
+        "node_id": "6e45ad66-9aa0-45c2-bc6f-9e5b2e123f8e"
       },
       {
         "rank": 3,
@@ -57,10 +57,10 @@
         "vector_shape": [
           384
         ],
-        "node_id": "7b5be241-273b-43a3-82d4-6908b060c119"
+        "node_id": "fae73fc8-92db-4f37-bba4-ff7d5c54de21"
       }
     ],
-    "latency_ms": 110.38
+    "latency_ms": 109.77
   },
   {
     "technique": "sentence_window",
@@ -94,7 +94,7 @@
         "vector_shape": [
           384
         ],
-        "node_id": "0d9a829a-d21a-43c3-802c-5ef501a931d4"
+        "node_id": "63c2fe7a-b95f-4482-aafa-dfffccabe688"
       },
       {
         "rank": 2,
@@ -107,7 +107,7 @@
         "vector_shape": [
           384
         ],
-        "node_id": "05bcd6ce-25ee-4c30-8cd8-c4d940592231"
+        "node_id": "5ddc7c5c-ea6b-46ca-ba4d-9b0e65fdf3d4"
       },
       {
         "rank": 3,
@@ -120,10 +120,10 @@
         "vector_shape": [
           384
         ],
-        "node_id": "e1810e48-63c9-4795-98f9-279a4c55eb58"
+        "node_id": "ecec7be6-ce60-4aad-ba46-2f5c36e7be4b"
       }
     ],
-    "latency_ms": 81.29
+    "latency_ms": 81.12
   },
   {
     "technique": "sentence_window",
@@ -131,7 +131,7 @@
     "question": "What vulnerability category is OWASP A03:2021?",
     "expected_answer": "Injection.",
     "expected_source_files": [
-      "corpus/owasp_top10.pdf"
+      "corpus/owasp_top10.md"
     ],
     "top_k": 3,
     "query_embedding_dimension": 384,
@@ -157,7 +157,7 @@
         "vector_shape": [
           384
         ],
-        "node_id": "f7eda752-f520-4ad7-8dfe-c44081761777"
+        "node_id": "5bb7dcbe-62ad-4d08-8111-c32e2678f13f"
       },
       {
         "rank": 2,
@@ -170,7 +170,7 @@
         "vector_shape": [
           384
         ],
-        "node_id": "fc536791-f4cc-4b1b-ae6e-e70ee579c341"
+        "node_id": "a27edd54-15b5-4ae6-b825-c0d281ac9a50"
       },
       {
         "rank": 3,
@@ -183,10 +183,10 @@
         "vector_shape": [
           384
         ],
-        "node_id": "4b8291a4-2c9c-4ec2-9a24-4388a8e92e42"
+        "node_id": "0f5ee094-3f4a-49f8-9d37-1f60dfebc78c"
       }
     ],
-    "latency_ms": 81.99
+    "latency_ms": 81.57
   },
   {
     "technique": "sentence_window",
@@ -194,7 +194,7 @@
     "question": "What vulnerability category is OWASP A05:2021?",
     "expected_answer": "Security Misconfiguration.",
     "expected_source_files": [
-      "corpus/owasp_top10.pdf"
+      "corpus/owasp_top10.md"
     ],
     "top_k": 3,
     "query_embedding_dimension": 384,
@@ -220,7 +220,7 @@
         "vector_shape": [
           384
         ],
-        "node_id": "f7eda752-f520-4ad7-8dfe-c44081761777"
+        "node_id": "5bb7dcbe-62ad-4d08-8111-c32e2678f13f"
       },
       {
         "rank": 2,
@@ -233,7 +233,7 @@
         "vector_shape": [
           384
         ],
-        "node_id": "fc536791-f4cc-4b1b-ae6e-e70ee579c341"
+        "node_id": "a27edd54-15b5-4ae6-b825-c0d281ac9a50"
       },
       {
         "rank": 3,
@@ -246,10 +246,10 @@
         "vector_shape": [
           384
         ],
-        "node_id": "4b8291a4-2c9c-4ec2-9a24-4388a8e92e42"
+        "node_id": "0f5ee094-3f4a-49f8-9d37-1f60dfebc78c"
       }
     ],
-    "latency_ms": 79.42
+    "latency_ms": 78.92
   },
   {
     "technique": "sentence_window",
@@ -257,7 +257,7 @@
     "question": "What vulnerability category is OWASP A07:2021?",
     "expected_answer": "Identification and Authentication Failures.",
     "expected_source_files": [
-      "corpus/owasp_top10.pdf"
+      "corpus/owasp_top10.md"
     ],
     "top_k": 3,
     "query_embedding_dimension": 384,
@@ -283,7 +283,7 @@
         "vector_shape": [
           384
         ],
-        "node_id": "f7eda752-f520-4ad7-8dfe-c44081761777"
+        "node_id": "5bb7dcbe-62ad-4d08-8111-c32e2678f13f"
       },
       {
         "rank": 2,
@@ -296,7 +296,7 @@
         "vector_shape": [
           384
         ],
-        "node_id": "fc536791-f4cc-4b1b-ae6e-e70ee579c341"
+        "node_id": "a27edd54-15b5-4ae6-b825-c0d281ac9a50"
       },
       {
         "rank": 3,
@@ -309,9 +309,9 @@
         "vector_shape": [
           384
         ],
-        "node_id": "4b8291a4-2c9c-4ec2-9a24-4388a8e92e42"
+        "node_id": "0f5ee094-3f4a-49f8-9d37-1f60dfebc78c"
       }
     ],
-    "latency_ms": 79.48
+    "latency_ms": 79.21
   }
 ]

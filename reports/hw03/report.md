@@ -213,14 +213,42 @@ The experiment also shows that retrieval scores must be interpreted together wit
 
 ## 12. Evidence Screenshots
 
-Insert the required screenshots below:
+### Home Page
 
-- Home page
-- Login page
-- Invalid login result
-- Protected dashboard
-- Logout or timeout redirect
-- Session cookie header
-- Corpus folder and manifest
-- Retrieval terminal output
-- Metrics file
+![Home page](evidence/home_page.png)
+
+### Login Page
+
+![Login page](evidence/login_page.png)
+
+### Invalid Login
+
+![Invalid login result](evidence/invalid_login.png)
+
+### Protected Dashboard
+
+![Protected dashboard](evidence/dashboard.png)
+
+### Session Timeout
+
+![Session timeout redirect](evidence/timeout_redirect.png)
+
+### Session Cookie
+
+![Session cookie header](evidence/session_cookie.png)
+
+### Corpus Files
+
+![Corpus source files](evidence/corpus_files.png)
+
+### Corpus Manifest
+
+![Corpus manifest](evidence/corpus_manifest.png)
+
+### Retrieval Run
+
+![Retrieval terminal output](evidence/retrieval_run.png)
+
+### Retrieval Metrics
+
+![Retrieval metrics](evidence/metrics_output.png)

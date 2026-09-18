@@ -6,18 +6,18 @@
     "average_chunk_length": 611.01,
     "top1_cosine": 0.589578,
     "mean_at_k_cosine": 0.583063,
-    "recall_at_k": 0.4,
-    "mean_latency_ms": 70.45
+    "recall_at_k": 1,
+    "mean_latency_ms": 70.03
   },
   {
     "technique": "semantic",
     "chunks": 229,
     "questions": 5,
-    "average_chunk_length": 7620.62,
+    "average_chunk_length": 7620.6,
     "top1_cosine": 0.596274,
     "mean_at_k_cosine": 0.559302,
-    "recall_at_k": 0.4,
-    "mean_latency_ms": 16.56
+    "recall_at_k": 1,
+    "mean_latency_ms": 16.02
   },
   {
     "technique": "sentence_window",
@@ -26,7 +26,7 @@
     "average_chunk_length": 385.92,
     "top1_cosine": 0.625112,
     "mean_at_k_cosine": 0.598668,
-    "recall_at_k": 0.4,
-    "mean_latency_ms": 86.51
+    "recall_at_k": 1,
+    "mean_latency_ms": 86.12
   }
 ]

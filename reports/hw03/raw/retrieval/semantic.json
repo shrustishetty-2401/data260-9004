@@ -31,7 +31,7 @@
         "vector_shape": [
           384
         ],
-        "node_id": "148084e2-26a2-4a99-82ab-cbaca0c01670"
+        "node_id": "6c59c4bc-4853-4ae3-81d1-df04ec81fc70"
       },
       {
         "rank": 2,
@@ -44,7 +44,7 @@
         "vector_shape": [
           384
         ],
-        "node_id": "6132228d-1f67-49c1-996f-6918f7b62d1e"
+        "node_id": "c22fa21b-ffb2-4dc3-b6c9-d41059013cfa"
       },
       {
         "rank": 3,
@@ -57,10 +57,10 @@
         "vector_shape": [
           384
         ],
-        "node_id": "53454991-eabc-4e17-856c-878b1885c6ca"
+        "node_id": "68d8456e-a8e7-453b-bd97-2c647e1fa9ca"
       }
     ],
-    "latency_ms": 16.83
+    "latency_ms": 16.44
   },
   {
     "technique": "semantic",
@@ -94,7 +94,7 @@
         "vector_shape": [
           384
         ],
-        "node_id": "179871ea-3d96-47e1-bdd8-48caaaba3c94"
+        "node_id": "744baee4-1837-46de-8a35-5c8b94ebfbe2"
       },
       {
         "rank": 2,
@@ -107,7 +107,7 @@
         "vector_shape": [
           384
         ],
-        "node_id": "754fbe72-5bcc-4e4d-b46a-50b3d83a4cf5"
+        "node_id": "97c39b50-1205-43c5-9658-fcb3f02c59b1"
       },
       {
         "rank": 3,
@@ -120,10 +120,10 @@
         "vector_shape": [
           384
         ],
-        "node_id": "8a9bcf19-dfce-4357-9964-c1441d0a609b"
+        "node_id": "3281e282-4b94-43d5-91f5-b71a1fcbf3fc"
       }
     ],
-    "latency_ms": 16.12
+    "latency_ms": 16.76
   },
   {
     "technique": "semantic",
@@ -131,7 +131,7 @@
     "question": "What vulnerability category is OWASP A03:2021?",
     "expected_answer": "Injection.",
     "expected_source_files": [
-      "corpus/owasp_top10.pdf"
+      "corpus/owasp_top10.md"
     ],
     "top_k": 3,
     "query_embedding_dimension": 384,
@@ -157,7 +157,7 @@
         "vector_shape": [
           384
         ],
-        "node_id": "2e1361aa-48a4-4d7f-80df-40d197087d55"
+        "node_id": "42cf8432-9749-4cfe-9c68-65acdf80aeeb"
       },
       {
         "rank": 2,
@@ -170,7 +170,7 @@
         "vector_shape": [
           384
         ],
-        "node_id": "2cff8798-f1f6-4c16-a09d-da5561092be3"
+        "node_id": "3fd28a6a-e947-44f4-bd9e-4b8491264846"
       },
       {
         "rank": 3,
@@ -183,10 +183,10 @@
         "vector_shape": [
           384
         ],
-        "node_id": "212c7d50-968d-426e-9caf-d8a6664d85ce"
+        "node_id": "374acde4-1d55-497d-8927-ff25845694b2"
       }
     ],
-    "latency_ms": 16.63
+    "latency_ms": 15.59
   },
   {
     "technique": "semantic",
@@ -194,7 +194,7 @@
     "question": "What vulnerability category is OWASP A05:2021?",
     "expected_answer": "Security Misconfiguration.",
     "expected_source_files": [
-      "corpus/owasp_top10.pdf"
+      "corpus/owasp_top10.md"
     ],
     "top_k": 3,
     "query_embedding_dimension": 384,
@@ -220,7 +220,7 @@
         "vector_shape": [
           384
         ],
-        "node_id": "2e1361aa-48a4-4d7f-80df-40d197087d55"
+        "node_id": "42cf8432-9749-4cfe-9c68-65acdf80aeeb"
       },
       {
         "rank": 2,
@@ -233,7 +233,7 @@
         "vector_shape": [
           384
         ],
-        "node_id": "2cff8798-f1f6-4c16-a09d-da5561092be3"
+        "node_id": "3fd28a6a-e947-44f4-bd9e-4b8491264846"
       },
       {
         "rank": 3,
@@ -246,10 +246,10 @@
         "vector_shape": [
           384
         ],
-        "node_id": "212c7d50-968d-426e-9caf-d8a6664d85ce"
+        "node_id": "374acde4-1d55-497d-8927-ff25845694b2"
       }
     ],
-    "latency_ms": 16.6
+    "latency_ms": 15.93
   },
   {
     "technique": "semantic",
@@ -257,7 +257,7 @@
     "question": "What vulnerability category is OWASP A07:2021?",
     "expected_answer": "Identification and Authentication Failures.",
     "expected_source_files": [
-      "corpus/owasp_top10.pdf"
+      "corpus/owasp_top10.md"
     ],
     "top_k": 3,
     "query_embedding_dimension": 384,
@@ -283,7 +283,7 @@
         "vector_shape": [
           384
         ],
-        "node_id": "2e1361aa-48a4-4d7f-80df-40d197087d55"
+        "node_id": "42cf8432-9749-4cfe-9c68-65acdf80aeeb"
       },
       {
         "rank": 2,
@@ -296,7 +296,7 @@
         "vector_shape": [
           384
         ],
-        "node_id": "2cff8798-f1f6-4c16-a09d-da5561092be3"
+        "node_id": "3fd28a6a-e947-44f4-bd9e-4b8491264846"
       },
       {
         "rank": 3,
@@ -309,9 +309,9 @@
         "vector_shape": [
           384
         ],
-        "node_id": "212c7d50-968d-426e-9caf-d8a6664d85ce"
+        "node_id": "374acde4-1d55-497d-8927-ff25845694b2"
       }
     ],
-    "latency_ms": 16.63
+    "latency_ms": 15.4
   }
 ]

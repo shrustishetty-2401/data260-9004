@@ -1,15 +1,19 @@
-# Corpus Sources
+# HW3 Corpus Sources
 
-## CISA Known Exploited Vulnerabilities Catalog
+## 1. CISA Known Exploited Vulnerabilities Catalog
 
-- URL: https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json
-- Accessed: 2026-09-17
-- Local file: corpus/cisa_kev.json
-- Relevance: Contains publicly known vulnerabilities that are actively exploited or important for vulnerability analysis.
+- Source name: CISA Known Exploited Vulnerabilities Catalog
+- Public URL: https://www.cisa.gov/known-exploited-vulnerabilities-catalog
+- Download URL: https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json
+- Local file: `corpus/cisa_kev.json`
+- Format: JSON
+- Purpose: Provides vulnerabilities known to have been exploited in the wild, including remediation actions and due dates.
 
-## OWASP Top 10
+## 2. OWASP Top 10: 2021
 
-- URL: https://owasp.org/www-project-top-ten/assets/OWASP_Top_Ten_2021.pdf
-- Accessed: 2026-09-17
-- Local file: corpus/owasp_top10.pdf
-- Relevance: Describes major categories of web application security vulnerabilities.
+- Source name: OWASP Top 10: 2021 Introduction
+- Public URL: https://github.com/OWASP/Top10/blob/master/2021/docs/en/0x00_2021-introduction.md
+- Download URL: https://raw.githubusercontent.com/OWASP/Top10/master/2021/docs/en/0x00_2021-introduction.md
+- Local file: `corpus/owasp_top10.md`
+- Format: Markdown
+- Purpose: Provides the OWASP vulnerability categories used for the retrieval questions.

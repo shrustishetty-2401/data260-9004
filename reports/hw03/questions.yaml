@@ -15,16 +15,16 @@ questions:
     question: "What vulnerability category is OWASP A03:2021?"
     expected_answer: "Injection."
     source_files:
-      - corpus/owasp_top10.pdf
+      - corpus/owasp_top10.md
 
   - id: q4
     question: "What vulnerability category is OWASP A05:2021?"
     expected_answer: "Security Misconfiguration."
     source_files:
-      - corpus/owasp_top10.pdf
+      - corpus/owasp_top10.md
 
   - id: q5
     question: "What vulnerability category is OWASP A07:2021?"
     expected_answer: "Identification and Authentication Failures."
     source_files:
-      - corpus/owasp_top10.pdf
+      - corpus/owasp_top10.md

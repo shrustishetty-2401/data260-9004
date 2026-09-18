@@ -7,10 +7,10 @@
       "sha256": "72b4e3489021d2ad50c4f9b8ddddd1608a9e6b87dd7beedc126f6341ea98f105"
     },
     {
-      "filename": "owasp_top10.pdf",
-      "bytes": 47491,
-      "sha256": "2d87c5697c426f70f741b4fe458709c8362671fcde8f71e7b65e088099f4bb1b"
+      "filename": "owasp_top10.md",
+      "bytes": 17138,
+      "sha256": "817d7c25937f4ef275059a0d99c04333bcf14161c4109b98d297a8016c189672"
     }
   ],
-  "total_bytes": 1775475
+  "total_bytes": 1745122
 }

@@ -256,6 +256,12 @@ Final commit: 9636bd0
 
 ![Session cookie header](evidence/session_cookie.png)
 
+
+![Browser session cookie while logged in](evidence/browser_session_cookie_logged_in.png)
+
+
+![Browser session cookie while logged out](evidence/browser_session_cookie_logged_out.png)
+
 ### Corpus Files
 
 ![Corpus source files](evidence/corpus_files.png)
@@ -275,6 +281,8 @@ Final commit: 9636bd0
 ### Templates Directory
 
 ![Templates directory](evidence/templates_directory.png)
+
+
 
 
 

@@ -65,3 +65,10 @@ The React dashboard displays the logged-in user and seeded vulnerability records
 The verification output confirms the database, N+1 benchmark, RAG, and frontend checks.
 
 ![HW4 verification](evidence/hw4_verification.png)
+
+## 9. Final Git Reference
+
+- Repository: https://github.com/shrustishetty-2401/data260-9004
+- Final branch: hw4
+- Final tag: hw4
+- Final commit: recorded in `reports/hw04/verification.json`

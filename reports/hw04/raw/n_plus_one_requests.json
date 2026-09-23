@@ -1,0 +1,1802 @@
+[
+  {
+    "mode": "naive",
+    "page_size": 10,
+    "repetition": 1,
+    "latency_ms": 17.801,
+    "sql_statements": 11,
+    "rows_returned": 10,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 10,
+    "repetition": 2,
+    "latency_ms": 10.466,
+    "sql_statements": 11,
+    "rows_returned": 10,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 10,
+    "repetition": 3,
+    "latency_ms": 12.506,
+    "sql_statements": 11,
+    "rows_returned": 10,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 10,
+    "repetition": 4,
+    "latency_ms": 10.177,
+    "sql_statements": 11,
+    "rows_returned": 10,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 10,
+    "repetition": 5,
+    "latency_ms": 9.583,
+    "sql_statements": 11,
+    "rows_returned": 10,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 10,
+    "repetition": 6,
+    "latency_ms": 14.2,
+    "sql_statements": 11,
+    "rows_returned": 10,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 10,
+    "repetition": 7,
+    "latency_ms": 33.164,
+    "sql_statements": 11,
+    "rows_returned": 10,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 10,
+    "repetition": 8,
+    "latency_ms": 153.795,
+    "sql_statements": 11,
+    "rows_returned": 10,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 10,
+    "repetition": 9,
+    "latency_ms": 11.282,
+    "sql_statements": 11,
+    "rows_returned": 10,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 10,
+    "repetition": 10,
+    "latency_ms": 11.037,
+    "sql_statements": 11,
+    "rows_returned": 10,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 10,
+    "repetition": 11,
+    "latency_ms": 16.088,
+    "sql_statements": 11,
+    "rows_returned": 10,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 10,
+    "repetition": 12,
+    "latency_ms": 9.726,
+    "sql_statements": 11,
+    "rows_returned": 10,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 10,
+    "repetition": 13,
+    "latency_ms": 9.349,
+    "sql_statements": 11,
+    "rows_returned": 10,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 10,
+    "repetition": 14,
+    "latency_ms": 9.154,
+    "sql_statements": 11,
+    "rows_returned": 10,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 10,
+    "repetition": 15,
+    "latency_ms": 27.77,
+    "sql_statements": 11,
+    "rows_returned": 10,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 10,
+    "repetition": 16,
+    "latency_ms": 9.716,
+    "sql_statements": 11,
+    "rows_returned": 10,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 10,
+    "repetition": 17,
+    "latency_ms": 7.929,
+    "sql_statements": 11,
+    "rows_returned": 10,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 10,
+    "repetition": 18,
+    "latency_ms": 10.929,
+    "sql_statements": 11,
+    "rows_returned": 10,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 10,
+    "repetition": 19,
+    "latency_ms": 8.256,
+    "sql_statements": 11,
+    "rows_returned": 10,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 10,
+    "repetition": 20,
+    "latency_ms": 8.143,
+    "sql_statements": 11,
+    "rows_returned": 10,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 10,
+    "repetition": 21,
+    "latency_ms": 7.516,
+    "sql_statements": 11,
+    "rows_returned": 10,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 10,
+    "repetition": 22,
+    "latency_ms": 8.453,
+    "sql_statements": 11,
+    "rows_returned": 10,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 10,
+    "repetition": 23,
+    "latency_ms": 8.087,
+    "sql_statements": 11,
+    "rows_returned": 10,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 10,
+    "repetition": 24,
+    "latency_ms": 7.523,
+    "sql_statements": 11,
+    "rows_returned": 10,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 10,
+    "repetition": 25,
+    "latency_ms": 8.38,
+    "sql_statements": 11,
+    "rows_returned": 10,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 10,
+    "repetition": 26,
+    "latency_ms": 10.86,
+    "sql_statements": 11,
+    "rows_returned": 10,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 10,
+    "repetition": 27,
+    "latency_ms": 7.765,
+    "sql_statements": 11,
+    "rows_returned": 10,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 10,
+    "repetition": 28,
+    "latency_ms": 6.847,
+    "sql_statements": 11,
+    "rows_returned": 10,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 10,
+    "repetition": 29,
+    "latency_ms": 7.604,
+    "sql_statements": 11,
+    "rows_returned": 10,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 10,
+    "repetition": 30,
+    "latency_ms": 129.057,
+    "sql_statements": 11,
+    "rows_returned": 10,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 50,
+    "repetition": 1,
+    "latency_ms": 85.173,
+    "sql_statements": 51,
+    "rows_returned": 50,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 50,
+    "repetition": 2,
+    "latency_ms": 31.845,
+    "sql_statements": 51,
+    "rows_returned": 50,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 50,
+    "repetition": 3,
+    "latency_ms": 29.798,
+    "sql_statements": 51,
+    "rows_returned": 50,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 50,
+    "repetition": 4,
+    "latency_ms": 25.806,
+    "sql_statements": 51,
+    "rows_returned": 50,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 50,
+    "repetition": 5,
+    "latency_ms": 27.564,
+    "sql_statements": 51,
+    "rows_returned": 50,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 50,
+    "repetition": 6,
+    "latency_ms": 15.839,
+    "sql_statements": 51,
+    "rows_returned": 50,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 50,
+    "repetition": 7,
+    "latency_ms": 19.938,
+    "sql_statements": 51,
+    "rows_returned": 50,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 50,
+    "repetition": 8,
+    "latency_ms": 16.684,
+    "sql_statements": 51,
+    "rows_returned": 50,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 50,
+    "repetition": 9,
+    "latency_ms": 24.601,
+    "sql_statements": 51,
+    "rows_returned": 50,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 50,
+    "repetition": 10,
+    "latency_ms": 191.5,
+    "sql_statements": 51,
+    "rows_returned": 50,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 50,
+    "repetition": 11,
+    "latency_ms": 33.262,
+    "sql_statements": 51,
+    "rows_returned": 50,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 50,
+    "repetition": 12,
+    "latency_ms": 31.737,
+    "sql_statements": 51,
+    "rows_returned": 50,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 50,
+    "repetition": 13,
+    "latency_ms": 21.053,
+    "sql_statements": 51,
+    "rows_returned": 50,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 50,
+    "repetition": 14,
+    "latency_ms": 20.82,
+    "sql_statements": 51,
+    "rows_returned": 50,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 50,
+    "repetition": 15,
+    "latency_ms": 19.875,
+    "sql_statements": 51,
+    "rows_returned": 50,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 50,
+    "repetition": 16,
+    "latency_ms": 22.524,
+    "sql_statements": 51,
+    "rows_returned": 50,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 50,
+    "repetition": 17,
+    "latency_ms": 24.488,
+    "sql_statements": 51,
+    "rows_returned": 50,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 50,
+    "repetition": 18,
+    "latency_ms": 39.08,
+    "sql_statements": 51,
+    "rows_returned": 50,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 50,
+    "repetition": 19,
+    "latency_ms": 170.461,
+    "sql_statements": 51,
+    "rows_returned": 50,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 50,
+    "repetition": 20,
+    "latency_ms": 19.214,
+    "sql_statements": 51,
+    "rows_returned": 50,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 50,
+    "repetition": 21,
+    "latency_ms": 20.085,
+    "sql_statements": 51,
+    "rows_returned": 50,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 50,
+    "repetition": 22,
+    "latency_ms": 22.168,
+    "sql_statements": 51,
+    "rows_returned": 50,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 50,
+    "repetition": 23,
+    "latency_ms": 19.129,
+    "sql_statements": 51,
+    "rows_returned": 50,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 50,
+    "repetition": 24,
+    "latency_ms": 22.788,
+    "sql_statements": 51,
+    "rows_returned": 50,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 50,
+    "repetition": 25,
+    "latency_ms": 19.458,
+    "sql_statements": 51,
+    "rows_returned": 50,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 50,
+    "repetition": 26,
+    "latency_ms": 19.201,
+    "sql_statements": 51,
+    "rows_returned": 50,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 50,
+    "repetition": 27,
+    "latency_ms": 23.617,
+    "sql_statements": 51,
+    "rows_returned": 50,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 50,
+    "repetition": 28,
+    "latency_ms": 23.025,
+    "sql_statements": 51,
+    "rows_returned": 50,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 50,
+    "repetition": 29,
+    "latency_ms": 27.576,
+    "sql_statements": 51,
+    "rows_returned": 50,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 50,
+    "repetition": 30,
+    "latency_ms": 173.86,
+    "sql_statements": 51,
+    "rows_returned": 50,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 200,
+    "repetition": 1,
+    "latency_ms": 92.415,
+    "sql_statements": 201,
+    "rows_returned": 200,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 200,
+    "repetition": 2,
+    "latency_ms": 90.298,
+    "sql_statements": 201,
+    "rows_returned": 200,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 200,
+    "repetition": 3,
+    "latency_ms": 79.426,
+    "sql_statements": 201,
+    "rows_returned": 200,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 200,
+    "repetition": 4,
+    "latency_ms": 200.735,
+    "sql_statements": 201,
+    "rows_returned": 200,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 200,
+    "repetition": 5,
+    "latency_ms": 59.183,
+    "sql_statements": 201,
+    "rows_returned": 200,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 200,
+    "repetition": 6,
+    "latency_ms": 62.0,
+    "sql_statements": 201,
+    "rows_returned": 200,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 200,
+    "repetition": 7,
+    "latency_ms": 52.739,
+    "sql_statements": 201,
+    "rows_returned": 200,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 200,
+    "repetition": 8,
+    "latency_ms": 209.354,
+    "sql_statements": 201,
+    "rows_returned": 200,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 200,
+    "repetition": 9,
+    "latency_ms": 47.812,
+    "sql_statements": 201,
+    "rows_returned": 200,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 200,
+    "repetition": 10,
+    "latency_ms": 48.056,
+    "sql_statements": 201,
+    "rows_returned": 200,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 200,
+    "repetition": 11,
+    "latency_ms": 51.109,
+    "sql_statements": 201,
+    "rows_returned": 200,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 200,
+    "repetition": 12,
+    "latency_ms": 166.983,
+    "sql_statements": 201,
+    "rows_returned": 200,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 200,
+    "repetition": 13,
+    "latency_ms": 115.363,
+    "sql_statements": 201,
+    "rows_returned": 200,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 200,
+    "repetition": 14,
+    "latency_ms": 61.442,
+    "sql_statements": 201,
+    "rows_returned": 200,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 200,
+    "repetition": 15,
+    "latency_ms": 54.431,
+    "sql_statements": 201,
+    "rows_returned": 200,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 200,
+    "repetition": 16,
+    "latency_ms": 200.719,
+    "sql_statements": 201,
+    "rows_returned": 200,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 200,
+    "repetition": 17,
+    "latency_ms": 48.901,
+    "sql_statements": 201,
+    "rows_returned": 200,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 200,
+    "repetition": 18,
+    "latency_ms": 49.72,
+    "sql_statements": 201,
+    "rows_returned": 200,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 200,
+    "repetition": 19,
+    "latency_ms": 48.341,
+    "sql_statements": 201,
+    "rows_returned": 200,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 200,
+    "repetition": 20,
+    "latency_ms": 45.707,
+    "sql_statements": 201,
+    "rows_returned": 200,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 200,
+    "repetition": 21,
+    "latency_ms": 197.396,
+    "sql_statements": 201,
+    "rows_returned": 200,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 200,
+    "repetition": 22,
+    "latency_ms": 62.737,
+    "sql_statements": 201,
+    "rows_returned": 200,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 200,
+    "repetition": 23,
+    "latency_ms": 59.243,
+    "sql_statements": 201,
+    "rows_returned": 200,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 200,
+    "repetition": 24,
+    "latency_ms": 72.763,
+    "sql_statements": 201,
+    "rows_returned": 200,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 200,
+    "repetition": 25,
+    "latency_ms": 76.543,
+    "sql_statements": 201,
+    "rows_returned": 200,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 200,
+    "repetition": 26,
+    "latency_ms": 184.346,
+    "sql_statements": 201,
+    "rows_returned": 200,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 200,
+    "repetition": 27,
+    "latency_ms": 56.096,
+    "sql_statements": 201,
+    "rows_returned": 200,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 200,
+    "repetition": 28,
+    "latency_ms": 47.343,
+    "sql_statements": 201,
+    "rows_returned": 200,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 200,
+    "repetition": 29,
+    "latency_ms": 56.569,
+    "sql_statements": 201,
+    "rows_returned": 200,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "naive",
+    "page_size": 200,
+    "repetition": 30,
+    "latency_ms": 254.698,
+    "sql_statements": 201,
+    "rows_returned": 200,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 10,
+    "repetition": 1,
+    "latency_ms": 11.025,
+    "sql_statements": 2,
+    "rows_returned": 10,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 10,
+    "repetition": 2,
+    "latency_ms": 9.329,
+    "sql_statements": 2,
+    "rows_returned": 10,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 10,
+    "repetition": 3,
+    "latency_ms": 7.607,
+    "sql_statements": 2,
+    "rows_returned": 10,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 10,
+    "repetition": 4,
+    "latency_ms": 9.013,
+    "sql_statements": 2,
+    "rows_returned": 10,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 10,
+    "repetition": 5,
+    "latency_ms": 7.616,
+    "sql_statements": 2,
+    "rows_returned": 10,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 10,
+    "repetition": 6,
+    "latency_ms": 7.777,
+    "sql_statements": 2,
+    "rows_returned": 10,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 10,
+    "repetition": 7,
+    "latency_ms": 7.619,
+    "sql_statements": 2,
+    "rows_returned": 10,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 10,
+    "repetition": 8,
+    "latency_ms": 4.282,
+    "sql_statements": 2,
+    "rows_returned": 10,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 10,
+    "repetition": 9,
+    "latency_ms": 6.887,
+    "sql_statements": 2,
+    "rows_returned": 10,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 10,
+    "repetition": 10,
+    "latency_ms": 7.784,
+    "sql_statements": 2,
+    "rows_returned": 10,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 10,
+    "repetition": 11,
+    "latency_ms": 6.037,
+    "sql_statements": 2,
+    "rows_returned": 10,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 10,
+    "repetition": 12,
+    "latency_ms": 6.83,
+    "sql_statements": 2,
+    "rows_returned": 10,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 10,
+    "repetition": 13,
+    "latency_ms": 5.153,
+    "sql_statements": 2,
+    "rows_returned": 10,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 10,
+    "repetition": 14,
+    "latency_ms": 5.992,
+    "sql_statements": 2,
+    "rows_returned": 10,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 10,
+    "repetition": 15,
+    "latency_ms": 6.23,
+    "sql_statements": 2,
+    "rows_returned": 10,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 10,
+    "repetition": 16,
+    "latency_ms": 6.983,
+    "sql_statements": 2,
+    "rows_returned": 10,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 10,
+    "repetition": 17,
+    "latency_ms": 82.189,
+    "sql_statements": 2,
+    "rows_returned": 10,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 10,
+    "repetition": 18,
+    "latency_ms": 111.191,
+    "sql_statements": 2,
+    "rows_returned": 10,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 10,
+    "repetition": 19,
+    "latency_ms": 32.487,
+    "sql_statements": 2,
+    "rows_returned": 10,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 10,
+    "repetition": 20,
+    "latency_ms": 7.38,
+    "sql_statements": 2,
+    "rows_returned": 10,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 10,
+    "repetition": 21,
+    "latency_ms": 7.591,
+    "sql_statements": 2,
+    "rows_returned": 10,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 10,
+    "repetition": 22,
+    "latency_ms": 6.367,
+    "sql_statements": 2,
+    "rows_returned": 10,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 10,
+    "repetition": 23,
+    "latency_ms": 5.926,
+    "sql_statements": 2,
+    "rows_returned": 10,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 10,
+    "repetition": 24,
+    "latency_ms": 5.637,
+    "sql_statements": 2,
+    "rows_returned": 10,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 10,
+    "repetition": 25,
+    "latency_ms": 4.936,
+    "sql_statements": 2,
+    "rows_returned": 10,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 10,
+    "repetition": 26,
+    "latency_ms": 5.356,
+    "sql_statements": 2,
+    "rows_returned": 10,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 10,
+    "repetition": 27,
+    "latency_ms": 5.746,
+    "sql_statements": 2,
+    "rows_returned": 10,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 10,
+    "repetition": 28,
+    "latency_ms": 5.686,
+    "sql_statements": 2,
+    "rows_returned": 10,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 10,
+    "repetition": 29,
+    "latency_ms": 5.604,
+    "sql_statements": 2,
+    "rows_returned": 10,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 10,
+    "repetition": 30,
+    "latency_ms": 5.933,
+    "sql_statements": 2,
+    "rows_returned": 10,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 50,
+    "repetition": 1,
+    "latency_ms": 6.809,
+    "sql_statements": 2,
+    "rows_returned": 50,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 50,
+    "repetition": 2,
+    "latency_ms": 6.695,
+    "sql_statements": 2,
+    "rows_returned": 50,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 50,
+    "repetition": 3,
+    "latency_ms": 6.878,
+    "sql_statements": 2,
+    "rows_returned": 50,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 50,
+    "repetition": 4,
+    "latency_ms": 11.121,
+    "sql_statements": 2,
+    "rows_returned": 50,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 50,
+    "repetition": 5,
+    "latency_ms": 7.963,
+    "sql_statements": 2,
+    "rows_returned": 50,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 50,
+    "repetition": 6,
+    "latency_ms": 7.712,
+    "sql_statements": 2,
+    "rows_returned": 50,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 50,
+    "repetition": 7,
+    "latency_ms": 7.775,
+    "sql_statements": 2,
+    "rows_returned": 50,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 50,
+    "repetition": 8,
+    "latency_ms": 7.43,
+    "sql_statements": 2,
+    "rows_returned": 50,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 50,
+    "repetition": 9,
+    "latency_ms": 6.879,
+    "sql_statements": 2,
+    "rows_returned": 50,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 50,
+    "repetition": 10,
+    "latency_ms": 9.158,
+    "sql_statements": 2,
+    "rows_returned": 50,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 50,
+    "repetition": 11,
+    "latency_ms": 8.811,
+    "sql_statements": 2,
+    "rows_returned": 50,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 50,
+    "repetition": 12,
+    "latency_ms": 15.343,
+    "sql_statements": 2,
+    "rows_returned": 50,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 50,
+    "repetition": 13,
+    "latency_ms": 123.055,
+    "sql_statements": 2,
+    "rows_returned": 50,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 50,
+    "repetition": 14,
+    "latency_ms": 61.384,
+    "sql_statements": 2,
+    "rows_returned": 50,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 50,
+    "repetition": 15,
+    "latency_ms": 6.996,
+    "sql_statements": 2,
+    "rows_returned": 50,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 50,
+    "repetition": 16,
+    "latency_ms": 7.113,
+    "sql_statements": 2,
+    "rows_returned": 50,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 50,
+    "repetition": 17,
+    "latency_ms": 7.427,
+    "sql_statements": 2,
+    "rows_returned": 50,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 50,
+    "repetition": 18,
+    "latency_ms": 6.886,
+    "sql_statements": 2,
+    "rows_returned": 50,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 50,
+    "repetition": 19,
+    "latency_ms": 6.701,
+    "sql_statements": 2,
+    "rows_returned": 50,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 50,
+    "repetition": 20,
+    "latency_ms": 7.151,
+    "sql_statements": 2,
+    "rows_returned": 50,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 50,
+    "repetition": 21,
+    "latency_ms": 7.098,
+    "sql_statements": 2,
+    "rows_returned": 50,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 50,
+    "repetition": 22,
+    "latency_ms": 7.167,
+    "sql_statements": 2,
+    "rows_returned": 50,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 50,
+    "repetition": 23,
+    "latency_ms": 8.241,
+    "sql_statements": 2,
+    "rows_returned": 50,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 50,
+    "repetition": 24,
+    "latency_ms": 6.227,
+    "sql_statements": 2,
+    "rows_returned": 50,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 50,
+    "repetition": 25,
+    "latency_ms": 5.554,
+    "sql_statements": 2,
+    "rows_returned": 50,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 50,
+    "repetition": 26,
+    "latency_ms": 5.938,
+    "sql_statements": 2,
+    "rows_returned": 50,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 50,
+    "repetition": 27,
+    "latency_ms": 6.294,
+    "sql_statements": 2,
+    "rows_returned": 50,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 50,
+    "repetition": 28,
+    "latency_ms": 5.681,
+    "sql_statements": 2,
+    "rows_returned": 50,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 50,
+    "repetition": 29,
+    "latency_ms": 6.075,
+    "sql_statements": 2,
+    "rows_returned": 50,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 50,
+    "repetition": 30,
+    "latency_ms": 6.344,
+    "sql_statements": 2,
+    "rows_returned": 50,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 200,
+    "repetition": 1,
+    "latency_ms": 24.724,
+    "sql_statements": 2,
+    "rows_returned": 200,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 200,
+    "repetition": 2,
+    "latency_ms": 14.88,
+    "sql_statements": 2,
+    "rows_returned": 200,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 200,
+    "repetition": 3,
+    "latency_ms": 10.209,
+    "sql_statements": 2,
+    "rows_returned": 200,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 200,
+    "repetition": 4,
+    "latency_ms": 10.327,
+    "sql_statements": 2,
+    "rows_returned": 200,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 200,
+    "repetition": 5,
+    "latency_ms": 10.218,
+    "sql_statements": 2,
+    "rows_returned": 200,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 200,
+    "repetition": 6,
+    "latency_ms": 9.832,
+    "sql_statements": 2,
+    "rows_returned": 200,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 200,
+    "repetition": 7,
+    "latency_ms": 10.555,
+    "sql_statements": 2,
+    "rows_returned": 200,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 200,
+    "repetition": 8,
+    "latency_ms": 86.824,
+    "sql_statements": 2,
+    "rows_returned": 200,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 200,
+    "repetition": 9,
+    "latency_ms": 113.546,
+    "sql_statements": 2,
+    "rows_returned": 200,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 200,
+    "repetition": 10,
+    "latency_ms": 14.242,
+    "sql_statements": 2,
+    "rows_returned": 200,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 200,
+    "repetition": 11,
+    "latency_ms": 11.336,
+    "sql_statements": 2,
+    "rows_returned": 200,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 200,
+    "repetition": 12,
+    "latency_ms": 11.499,
+    "sql_statements": 2,
+    "rows_returned": 200,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 200,
+    "repetition": 13,
+    "latency_ms": 11.88,
+    "sql_statements": 2,
+    "rows_returned": 200,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 200,
+    "repetition": 14,
+    "latency_ms": 11.85,
+    "sql_statements": 2,
+    "rows_returned": 200,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 200,
+    "repetition": 15,
+    "latency_ms": 11.078,
+    "sql_statements": 2,
+    "rows_returned": 200,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 200,
+    "repetition": 16,
+    "latency_ms": 10.497,
+    "sql_statements": 2,
+    "rows_returned": 200,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 200,
+    "repetition": 17,
+    "latency_ms": 11.017,
+    "sql_statements": 2,
+    "rows_returned": 200,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 200,
+    "repetition": 18,
+    "latency_ms": 11.011,
+    "sql_statements": 2,
+    "rows_returned": 200,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 200,
+    "repetition": 19,
+    "latency_ms": 10.717,
+    "sql_statements": 2,
+    "rows_returned": 200,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 200,
+    "repetition": 20,
+    "latency_ms": 11.564,
+    "sql_statements": 2,
+    "rows_returned": 200,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 200,
+    "repetition": 21,
+    "latency_ms": 14.391,
+    "sql_statements": 2,
+    "rows_returned": 200,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 200,
+    "repetition": 22,
+    "latency_ms": 10.155,
+    "sql_statements": 2,
+    "rows_returned": 200,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 200,
+    "repetition": 23,
+    "latency_ms": 11.709,
+    "sql_statements": 2,
+    "rows_returned": 200,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 200,
+    "repetition": 24,
+    "latency_ms": 11.997,
+    "sql_statements": 2,
+    "rows_returned": 200,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 200,
+    "repetition": 25,
+    "latency_ms": 11.608,
+    "sql_statements": 2,
+    "rows_returned": 200,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 200,
+    "repetition": 26,
+    "latency_ms": 52.801,
+    "sql_statements": 2,
+    "rows_returned": 200,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 200,
+    "repetition": 27,
+    "latency_ms": 140.856,
+    "sql_statements": 2,
+    "rows_returned": 200,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 200,
+    "repetition": 28,
+    "latency_ms": 14.576,
+    "sql_statements": 2,
+    "rows_returned": 200,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 200,
+    "repetition": 29,
+    "latency_ms": 15.001,
+    "sql_statements": 2,
+    "rows_returned": 200,
+    "status": "ok",
+    "error": ""
+  },
+  {
+    "mode": "fixed",
+    "page_size": 200,
+    "repetition": 30,
+    "latency_ms": 11.477,
+    "sql_statements": 2,
+    "rows_returned": 200,
+    "status": "ok",
+    "error": ""
+  }
+]

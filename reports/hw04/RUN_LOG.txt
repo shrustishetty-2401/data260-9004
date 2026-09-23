@@ -1,0 +1,60 @@
+DATA-260 HW4 RUN LOG
+SID4: 9004
+Branch: hw4
+Seed: 9004
+Verify seed: 269004
+Database: s9004_rel
+Embedding model: sentence-transformers/all-MiniLM-L6-v2
+
+[Database setup]
+Created MySQL database s9004_rel.
+Created tables:
+- users
+- sessions
+- vulnerabilities
+- related_items
+
+[Database initialization]
+Database tables created.
+Test login: student@example.com / data260
+
+[Database seeding]
+Seeded vulnerabilities: 5000
+Seeded related items: 200
+Seed: 9004
+
+[Frontend]
+Started React development server:
+http://localhost:5173
+
+[Backend]
+Started FastAPI server:
+http://localhost:8004
+
+[API testing]
+Login returned HTTP 200.
+Current-user request returned HTTP 200.
+Create report returned HTTP 201.
+List reports returned HTTP 200.
+Update report returned HTTP 200.
+Delete report returned HTTP 200.
+Logout completed successfully.
+
+[N+1 benchmark]
+Executed naive and fixed modes.
+Page sizes: 10, 50, and 200.
+Requests per configuration: 30.
+Total requests: 180.
+Raw JSON and CSV results were saved in reports/hw04/raw/.
+
+[RAG]
+Loaded seven local corpus documents.
+Created 500-character chunks with 50-character overlap.
+Generated embeddings using all-MiniLM-L6-v2.
+Built a FAISS vector index.
+Evaluated six questions.
+Tested k values 1, 3, and 5.
+Saved RAG results, evaluations, k-sweep results, and printouts.
+
+[Verification]
+The HW4 verification script passed all core database, benchmark, RAG, and frontend checks.

@@ -1,0 +1,56 @@
+[
+  {
+    "mode": "naive",
+    "page_size": 10,
+    "requests": 30,
+    "sql_statements_per_request": 11,
+    "p50_latency_ms": 9.721,
+    "p95_latency_ms": 85.905,
+    "p99_latency_ms": 146.621
+  },
+  {
+    "mode": "naive",
+    "page_size": 50,
+    "requests": 30,
+    "sql_statements_per_request": 51,
+    "p50_latency_ms": 23.321,
+    "p95_latency_ms": 172.33,
+    "p99_latency_ms": 186.384
+  },
+  {
+    "mode": "naive",
+    "page_size": 200,
+    "requests": 30,
+    "sql_statements_per_request": 201,
+    "p50_latency_ms": 61.721,
+    "p95_latency_ms": 205.475,
+    "p99_latency_ms": 241.548
+  },
+  {
+    "mode": "fixed",
+    "page_size": 10,
+    "requests": 30,
+    "sql_statements_per_request": 2,
+    "p50_latency_ms": 6.858,
+    "p95_latency_ms": 59.823,
+    "p99_latency_ms": 102.78
+  },
+  {
+    "mode": "fixed",
+    "page_size": 50,
+    "requests": 30,
+    "sql_statements_per_request": 2,
+    "p50_latency_ms": 7.106,
+    "p95_latency_ms": 40.666,
+    "p99_latency_ms": 105.17
+  },
+  {
+    "mode": "fixed",
+    "page_size": 200,
+    "requests": 30,
+    "sql_statements_per_request": 2,
+    "p50_latency_ms": 11.586,
+    "p95_latency_ms": 101.521,
+    "p99_latency_ms": 132.936
+  }
+]

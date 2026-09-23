@@ -1,0 +1,16 @@
+{
+  "corpus_directory": "reports/hw03/corpus",
+  "files": [
+    {
+      "filename": "cisa_kev.json",
+      "bytes": 1727984,
+      "sha256": "72b4e3489021d2ad50c4f9b8ddddd1608a9e6b87dd7beedc126f6341ea98f105"
+    },
+    {
+      "filename": "owasp_top10.md",
+      "bytes": 17138,
+      "sha256": "817d7c25937f4ef275059a0d99c04333bcf14161c4109b98d297a8016c189672"
+    }
+  ],
+  "total_bytes": 1745122
+}

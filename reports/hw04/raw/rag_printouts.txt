@@ -1,0 +1,503 @@
+
+QUESTION q1 | no_rag
+
+What does the CISA Known Exploited Vulnerabilities Catalog contain?
+
+ANSWER:
+No document context was provided for this baseline response.
+
+
+QUESTION q1 | basic_rag
+
+What does the CISA Known Exploited Vulnerabilities Catalog contain?
+
+ANSWER:
+[Source 1: hw3_sources.md] # HW3 Corpus Sources ## 1. CISA Known Exploited Vulnerabilities Catalog - Source name: CISA Known Exploited Vulnerabilities Catalog - Public URL: https://www.cisa.gov/known-exploited-vulnerabilities-catalog - Download URL: https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilitie
+[Source 2: cisa_kev.json] Successful exploitation allows an attacker to perform remote code execution with SYSTEM privileges. The vulnerability is also known under the moniker of PrintNightmare.", "requiredAction": "Apply updates per vendor instructions.", "dueDate": "2022-05-03", "knownRansomwareCampaignUse": "Known", "fore
+[Source 3: cisa_kev.json] "vulnerabilityName": "Ivanti Connect Secure, Policy Secure, and ZTA Gateways Stack-Based Buffer Overflow Vulnerability", "dateAdded": "2025-01-08", "shortDescription": "Ivanti Connect Secure, Policy Secure, and ZTA Gateways contain a stack-based buffer overflow which can lead to unauthenticated remo
+
+rank=1 score=0.770797 source=hw3_sources.md chunk_id=0
+# HW3 Corpus Sources
+
+## 1. CISA Known Exploited Vulnerabilities Catalog
+
+- Source name: CISA Known Exploited Vulnerabilities Catalog
+- Public URL: https://www.cisa.gov/known-exploited-vulnerabilities-catalog
+- Download URL: https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json
+- Local file: `corpus/cisa_kev.json`
+- Format: JSON
+- Purpose: Provides vulnerabilities known to have been exploited in the wild, including remediation actions and due dates.
+
+## 2. OWASP Top
+
+rank=2 score=0.638276 source=cisa_kev.json chunk_id=3583
+Successful exploitation allows an attacker to perform remote code execution with SYSTEM privileges. The vulnerability is also known under the moniker of PrintNightmare.",
+            "requiredAction": "Apply updates per vendor instructions.",
+            "dueDate": "2022-05-03",
+            "knownRansomwareCampaignUse": "Known",
+            "forensicTriage": "No",
+            "notes": "Reference CISA's ED 21-04 (https:\/\/www.cisa.gov\/news-events\/directives\/ed-21-04-mitigate-windows-print-spo
+
+rank=3 score=0.632193 source=cisa_kev.json chunk_id=1340
+"vulnerabilityName": "Ivanti Connect Secure, Policy Secure, and ZTA Gateways Stack-Based Buffer Overflow Vulnerability",
+            "dateAdded": "2025-01-08",
+            "shortDescription": "Ivanti Connect Secure, Policy Secure, and ZTA Gateways contain a stack-based buffer overflow which can lead to unauthenticated remote code execution.",
+            "requiredAction": "Apply mitigations as set forth in the CISA instructions linked below to include conducting hunt activities, taking remediati
+
+
+QUESTION q1 | context_engineered_rag
+
+What does the CISA Known Exploited Vulnerabilities Catalog contain?
+
+ANSWER:
+[Source 1: cisa_kev.json] Successful exploitation allows an attacker to perform remote code execution with SYSTEM privileges. The vulnerability is also known under the moniker of PrintNightmare.", "requiredAction": "Apply updates per vendor instructions.", "dueDate": "2022-05-03", "knownRansomwareCampaignUse": "Known", "fore
+[Source 2: cisa_kev.json] "vulnerabilityName": "Ivanti Connect Secure, Policy Secure, and ZTA Gateways Stack-Based Buffer Overflow Vulnerability", "dateAdded": "2025-01-08", "shortDescription": "Ivanti Connect Secure, Policy Secure, and ZTA Gateways contain a stack-based buffer overflow which can lead to unauthenticated remo
+[Source 3: hw3_sources.md] # HW3 Corpus Sources ## 1. CISA Known Exploited Vulnerabilities Catalog - Source name: CISA Known Exploited Vulnerabilities Catalog - Public URL: https://www.cisa.gov/known-exploited-vulnerabilities-catalog - Download URL: https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilitie
+
+rank=1 score=0.770797 source=hw3_sources.md chunk_id=0
+# HW3 Corpus Sources
+
+## 1. CISA Known Exploited Vulnerabilities Catalog
+
+- Source name: CISA Known Exploited Vulnerabilities Catalog
+- Public URL: https://www.cisa.gov/known-exploited-vulnerabilities-catalog
+- Download URL: https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json
+- Local file: `corpus/cisa_kev.json`
+- Format: JSON
+- Purpose: Provides vulnerabilities known to have been exploited in the wild, including remediation actions and due dates.
+
+## 2. OWASP Top
+
+rank=2 score=0.638276 source=cisa_kev.json chunk_id=3583
+Successful exploitation allows an attacker to perform remote code execution with SYSTEM privileges. The vulnerability is also known under the moniker of PrintNightmare.",
+            "requiredAction": "Apply updates per vendor instructions.",
+            "dueDate": "2022-05-03",
+            "knownRansomwareCampaignUse": "Known",
+            "forensicTriage": "No",
+            "notes": "Reference CISA's ED 21-04 (https:\/\/www.cisa.gov\/news-events\/directives\/ed-21-04-mitigate-windows-print-spo
+
+rank=3 score=0.632193 source=cisa_kev.json chunk_id=1340
+"vulnerabilityName": "Ivanti Connect Secure, Policy Secure, and ZTA Gateways Stack-Based Buffer Overflow Vulnerability",
+            "dateAdded": "2025-01-08",
+            "shortDescription": "Ivanti Connect Secure, Policy Secure, and ZTA Gateways contain a stack-based buffer overflow which can lead to unauthenticated remote code execution.",
+            "requiredAction": "Apply mitigations as set forth in the CISA instructions linked below to include conducting hunt activities, taking remediati
+
+
+QUESTION q2 | no_rag
+
+Which files document source URLs, file sizes, and SHA-256 hashes for the corpus?
+
+ANSWER:
+No document context was provided for this baseline response.
+
+
+QUESTION q2 | basic_rag
+
+Which files document source URLs, file sizes, and SHA-256 hashes for the corpus?
+
+ANSWER:
+[Source 1: corpus_manifest.json] { "corpus_directory": "reports/hw03/corpus", "files": [ { "filename": "cisa_kev.json", "bytes": 1727984, "sha256": "72b4e3489021d2ad50c4f9b8ddddd1608a9e6b87dd7beedc126f6341ea98f105" }, { "filename": "owasp_top10.md", "bytes": 17138, "sha256": "817d7c25937f4ef275059a0d99c04333bcf14161c4109b98d297a801
+[Source 2: cisa_kev.json] Link Resolution Vulnerability", "dateAdded": "2022-08-25", "shortDescription": "PEAR Archive_Tar Tar.php allows write operations with directory traversal due to inadequate checking of symbolic links. PEAR stands for PHP Extension and Application Repository and it is an open-source framework and dist
+[Source 3: cisa_kev.json] orensicTriage": "Yes", "notes": "https:\/\/owncloud.org\/security ; https:\/\/owncloud.com\/security-advisories\/webdav-api-authentication-bypass-using-pre-signed-urls\/ ; BOD 26-04: https:\/\/www.cisa.gov\/news-events\/directives\/bod-26-04-prioritizing-security-updates-based-risk ; Forensics Triag
+
+rank=1 score=0.503088 source=corpus_manifest.json chunk_id=0
+{
+  "corpus_directory": "reports/hw03/corpus",
+  "files": [
+    {
+      "filename": "cisa_kev.json",
+      "bytes": 1727984,
+      "sha256": "72b4e3489021d2ad50c4f9b8ddddd1608a9e6b87dd7beedc126f6341ea98f105"
+    },
+    {
+      "filename": "owasp_top10.md",
+      "bytes": 17138,
+      "sha256": "817d7c25937f4ef275059a0d99c04333bcf14161c4109b98d297a8016c189672"
+    }
+  ],
+  "total_bytes": 1745122
+}
+
+rank=2 score=0.395767 source=cisa_kev.json chunk_id=2344
+Link Resolution Vulnerability",
+            "dateAdded": "2022-08-25",
+            "shortDescription": "PEAR Archive_Tar Tar.php allows write operations with directory traversal due to inadequate checking of symbolic links. PEAR stands for PHP Extension and Application Repository and it is an open-source framework and distribution system for reusable PHP components with known usage in third-party products such as Drupal Core and Red Hat Linux.",
+            "requiredAction": "Apply updates per v
+
+rank=3 score=0.367276 source=cisa_kev.json chunk_id=112
+orensicTriage": "Yes",
+            "notes": "https:\/\/owncloud.org\/security ; https:\/\/owncloud.com\/security-advisories\/webdav-api-authentication-bypass-using-pre-signed-urls\/ ; BOD 26-04: https:\/\/www.cisa.gov\/news-events\/directives\/bod-26-04-prioritizing-security-updates-based-risk ; Forensics Triage Requirements: https:\/\/www.cisa.gov\/news-events\/directives\/bod-26-04-implementation-guidance-prioritizing-security-updates-based-risk ; https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2023
+
+
+QUESTION q2 | context_engineered_rag
+
+Which files document source URLs, file sizes, and SHA-256 hashes for the corpus?
+
+ANSWER:
+[Source 1: cisa_kev.json] Link Resolution Vulnerability", "dateAdded": "2022-08-25", "shortDescription": "PEAR Archive_Tar Tar.php allows write operations with directory traversal due to inadequate checking of symbolic links. PEAR stands for PHP Extension and Application Repository and it is an open-source framework and dist
+[Source 2: cisa_kev.json] orensicTriage": "Yes", "notes": "https:\/\/owncloud.org\/security ; https:\/\/owncloud.com\/security-advisories\/webdav-api-authentication-bypass-using-pre-signed-urls\/ ; BOD 26-04: https:\/\/www.cisa.gov\/news-events\/directives\/bod-26-04-prioritizing-security-updates-based-risk ; Forensics Triag
+[Source 3: corpus_manifest.json] { "corpus_directory": "reports/hw03/corpus", "files": [ { "filename": "cisa_kev.json", "bytes": 1727984, "sha256": "72b4e3489021d2ad50c4f9b8ddddd1608a9e6b87dd7beedc126f6341ea98f105" }, { "filename": "owasp_top10.md", "bytes": 17138, "sha256": "817d7c25937f4ef275059a0d99c04333bcf14161c4109b98d297a801
+
+rank=1 score=0.503088 source=corpus_manifest.json chunk_id=0
+{
+  "corpus_directory": "reports/hw03/corpus",
+  "files": [
+    {
+      "filename": "cisa_kev.json",
+      "bytes": 1727984,
+      "sha256": "72b4e3489021d2ad50c4f9b8ddddd1608a9e6b87dd7beedc126f6341ea98f105"
+    },
+    {
+      "filename": "owasp_top10.md",
+      "bytes": 17138,
+      "sha256": "817d7c25937f4ef275059a0d99c04333bcf14161c4109b98d297a8016c189672"
+    }
+  ],
+  "total_bytes": 1745122
+}
+
+rank=2 score=0.395767 source=cisa_kev.json chunk_id=2344
+Link Resolution Vulnerability",
+            "dateAdded": "2022-08-25",
+            "shortDescription": "PEAR Archive_Tar Tar.php allows write operations with directory traversal due to inadequate checking of symbolic links. PEAR stands for PHP Extension and Application Repository and it is an open-source framework and distribution system for reusable PHP components with known usage in third-party products such as Drupal Core and Red Hat Linux.",
+            "requiredAction": "Apply updates per v
+
+rank=3 score=0.367276 source=cisa_kev.json chunk_id=112
+orensicTriage": "Yes",
+            "notes": "https:\/\/owncloud.org\/security ; https:\/\/owncloud.com\/security-advisories\/webdav-api-authentication-bypass-using-pre-signed-urls\/ ; BOD 26-04: https:\/\/www.cisa.gov\/news-events\/directives\/bod-26-04-prioritizing-security-updates-based-risk ; Forensics Triage Requirements: https:\/\/www.cisa.gov\/news-events\/directives\/bod-26-04-implementation-guidance-prioritizing-security-updates-based-risk ; https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2023
+
+
+QUESTION q3 | no_rag
+
+What security topics are covered by the CISA and OWASP documents?
+
+ANSWER:
+No document context was provided for this baseline response.
+
+
+QUESTION q3 | basic_rag
+
+What security topics are covered by the CISA and OWASP documents?
+
+ANSWER:
+[Source 1: cisa_kev.json] 26", "knownRansomwareCampaignUse": "Unknown", "forensicTriage": "No", "notes": "CISA Mitigation Instructions: https:\/\/www.cisa.gov\/news-events\/directives\/ed-25-03-identify-and-mitigate-potential-compromise-cisco-devices ; https:\/\/www.cisa.gov\/news-events\/directives\/supplemental-direction-e
+[Source 2: hw3_sources.md] # HW3 Corpus Sources ## 1. CISA Known Exploited Vulnerabilities Catalog - Source name: CISA Known Exploited Vulnerabilities Catalog - Public URL: https://www.cisa.gov/known-exploited-vulnerabilities-catalog - Download URL: https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilitie
+[Source 3: cisa_kev.json] ons or discontinue use of the product if mitigations are unavailable.", "dueDate": "2025-03-06", "knownRansomwareCampaignUse": "Known", "forensicTriage": "No", "notes": "https:\/\/simple-help.com\/kb---security-vulnerabilities-01-2025 ; Additional CISA Mitigation Instructions: https:\/\/www.cisa.gov
+
+rank=1 score=0.566674 source=cisa_kev.json chunk_id=898
+26",
+            "knownRansomwareCampaignUse": "Unknown",
+            "forensicTriage": "No",
+            "notes": "CISA Mitigation Instructions: https:\/\/www.cisa.gov\/news-events\/directives\/ed-25-03-identify-and-mitigate-potential-compromise-cisco-devices ; https:\/\/www.cisa.gov\/news-events\/directives\/supplemental-direction-ed-25-03-core-dump-and-hunt-instructions ; https:\/\/www.cisa.gov\/eviction-strategies-tool\/create-from-template ; https:\/\/sec.cloudapps.cisco.com\/security\/cent
+
+rank=2 score=0.563226 source=hw3_sources.md chunk_id=0
+# HW3 Corpus Sources
+
+## 1. CISA Known Exploited Vulnerabilities Catalog
+
+- Source name: CISA Known Exploited Vulnerabilities Catalog
+- Public URL: https://www.cisa.gov/known-exploited-vulnerabilities-catalog
+- Download URL: https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json
+- Local file: `corpus/cisa_kev.json`
+- Format: JSON
+- Purpose: Provides vulnerabilities known to have been exploited in the wild, including remediation actions and due dates.
+
+## 2. OWASP Top
+
+rank=3 score=0.548087 source=cisa_kev.json chunk_id=1275
+ons or discontinue use of the product if mitigations are unavailable.",
+            "dueDate": "2025-03-06",
+            "knownRansomwareCampaignUse": "Known",
+            "forensicTriage": "No",
+            "notes": "https:\/\/simple-help.com\/kb---security-vulnerabilities-01-2025 ; Additional CISA Mitigation Instructions: https:\/\/www.cisa.gov\/news-events\/cybersecurity-advisories\/aa25-163a ; https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2024-57727",
+            "cwes": [
+                "CWE-2
+
+
+QUESTION q3 | context_engineered_rag
+
+What security topics are covered by the CISA and OWASP documents?
+
+ANSWER:
+[Source 1: cisa_kev.json] 26", "knownRansomwareCampaignUse": "Unknown", "forensicTriage": "No", "notes": "CISA Mitigation Instructions: https:\/\/www.cisa.gov\/news-events\/directives\/ed-25-03-identify-and-mitigate-potential-compromise-cisco-devices ; https:\/\/www.cisa.gov\/news-events\/directives\/supplemental-direction-e
+[Source 2: cisa_kev.json] ons or discontinue use of the product if mitigations are unavailable.", "dueDate": "2025-03-06", "knownRansomwareCampaignUse": "Known", "forensicTriage": "No", "notes": "https:\/\/simple-help.com\/kb---security-vulnerabilities-01-2025 ; Additional CISA Mitigation Instructions: https:\/\/www.cisa.gov
+[Source 3: hw3_sources.md] # HW3 Corpus Sources ## 1. CISA Known Exploited Vulnerabilities Catalog - Source name: CISA Known Exploited Vulnerabilities Catalog - Public URL: https://www.cisa.gov/known-exploited-vulnerabilities-catalog - Download URL: https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilitie
+
+rank=1 score=0.566674 source=cisa_kev.json chunk_id=898
+26",
+            "knownRansomwareCampaignUse": "Unknown",
+            "forensicTriage": "No",
+            "notes": "CISA Mitigation Instructions: https:\/\/www.cisa.gov\/news-events\/directives\/ed-25-03-identify-and-mitigate-potential-compromise-cisco-devices ; https:\/\/www.cisa.gov\/news-events\/directives\/supplemental-direction-ed-25-03-core-dump-and-hunt-instructions ; https:\/\/www.cisa.gov\/eviction-strategies-tool\/create-from-template ; https:\/\/sec.cloudapps.cisco.com\/security\/cent
+
+rank=2 score=0.563226 source=hw3_sources.md chunk_id=0
+# HW3 Corpus Sources
+
+## 1. CISA Known Exploited Vulnerabilities Catalog
+
+- Source name: CISA Known Exploited Vulnerabilities Catalog
+- Public URL: https://www.cisa.gov/known-exploited-vulnerabilities-catalog
+- Download URL: https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json
+- Local file: `corpus/cisa_kev.json`
+- Format: JSON
+- Purpose: Provides vulnerabilities known to have been exploited in the wild, including remediation actions and due dates.
+
+## 2. OWASP Top
+
+rank=3 score=0.548087 source=cisa_kev.json chunk_id=1275
+ons or discontinue use of the product if mitigations are unavailable.",
+            "dueDate": "2025-03-06",
+            "knownRansomwareCampaignUse": "Known",
+            "forensicTriage": "No",
+            "notes": "https:\/\/simple-help.com\/kb---security-vulnerabilities-01-2025 ; Additional CISA Mitigation Instructions: https:\/\/www.cisa.gov\/news-events\/cybersecurity-advisories\/aa25-163a ; https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2024-57727",
+            "cwes": [
+                "CWE-2
+
+
+QUESTION q4 | no_rag
+
+What does the word session mean in this project?
+
+ANSWER:
+No document context was provided for this baseline response.
+
+
+QUESTION q4 | basic_rag
+
+What does the word session mean in this project?
+
+ANSWER:
+[Source 1: cisa_kev.json] r Privilege Management and Missing Authorization Vulnerability", "dateAdded": "2026-09-11", "shortDescription": "ConnectWise ScreenConnect contains both an improper privilege management and missing authorization vulnerability that may allow an attacker to transfer and execute files through an active
+[Source 2: cisa_kev.json] n authenticated user on the same intranet as the session recording server.", "requiredAction": "Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable.", "dueDate": "2025-09-15", "knownRanso
+[Source 3: cisa_kev.json] scription": "Kaseya Virtual System\/Server Administrator (VSA) contains an information disclosure vulnerability allowing an attacker to obtain the sessionId that can be used to execute further attacks against the system.", "requiredAction": "Apply updates per vendor instructions.", "dueDate": "2021-
+
+rank=1 score=0.330894 source=cisa_kev.json chunk_id=16
+r Privilege Management and Missing Authorization Vulnerability",
+            "dateAdded": "2026-09-11",
+            "shortDescription": "ConnectWise ScreenConnect contains both an improper privilege management and missing authorization vulnerability that may allow an attacker to transfer and execute files through an active remote session without authorization or host confirmation.",
+            "requiredAction": "Apply mitigations in accordance with vendor instructions, ensuring compliance with
+
+rank=2 score=0.323236 source=cisa_kev.json chunk_id=939
+n authenticated user on the same intranet as the session recording server.",
+            "requiredAction": "Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable.",
+            "dueDate": "2025-09-15",
+            "knownRansomwareCampaignUse": "Unknown",
+            "forensicTriage": "No",
+            "notes": "https:\/\/support.citrix.com\/external\/article\/691941\/citrix-session-reco
+
+rank=3 score=0.322649 source=cisa_kev.json chunk_id=3515
+scription": "Kaseya Virtual System\/Server Administrator (VSA) contains an information disclosure vulnerability allowing an attacker to obtain the sessionId that can be used to execute further attacks against the system.",
+            "requiredAction": "Apply updates per vendor instructions.",
+            "dueDate": "2021-11-17",
+            "knownRansomwareCampaignUse": "Known",
+            "forensicTriage": "No",
+            "notes": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2021-30116",
+
+
+QUESTION q4 | context_engineered_rag
+
+What does the word session mean in this project?
+
+ANSWER:
+[Source 1: cisa_kev.json] r Privilege Management and Missing Authorization Vulnerability", "dateAdded": "2026-09-11", "shortDescription": "ConnectWise ScreenConnect contains both an improper privilege management and missing authorization vulnerability that may allow an attacker to transfer and execute files through an active
+[Source 2: cisa_kev.json] n authenticated user on the same intranet as the session recording server.", "requiredAction": "Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable.", "dueDate": "2025-09-15", "knownRanso
+[Source 3: cisa_kev.json] scription": "Kaseya Virtual System\/Server Administrator (VSA) contains an information disclosure vulnerability allowing an attacker to obtain the sessionId that can be used to execute further attacks against the system.", "requiredAction": "Apply updates per vendor instructions.", "dueDate": "2021-
+
+rank=1 score=0.330894 source=cisa_kev.json chunk_id=16
+r Privilege Management and Missing Authorization Vulnerability",
+            "dateAdded": "2026-09-11",
+            "shortDescription": "ConnectWise ScreenConnect contains both an improper privilege management and missing authorization vulnerability that may allow an attacker to transfer and execute files through an active remote session without authorization or host confirmation.",
+            "requiredAction": "Apply mitigations in accordance with vendor instructions, ensuring compliance with
+
+rank=2 score=0.323236 source=cisa_kev.json chunk_id=939
+n authenticated user on the same intranet as the session recording server.",
+            "requiredAction": "Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable.",
+            "dueDate": "2025-09-15",
+            "knownRansomwareCampaignUse": "Unknown",
+            "forensicTriage": "No",
+            "notes": "https:\/\/support.citrix.com\/external\/article\/691941\/citrix-session-reco
+
+rank=3 score=0.322649 source=cisa_kev.json chunk_id=3515
+scription": "Kaseya Virtual System\/Server Administrator (VSA) contains an information disclosure vulnerability allowing an attacker to obtain the sessionId that can be used to execute further attacks against the system.",
+            "requiredAction": "Apply updates per vendor instructions.",
+            "dueDate": "2021-11-17",
+            "knownRansomwareCampaignUse": "Known",
+            "forensicTriage": "No",
+            "notes": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2021-30116",
+
+
+QUESTION q5 | no_rag
+
+What is the university tuition refund policy?
+
+ANSWER:
+No document context was provided for this baseline response.
+
+
+QUESTION q5 | basic_rag
+
+What is the university tuition refund policy?
+
+ANSWER:
+I cannot answer this question from the provided documents
+
+rank=1 score=0.247787 source=cisa_kev.json chunk_id=530
+stalled by the updater, this may result in arbitrary code execution in the context of the updating process or user.",
+            "requiredAction": "Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable.",
+            "dueDate": "2026-04-16",
+            "knownRansomwareCampaignUse": "Unknown",
+            "forensicTriage": "No",
+            "notes": "https:\/\/trueconf.com\/blog\/updat
+
+rank=2 score=0.230691 source=cisa_kev.json chunk_id=1027
+e leakage of session data potentially enabling privilege escalation and unauthorized control of the device. This vulnerability affects legacy D-Link products. All associated hardware revisions have reached their end-of-life (EOL) or end-of-service (EOS) life cycle and should be retired and replaced per vendor instructions.",
+            "requiredAction": "Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitig
+
+rank=3 score=0.229636 source=cisa_kev.json chunk_id=1395
+that may lead to arbitrary code execution.",
+            "requiredAction": "Apply mitigations per vendor instructions or discontinue use of the product if mitigations are unavailable.",
+            "dueDate": "2024-12-12",
+            "knownRansomwareCampaignUse": "Unknown",
+            "forensicTriage": "No",
+            "notes": "https:\/\/support.apple.com\/en-us\/121752, https:\/\/support.apple.com\/en-us\/121753, https:\/\/support.apple.com\/en-us\/121754, https:\/\/support.apple.com\/en-u
+
+
+QUESTION q5 | context_engineered_rag
+
+What is the university tuition refund policy?
+
+ANSWER:
+I cannot answer this question from the provided documents
+
+rank=1 score=0.247787 source=cisa_kev.json chunk_id=530
+stalled by the updater, this may result in arbitrary code execution in the context of the updating process or user.",
+            "requiredAction": "Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable.",
+            "dueDate": "2026-04-16",
+            "knownRansomwareCampaignUse": "Unknown",
+            "forensicTriage": "No",
+            "notes": "https:\/\/trueconf.com\/blog\/updat
+
+rank=2 score=0.230691 source=cisa_kev.json chunk_id=1027
+e leakage of session data potentially enabling privilege escalation and unauthorized control of the device. This vulnerability affects legacy D-Link products. All associated hardware revisions have reached their end-of-life (EOL) or end-of-service (EOS) life cycle and should be retired and replaced per vendor instructions.",
+            "requiredAction": "Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitig
+
+rank=3 score=0.229636 source=cisa_kev.json chunk_id=1395
+that may lead to arbitrary code execution.",
+            "requiredAction": "Apply mitigations per vendor instructions or discontinue use of the product if mitigations are unavailable.",
+            "dueDate": "2024-12-12",
+            "knownRansomwareCampaignUse": "Unknown",
+            "forensicTriage": "No",
+            "notes": "https:\/\/support.apple.com\/en-us\/121752, https:\/\/support.apple.com\/en-us\/121753, https:\/\/support.apple.com\/en-us\/121754, https:\/\/support.apple.com\/en-u
+
+
+QUESTION q6 | no_rag
+
+Who won the most recent World Series?
+
+ANSWER:
+No document context was provided for this baseline response.
+
+
+QUESTION q6 | basic_rag
+
+Who won the most recent World Series?
+
+ANSWER:
+I cannot answer this question from the provided documents
+
+rank=1 score=0.239234 source=cisa_kev.json chunk_id=3101
+"cwes": [
+                "CWE-94"
+            ]
+        },
+        {
+            "cveID": "CVE-2009-3129",
+            "vendorProject": "Microsoft",
+            "product": "Excel",
+            "vulnerabilityName": "Microsoft Excel Featheader Record Memory Corruption Vulnerability",
+            "dateAdded": "2022-03-03",
+            "shortDescription": "Microsoft Office Excel allows remote attackers to execute arbitrary code via a spreadsheet with a FEATHEADER record containing an inval
+
+rank=2 score=0.202024 source=cisa_kev.json chunk_id=951
+nUse": "Known",
+            "forensicTriage": "No",
+            "notes": "https:\/\/www.win-rar.com\/singlenewsview.html?&L=0&tx_ttnews%5Btt_news%5D=283&cHash=a64b4a8f662d3639dec8d65f47bc93c5 ; https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2025-8088",
+            "cwes": [
+                "CWE-35"
+            ]
+        },
+        {
+            "cveID": "CVE-2007-0671",
+            "vendorProject": "Microsoft",
+            "product": "Office",
+            "vulnerabilityName": "Microsoft Office Excel
+
+rank=3 score=0.19021 source=corpus_manifest.json chunk_id=0
+{
+  "corpus_directory": "reports/hw03/corpus",
+  "files": [
+    {
+      "filename": "cisa_kev.json",
+      "bytes": 1727984,
+      "sha256": "72b4e3489021d2ad50c4f9b8ddddd1608a9e6b87dd7beedc126f6341ea98f105"
+    },
+    {
+      "filename": "owasp_top10.md",
+      "bytes": 17138,
+      "sha256": "817d7c25937f4ef275059a0d99c04333bcf14161c4109b98d297a8016c189672"
+    }
+  ],
+  "total_bytes": 1745122
+}
+
+
+QUESTION q6 | context_engineered_rag
+
+Who won the most recent World Series?
+
+ANSWER:
+I cannot answer this question from the provided documents
+
+rank=1 score=0.239234 source=cisa_kev.json chunk_id=3101
+"cwes": [
+                "CWE-94"
+            ]
+        },
+        {
+            "cveID": "CVE-2009-3129",
+            "vendorProject": "Microsoft",
+            "product": "Excel",
+            "vulnerabilityName": "Microsoft Excel Featheader Record Memory Corruption Vulnerability",
+            "dateAdded": "2022-03-03",
+            "shortDescription": "Microsoft Office Excel allows remote attackers to execute arbitrary code via a spreadsheet with a FEATHEADER record containing an inval
+
+rank=2 score=0.202024 source=cisa_kev.json chunk_id=951
+nUse": "Known",
+            "forensicTriage": "No",
+            "notes": "https:\/\/www.win-rar.com\/singlenewsview.html?&L=0&tx_ttnews%5Btt_news%5D=283&cHash=a64b4a8f662d3639dec8d65f47bc93c5 ; https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2025-8088",
+            "cwes": [
+                "CWE-35"
+            ]
+        },
+        {
+            "cveID": "CVE-2007-0671",
+            "vendorProject": "Microsoft",
+            "product": "Office",
+            "vulnerabilityName": "Microsoft Office Excel
+
+rank=3 score=0.19021 source=corpus_manifest.json chunk_id=0
+{
+  "corpus_directory": "reports/hw03/corpus",
+  "files": [
+    {
+      "filename": "cisa_kev.json",
+      "bytes": 1727984,
+      "sha256": "72b4e3489021d2ad50c4f9b8ddddd1608a9e6b87dd7beedc126f6341ea98f105"
+    },
+    {
+      "filename": "owasp_top10.md",
+      "bytes": 17138,
+      "sha256": "817d7c25937f4ef275059a0d99c04333bcf14161c4109b98d297a8016c189672"
+    }
+  ],
+  "total_bytes": 1745122
+}

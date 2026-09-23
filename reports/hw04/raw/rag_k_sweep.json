@@ -1,0 +1,290 @@
+[
+  {
+    "question_id": "q1",
+    "k": 1,
+    "retrieved_sources": [
+      "hw3_sources.md"
+    ],
+    "answer": "[Source 1: hw3_sources.md] # HW3 Corpus Sources ## 1. CISA Known Exploited Vulnerabilities Catalog - Source name: CISA Known Exploited Vulnerabilities Catalog - Public URL: https://www.cisa.gov/known-exploited-vulnerabilities-catalog - Download URL: https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilitie",
+    "evaluation": {
+      "correct_retrieval": false,
+      "correct_answer": true,
+      "grounded": false,
+      "refused_when_needed": true
+    }
+  },
+  {
+    "question_id": "q1",
+    "k": 3,
+    "retrieved_sources": [
+      "hw3_sources.md",
+      "cisa_kev.json",
+      "cisa_kev.json"
+    ],
+    "answer": "[Source 1: cisa_kev.json] Successful exploitation allows an attacker to perform remote code execution with SYSTEM privileges. The vulnerability is also known under the moniker of PrintNightmare.\", \"requiredAction\": \"Apply updates per vendor instructions.\", \"dueDate\": \"2022-05-03\", \"knownRansomwareCampaignUse\": \"Known\", \"fore\n[Source 2: cisa_kev.json] \"vulnerabilityName\": \"Ivanti Connect Secure, Policy Secure, and ZTA Gateways Stack-Based Buffer Overflow Vulnerability\", \"dateAdded\": \"2025-01-08\", \"shortDescription\": \"Ivanti Connect Secure, Policy Secure, and ZTA Gateways contain a stack-based buffer overflow which can lead to unauthenticated remo\n[Source 3: hw3_sources.md] # HW3 Corpus Sources ## 1. CISA Known Exploited Vulnerabilities Catalog - Source name: CISA Known Exploited Vulnerabilities Catalog - Public URL: https://www.cisa.gov/known-exploited-vulnerabilities-catalog - Download URL: https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilitie",
+    "evaluation": {
+      "correct_retrieval": true,
+      "correct_answer": true,
+      "grounded": true,
+      "refused_when_needed": true
+    }
+  },
+  {
+    "question_id": "q1",
+    "k": 5,
+    "retrieved_sources": [
+      "hw3_sources.md",
+      "cisa_kev.json",
+      "cisa_kev.json",
+      "cisa_kev.json",
+      "cisa_kev.json"
+    ],
+    "answer": "[Source 1: cisa_kev.json] Successful exploitation allows an attacker to perform remote code execution with SYSTEM privileges. The vulnerability is also known under the moniker of PrintNightmare.\", \"requiredAction\": \"Apply updates per vendor instructions.\", \"dueDate\": \"2022-05-03\", \"knownRansomwareCampaignUse\": \"Known\", \"fore\n[Source 2: cisa_kev.json] \"vulnerabilityName\": \"Ivanti Connect Secure, Policy Secure, and ZTA Gateways Stack-Based Buffer Overflow Vulnerability\", \"dateAdded\": \"2025-01-08\", \"shortDescription\": \"Ivanti Connect Secure, Policy Secure, and ZTA Gateways contain a stack-based buffer overflow which can lead to unauthenticated remo\n[Source 3: cisa_kev.json] \"dueDate\": \"2025-07-23\", \"knownRansomwareCampaignUse\": \"Known\", \"forensicTriage\": \"No\", \"notes\": \"CISA Mitigation Instructions: https:\\/\\/www.cisa.gov\\/news-events\\/alerts\\/2025\\/07\\/20\\/microsoft-releases-guidance-exploitation-sharepoint-vulnerability-cve-2025-53770; https:\\/\\/www.microsoft.com\\/en",
+    "evaluation": {
+      "correct_retrieval": true,
+      "correct_answer": true,
+      "grounded": true,
+      "refused_when_needed": true
+    }
+  },
+  {
+    "question_id": "q2",
+    "k": 1,
+    "retrieved_sources": [
+      "corpus_manifest.json"
+    ],
+    "answer": "[Source 1: corpus_manifest.json] { \"corpus_directory\": \"reports/hw03/corpus\", \"files\": [ { \"filename\": \"cisa_kev.json\", \"bytes\": 1727984, \"sha256\": \"72b4e3489021d2ad50c4f9b8ddddd1608a9e6b87dd7beedc126f6341ea98f105\" }, { \"filename\": \"owasp_top10.md\", \"bytes\": 17138, \"sha256\": \"817d7c25937f4ef275059a0d99c04333bcf14161c4109b98d297a801",
+    "evaluation": {
+      "correct_retrieval": false,
+      "correct_answer": false,
+      "grounded": false,
+      "refused_when_needed": true
+    }
+  },
+  {
+    "question_id": "q2",
+    "k": 3,
+    "retrieved_sources": [
+      "corpus_manifest.json",
+      "cisa_kev.json",
+      "cisa_kev.json"
+    ],
+    "answer": "[Source 1: cisa_kev.json] Link Resolution Vulnerability\", \"dateAdded\": \"2022-08-25\", \"shortDescription\": \"PEAR Archive_Tar Tar.php allows write operations with directory traversal due to inadequate checking of symbolic links. PEAR stands for PHP Extension and Application Repository and it is an open-source framework and dist\n[Source 2: cisa_kev.json] orensicTriage\": \"Yes\", \"notes\": \"https:\\/\\/owncloud.org\\/security ; https:\\/\\/owncloud.com\\/security-advisories\\/webdav-api-authentication-bypass-using-pre-signed-urls\\/ ; BOD 26-04: https:\\/\\/www.cisa.gov\\/news-events\\/directives\\/bod-26-04-prioritizing-security-updates-based-risk ; Forensics Triag\n[Source 3: corpus_manifest.json] { \"corpus_directory\": \"reports/hw03/corpus\", \"files\": [ { \"filename\": \"cisa_kev.json\", \"bytes\": 1727984, \"sha256\": \"72b4e3489021d2ad50c4f9b8ddddd1608a9e6b87dd7beedc126f6341ea98f105\" }, { \"filename\": \"owasp_top10.md\", \"bytes\": 17138, \"sha256\": \"817d7c25937f4ef275059a0d99c04333bcf14161c4109b98d297a801",
+    "evaluation": {
+      "correct_retrieval": false,
+      "correct_answer": false,
+      "grounded": false,
+      "refused_when_needed": true
+    }
+  },
+  {
+    "question_id": "q2",
+    "k": 5,
+    "retrieved_sources": [
+      "corpus_manifest.json",
+      "cisa_kev.json",
+      "cisa_kev.json",
+      "cisa_kev.json",
+      "cisa_kev.json"
+    ],
+    "answer": "[Source 1: cisa_kev.json] Link Resolution Vulnerability\", \"dateAdded\": \"2022-08-25\", \"shortDescription\": \"PEAR Archive_Tar Tar.php allows write operations with directory traversal due to inadequate checking of symbolic links. PEAR stands for PHP Extension and Application Repository and it is an open-source framework and dist\n[Source 2: cisa_kev.json] orensicTriage\": \"Yes\", \"notes\": \"https:\\/\\/owncloud.org\\/security ; https:\\/\\/owncloud.com\\/security-advisories\\/webdav-api-authentication-bypass-using-pre-signed-urls\\/ ; BOD 26-04: https:\\/\\/www.cisa.gov\\/news-events\\/directives\\/bod-26-04-prioritizing-security-updates-based-risk ; Forensics Triag\n[Source 3: cisa_kev.json] nown\", \"forensicTriage\": \"Yes\", \"notes\": \"https:\\/\\/www.metabase.com\\/blog\\/security-update ; https:\\/\\/github.com\\/metabase\\/metabase\\/security\\/advisories\\/GHSA-vwf4-m7j8-wcjf ; BOD 26-04: https:\\/\\/www.cisa.gov\\/news-events\\/directives\\/bod-26-04-prioritizing-security-updates-based-risk ; Forensi",
+    "evaluation": {
+      "correct_retrieval": false,
+      "correct_answer": false,
+      "grounded": false,
+      "refused_when_needed": true
+    }
+  },
+  {
+    "question_id": "q3",
+    "k": 1,
+    "retrieved_sources": [
+      "cisa_kev.json"
+    ],
+    "answer": "[Source 1: cisa_kev.json] 26\", \"knownRansomwareCampaignUse\": \"Unknown\", \"forensicTriage\": \"No\", \"notes\": \"CISA Mitigation Instructions: https:\\/\\/www.cisa.gov\\/news-events\\/directives\\/ed-25-03-identify-and-mitigate-potential-compromise-cisco-devices ; https:\\/\\/www.cisa.gov\\/news-events\\/directives\\/supplemental-direction-e",
+    "evaluation": {
+      "correct_retrieval": false,
+      "correct_answer": false,
+      "grounded": false,
+      "refused_when_needed": true
+    }
+  },
+  {
+    "question_id": "q3",
+    "k": 3,
+    "retrieved_sources": [
+      "cisa_kev.json",
+      "hw3_sources.md",
+      "cisa_kev.json"
+    ],
+    "answer": "[Source 1: cisa_kev.json] 26\", \"knownRansomwareCampaignUse\": \"Unknown\", \"forensicTriage\": \"No\", \"notes\": \"CISA Mitigation Instructions: https:\\/\\/www.cisa.gov\\/news-events\\/directives\\/ed-25-03-identify-and-mitigate-potential-compromise-cisco-devices ; https:\\/\\/www.cisa.gov\\/news-events\\/directives\\/supplemental-direction-e\n[Source 2: cisa_kev.json] ons or discontinue use of the product if mitigations are unavailable.\", \"dueDate\": \"2025-03-06\", \"knownRansomwareCampaignUse\": \"Known\", \"forensicTriage\": \"No\", \"notes\": \"https:\\/\\/simple-help.com\\/kb---security-vulnerabilities-01-2025 ; Additional CISA Mitigation Instructions: https:\\/\\/www.cisa.gov\n[Source 3: hw3_sources.md] # HW3 Corpus Sources ## 1. CISA Known Exploited Vulnerabilities Catalog - Source name: CISA Known Exploited Vulnerabilities Catalog - Public URL: https://www.cisa.gov/known-exploited-vulnerabilities-catalog - Download URL: https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilitie",
+    "evaluation": {
+      "correct_retrieval": false,
+      "correct_answer": false,
+      "grounded": false,
+      "refused_when_needed": true
+    }
+  },
+  {
+    "question_id": "q3",
+    "k": 5,
+    "retrieved_sources": [
+      "cisa_kev.json",
+      "hw3_sources.md",
+      "cisa_kev.json",
+      "cisa_kev.json",
+      "cisa_kev.json"
+    ],
+    "answer": "[Source 1: cisa_kev.json] 26\", \"knownRansomwareCampaignUse\": \"Unknown\", \"forensicTriage\": \"No\", \"notes\": \"CISA Mitigation Instructions: https:\\/\\/www.cisa.gov\\/news-events\\/directives\\/ed-25-03-identify-and-mitigate-potential-compromise-cisco-devices ; https:\\/\\/www.cisa.gov\\/news-events\\/directives\\/supplemental-direction-e\n[Source 2: cisa_kev.json] ons or discontinue use of the product if mitigations are unavailable.\", \"dueDate\": \"2025-03-06\", \"knownRansomwareCampaignUse\": \"Known\", \"forensicTriage\": \"No\", \"notes\": \"https:\\/\\/simple-help.com\\/kb---security-vulnerabilities-01-2025 ; Additional CISA Mitigation Instructions: https:\\/\\/www.cisa.gov\n[Source 3: cisa_kev.json] nsible for evaluating each asset's internet exposure and ensuring adherence to BOD 26-04 patching guidelines.\", \"dueDate\": \"2026-06-21\", \"knownRansomwareCampaignUse\": \"Unknown\", \"forensicTriage\": \"No\", \"notes\": \"https:\\/\\/advisory.splunk.com\\/advisories\\/SVD-2026-0603 ; BOD 26-04: https:\\/\\/www.cisa",
+    "evaluation": {
+      "correct_retrieval": false,
+      "correct_answer": false,
+      "grounded": true,
+      "refused_when_needed": true
+    }
+  },
+  {
+    "question_id": "q4",
+    "k": 1,
+    "retrieved_sources": [
+      "cisa_kev.json"
+    ],
+    "answer": "[Source 1: cisa_kev.json] r Privilege Management and Missing Authorization Vulnerability\", \"dateAdded\": \"2026-09-11\", \"shortDescription\": \"ConnectWise ScreenConnect contains both an improper privilege management and missing authorization vulnerability that may allow an attacker to transfer and execute files through an active",
+    "evaluation": {
+      "correct_retrieval": false,
+      "correct_answer": true,
+      "grounded": false,
+      "refused_when_needed": true
+    }
+  },
+  {
+    "question_id": "q4",
+    "k": 3,
+    "retrieved_sources": [
+      "cisa_kev.json",
+      "cisa_kev.json",
+      "cisa_kev.json"
+    ],
+    "answer": "[Source 1: cisa_kev.json] r Privilege Management and Missing Authorization Vulnerability\", \"dateAdded\": \"2026-09-11\", \"shortDescription\": \"ConnectWise ScreenConnect contains both an improper privilege management and missing authorization vulnerability that may allow an attacker to transfer and execute files through an active\n[Source 2: cisa_kev.json] n authenticated user on the same intranet as the session recording server.\", \"requiredAction\": \"Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable.\", \"dueDate\": \"2025-09-15\", \"knownRanso\n[Source 3: cisa_kev.json] scription\": \"Kaseya Virtual System\\/Server Administrator (VSA) contains an information disclosure vulnerability allowing an attacker to obtain the sessionId that can be used to execute further attacks against the system.\", \"requiredAction\": \"Apply updates per vendor instructions.\", \"dueDate\": \"2021-",
+    "evaluation": {
+      "correct_retrieval": false,
+      "correct_answer": true,
+      "grounded": true,
+      "refused_when_needed": true
+    }
+  },
+  {
+    "question_id": "q4",
+    "k": 5,
+    "retrieved_sources": [
+      "cisa_kev.json",
+      "cisa_kev.json",
+      "cisa_kev.json",
+      "cisa_kev.json",
+      "cisa_kev.json"
+    ],
+    "answer": "[Source 1: cisa_kev.json] r Privilege Management and Missing Authorization Vulnerability\", \"dateAdded\": \"2026-09-11\", \"shortDescription\": \"ConnectWise ScreenConnect contains both an improper privilege management and missing authorization vulnerability that may allow an attacker to transfer and execute files through an active\n[Source 2: cisa_kev.json] n authenticated user on the same intranet as the session recording server.\", \"requiredAction\": \"Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable.\", \"dueDate\": \"2025-09-15\", \"knownRanso\n[Source 3: cisa_kev.json] scription\": \"Kaseya Virtual System\\/Server Administrator (VSA) contains an information disclosure vulnerability allowing an attacker to obtain the sessionId that can be used to execute further attacks against the system.\", \"requiredAction\": \"Apply updates per vendor instructions.\", \"dueDate\": \"2021-",
+    "evaluation": {
+      "correct_retrieval": false,
+      "correct_answer": true,
+      "grounded": true,
+      "refused_when_needed": true
+    }
+  },
+  {
+    "question_id": "q5",
+    "k": 1,
+    "retrieved_sources": [
+      "cisa_kev.json"
+    ],
+    "answer": "I cannot answer this question from the provided documents",
+    "evaluation": {
+      "correct_retrieval": true,
+      "correct_answer": true,
+      "grounded": true,
+      "refused_when_needed": true
+    }
+  },
+  {
+    "question_id": "q5",
+    "k": 3,
+    "retrieved_sources": [
+      "cisa_kev.json",
+      "cisa_kev.json",
+      "cisa_kev.json"
+    ],
+    "answer": "I cannot answer this question from the provided documents",
+    "evaluation": {
+      "correct_retrieval": true,
+      "correct_answer": true,
+      "grounded": true,
+      "refused_when_needed": true
+    }
+  },
+  {
+    "question_id": "q5",
+    "k": 5,
+    "retrieved_sources": [
+      "cisa_kev.json",
+      "cisa_kev.json",
+      "cisa_kev.json",
+      "cisa_kev.json",
+      "cisa_kev.json"
+    ],
+    "answer": "I cannot answer this question from the provided documents",
+    "evaluation": {
+      "correct_retrieval": true,
+      "correct_answer": true,
+      "grounded": true,
+      "refused_when_needed": true
+    }
+  },
+  {
+    "question_id": "q6",
+    "k": 1,
+    "retrieved_sources": [
+      "cisa_kev.json"
+    ],
+    "answer": "I cannot answer this question from the provided documents",
+    "evaluation": {
+      "correct_retrieval": true,
+      "correct_answer": true,
+      "grounded": true,
+      "refused_when_needed": true
+    }
+  },
+  {
+    "question_id": "q6",
+    "k": 3,
+    "retrieved_sources": [
+      "cisa_kev.json",
+      "cisa_kev.json",
+      "corpus_manifest.json"
+    ],
+    "answer": "I cannot answer this question from the provided documents",
+    "evaluation": {
+      "correct_retrieval": true,
+      "correct_answer": true,
+      "grounded": true,
+      "refused_when_needed": true
+    }
+  },
+  {
+    "question_id": "q6",
+    "k": 5,
+    "retrieved_sources": [
+      "cisa_kev.json",
+      "cisa_kev.json",
+      "corpus_manifest.json",
+      "cisa_kev.json",
+      "cisa_kev.json"
+    ],
+    "answer": "I cannot answer this question from the provided documents",
+    "evaluation": {
+      "correct_retrieval": true,
+      "correct_answer": true,
+      "grounded": true,
+      "refused_when_needed": true
+    }
+  }
+]

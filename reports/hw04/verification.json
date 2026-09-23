@@ -1,0 +1,31 @@
+{
+  "assignment": "DATA-260 HW4",
+  "sid4": "9004",
+  "commit_hash": "e1d20c78a5ead9d7dce057d18d228ac46eafd6ee",
+  "verify_seed": 269004,
+  "model": "sentence-transformers/all-MiniLM-L6-v2",
+  "database": "s9004_rel",
+  "checks": {
+    "corpus_has_at_least_5_documents": true,
+    "database_has_5000_vulnerabilities": true,
+    "database_has_200_related_items": true,
+    "n_plus_one_raw_json_valid": true,
+    "n_plus_one_has_180_requests": true,
+    "n_plus_one_metrics_valid": true,
+    "n_plus_one_has_6_metric_groups": true,
+    "rag_results_valid": true,
+    "rag_evaluation_valid": true,
+    "rag_k_sweep_valid": true,
+    "rag_printouts_present": true,
+    "react_api_present": true,
+    "react_app_present": true,
+    "database_models_present": true,
+    "benchmark_script_present": true,
+    "rag_script_present": true,
+    "run_log_present": true,
+    "metrics_present": true,
+    "ai_use_present": true,
+    "report_pdf_present": true
+  },
+  "status": "passed"
+}

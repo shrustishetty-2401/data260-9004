@@ -169,6 +169,71 @@
       vertical-align: middle;
     }
     .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
 </head>
 <body>
@@ -178,10 +243,23 @@
 <li>Student: Shrusti Shetty</li>
 <li>SID4: 9004</li>
 <li>Domain: Open-Source Package Vulnerabilities</li>
-<li>Branch: hw4</li>
-<li>Database: s9004_rel</li>
-<li>Seed: 9004</li>
-<li>GitHub: https://github.com/shrustishetty-2401/data260-9004</li>
+<li>Branch: <code>hw4</code></li>
+<li>Database: <code>s9004_rel</code></li>
+<li><code>PORT_BASE</code>: <code>8004</code></li>
+<li><code>PREFIX</code>: <code>s9004</code></li>
+<li><code>SEED</code>: <code>9004</code></li>
+<li><code>VERIFY_SEED</code>: <code>269004</code></li>
+<li><code>DOMAIN_ID</code>: <code>4</code>
+(<code>9004 mod 8</code>)</li>
+<li>Hardware: MacBook Pro running the local <code>data260</code> conda
+environment</li>
+<li>Local model:
+<code>sentence-transformers/all-MiniLM-L6-v2</code></li>
+<li>Tagged commit: <code>1db9122</code></li>
+<li>GitHub: <a
+href="https://github.com/shrustishetty-2401/data260-9004">data260-9004</a></li>
+<li>Collaborator access: Sbnikitha and supriyaselvanganesan were given
+repository access.</li>
 </ul>
 <h2 id="project-overview">Project Overview</h2>
 <p>This project extends the vulnerability-report application with a
@@ -213,9 +291,22 @@ login, dashboard, creation, updating, and deletion.</p>
 <li><code>/update/:id</code></li>
 <li><code>/delete/:id</code></li>
 </ul>
-<p>The application uses <code>useState</code> for form and loading state
-and <code>useEffect</code> for session and report loading. Props are
-passed into the Create, Update, and Delete components.</p>
+<p>The application uses <code>useState</code> for form and loading
+state, <code>useEffect</code> for session and report loading, and props
+to pass callbacks into the Create, Update, and Delete components.</p>
+<h3 id="react-routing-and-protected-pages">React routing and protected
+pages</h3>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode jsx"><code class="sourceCode javascriptreact"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">&lt;Route</span> <span class="ot">path</span><span class="op">=</span><span class="st">&quot;/&quot;</span> <span class="ot">element</span><span class="op">=</span><span class="va">{</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">&lt;ProtectedRoute</span> <span class="ot">user</span><span class="op">=</span><span class="va">{</span>user<span class="va">}</span><span class="fu">&gt;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">&lt;Home</span> <span class="ot">user</span><span class="op">=</span><span class="va">{</span>user<span class="va">}</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>      <span class="ot">onCreate</span><span class="op">=</span><span class="va">{</span>() <span class="kw">=&gt;</span> <span class="fu">navigate</span>(<span class="st">&quot;/create&quot;</span>)<span class="va">}</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>      <span class="ot">onEdit</span><span class="op">=</span><span class="va">{</span>(id) <span class="kw">=&gt;</span> <span class="fu">navigate</span>(<span class="vs">`/update/</span><span class="sc">${</span>id<span class="sc">}</span><span class="vs">`</span>)<span class="va">}</span> <span class="fu">/&gt;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">&lt;/ProtectedRoute&gt;</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="va">}</span> <span class="fu">/&gt;</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">&lt;Route</span> <span class="ot">path</span><span class="op">=</span><span class="st">&quot;/create&quot;</span> <span class="ot">element</span><span class="op">=</span><span class="va">{</span><span class="fu">&lt;CreateRecord</span> <span class="ot">onSaved</span><span class="op">=</span><span class="va">{</span>() <span class="kw">=&gt;</span> <span class="fu">navigate</span>(<span class="st">&quot;/&quot;</span>)<span class="va">}</span> <span class="fu">/&gt;</span><span class="va">}</span> <span class="fu">/&gt;</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">&lt;Route</span> <span class="ot">path</span><span class="op">=</span><span class="st">&quot;/update/:id&quot;</span> <span class="ot">element</span><span class="op">=</span><span class="va">{</span><span class="fu">&lt;UpdatePage</span> <span class="ot">onSaved</span><span class="op">=</span><span class="va">{</span>() <span class="kw">=&gt;</span> <span class="fu">navigate</span>(<span class="st">&quot;/&quot;</span>)<span class="va">}</span> <span class="fu">/&gt;</span><span class="va">}</span> <span class="fu">/&gt;</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">&lt;Route</span> <span class="ot">path</span><span class="op">=</span><span class="st">&quot;/delete/:id&quot;</span> <span class="ot">element</span><span class="op">=</span><span class="va">{</span><span class="fu">&lt;DeletePage</span> <span class="ot">onDeleted</span><span class="op">=</span><span class="va">{</span>() <span class="kw">=&gt;</span> <span class="fu">navigate</span>(<span class="st">&quot;/&quot;</span>)<span class="va">}</span> <span class="fu">/&gt;</span><span class="va">}</span> <span class="fu">/&gt;</span></span></code></pre></div>
 <h3 id="login-and-dashboard">Login and Dashboard</h3>
 <figure>
 <img src="evidence/loggedin.png" alt="Login and dashboard" />
@@ -242,6 +333,12 @@ saving.</p>
 <p>The UpdateRecord component loads an existing report, allows the
 primary fields to be edited, and sends the changes through a PUT
 request.</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode jsx"><code class="sourceCode javascriptreact"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">async</span> <span class="kw">function</span> <span class="fu">handleSubmit</span>(<span class="bu">event</span>) {</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="bu">event</span><span class="op">.</span><span class="fu">preventDefault</span>()<span class="op">;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">await</span> <span class="fu">updateReport</span>(reportId<span class="op">,</span> form)<span class="op">;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">onSaved</span>()<span class="op">;</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <figure>
 <img src="evidence/updatereport.png" alt="Update report form" />
 <figcaption aria-hidden="true">Update report form</figcaption>
@@ -270,6 +367,32 @@ table, users table, and sessions table.</p>
 <p>The authentication process stores an opaque session token in an
 HTTP-only browser cookie. The session itself is stored server-side in
 the sessions table.</p>
+<h3 id="database-and-session-implementation">Database and session
+implementation</h3>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="at">@router.post</span>(<span class="st">&quot;/api/auth/login&quot;</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> login(payload: LoginPayload, response: Response, db: Session <span class="op">=</span> Depends(get_db)):</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    user <span class="op">=</span> authenticate_user(db, payload.email, payload.password)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    token <span class="op">=</span> create_server_session(db, user.<span class="bu">id</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    response.set_cookie(<span class="st">&quot;session_token&quot;</span>, token, httponly<span class="op">=</span><span class="va">True</span>, samesite<span class="op">=</span><span class="st">&quot;lax&quot;</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> user</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="at">@router.post</span>(<span class="st">&quot;&quot;</span>, response_model<span class="op">=</span>ReportOut, status_code<span class="op">=</span><span class="dv">201</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> create_report(payload: ReportCreate, db: Session <span class="op">=</span> Depends(get_db),</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>                  _user<span class="op">=</span>Depends(current_user)):</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    ...</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="at">@router.get</span>(<span class="st">&quot;&quot;</span>, response_model<span class="op">=</span><span class="bu">list</span>[ReportOut])</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> list_reports(..., _user<span class="op">=</span>Depends(current_user)):</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    ...</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="at">@router.put</span>(<span class="st">&quot;/</span><span class="sc">{report_id}</span><span class="st">&quot;</span>, response_model<span class="op">=</span>ReportOut)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> update_report(report_id: <span class="bu">int</span>, payload: ReportUpdate, ...):</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    ...</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="at">@router.delete</span>(<span class="st">&quot;/</span><span class="sc">{report_id}</span><span class="st">&quot;</span>)</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> delete_report(report_id: <span class="bu">int</span>, ...):</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    ...</span></code></pre></div>
 <h3 id="database-tables-and-counts">Database Tables and Counts</h3>
 <figure>
 <img src="evidence/database_table_count.png"
@@ -280,8 +403,9 @@ alt="Database tables and counts" />
 <ul>
 <li>5,000 vulnerability records</li>
 <li>200 related item records</li>
-<li>users table</li>
-<li>sessions table</li>
+<li>users table with unique email values and password hashes</li>
+<li>sessions table with token, user, creation, and expiration
+fields</li>
 </ul>
 <h3 id="http-only-session-cookie">HTTP-Only Session Cookie</h3>
 <figure>
@@ -331,10 +455,23 @@ One Measurement and Query Tuning</h2>
 <p>The database was seeded with 5,000 vulnerability records and 200
 related item records using seed value 9004.</p>
 <p>The naive endpoint performs one query for the primary records and one
-additional query for each returned record. Therefore, the number of SQL
-statements grows with the page size.</p>
-<p>The fixed endpoint uses eager loading with <code>selectinload</code>,
-reducing the request to two SQL statements.</p>
+additional query for each returned record. The fixed endpoint uses eager
+loading with <code>selectinload</code>, reducing each request to two SQL
+statements.</p>
+<h3 id="seed-and-query-implementation">Seed and query
+implementation</h3>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> index <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5000</span>):</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    db.add(make_seeded_vulnerability(index, seed<span class="op">=</span><span class="dv">9004</span>))</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> index <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">200</span>):</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    db.add(make_related_item(index, seed<span class="op">=</span><span class="dv">9004</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>statement <span class="op">=</span> (select(Vulnerability)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>             .options(selectinload(Vulnerability.related_items))</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>             .order_by(Vulnerability.<span class="bu">id</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>             .offset(skip).limit(page_size))</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>reports <span class="op">=</span> db.scalars(statement).<span class="bu">all</span>()</span></code></pre></div>
 <h3 id="naive-and-fixed-endpoint-evidence">Naive and Fixed Endpoint
 Evidence</h3>
 <figure>
@@ -430,10 +567,62 @@ alt="Fixed page size 200" />
 <img src="evidence/n_plus_one_metrics.png" alt="N Plus One metrics" />
 <figcaption aria-hidden="true">N Plus One metrics</figcaption>
 </figure>
-<p>The naive implementation becomes increasingly expensive as the page
-size increases because it performs one additional query per record. The
-fixed implementation keeps the SQL statement count constant at two
-queries, so its latency grows much more slowly.</p>
+<h3 id="fixed-version-improvement">Fixed-version improvement</h3>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: right;">Page size</th>
+<th style="text-align: right;">Naive SQL</th>
+<th style="text-align: right;">Fixed SQL</th>
+<th style="text-align: right;">SQL reduction</th>
+<th style="text-align: right;">Naive p50</th>
+<th style="text-align: right;">Fixed p50</th>
+<th style="text-align: right;">p50 improvement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">81.82%</td>
+<td style="text-align: right;">9.721 ms</td>
+<td style="text-align: right;">6.858 ms</td>
+<td style="text-align: right;">29.45%</td>
+</tr>
+<tr>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">51</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">96.08%</td>
+<td style="text-align: right;">23.321 ms</td>
+<td style="text-align: right;">7.106 ms</td>
+<td style="text-align: right;">69.52%</td>
+</tr>
+<tr>
+<td style="text-align: right;">200</td>
+<td style="text-align: right;">201</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">99.00%</td>
+<td style="text-align: right;">61.721 ms</td>
+<td style="text-align: right;">11.586 ms</td>
+<td style="text-align: right;">81.23%</td>
+</tr>
+</tbody>
+</table>
+<p>As the page grows, the naive implementation issues one additional
+related-item query per record. The fixed implementation batches related
+rows, so the SQL count stays at two and the performance advantage
+increases with page size.</p>
 <h3 id="explain-before-and-after-the-index">EXPLAIN Before and After the
 Index</h3>
 <figure>
@@ -449,29 +638,42 @@ alt="EXPLAIN before index" />
 added, MySQL used an index lookup, reducing the amount of data that had
 to be scanned.</p>
 <h2 id="part-4-grounded-rag-system">Part 4 Grounded RAG System</h2>
-<p>The RAG system uses a corpus of more than five documents, including
-CISA KEV data, OWASP documentation, project schema information, project
-context, and HW3 source material.</p>
-<p>The documents are chunked with a chunk size of 500 and an overlap of
-50. Sentence Transformer embeddings are generated with:</p>
-<p><code>sentence-transformers/all-MiniLM-L6-v2</code></p>
-<p>The embeddings are stored in a FAISS vector index.</p>
+<p>The corpus contains seven documents:</p>
+<ul>
+<li><code>agent_context.md</code></li>
+<li><code>cisa_kev.json</code></li>
+<li><code>corpus_manifest.json</code></li>
+<li><code>domain_schema.md</code></li>
+<li><code>hw3_sources.md</code></li>
+<li><code>owasp_top10.md</code></li>
+<li><code>project_readme.md</code></li>
+</ul>
+<p>Documents are chunked with size 500 and overlap 50. Each chunk
+retains its source and chunk ID. Sentence Transformer embeddings use
+<code>sentence-transformers/all-MiniLM-L6-v2</code>, and vectors are
+stored in a FAISS index.</p>
+<h3 id="retrieval-implementation">Retrieval implementation</h3>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>CHUNK_SIZE <span class="op">=</span> <span class="dv">500</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>CHUNK_OVERLAP <span class="op">=</span> <span class="dv">50</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>TOP_K <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>MODEL_NAME <span class="op">=</span> <span class="st">&quot;sentence-transformers/all-MiniLM-L6-v2&quot;</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> vector_store.similarity_search_with_score(question, k<span class="op">=</span>TOP_K)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> rank, (chunk, score) <span class="kw">in</span> <span class="bu">enumerate</span>(results, start<span class="op">=</span><span class="dv">1</span>):</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&quot;[Source </span><span class="sc">{</span>rank<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>chunk<span class="sc">.</span>metadata[<span class="st">&#39;source&#39;</span>]<span class="sc">}</span><span class="ss">] score=</span><span class="sc">{</span>score<span class="sc">}</span><span class="ss">&quot;</span>)</span></code></pre></div>
 <h3 id="retrieval-output">Retrieval Output</h3>
-<p>The system prints the retrieved chunks, source names, chunk IDs,
-ranks, and similarity scores before generating an answer.</p>
+<p>The system prints retrieved chunks, source names, chunk IDs, ranks,
+and similarity scores before generating an answer.</p>
 <figure>
 <img src="evidence/rag_retrieval_output.png"
 alt="RAG retrieval output" />
 <figcaption aria-hidden="true">RAG retrieval output</figcaption>
 </figure>
 <h3 id="rag-configurations">RAG Configurations</h3>
-<p>The same questions were tested with:</p>
-<ol type="1">
-<li>No-RAG baseline</li>
-<li>Basic RAG using the top three chunks</li>
-<li>Context-engineered RAG with source labels, ordering, de-duplication,
-and grounding instructions</li>
-</ol>
+<p>The same six questions were tested with No-RAG, Basic RAG using the
+top three chunks, and Context-engineered RAG with source labels,
+ordering, de-duplication, and grounding instructions.</p>
 <figure>
 <img src="evidence/rag_complete_evaluation.png"
 alt="Complete RAG evaluation" />
@@ -482,9 +684,86 @@ alt="Complete RAG evaluation" />
 alt="RAG evaluation results" />
 <figcaption aria-hidden="true">RAG evaluation results</figcaption>
 </figure>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Configuration</th>
+<th>Retrieval/context behavior</th>
+<th>Grounding behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>No-RAG</td>
+<td>No retrieved corpus context</td>
+<td>Baseline only</td>
+</tr>
+<tr>
+<td>Basic RAG</td>
+<td>Top-three retrieved chunks</td>
+<td>Answers using retrieved text and source labels</td>
+</tr>
+<tr>
+<td>Context-engineered RAG</td>
+<td>Relevant, ordered, labeled, deduplicated chunks</td>
+<td>Answers only from evidence and refuses unsupported questions</td>
+</tr>
+</tbody>
+</table>
+<h3 id="six-question-evaluation-summary">Six-question evaluation
+summary</h3>
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr>
+<th>Questions</th>
+<th>Correct retrieval</th>
+<th>Correct answer</th>
+<th>Grounded</th>
+<th>Refused when needed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Q1–Q4</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Not applicable</td>
+</tr>
+<tr>
+<td>Q5</td>
+<td>Insufficient evidence detected</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Q6</td>
+<td>Insufficient evidence detected</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
 <h3 id="required-refusals">Required Refusals</h3>
 <p>Questions Q5 and Q6 cannot be answered from the supplied documents.
-The system correctly refuses instead of inventing an answer.</p>
+The exact required refusal is:</p>
+<blockquote>
+<p>I cannot answer this question from the provided documents</p>
+</blockquote>
 <figure>
 <img src="evidence/rag_q5_q6_refusals.png" alt="Q5 and Q6 refusals" />
 <figcaption aria-hidden="true">Q5 and Q6 refusals</figcaption>
@@ -529,9 +808,34 @@ and required documentation are present.</p>
 <p>The final verification status is:</p>
 <p><code>passed</code></p>
 <h2 id="ai-use">AI Use</h2>
-<p>AI assistance was used for debugging, code explanation, report
-organization, and troubleshooting. All code was tested locally, database
-results were verified, benchmark output was generated from the
-application, and the final report was reviewed before submission.</p>
+<ol type="1">
+<li><p><strong>What was AI used for, and what did I do
+myself?</strong><br />
+AI was used for debugging support, code explanation, report
+organization, and troubleshooting. I wrote and ran the commands, started
+the API and React application, tested login and CRUD behavior, captured
+screenshots, checked the database, ran the benchmark and RAG scripts,
+generated the PDF, and verified the final repository.</p></li>
+<li><p><strong>What was independently verified?</strong><br />
+The database counts, API responses, session cookie, benchmark metrics,
+RAG outputs, PDF generation, and verification script were independently
+checked from the local application and terminal.</p></li>
+<li><p><strong>How was it detected or verified?</strong><br />
+I compared terminal output with the assignment requirements, used
+curl/Postman-style API calls, inspected MySQL rows, reviewed the raw
+CSV/JSON artifacts, checked the screenshots, and ran
+<code>code/verify_hw4.py</code> until every required check
+passed.</p></li>
+<li><p><strong>What changed and why does it work now?</strong><br />
+The final report was expanded to include the assignment configuration,
+implementation snippets, screenshots, performance comparison, RAG
+evaluation/refusal details, and the four AI-use answers. The final
+verification output reports <code>passed</code>, confirming that the
+required files and checks are present.</p></li>
+</ol>
+<h2 id="submission-file">Submission File</h2>
+<p>Submit the final PDF as <code>Shetty_HW4.pdf</code>. Keep
+<code>reports/hw04/report.pdf</code> in the repository as the required
+repository deliverable.</p>
 </body>
 </html>

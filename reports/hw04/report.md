@@ -1,74 +1,75 @@
-# DATA-260 Homework 4 Report
+## Additional Evidence Screenshots
 
-## Student Information
+### Frontend
 
-- Student: Shrusti Shetty
-- SID4: 9004
-- Domain: Open-Source Package Vulnerabilities
-- Branch: hw4
-- Database: s9004_rel
-- Seed: 9004
-- Verify seed: 269004
+![Login and dashboard](evidence/loggedin.png)
 
-## 1. Project Overview
+![Create report form](evidence/createreport.png)
 
-This project extends the HW3 vulnerability-report application.
+![Create report result](evidence/createresult.png)
 
-The HW4 system includes:
+![Update report form](evidence/updatereport.png)
 
-- A React frontend
-- FastAPI backend routes
-- MySQL persistence
-- HTTP-only cookie authentication
-- Server-side sessions
-- Create, read, update, and delete operations
-- N+1 query benchmarking
-- RAG document retrieval and evaluation
+![Updated report result](evidence/updatedreport.png)
 
-## 2. React Frontend
+![Delete confirmation](evidence/deletereport.png)
 
-The React client provides login, report listing, report creation, report updating, and report deletion.
+![Dashboard after deletion](evidence/deletedreport.png)
 
-Main React components:
+### API CRUD Operations
 
-- `Login.jsx`
-- `Home.jsx`
-- `CreateRecord.jsx`
-- `UpdateRecord.jsx`
-- `DeleteRecord.jsx`
+![POST create report](evidence/api_post_create.png)
 
-The frontend uses Axios to communicate with FastAPI and React Router for navigation.
+![GET all reports](evidence/api_get_all.png)
 
-Important routes:
+![GET report by ID](evidence/api_get_by_id.png)
 
-- `/`
-- `/create`
-- `/update`
-- `/delete`
+![PUT update report](evidence/api_put_update.png)
 
-The frontend was tested by logging in, creating a report, viewing it, updating it, deleting it, and logging out.
+![DELETE report](evidence/api_delete.png)
 
-Example API call:
+### Database and Sessions
 
-```javascript
-await api.post("/api/reports", payload)
-## 10. Evidence Screenshots
+![Database tables and row counts](evidence/database_table_count.png)
 
-### React Dashboard
+![HTTP-only session cookie](evidence/http_only_session_cookie.png)
 
-The React dashboard displays the logged-in user and seeded vulnerability records with Update and Delete actions.
+![Project folder structure](evidence/projectfolderstructure.png)
 
-![React dashboard](evidence/frontend_dashboard.png)
+### N Plus One Benchmark
 
-### HW4 Verification
+![Naive page size 10](evidence/n_plus_one_naive_10.png)
 
-The verification output confirms the database, N+1 benchmark, RAG, and frontend checks.
+![Naive page size 50](evidence/n_plus_one_naive_50.png)
+
+![Naive page size 200](evidence/n_plus_one_naive_200.png)
+
+![Fixed page size 10](evidence/n_plus_one_fixed_10.png)
+
+![Fixed page size 50](evidence/n_plus_one_fixed_50.png)
+
+![Fixed page size 200](evidence/n_plus_one_fixed_200.png)
+
+![N Plus One metrics](evidence/n_plus_one_metrics.png)
+
+![EXPLAIN before index](evidence/explain_before_index.png)
+
+![EXPLAIN after index](evidence/explain_after_index.png)
+
+### RAG Evaluation
+
+![RAG retrieval output](evidence/rag_retrieval_output.png)
+
+![RAG evaluation results](evidence/rag_evaluation_results.png)
+
+![Complete RAG evaluation](evidence/rag_complete_evaluation.png)
+
+![Q5 and Q6 refusals](evidence/rag_q5_q6_refusals.png)
+
+![RAG k sweep](evidence/rag_k_sweep.png)
+
+### Verification
 
 ![HW4 verification](evidence/hw4_verification.png)
 
-## 9. Final Git Reference
-
-- Repository: https://github.com/shrustishetty-2401/data260-9004
-- Final branch: hw4
-- Final tag: hw4
-- Final commit: recorded in `reports/hw04/verification.json`
+![Frontend dashboard evidence](evidence/frontend_dashboard.png)

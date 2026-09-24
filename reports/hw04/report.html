@@ -172,76 +172,148 @@
   </style>
 </head>
 <body>
-<h1 id="data-260-homework-4-report">DATA-260 Homework 4 Report</h1>
-<h2 id="student-information">Student Information</h2>
-<ul>
-<li>Student: Shrusti Shetty</li>
-<li>SID4: 9004</li>
-<li>Domain: Open-Source Package Vulnerabilities</li>
-<li>Branch: hw4</li>
-<li>Database: s9004_rel</li>
-<li>Seed: 9004</li>
-<li>Verify seed: 269004</li>
-</ul>
-<h2 id="project-overview">1. Project Overview</h2>
-<p>This project extends the HW3 vulnerability-report application.</p>
-<p>The HW4 system includes:</p>
-<ul>
-<li>A React frontend</li>
-<li>FastAPI backend routes</li>
-<li>MySQL persistence</li>
-<li>HTTP-only cookie authentication</li>
-<li>Server-side sessions</li>
-<li>Create, read, update, and delete operations</li>
-<li>N+1 query benchmarking</li>
-<li>RAG document retrieval and evaluation</li>
-</ul>
-<h2 id="react-frontend">2. React Frontend</h2>
-<p>The React client provides login, report listing, report creation,
-report updating, and report deletion.</p>
-<p>Main React components:</p>
-<ul>
-<li><code>Login.jsx</code></li>
-<li><code>Home.jsx</code></li>
-<li><code>CreateRecord.jsx</code></li>
-<li><code>UpdateRecord.jsx</code></li>
-<li><code>DeleteRecord.jsx</code></li>
-</ul>
-<p>The frontend uses Axios to communicate with FastAPI and React Router
-for navigation.</p>
-<p>Important routes:</p>
-<ul>
-<li><code>/</code></li>
-<li><code>/create</code></li>
-<li><code>/update</code></li>
-<li><code>/delete</code></li>
-</ul>
-<p>The frontend was tested by logging in, creating a report, viewing it,
-updating it, deleting it, and logging out.</p>
-<p>Example API call:</p>
-<p>```javascript await api.post(“/api/reports”, payload) ## 10. Evidence
-Screenshots</p>
-<h3 id="react-dashboard">React Dashboard</h3>
-<p>The React dashboard displays the logged-in user and seeded
-vulnerability records with Update and Delete actions.</p>
+<h2 id="additional-evidence-screenshots">Additional Evidence
+Screenshots</h2>
+<h3 id="frontend">Frontend</h3>
 <figure>
-<img src="evidence/frontend_dashboard.png" alt="React dashboard" />
-<figcaption aria-hidden="true">React dashboard</figcaption>
+<img src="evidence/loggedin.png" alt="Login and dashboard" />
+<figcaption aria-hidden="true">Login and dashboard</figcaption>
 </figure>
-<h3 id="hw4-verification">HW4 Verification</h3>
-<p>The verification output confirms the database, N+1 benchmark, RAG,
-and frontend checks.</p>
+<figure>
+<img src="evidence/createreport.png" alt="Create report form" />
+<figcaption aria-hidden="true">Create report form</figcaption>
+</figure>
+<figure>
+<img src="evidence/createresult.png" alt="Create report result" />
+<figcaption aria-hidden="true">Create report result</figcaption>
+</figure>
+<figure>
+<img src="evidence/updatereport.png" alt="Update report form" />
+<figcaption aria-hidden="true">Update report form</figcaption>
+</figure>
+<figure>
+<img src="evidence/updatedreport.png" alt="Updated report result" />
+<figcaption aria-hidden="true">Updated report result</figcaption>
+</figure>
+<figure>
+<img src="evidence/deletereport.png" alt="Delete confirmation" />
+<figcaption aria-hidden="true">Delete confirmation</figcaption>
+</figure>
+<figure>
+<img src="evidence/deletedreport.png" alt="Dashboard after deletion" />
+<figcaption aria-hidden="true">Dashboard after deletion</figcaption>
+</figure>
+<h3 id="api-crud-operations">API CRUD Operations</h3>
+<figure>
+<img src="evidence/api_post_create.png" alt="POST create report" />
+<figcaption aria-hidden="true">POST create report</figcaption>
+</figure>
+<figure>
+<img src="evidence/api_get_all.png" alt="GET all reports" />
+<figcaption aria-hidden="true">GET all reports</figcaption>
+</figure>
+<figure>
+<img src="evidence/api_get_by_id.png" alt="GET report by ID" />
+<figcaption aria-hidden="true">GET report by ID</figcaption>
+</figure>
+<figure>
+<img src="evidence/api_put_update.png" alt="PUT update report" />
+<figcaption aria-hidden="true">PUT update report</figcaption>
+</figure>
+<figure>
+<img src="evidence/api_delete.png" alt="DELETE report" />
+<figcaption aria-hidden="true">DELETE report</figcaption>
+</figure>
+<h3 id="database-and-sessions">Database and Sessions</h3>
+<figure>
+<img src="evidence/database_table_count.png"
+alt="Database tables and row counts" />
+<figcaption aria-hidden="true">Database tables and row
+counts</figcaption>
+</figure>
+<figure>
+<img src="evidence/http_only_session_cookie.png"
+alt="HTTP-only session cookie" />
+<figcaption aria-hidden="true">HTTP-only session cookie</figcaption>
+</figure>
+<figure>
+<img src="evidence/projectfolderstructure.png"
+alt="Project folder structure" />
+<figcaption aria-hidden="true">Project folder structure</figcaption>
+</figure>
+<h3 id="n-plus-one-benchmark">N Plus One Benchmark</h3>
+<figure>
+<img src="evidence/n_plus_one_naive_10.png" alt="Naive page size 10" />
+<figcaption aria-hidden="true">Naive page size 10</figcaption>
+</figure>
+<figure>
+<img src="evidence/n_plus_one_naive_50.png" alt="Naive page size 50" />
+<figcaption aria-hidden="true">Naive page size 50</figcaption>
+</figure>
+<figure>
+<img src="evidence/n_plus_one_naive_200.png"
+alt="Naive page size 200" />
+<figcaption aria-hidden="true">Naive page size 200</figcaption>
+</figure>
+<figure>
+<img src="evidence/n_plus_one_fixed_10.png" alt="Fixed page size 10" />
+<figcaption aria-hidden="true">Fixed page size 10</figcaption>
+</figure>
+<figure>
+<img src="evidence/n_plus_one_fixed_50.png" alt="Fixed page size 50" />
+<figcaption aria-hidden="true">Fixed page size 50</figcaption>
+</figure>
+<figure>
+<img src="evidence/n_plus_one_fixed_200.png"
+alt="Fixed page size 200" />
+<figcaption aria-hidden="true">Fixed page size 200</figcaption>
+</figure>
+<figure>
+<img src="evidence/n_plus_one_metrics.png" alt="N Plus One metrics" />
+<figcaption aria-hidden="true">N Plus One metrics</figcaption>
+</figure>
+<figure>
+<img src="evidence/explain_before_index.png"
+alt="EXPLAIN before index" />
+<figcaption aria-hidden="true">EXPLAIN before index</figcaption>
+</figure>
+<figure>
+<img src="evidence/explain_after_index.png" alt="EXPLAIN after index" />
+<figcaption aria-hidden="true">EXPLAIN after index</figcaption>
+</figure>
+<h3 id="rag-evaluation">RAG Evaluation</h3>
+<figure>
+<img src="evidence/rag_retrieval_output.png"
+alt="RAG retrieval output" />
+<figcaption aria-hidden="true">RAG retrieval output</figcaption>
+</figure>
+<figure>
+<img src="evidence/rag_evaluation_results.png"
+alt="RAG evaluation results" />
+<figcaption aria-hidden="true">RAG evaluation results</figcaption>
+</figure>
+<figure>
+<img src="evidence/rag_complete_evaluation.png"
+alt="Complete RAG evaluation" />
+<figcaption aria-hidden="true">Complete RAG evaluation</figcaption>
+</figure>
+<figure>
+<img src="evidence/rag_q5_q6_refusals.png" alt="Q5 and Q6 refusals" />
+<figcaption aria-hidden="true">Q5 and Q6 refusals</figcaption>
+</figure>
+<figure>
+<img src="evidence/rag_k_sweep.png" alt="RAG k sweep" />
+<figcaption aria-hidden="true">RAG k sweep</figcaption>
+</figure>
+<h3 id="verification">Verification</h3>
 <figure>
 <img src="evidence/hw4_verification.png" alt="HW4 verification" />
 <figcaption aria-hidden="true">HW4 verification</figcaption>
 </figure>
-<h2 id="final-git-reference">9. Final Git Reference</h2>
-<ul>
-<li>Repository: https://github.com/shrustishetty-2401/data260-9004</li>
-<li>Final branch: hw4</li>
-<li>Final tag: hw4</li>
-<li>Final commit: recorded in
-<code>reports/hw04/verification.json</code></li>
-</ul>
+<figure>
+<img src="evidence/frontend_dashboard.png"
+alt="Frontend dashboard evidence" />
+<figcaption aria-hidden="true">Frontend dashboard evidence</figcaption>
+</figure>
 </body>
 </html>

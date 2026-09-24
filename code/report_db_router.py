@@ -85,7 +85,7 @@ def list_reports(
     statement = (
         select(Vulnerability)
         .options(selectinload(Vulnerability.related_items))
-        .order_by(Vulnerability.id)
+        .order_by(Vulnerability.id.desc())
         .offset(skip)
         .limit(limit)
     )

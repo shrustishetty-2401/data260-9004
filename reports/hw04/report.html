@@ -172,13 +172,64 @@
   </style>
 </head>
 <body>
-<h2 id="additional-evidence-screenshots">Additional Evidence
-Screenshots</h2>
-<h3 id="frontend">Frontend</h3>
+<h1 id="data-260-homework-4-report">DATA 260 Homework 4 Report</h1>
+<h2 id="student-information">Student Information</h2>
+<ul>
+<li>Student: Shrusti Shetty</li>
+<li>SID4: 9004</li>
+<li>Domain: Open-Source Package Vulnerabilities</li>
+<li>Branch: hw4</li>
+<li>Database: s9004_rel</li>
+<li>Seed: 9004</li>
+<li>GitHub: https://github.com/shrustishetty-2401/data260-9004</li>
+</ul>
+<h2 id="project-overview">Project Overview</h2>
+<p>This project extends the vulnerability-report application with a
+React frontend, FastAPI backend, MySQL persistence, server-side
+sessions, CRUD operations, N+1 query benchmarking, query tuning, and a
+grounded RAG question-answering system.</p>
+<p>The final implementation includes:</p>
+<ul>
+<li>React frontend with login and CRUD pages</li>
+<li>FastAPI API routes</li>
+<li>MySQL persistence</li>
+<li>HTTP-only cookie authentication</li>
+<li>Server-side sessions</li>
+<li>5,000 vulnerability records</li>
+<li>200 related records</li>
+<li>Naive and fixed N+1 endpoints</li>
+<li>Index and EXPLAIN comparison</li>
+<li>FAISS-based RAG retrieval</li>
+<li>RAG evaluation and k-sweep results</li>
+</ul>
+<h2 id="part-1-react-client">Part 1 React Client</h2>
+<p>The React client uses React Router to provide separate pages for
+login, dashboard, creation, updating, and deletion.</p>
+<p>Main routes:</p>
+<ul>
+<li><code>/login</code></li>
+<li><code>/</code></li>
+<li><code>/create</code></li>
+<li><code>/update/:id</code></li>
+<li><code>/delete/:id</code></li>
+</ul>
+<p>The application uses <code>useState</code> for form and loading state
+and <code>useEffect</code> for session and report loading. Props are
+passed into the Create, Update, and Delete components.</p>
+<h3 id="login-and-dashboard">Login and Dashboard</h3>
 <figure>
 <img src="evidence/loggedin.png" alt="Login and dashboard" />
 <figcaption aria-hidden="true">Login and dashboard</figcaption>
 </figure>
+<figure>
+<img src="evidence/frontend_dashboard.png" alt="Frontend dashboard" />
+<figcaption aria-hidden="true">Frontend dashboard</figcaption>
+</figure>
+<h3 id="create-record">Create Record</h3>
+<p>The CreateRecord component collects the vulnerability title, package
+name, submitter email, description, category, and terms acceptance. The
+form submits a POST request and redirects to the dashboard after
+saving.</p>
 <figure>
 <img src="evidence/createreport.png" alt="Create report form" />
 <figcaption aria-hidden="true">Create report form</figcaption>
@@ -187,6 +238,10 @@ Screenshots</h2>
 <img src="evidence/createresult.png" alt="Create report result" />
 <figcaption aria-hidden="true">Create report result</figcaption>
 </figure>
+<h3 id="update-record">Update Record</h3>
+<p>The UpdateRecord component loads an existing report, allows the
+primary fields to be edited, and sends the changes through a PUT
+request.</p>
 <figure>
 <img src="evidence/updatereport.png" alt="Update report form" />
 <figcaption aria-hidden="true">Update report form</figcaption>
@@ -195,6 +250,10 @@ Screenshots</h2>
 <img src="evidence/updatedreport.png" alt="Updated report result" />
 <figcaption aria-hidden="true">Updated report result</figcaption>
 </figure>
+<h3 id="delete-record">Delete Record</h3>
+<p>The DeleteRecord component confirms the deletion and sends a DELETE
+request. After deletion, the dashboard reloads without the deleted
+record.</p>
 <figure>
 <img src="evidence/deletereport.png" alt="Delete confirmation" />
 <figcaption aria-hidden="true">Delete confirmation</figcaption>
@@ -203,45 +262,81 @@ Screenshots</h2>
 <img src="evidence/deletedreport.png" alt="Dashboard after deletion" />
 <figcaption aria-hidden="true">Dashboard after deletion</figcaption>
 </figure>
-<h3 id="api-crud-operations">API CRUD Operations</h3>
-<figure>
-<img src="evidence/api_post_create.png" alt="POST create report" />
-<figcaption aria-hidden="true">POST create report</figcaption>
-</figure>
-<figure>
-<img src="evidence/api_get_all.png" alt="GET all reports" />
-<figcaption aria-hidden="true">GET all reports</figcaption>
-</figure>
-<figure>
-<img src="evidence/api_get_by_id.png" alt="GET report by ID" />
-<figcaption aria-hidden="true">GET report by ID</figcaption>
-</figure>
-<figure>
-<img src="evidence/api_put_update.png" alt="PUT update report" />
-<figcaption aria-hidden="true">PUT update report</figcaption>
-</figure>
-<figure>
-<img src="evidence/api_delete.png" alt="DELETE report" />
-<figcaption aria-hidden="true">DELETE report</figcaption>
-</figure>
-<h3 id="database-and-sessions">Database and Sessions</h3>
+<h2 id="part-2-mysql-persistence-and-sessions">Part 2 MySQL Persistence
+and Sessions</h2>
+<p>The application uses the MySQL database <code>s9004_rel</code> with
+SQLAlchemy. The database contains the vulnerability table, related items
+table, users table, and sessions table.</p>
+<p>The authentication process stores an opaque session token in an
+HTTP-only browser cookie. The session itself is stored server-side in
+the sessions table.</p>
+<h3 id="database-tables-and-counts">Database Tables and Counts</h3>
 <figure>
 <img src="evidence/database_table_count.png"
-alt="Database tables and row counts" />
-<figcaption aria-hidden="true">Database tables and row
-counts</figcaption>
+alt="Database tables and counts" />
+<figcaption aria-hidden="true">Database tables and counts</figcaption>
 </figure>
+<p>The final database contains:</p>
+<ul>
+<li>5,000 vulnerability records</li>
+<li>200 related item records</li>
+<li>users table</li>
+<li>sessions table</li>
+</ul>
+<h3 id="http-only-session-cookie">HTTP-Only Session Cookie</h3>
 <figure>
 <img src="evidence/http_only_session_cookie.png"
 alt="HTTP-only session cookie" />
 <figcaption aria-hidden="true">HTTP-only session cookie</figcaption>
 </figure>
+<p>The cookie contains an opaque session token and does not directly
+store the user’s email, name, or password.</p>
+<h3 id="api-crud-operations">API CRUD Operations</h3>
+<p>The API supports the following operations:</p>
+<ul>
+<li>POST <code>/api/reports</code></li>
+<li>GET <code>/api/reports</code></li>
+<li>GET <code>/api/reports/{id}</code></li>
+<li>PUT <code>/api/reports/{id}</code></li>
+<li>DELETE <code>/api/reports/{id}</code></li>
+</ul>
+<figure>
+<img src="evidence/api_post_create.png" alt="POST create response" />
+<figcaption aria-hidden="true">POST create response</figcaption>
+</figure>
+<figure>
+<img src="evidence/api_get_all.png" alt="GET all response" />
+<figcaption aria-hidden="true">GET all response</figcaption>
+</figure>
+<figure>
+<img src="evidence/api_get_by_id.png" alt="GET by ID response" />
+<figcaption aria-hidden="true">GET by ID response</figcaption>
+</figure>
+<figure>
+<img src="evidence/api_put_update.png" alt="PUT update response" />
+<figcaption aria-hidden="true">PUT update response</figcaption>
+</figure>
+<figure>
+<img src="evidence/api_delete.png" alt="DELETE response" />
+<figcaption aria-hidden="true">DELETE response</figcaption>
+</figure>
+<h3 id="project-structure">Project Structure</h3>
 <figure>
 <img src="evidence/projectfolderstructure.png"
 alt="Project folder structure" />
 <figcaption aria-hidden="true">Project folder structure</figcaption>
 </figure>
-<h3 id="n-plus-one-benchmark">N Plus One Benchmark</h3>
+<h2 id="part-3-n-plus-one-measurement-and-query-tuning">Part 3 N Plus
+One Measurement and Query Tuning</h2>
+<p>The database was seeded with 5,000 vulnerability records and 200
+related item records using seed value 9004.</p>
+<p>The naive endpoint performs one query for the primary records and one
+additional query for each returned record. Therefore, the number of SQL
+statements grows with the page size.</p>
+<p>The fixed endpoint uses eager loading with <code>selectinload</code>,
+reducing the request to two SQL statements.</p>
+<h3 id="naive-and-fixed-endpoint-evidence">Naive and Fixed Endpoint
+Evidence</h3>
 <figure>
 <img src="evidence/n_plus_one_naive_10.png" alt="Naive page size 10" />
 <figcaption aria-hidden="true">Naive page size 10</figcaption>
@@ -268,10 +363,79 @@ alt="Naive page size 200" />
 alt="Fixed page size 200" />
 <figcaption aria-hidden="true">Fixed page size 200</figcaption>
 </figure>
+<h3 id="benchmark-metrics">Benchmark Metrics</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Page size</th>
+<th>Mode</th>
+<th style="text-align: right;">SQL statements/request</th>
+<th style="text-align: right;">p50 ms</th>
+<th style="text-align: right;">p95 ms</th>
+<th style="text-align: right;">p99 ms</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">10</td>
+<td>Naive</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">9.721</td>
+<td style="text-align: right;">85.905</td>
+<td style="text-align: right;">146.621</td>
+</tr>
+<tr>
+<td style="text-align: right;">10</td>
+<td>Fixed</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">6.858</td>
+<td style="text-align: right;">59.823</td>
+<td style="text-align: right;">102.780</td>
+</tr>
+<tr>
+<td style="text-align: right;">50</td>
+<td>Naive</td>
+<td style="text-align: right;">51</td>
+<td style="text-align: right;">23.321</td>
+<td style="text-align: right;">172.330</td>
+<td style="text-align: right;">186.384</td>
+</tr>
+<tr>
+<td style="text-align: right;">50</td>
+<td>Fixed</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">7.106</td>
+<td style="text-align: right;">40.666</td>
+<td style="text-align: right;">105.170</td>
+</tr>
+<tr>
+<td style="text-align: right;">200</td>
+<td>Naive</td>
+<td style="text-align: right;">201</td>
+<td style="text-align: right;">61.721</td>
+<td style="text-align: right;">205.475</td>
+<td style="text-align: right;">241.548</td>
+</tr>
+<tr>
+<td style="text-align: right;">200</td>
+<td>Fixed</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">11.586</td>
+<td style="text-align: right;">101.521</td>
+<td style="text-align: right;">132.936</td>
+</tr>
+</tbody>
+</table>
 <figure>
 <img src="evidence/n_plus_one_metrics.png" alt="N Plus One metrics" />
 <figcaption aria-hidden="true">N Plus One metrics</figcaption>
 </figure>
+<p>The naive implementation becomes increasingly expensive as the page
+size increases because it performs one additional query per record. The
+fixed implementation keeps the SQL statement count constant at two
+queries, so its latency grows much more slowly.</p>
+<h3 id="explain-before-and-after-the-index">EXPLAIN Before and After the
+Index</h3>
 <figure>
 <img src="evidence/explain_before_index.png"
 alt="EXPLAIN before index" />
@@ -281,39 +445,93 @@ alt="EXPLAIN before index" />
 <img src="evidence/explain_after_index.png" alt="EXPLAIN after index" />
 <figcaption aria-hidden="true">EXPLAIN after index</figcaption>
 </figure>
-<h3 id="rag-evaluation">RAG Evaluation</h3>
+<p>Before the index, MySQL performed a table scan. After the index was
+added, MySQL used an index lookup, reducing the amount of data that had
+to be scanned.</p>
+<h2 id="part-4-grounded-rag-system">Part 4 Grounded RAG System</h2>
+<p>The RAG system uses a corpus of more than five documents, including
+CISA KEV data, OWASP documentation, project schema information, project
+context, and HW3 source material.</p>
+<p>The documents are chunked with a chunk size of 500 and an overlap of
+50. Sentence Transformer embeddings are generated with:</p>
+<p><code>sentence-transformers/all-MiniLM-L6-v2</code></p>
+<p>The embeddings are stored in a FAISS vector index.</p>
+<h3 id="retrieval-output">Retrieval Output</h3>
+<p>The system prints the retrieved chunks, source names, chunk IDs,
+ranks, and similarity scores before generating an answer.</p>
 <figure>
 <img src="evidence/rag_retrieval_output.png"
 alt="RAG retrieval output" />
 <figcaption aria-hidden="true">RAG retrieval output</figcaption>
 </figure>
-<figure>
-<img src="evidence/rag_evaluation_results.png"
-alt="RAG evaluation results" />
-<figcaption aria-hidden="true">RAG evaluation results</figcaption>
-</figure>
+<h3 id="rag-configurations">RAG Configurations</h3>
+<p>The same questions were tested with:</p>
+<ol type="1">
+<li>No-RAG baseline</li>
+<li>Basic RAG using the top three chunks</li>
+<li>Context-engineered RAG with source labels, ordering, de-duplication,
+and grounding instructions</li>
+</ol>
 <figure>
 <img src="evidence/rag_complete_evaluation.png"
 alt="Complete RAG evaluation" />
 <figcaption aria-hidden="true">Complete RAG evaluation</figcaption>
 </figure>
 <figure>
+<img src="evidence/rag_evaluation_results.png"
+alt="RAG evaluation results" />
+<figcaption aria-hidden="true">RAG evaluation results</figcaption>
+</figure>
+<h3 id="required-refusals">Required Refusals</h3>
+<p>Questions Q5 and Q6 cannot be answered from the supplied documents.
+The system correctly refuses instead of inventing an answer.</p>
+<figure>
 <img src="evidence/rag_q5_q6_refusals.png" alt="Q5 and Q6 refusals" />
 <figcaption aria-hidden="true">Q5 and Q6 refusals</figcaption>
 </figure>
+<h3 id="context-size-sweep">Context Size Sweep</h3>
+<p>The system was tested with k values of 1, 3, and 5. Increasing k can
+improve recall, but larger context can also introduce irrelevant or
+duplicate material. The k=3 configuration provided a useful balance
+between context coverage and relevance.</p>
 <figure>
 <img src="evidence/rag_k_sweep.png" alt="RAG k sweep" />
 <figcaption aria-hidden="true">RAG k sweep</figcaption>
 </figure>
-<h3 id="verification">Verification</h3>
+<h3 id="rag-analysis">RAG Analysis</h3>
+<p>The retrieval results show that source metadata and similarity
+ranking help identify the documents most relevant to a question. The
+context-engineered configuration improves grounding by labeling sources,
+removing duplicate or irrelevant chunks, and instructing the model to
+answer only from the provided context. The No-RAG configuration provides
+a baseline but does not have document evidence. Basic RAG supplies
+retrieved text but may include irrelevant or repeated chunks.</p>
+<p>Questions that can be answered directly from one document generally
+perform well with a small context size. Questions requiring information
+from multiple documents benefit from retrieving more than one chunk.
+However, increasing the context size is not always better because
+unrelated material can distract the model and reduce answer quality.</p>
+<p>The grounding rules are especially important for Q5 and Q6. Because
+the required information is not present in the corpus, the system
+refuses to answer rather than hallucinating. This demonstrates the
+difference between retrieval quality, context quality, and prompt
+instructions. Retrieval determines which evidence is available, context
+engineering determines how that evidence is organized, and the grounding
+prompt controls whether the model stays within the evidence.</p>
+<h2 id="verification">Verification</h2>
+<p>The final verification confirms that the corpus, database, N+1
+benchmark, RAG outputs, React frontend, backend scripts, report files,
+and required documentation are present.</p>
 <figure>
 <img src="evidence/hw4_verification.png" alt="HW4 verification" />
 <figcaption aria-hidden="true">HW4 verification</figcaption>
 </figure>
-<figure>
-<img src="evidence/frontend_dashboard.png"
-alt="Frontend dashboard evidence" />
-<figcaption aria-hidden="true">Frontend dashboard evidence</figcaption>
-</figure>
+<p>The final verification status is:</p>
+<p><code>passed</code></p>
+<h2 id="ai-use">AI Use</h2>
+<p>AI assistance was used for debugging, code explanation, report
+organization, and troubleshooting. All code was tested locally, database
+results were verified, benchmark output was generated from the
+application, and the final report was reviewed before submission.</p>
 </body>
 </html>

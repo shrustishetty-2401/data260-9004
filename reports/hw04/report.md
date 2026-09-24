@@ -176,6 +176,18 @@ The API supports the following operations:
 
 ![DELETE response](evidence/api_delete.png)
 
+### Postman CRUD Evidence
+
+![Postman POST create](evidence/api_post_postman.png)
+
+![Postman GET all](evidence/api_get_all_postman.png)
+
+![Postman GET by ID](evidence/api_get_by_id_postman.png)
+
+![Postman PUT update](evidence/api_put_update_postman.png)
+
+![Postman DELETE](evidence/api_delete_postman.png)
+
 ### Project Structure
 
 ![Project folder structure](evidence/projectfolderstructure.png)
@@ -217,6 +229,20 @@ reports = db.scalars(statement).all()
 ![Fixed page size 50](evidence/n_plus_one_fixed_50.png)
 
 ![Fixed page size 200](evidence/n_plus_one_fixed_200.png)
+
+### Postman N+1 Endpoint Evidence
+
+![Naive page size 10](evidence/n_plus_one_naive_postman_10.png)
+
+![Naive page size 50](evidence/n_plus_one_naive_postman_50.png)
+
+![Naive page size 200](evidence/n_plus_one_naive_postman_200.png)
+
+![Fixed page size 10](evidence/n_plus_one_fixed_postman_10.png)
+
+![Fixed page size 50](evidence/n_plus_one_fixed_postman_50.png)
+
+![Fixed page size 200](evidence/n_plus_one_fixed_postman_200.png)
 
 ### Benchmark Metrics
 
@@ -350,3 +376,30 @@ The final verification status is:
 4. **What changed and why does it work now?**  
    The final report was expanded to include the assignment configuration, implementation snippets, screenshots, performance comparison, RAG evaluation/refusal details, and the four AI-use answers. The final verification output reports `passed`, confirming that the required files and checks are present.
 
+## Postman API Evidence
+
+### CRUD Requests
+
+![Postman POST create](evidence/api_post_postman.png)
+
+![Postman GET all](evidence/api_get_all_postman.png)
+
+![Postman GET by ID](evidence/api_get_by_id_postman.png)
+
+![Postman PUT update](evidence/api_put_update_postman.png)
+
+![Postman DELETE](evidence/api_delete_postman.png)
+
+### N+1 Benchmark Requests
+
+![Naive page size 10](evidence/n_plus_one_naive_postman_10.png)
+
+![Naive page size 50](evidence/n_plus_one_naive_postman_50.png)
+
+![Naive page size 200](evidence/n_plus_one_naive_postman_200.png)
+
+![Fixed page size 10](evidence/n_plus_one_fixed_postman_10.png)
+
+![Fixed page size 50](evidence/n_plus_one_fixed_postman_50.png)
+
+![Fixed page size 200](evidence/n_plus_one_fixed_postman_200.png)

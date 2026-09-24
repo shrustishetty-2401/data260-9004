@@ -350,6 +350,3 @@ The final verification status is:
 4. **What changed and why does it work now?**  
    The final report was expanded to include the assignment configuration, implementation snippets, screenshots, performance comparison, RAG evaluation/refusal details, and the four AI-use answers. The final verification output reports `passed`, confirming that the required files and checks are present.
 
-## Submission File
-
-Submit the final PDF as `Shetty_HW4.pdf`. Keep `reports/hw04/report.pdf` in the repository as the required repository deliverable.

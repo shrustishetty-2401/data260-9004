@@ -1,7 +1,7 @@
 {
   "assignment": "DATA-260 HW4",
   "sid4": "9004",
-  "commit_hash": "20ea5f50ed54847b08beca0f729fd3b06fa0bd46",
+  "commit_hash": "8a8cca9ff68cd55371faf3f1dd22e986c409a65b",
   "verify_seed": 269004,
   "model": "sentence-transformers/all-MiniLM-L6-v2",
   "database": "s9004_rel",

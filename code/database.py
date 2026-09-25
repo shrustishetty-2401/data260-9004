@@ -17,7 +17,7 @@ engine = create_engine(
     pool_pre_ping=True,
 )
 
-SessionLocal = sessionmaker(
+db_session_basede26 = sessionmaker(
     bind=engine,
     autoflush=False,
     autocommit=False,
@@ -29,7 +29,7 @@ class Base(DeclarativeBase):
 
 
 def get_db() -> Generator[Session, None, None]:
-    db = SessionLocal()
+    db = db_session_basede26()
 
     try:
         yield db

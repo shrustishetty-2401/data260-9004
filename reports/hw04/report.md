@@ -36,6 +36,29 @@ The final implementation includes:
 - FAISS-based RAG retrieval
 - RAG evaluation and k-sweep results
 
+## Submission Compliance
+
+The complete repository is available at:
+
+https://github.com/shrustishetty-2401/data260-9004
+
+The final implementation is published on both the `hw4` branch and the `hw4` Git tag.
+
+The required HW4 repository artifacts are present:
+
+- `reports/hw04/RUN_LOG.txt`
+- `reports/hw04/METRICS.md`
+- `reports/hw04/AI_USE.md`
+- `reports/hw04/raw/`
+- `reports/hw04/verification.json`
+- `reports/hw04/report.pdf`
+
+The N+1 benchmark ran 30 requests for each configuration: naive and fixed at page sizes 10, 50, and 200. This produced six metric groups and 180 total requests.
+
+The verification file records the assignment, SID4, commit hash, model, verify seed, individual checks, and final pass/fail status.
+
+The database session dependency uses the required variable name `db_session_basede26`.
+
 ## Part 1 React Client
 
 The React client uses React Router to provide separate pages for login, dashboard, creation, updating, and deletion.
@@ -346,35 +369,15 @@ The system was tested with k values of 1, 3, and 5. Increasing k can improve rec
 
 ### RAG Analysis
 
-The retrieval results show that source metadata and similarity ranking help identify the documents most relevant to a question. The context-engineered configuration improves grounding by labeling sources, removing duplicate or irrelevant chunks, and instructing the model to answer only from the provided context. The No-RAG configuration provides a baseline but does not have document evidence. Basic RAG supplies retrieved text but may include irrelevant or repeated chunks.
+The RAG experiments compare three configurations: a no-RAG baseline, basic RAG, and context-engineered RAG. The no-RAG configuration provides a useful baseline because the model answers without access to the project corpus. Basic RAG retrieves the highest-ranked chunks and places them into the prompt. Context-engineered RAG adds source labels, preserves useful ordering, removes duplicate or irrelevant chunks, and instructs the model to answer only from the supplied evidence.
 
-Questions that can be answered directly from one document generally perform well with a small context size. Questions requiring information from multiple documents benefit from retrieving more than one chunk. However, increasing the context size is not always better because unrelated material can distract the model and reduce answer quality.
+The retrieval output demonstrates which documents support each answer. Each result includes the source name, chunk identifier, rank, and similarity score. This makes the retrieval process inspectable instead of treating the generated answer as unexplained output. The source labels also help distinguish project-specific information from general security guidance such as CISA KEV or OWASP material.
 
-The grounding rules are especially important for Q5 and Q6. Because the required information is not present in the corpus, the system refuses to answer rather than hallucinating. This demonstrates the difference between retrieval quality, context quality, and prompt instructions. Retrieval determines which evidence is available, context engineering determines how that evidence is organized, and the grounding prompt controls whether the model stays within the evidence.
+The context-size sweep tested multiple values of k. A small value of k can provide focused evidence, but it may miss information when a question requires multiple documents. A larger value can improve recall, but it can also add duplicated or unrelated chunks. The results show why retrieval quality and context quality are separate concerns. Retrieving more text does not automatically produce a better answer. The k=3 setting provided a practical balance between coverage and relevance for this corpus.
 
-## Verification
+The required refusal questions were especially important. Questions Q5 and Q6 cannot be answered from the supplied documents, so the context-engineered system refused instead of inventing facts. This confirms that the grounding instructions were effective. The system was evaluated not only on whether it produced an answer, but also on whether it stayed within the available evidence.
 
-The final verification confirms that the corpus, database, N+1 benchmark, RAG outputs, React frontend, backend scripts, report files, and required documentation are present.
-
-![HW4 verification](evidence/hw4_verification.png)
-
-The final verification status is:
-
-`passed`
-
-## AI Use
-
-1. **What was AI used for, and what did I do myself?**  
-   AI was used for debugging support, code explanation, report organization, and troubleshooting. I wrote and ran the commands, started the API and React application, tested login and CRUD behavior, captured screenshots, checked the database, ran the benchmark and RAG scripts, generated the PDF, and verified the final repository.
-
-2. **What was independently verified?**  
-   The database counts, API responses, session cookie, benchmark metrics, RAG outputs, PDF generation, and verification script were independently checked from the local application and terminal.
-
-3. **How was it detected or verified?**  
-   I compared terminal output with the assignment requirements, used curl/Postman-style API calls, inspected MySQL rows, reviewed the raw CSV/JSON artifacts, checked the screenshots, and ran `code/verify_hw4.py` until every required check passed.
-
-4. **What changed and why does it work now?**  
-   The final report was expanded to include the assignment configuration, implementation snippets, screenshots, performance comparison, RAG evaluation/refusal details, and the four AI-use answers. The final verification output reports `passed`, confirming that the required files and checks are present.
+Overall, the experiments show that retrieval identifies potentially relevant information, context engineering organizes that information, and grounding instructions control the model’s behavior. The final system is therefore more transparent and reliable than an unrestricted answer-generation approach. Its main limitation is that answer quality still depends on corpus coverage, chunking, embedding similarity, and the selected context size.
 
 ## Postman API Evidence
 
@@ -403,3 +406,38 @@ The final verification status is:
 ![Fixed page size 50](evidence/n_plus_one_fixed_postman_50.png)
 
 ![Fixed page size 200](evidence/n_plus_one_fixed_postman_200.png)
+
+
+## Verification
+
+The final verification confirms that the corpus, database, N+1 benchmark, RAG outputs, React frontend, backend scripts, report files, and required documentation are present.
+
+![HW4 verification](evidence/hw4_verification.png)
+
+The final verification status is:
+
+`passed`
+
+## AI Use
+
+1. **What was AI used for, and what did I do myself?**
+
+   AI was used for debugging support, code explanation, report organization, and troubleshooting. I wrote and ran the commands, started the API and React application, tested login and CRUD behavior, captured screenshots, checked the database, ran the benchmark and RAG scripts, generated the PDF, and verified the final repository.
+
+2. **Was any AI-produced output wrong or unsuitable?**
+
+   Yes. An early AI-generated report draft was unsuitable because it described API testing but did not include the required Postman CRUD and N+1 screenshots. I independently compared the draft against the assignment, captured the missing Postman evidence, added the screenshots, regenerated the PDF, and reran verification. The final report was accepted only after all verification checks passed.
+
+3. **What was independently verified?**
+
+   The database counts, API responses, session cookie, benchmark metrics, RAG outputs, PDF generation, and verification script were independently checked from the local application and terminal.
+
+4. **How was it detected or verified?**
+
+   I compared terminal output with the assignment requirements, used curl and Postman API calls, inspected MySQL rows, reviewed the raw CSV/JSON artifacts, checked the screenshots, and ran `code/verify_hw4.py` until every required check passed.
+
+5. **What changed and why does it work now?**
+
+   The final report was expanded to include the assignment configuration, implementation snippets, screenshots, performance comparison, RAG evaluation and refusal details, and the five AI-use answers. The final verification output reports `passed`, confirming that the required files and checks are present.
+
+

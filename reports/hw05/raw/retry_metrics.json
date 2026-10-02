@@ -1,0 +1,39 @@
+{
+  "seed": 269004,
+  "rates": [
+    0.0,
+    0.2,
+    0.5
+  ],
+  "runs_per_rate": 50,
+  "total_records": 150,
+  "summaries": [
+    {
+      "rate": 0.0,
+      "runs": 50,
+      "successes": 50,
+      "failures": 0,
+      "success_rate": 1.0,
+      "mean_attempts": 1,
+      "p99_elapsed_ms": 0.002
+    },
+    {
+      "rate": 0.2,
+      "runs": 50,
+      "successes": 50,
+      "failures": 0,
+      "success_rate": 1.0,
+      "mean_attempts": 1.14,
+      "p99_elapsed_ms": 0.132
+    },
+    {
+      "rate": 0.5,
+      "runs": 50,
+      "successes": 50,
+      "failures": 0,
+      "success_rate": 1.0,
+      "mean_attempts": 1.52,
+      "p99_elapsed_ms": 0.058
+    }
+  ]
+}

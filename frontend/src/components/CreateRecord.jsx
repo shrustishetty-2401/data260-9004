@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { createReport } from "../api";
+import { useDispatch } from "react-redux";
+import { addReport } from "../store/reportSlice";
 
 const initialForm = {
   vulnerabilityTitle: "",
@@ -11,6 +12,7 @@ const initialForm = {
 };
 
 export default function CreateRecord({ onSaved, onCancel }) {
+  const dispatch = useDispatch();
   const [form, setForm] = useState(initialForm);
   const [error, setError] = useState("");
   const [saving, setSaving] = useState(false);
@@ -30,11 +32,12 @@ export default function CreateRecord({ onSaved, onCancel }) {
     setSaving(true);
 
     try {
-      await createReport(form);
+      await dispatch(addReport(form)).unwrap();
       onSaved();
     } catch (requestError) {
       setError(
-        requestError.response?.data?.detail ||
+        requestError?.message ||
+          requestError ||
           "Unable to create the report.",
       );
     } finally {

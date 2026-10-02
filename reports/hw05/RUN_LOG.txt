@@ -1,0 +1,27 @@
+DATA-260 HW5 RUN LOG
+SID4: 9004
+PORT_BASE: 8004
+PREFIX: s9004
+SEED: 9004
+VERIFY_SEED: 269004
+DOMAIN_ID: 4
+
+1. Activated the data260 conda environment.
+2. Ran the HW5 database migration.
+3. Verified the packages table and vulnerability foreign-key fields.
+4. Tested package CRUD through the FastAPI API.
+5. Installed Redux Toolkit, React Redux, and Axios.
+6. Built the React frontend successfully.
+7. Created and tested the Meals MCP server.
+8. Tested all four Meals MCP tools in MCP Inspector.
+9. Created and tested the domain MCP server.
+10. Tested search, detail, aggregate, and invalid domain-tool calls.
+11. Implemented bounded retry behavior.
+12. Generated 150 retry benchmark records across 0%, 20%, and 50% rejection rates.
+13. Implemented execute_tool as the single tool entry point.
+14. Passed six offline execute_tool tests.
+15. Implemented the local Ollama agent with qwen3:8b.
+16. Passed the safety-block and maximum-step offline tests.
+17. Ran four Ollama agent scenarios.
+18. Saved agent_runs.jsonl and agent_metrics.json.
+19. Created the HW5 reflection.

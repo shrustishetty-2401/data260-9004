@@ -1,29 +1,20 @@
-import { useEffect, useState } from "react";
-import { deleteReport, getReports } from "../api";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  fetchReports,
+  removeReport,
+} from "../store/reportSlice";
 
 export default function Home({ user, onEdit, onCreate }) {
-  const [reports, setReports] = useState([]);
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(true);
+  const dispatch = useDispatch();
 
-  async function loadReports() {
-    try {
-      setError("");
-      const data = await getReports();
-      setReports(data);
-    } catch (requestError) {
-      setError(
-        requestError.response?.data?.detail ||
-          "Unable to load vulnerability reports.",
-      );
-    } finally {
-      setLoading(false);
-    }
-  }
+  const reports = useSelector((state) => state.reports.items);
+  const status = useSelector((state) => state.reports.status);
+  const error = useSelector((state) => state.reports.error);
 
   useEffect(() => {
-    loadReports();
-  }, []);
+    dispatch(fetchReports());
+  }, [dispatch]);
 
   async function handleDelete(id) {
     const confirmed = window.confirm(
@@ -35,17 +26,13 @@ export default function Home({ user, onEdit, onCreate }) {
     }
 
     try {
-      await deleteReport(id);
-      await loadReports();
-    } catch (requestError) {
-      setError(
-        requestError.response?.data?.detail ||
-          "Unable to delete the report.",
-      );
+      await dispatch(removeReport(id)).unwrap();
+    } catch {
+      return;
     }
   }
 
-  if (loading) {
+  if (status === "loading" || status === "idle") {
     return <main className="card">Loading reports...</main>;
   }
 
@@ -88,6 +75,7 @@ export default function Home({ user, onEdit, onCreate }) {
                     <button onClick={() => onEdit(report.id)}>
                       Update
                     </button>
+
                     <button
                       className="danger"
                       onClick={() => handleDelete(report.id)}

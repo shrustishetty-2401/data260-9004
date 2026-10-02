@@ -1,0 +1,33 @@
+{
+  "assignment": "DATA-260 HW5",
+  "sid4": "9004",
+  "commit_hash": "9002b0c62d974f5c8882322b59860d1fca75dc4c",
+  "model": "qwen3:8b",
+  "port_base": 8004,
+  "prefix": "s9004",
+  "seed": 9004,
+  "verify_seed": 269004,
+  "domain_id": 4,
+  "checks": {
+    "meals_server_present": true,
+    "domain_mcp_server_present": true,
+    "retry_demo_present": true,
+    "retry_benchmark_present": true,
+    "tool_runner_present": true,
+    "agent_runner_present": true,
+    "agent_scenarios_present": true,
+    "raw_retry_records_present": true,
+    "raw_retry_records_have_150_lines": true,
+    "retry_metrics_present": true,
+    "agent_runs_present": true,
+    "agent_metrics_present": true,
+    "reflection_present": true,
+    "run_log_present": true,
+    "metrics_document_present": true,
+    "ai_use_present": true,
+    "tool_runner_metrics_valid": true,
+    "retry_metrics_valid": true,
+    "agent_metrics_valid": true
+  },
+  "status": "passed"
+}

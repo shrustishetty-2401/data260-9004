@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.11" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>report</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+<h1 id="data-260-homework-5-report">DATA-260 Homework 5 Report</h1>
+<h2 id="student-and-configuration">Student and Configuration</h2>
+<ul>
+<li>Student: Shrusti Shetty</li>
+<li>SID4: 9004</li>
+<li>Repository: https://github.com/shrustishetty-2401/data260-9004</li>
+<li>Branch: hw5</li>
+<li>PORT_BASE: 8004</li>
+<li>PREFIX: s9004</li>
+<li>SEED: 9004</li>
+<li>VERIFY_SEED: 269004</li>
+<li>DOMAIN_ID: 4</li>
+<li>Local model: qwen3:8b</li>
+<li>Hardware: MacBook Pro, Apple M1 Pro chip, 10-core CPU (8 performance
+and 2 efficiency cores), 32 GB memory</li>
+<li>Tagged commit (hw5): 9002b0c62d974f5c8882322b59860d1fca75dc4c</li>
+<li>Collaborator access: Sbnikitha and supriyaselvanganesan have access
+to the GitHub repository.</li>
+</ul>
+<p>This homework extends the existing DATA-260 HW4 repository. The
+implementation includes a related package entity, package and
+vulnerability CRUD APIs, Redux Toolkit state management, two MCP
+servers, retry handling, a safe tool execution layer, and a local Ollama
+agent.</p>
+<h2 id="part-1-database-and-api-extension">Part 1: Database and API
+Extension</h2>
+<h3 id="database-design">Database Design</h3>
+<p>The HW5 database adds a <code>packages</code> table to the existing
+vulnerability database. Each package has an integer primary key, name,
+ecosystem, unique package code, and creation and update timestamps.</p>
+<p>The <code>vulnerabilities</code> table was extended with:</p>
+<ul>
+<li><code>package_id</code> as a foreign key to
+<code>packages</code></li>
+<li><code>vulnerability_code</code> as a unique identifier</li>
+<li><code>available_count</code> with a numeric default</li>
+<li><code>created_at</code></li>
+<li><code>updated_at</code></li>
+</ul>
+<p>The migration preserved the existing HW4 records. Existing package
+names were converted into package records, and every vulnerability was
+assigned a package ID and deterministic vulnerability code.</p>
+<p>The database was verified with MySQL. It contains the
+<code>packages</code>, <code>vulnerabilities</code>,
+<code>related_items</code>, <code>users</code>, and
+<code>sessions</code> tables. The migration created 253 package records,
+assigned package IDs to all vulnerabilities, and assigned vulnerability
+codes without missing values.</p>
+<h3 id="package-api">Package API</h3>
+<p>The package router provides:</p>
+<ul>
+<li><code>POST /api/packages</code></li>
+<li><code>GET /api/packages</code></li>
+<li><code>GET /api/packages/{package_id}</code></li>
+<li><code>PUT /api/packages/{package_id}</code></li>
+<li><code>DELETE /api/packages/{package_id}</code></li>
+<li><code>GET /api/packages/{package_id}/vulnerabilities</code></li>
+</ul>
+<p>The API validates package names, ecosystems, and unique package
+codes. Deleting a package that still has related vulnerabilities is
+prevented with an error response.</p>
+<h3 id="vulnerability-api">Vulnerability API</h3>
+<p>The vulnerability router retains the HW4 CRUD operations and now
+includes package relationships and HW5 fields in the response. List and
+detail requests use eager loading so package and related-item
+information can be returned together.</p>
+<p>The API uses Pydantic validation, authenticated sessions, correct
+HTTP status codes, and JSON error messages. Package creation returned
+<code>201 Created</code>, update returned <code>200 OK</code>, and
+deletion returned a successful deletion message.</p>
+<h3 id="redux-toolkit-and-react">Redux Toolkit and React</h3>
+<p>The React frontend uses Axios for HTTP requests and Redux Toolkit for
+centralized report state. The Redux slice defines asynchronous actions
+for fetching, creating, updating, and deleting reports.</p>
+<p>The React components dispatch Redux actions instead of managing all
+server data locally. The Home component loads reports into the Redux
+store, CreateRecord dispatches the create action, UpdateRecord
+dispatches the update action, and DeleteRecord dispatches the delete
+action.</p>
+<p>The frontend production build completed successfully with Vite.</p>
+<h2 id="part-2-mcp-servers">Part 2: MCP Servers</h2>
+<h3 id="meals-mcp-server">Meals MCP Server</h3>
+<p>The Meals MCP server uses the TheMealDB public API through a local
+STDIO MCP server. The server exposes exactly four tools:</p>
+<ol type="1">
+<li><code>search_meals_by_name(query, limit=5)</code></li>
+<li><code>meals_by_ingredient(ingredient, limit=12)</code></li>
+<li><code>random_meal()</code></li>
+<li><code>meal_details(id)</code></li>
+</ol>
+<p>The server uses HTTP requests with a bounded timeout and returns
+simplified JSON results. Search results include the meal ID, meal name,
+area, category, and thumbnail. Detailed meal results include the
+complete meal information returned by TheMealDB.</p>
+<p>The server was tested through MCP Inspector. The search tool
+successfully returned Spicy Arrabiata Penne for the query
+<code>Arrabiata</code>. The ingredient search returned chicken-based
+meals. The random-meal tool returned one meal, and the meal-detail tool
+returned the detailed information for meal ID <code>52771</code>.</p>
+<h3 id="domain-mcp-server">Domain MCP Server</h3>
+<p>The domain MCP server uses the local <code>s9004_rel</code> database
+and exposes exactly three read-only tools:</p>
+<ol type="1">
+<li><code>search_vulnerabilities(query, limit=10)</code></li>
+<li><code>vulnerability_detail(vulnerability_id)</code></li>
+<li><code>vulnerability_aggregate()</code></li>
+</ol>
+<p>Each tool returns the same envelope:</p>
+<p>```json { “ok”: true, “data”: {}, “error”: null }</p>
+<h2 id="part-3-retry-and-fault-injection-benchmark">Part 3: Retry and
+Fault-Injection Benchmark</h2>
+<p>The retry layer uses bounded retries with exponential backoff. A
+failed operation can be attempted up to three times. The delay increases
+after each retry, which prevents immediate repeated requests from
+overwhelming a service.</p>
+<p>The retry behavior was tested in three required cases:</p>
+<ul>
+<li>First attempt succeeds immediately.</li>
+<li>First attempt fails with a temporary error and the second attempt
+succeeds.</li>
+<li>All three attempts fail and the operation returns a structured
+failure.</li>
+</ul>
+<p>The benchmark uses <code>VERIFY_SEED=269004</code> for deterministic
+fault injection. Three rejection rates were tested:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Rejection rate</th>
+<th style="text-align: right;">Runs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">0%</td>
+<td style="text-align: right;">50</td>
+</tr>
+<tr>
+<td style="text-align: right;">20%</td>
+<td style="text-align: right;">50</td>
+</tr>
+<tr>
+<td style="text-align: right;">50%</td>
+<td style="text-align: right;">50</td>
+</tr>
+</tbody>
+</table>
+<p>The benchmark generated 150 raw records in
+<code>raw/retry_records.jsonl</code>. The metrics file records the
+number of successes, failures, success rate, mean attempts, and p99
+elapsed time for each rejection rate.</p>
+<p>The raw records preserve each individual request, including its
+attempts, error messages, retry status, and final result. This makes the
+benchmark reproducible and allows the reported metrics to be
+independently checked.</p>
+<p>The retry design is useful for batch workloads because a temporary
+failure can be retried without stopping the entire run. For interactive
+requests, the retry limit is important because users should not wait
+indefinitely. The bounded three-attempt design balances reliability with
+predictable response time.</p>
+<h3 id="required-retry-metrics">Required Retry Metrics</h3>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: right;">Injected failure rate</th>
+<th style="text-align: right;">Requests</th>
+<th style="text-align: right;">Success rate</th>
+<th style="text-align: right;">Mean latency (ms)</th>
+<th style="text-align: right;">P99 latency (ms)</th>
+<th style="text-align: right;">Mean attempts</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">0%</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">100%</td>
+<td style="text-align: right;">0.00006</td>
+<td style="text-align: right;">0.002</td>
+<td style="text-align: right;">1.00</td>
+</tr>
+<tr>
+<td style="text-align: right;">20%</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">100%</td>
+<td style="text-align: right;">0.00806</td>
+<td style="text-align: right;">0.132</td>
+<td style="text-align: right;">1.14</td>
+</tr>
+<tr>
+<td style="text-align: right;">50%</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">100%</td>
+<td style="text-align: right;">0.0166</td>
+<td style="text-align: right;">0.058</td>
+<td style="text-align: right;">1.52</td>
+</tr>
+</tbody>
+</table>
+<p>The retry policy is suitable for interactive use because all requests
+completed successfully with a maximum of three attempts and very low
+latency. For batch processing, I would allow more retries and slightly
+longer backoff delays because batch jobs can tolerate additional
+processing time in exchange for improved resilience during temporary
+failures.</p>
+<h3 id="domain-tool-input-contracts-and-rejected-calls">Domain Tool
+Input Contracts and Rejected Calls</h3>
+<p>All three domain tools use the response envelope:</p>
+<p>```json {“ok”: true, “data”: {}, “error”: null}</p>
+<h2 id="part-4-safe-tool-execution">Part 4: Safe Tool Execution</h2>
+<p>The <code>execute_tool(name, inputs)</code> function is the single
+entry point for domain-tool execution. It accepts a tool name and input
+object, validates the request, calls only an approved domain tool, and
+returns a JSON string.</p>
+<p>The approved tools are:</p>
+<ul>
+<li><code>search_vulnerabilities</code></li>
+<li><code>vulnerability_detail</code></li>
+<li><code>vulnerability_aggregate</code></li>
+</ul>
+<p>Unknown tools are rejected. Inputs must be JSON objects, and
+aggregate requests reject unexpected fields. Exceptions are converted
+into the standard response envelope instead of being exposed as
+unhandled errors.</p>
+<p>The offline test runner verified six cases:</p>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Valid vulnerability search</td>
+<td>PASS</td>
+</tr>
+<tr>
+<td>Invalid vulnerability search</td>
+<td>PASS</td>
+</tr>
+<tr>
+<td>Valid vulnerability detail</td>
+<td>PASS</td>
+</tr>
+<tr>
+<td>Invalid vulnerability detail</td>
+<td>PASS</td>
+</tr>
+<tr>
+<td>Valid vulnerability aggregate</td>
+<td>PASS</td>
+</tr>
+<tr>
+<td>Invalid vulnerability aggregate</td>
+<td>PASS</td>
+</tr>
+</tbody>
+</table>
+<p>The final result was 6/6 tests passed. These tests run without an LLM
+and directly verify the tool boundary, input validation, error handling,
+and response-envelope format.</p>
+<p>##Part 5: Local Agent and Safety Controls</p>
+<p>The local agent uses Ollama with the <code>qwen3:8b</code> model. The
+model receives a system prompt describing the three approved domain
+tools and returns either a tool request or a final response.</p>
+<p>The agent tracks every step with:</p>
+<ul>
+<li>Step number</li>
+<li>Tool name</li>
+<li>Tool input</li>
+<li>Tool result</li>
+<li>Final response</li>
+<li>Stop reason</li>
+</ul>
+<p>The agent stops when the model finishes, when a safety rule blocks
+the request, or when the maximum step count is reached. All runs are
+stored in <code>raw/agent_runs.jsonl</code>.</p>
+<p>The safety rule blocks destructive or sensitive requests containing
+terms such as <code>delete</code>, <code>drop</code>,
+<code>password</code>, <code>secret</code>, <code>credential</code>, and
+<code>token</code>. The request to delete all vulnerability records was
+blocked before any database tool was called.</p>
+<p>The offline tests passed:</p>
+<ul>
+<li>Safety-block test: PASS</li>
+<li>Maximum-step test: PASS</li>
+</ul>
+<p>The four live Ollama scenarios were:</p>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Stop reason</th>
+<th style="text-align: right;">Steps</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Vulnerability search</td>
+<td>Maximum step limit</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr>
+<td>Vulnerability detail</td>
+<td>Maximum step limit</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr>
+<td>Vulnerability aggregate</td>
+<td>Model finished</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>Destructive request</td>
+<td>Safety block</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="agent-scenario-metrics">Agent Scenario Metrics</h3>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th style="text-align: right;">Steps</th>
+<th style="text-align: right;">Tool-call count</th>
+<th>Stop reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Vulnerability search</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
+<td>Maximum step limit</td>
+</tr>
+<tr>
+<td>Vulnerability detail</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
+<td>Maximum step limit</td>
+</tr>
+<tr>
+<td>Vulnerability aggregate</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td>Model finished</td>
+</tr>
+<tr>
+<td>Destructive request</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td>Safety block</td>
+</tr>
+</tbody>
+</table>
+<p>The model sometimes required multiple turns to correct its tool
+inputs. For example, one run initially supplied a vulnerability code to
+the numeric-ID detail tool, received a validation error, and then
+corrected the request using the numeric ID. This shows why structured
+tool schemas, validation, and bounded steps are important.</p>
+<h3 id="reflection">Reflection</h3>
+<p>One representative run was the vulnerability-detail request. The user
+asked the agent to show the details for vulnerability ID 10002. The
+harness first received a tool call in which the identifier was
+represented as the string <code>"10002"</code>. The detail tool rejected
+that input because the identifier must be numeric. The error was
+returned through the standard <code>{ok, data, error}</code> envelope,
+so the agent did not crash and could inspect the failure.</p>
+<p>On the next step, the model repeated the same string input, which
+produced the same validation error. On the third step, the model
+corrected the input to the integer <code>10002</code>. The tool then
+returned the vulnerability record, including its title, package,
+category, availability count, and timestamps. However, the harness
+stopped because the configured maximum of three tool steps had been
+reached. Therefore, the final stop reason was <code>max_steps</code>,
+even though the corrected tool call succeeded.</p>
+<p>This run demonstrates why typed schemas and bounded execution are
+important. The schema prevented a malformed value from reaching the
+database, while the step limit prevented the agent from continuing
+indefinitely. It also showed that the model may need more than one turn
+to recover from an input-format error. The logged steps make this
+behavior reproducible and explain exactly why the run stopped.</p>
+<h3 id="ai-use">AI Use</h3>
+<ol type="1">
+<li><p>I used an AI assistant to help interpret the homework
+requirements, troubleshoot implementation errors, organize the report,
+and explain how to run and verify the API, MCP servers, retry tests, and
+agent tests. I wrote and ran the application code, commands, tests, and
+screenshots myself.</p></li>
+<li><p>One issue I independently verified was the agent’s handling of
+vulnerability IDs. The model initially sent the ID as a string or used
+the wrong input field, which was not accepted by the numeric-ID detail
+tool.</p></li>
+<li><p>I detected the issue by checking the returned error envelope and
+reviewing the recorded steps in <code>raw/agent_runs.jsonl</code>. The
+log showed the invalid input, the validation error, and the later
+successful call using the integer ID.</p></li>
+<li><p>I kept input validation and the standard
+<code>{ok, data, error}</code> response format in the tool layer. This
+allowed invalid requests to return structured errors without crashing,
+while valid corrected requests could continue normally.</p></li>
+</ol>
+<h2 id="verification">Verification</h2>
+<p>The final verification script records:</p>
+<ul>
+<li>Assignment name</li>
+<li>SID4</li>
+<li>Commit hash</li>
+<li>Model</li>
+<li>Port configuration</li>
+<li>Prefix</li>
+<li>SEED</li>
+<li>VERIFY_SEED</li>
+<li>DOMAIN_ID</li>
+<li>Individual pass/fail checks</li>
+<li>Overall verification status</li>
+</ul>
+<p>The generated raw artifacts, documentation files, code files, and
+metrics are stored under <code>reports/hw05/</code>.</p>
+<h2 id="submitted-artifacts">Submitted Artifacts</h2>
+<p>The repository contains the required HW5 files:</p>
+<ul>
+<li><code>RUN_LOG.txt</code></li>
+<li><code>METRICS.md</code></li>
+<li><code>AI_USE.md</code></li>
+<li><code>REFLECTION.md</code></li>
+<li><code>verification.json</code></li>
+<li><code>raw/retry_records.jsonl</code></li>
+<li><code>raw/retry_metrics.json</code></li>
+<li><code>raw/agent_runs.jsonl</code></li>
+<li><code>raw/agent_metrics.json</code></li>
+</ul>
+<p>The final verification status is <code>passed</code>. The
+verification record includes the assignment, SID4, commit hash, model,
+configuration values, individual checks, and overall status.</p>
+<h2 id="evidence-screenshots">Evidence Screenshots</h2>
+<p>The <code>evidence/</code> directory contains screenshots for:</p>
+<ul>
+<li>Package CRUD API responses</li>
+<li>React package and vulnerability pages</li>
+<li>Meals MCP Inspector tools</li>
+<li>Domain MCP Inspector tools</li>
+<li>Retry benchmark output</li>
+<li>Offline tool-runner tests</li>
+<li>Agent safety and maximum-step tests</li>
+<li>Ollama agent scenario results</li>
+<li>Database table verification</li>
+</ul>
+<h2 id="evidence-screenshots-1">Evidence Screenshots</h2>
+<h3 id="meals-mcp-inspector">Meals MCP Inspector</h3>
+<figure>
+<img src="evidence/mcp_meals_search.png" alt="Meals search" />
+<figcaption aria-hidden="true">Meals search</figcaption>
+</figure>
+<figure>
+<img src="evidence/mcp_meals_ingredient.png"
+alt="Meals ingredient search" />
+<figcaption aria-hidden="true">Meals ingredient search</figcaption>
+</figure>
+<figure>
+<img src="evidence/mcp_meals_random.png" alt="Random meal" />
+<figcaption aria-hidden="true">Random meal</figcaption>
+</figure>
+<figure>
+<img src="evidence/mcp_meals_details.png" alt="Meal details" />
+<figcaption aria-hidden="true">Meal details</figcaption>
+</figure>
+<h3 id="domain-mcp-inspector">Domain MCP Inspector</h3>
+<figure>
+<img src="evidence/mcp_domain_search.png" alt="Domain search" />
+<figcaption aria-hidden="true">Domain search</figcaption>
+</figure>
+<figure>
+<img src="evidence/mcp_domain_detail.png" alt="Domain detail" />
+<figcaption aria-hidden="true">Domain detail</figcaption>
+</figure>
+<figure>
+<img src="evidence/mcp_domain_aggregate.png" alt="Domain aggregate" />
+<figcaption aria-hidden="true">Domain aggregate</figcaption>
+</figure>
+<figure>
+<img src="evidence/mcp_domain_invalid.png"
+alt="Invalid domain request" />
+<figcaption aria-hidden="true">Invalid domain request</figcaption>
+</figure>
+<h3 id="offline-tests-and-verification">Offline Tests and
+Verification</h3>
+<figure>
+<img src="evidence/retry_demo.png" alt="Retry demo" />
+<figcaption aria-hidden="true">Retry demo</figcaption>
+</figure>
+<figure>
+<img src="evidence/tool_runner_tests.png" alt="Tool runner tests" />
+<figcaption aria-hidden="true">Tool runner tests</figcaption>
+</figure>
+<figure>
+<img src="evidence/agent_offline_tests.png" alt="Agent offline tests" />
+<figcaption aria-hidden="true">Agent offline tests</figcaption>
+</figure>
+<figure>
+<img src="evidence/hw5_verification.png" alt="HW5 verification" />
+<figcaption aria-hidden="true">HW5 verification</figcaption>
+</figure>
+<h3 id="part-1-api-and-database-evidence">Part 1 API and Database
+Evidence</h3>
+<h4 id="package-api-1">Package API</h4>
+<figure>
+<img src="evidence/package_create_postman.png" alt="Package create" />
+<figcaption aria-hidden="true">Package create</figcaption>
+</figure>
+<figure>
+<img src="evidence/package_list_postman.png" alt="Package list" />
+<figcaption aria-hidden="true">Package list</figcaption>
+</figure>
+<figure>
+<img src="evidence/package_detail_postman.png" alt="Package detail" />
+<figcaption aria-hidden="true">Package detail</figcaption>
+</figure>
+<figure>
+<img src="evidence/package_update_postman.png" alt="Package update" />
+<figcaption aria-hidden="true">Package update</figcaption>
+</figure>
+<figure>
+<img src="evidence/package_vulnerabilities_postman.png"
+alt="Package vulnerabilities" />
+<figcaption aria-hidden="true">Package vulnerabilities</figcaption>
+</figure>
+<figure>
+<img src="evidence/package_delete_postman.png" alt="Package delete" />
+<figcaption aria-hidden="true">Package delete</figcaption>
+</figure>
+<h4 id="report-api">Report API</h4>
+<figure>
+<img src="evidence/report_list_postman.png" alt="Report list" />
+<figcaption aria-hidden="true">Report list</figcaption>
+</figure>
+<figure>
+<img src="evidence/report_detail_postman.png" alt="Report detail" />
+<figcaption aria-hidden="true">Report detail</figcaption>
+</figure>
+<figure>
+<img src="evidence/report_create_postman.png" alt="Report create" />
+<figcaption aria-hidden="true">Report create</figcaption>
+</figure>
+<figure>
+<img src="evidence/report_update_postman.png" alt="Report update" />
+<figcaption aria-hidden="true">Report update</figcaption>
+</figure>
+<figure>
+<img src="evidence/report_delete_postman.png" alt="Report delete" />
+<figcaption aria-hidden="true">Report delete</figcaption>
+</figure>
+<h4 id="database">Database</h4>
+<figure>
+<img src="evidence/database_hw5.png"
+alt="HW5 database tables and counts" />
+<figcaption aria-hidden="true">HW5 database tables and
+counts</figcaption>
+</figure>
+<h3 id="redux-client-evidence">Redux Client Evidence</h3>
+<figure>
+<img src="evidence/react_home_code_ui.png"
+alt="Home page with Redux code" />
+<figcaption aria-hidden="true">Home page with Redux code</figcaption>
+</figure>
+<figure>
+<img src="evidence/react_create_code_ui.png"
+alt="Create page with Redux code" />
+<figcaption aria-hidden="true">Create page with Redux code</figcaption>
+</figure>
+<figure>
+<img src="evidence/react_update_code_ui.png"
+alt="Update page with Redux code" />
+<figcaption aria-hidden="true">Update page with Redux code</figcaption>
+</figure>
+<figure>
+<img src="evidence/react_delete_code_ui.png"
+alt="Delete page with Redux code" />
+<figcaption aria-hidden="true">Delete page with Redux code</figcaption>
+</figure>
+</body>
+</html>

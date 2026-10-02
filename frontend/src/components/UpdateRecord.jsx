@@ -1,11 +1,15 @@
 import { useEffect, useState } from "react";
-import { getReports, updateReport } from "../api";
+import { useDispatch } from "react-redux";
+import { editReport, fetchReports } from "../store/reportSlice";
 
 export default function UpdateRecord({ reportId, onSaved, onCancel }) {
+  const dispatch = useDispatch();
+
   const [form, setForm] = useState({
     vulnerabilityTitle: "",
     packageName: "",
   });
+
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
@@ -13,7 +17,13 @@ export default function UpdateRecord({ reportId, onSaved, onCancel }) {
   useEffect(() => {
     async function loadReport() {
       try {
-        const reports = await getReports(0, 200);
+        const reports = await dispatch(
+          fetchReports({
+            skip: 0,
+            limit: 200,
+          }),
+        ).unwrap();
+
         const report = reports.find(
           (item) => item.id === Number(reportId),
         );
@@ -29,7 +39,8 @@ export default function UpdateRecord({ reportId, onSaved, onCancel }) {
         });
       } catch (requestError) {
         setError(
-          requestError.response?.data?.detail ||
+          requestError?.message ||
+            requestError ||
             "Unable to load the report.",
         );
       } finally {
@@ -38,7 +49,7 @@ export default function UpdateRecord({ reportId, onSaved, onCancel }) {
     }
 
     loadReport();
-  }, [reportId]);
+  }, [dispatch, reportId]);
 
   function updateField(event) {
     const { name, value } = event.target;
@@ -55,11 +66,18 @@ export default function UpdateRecord({ reportId, onSaved, onCancel }) {
     setSaving(true);
 
     try {
-      await updateReport(reportId, form);
+      await dispatch(
+        editReport({
+          id: reportId,
+          payload: form,
+        }),
+      ).unwrap();
+
       onSaved();
     } catch (requestError) {
       setError(
-        requestError.response?.data?.detail ||
+        requestError?.message ||
+          requestError ||
           "Unable to update the report.",
       );
     } finally {
@@ -103,7 +121,11 @@ export default function UpdateRecord({ reportId, onSaved, onCancel }) {
             {saving ? "Saving..." : "Save Changes"}
           </button>
 
-          <button type="button" className="secondary" onClick={onCancel}>
+          <button
+            type="button"
+            className="secondary"
+            onClick={onCancel}
+          >
             Cancel
           </button>
         </div>

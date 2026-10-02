@@ -171,59 +171,151 @@
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
 </head>
 <body>
+<style>
+body {
+  font-size: 11pt;
+}
+
+h1 {
+  font-size: 14pt;
+}
+
+h2 {
+  font-size: 12pt;
+}
+
+h3 {
+  font-size: 11pt;
+}
+</style>
 <h1 id="data-260-homework-5-report">DATA-260 Homework 5 Report</h1>
 <h2 id="student-and-configuration">Student and Configuration</h2>
 <ul>
 <li>Student: Shrusti Shetty</li>
 <li>SID4: 9004</li>
 <li>Repository: https://github.com/shrustishetty-2401/data260-9004</li>
-<li>Branch: hw5</li>
+<li>Branch: <code>hw5</code></li>
 <li>PORT_BASE: 8004</li>
-<li>PREFIX: s9004</li>
+<li>PREFIX: <code>s9004</code></li>
 <li>SEED: 9004</li>
 <li>VERIFY_SEED: 269004</li>
 <li>DOMAIN_ID: 4</li>
-<li>Local model: qwen3:8b</li>
-<li>Hardware: MacBook Pro, Apple M1 Pro chip, 10-core CPU (8 performance
-and 2 efficiency cores), 32 GB memory</li>
-<li>Tagged commit (hw5): 4c6984956115f8c50e3f0573313711fba2c50528</li>
+<li>Local model: <code>qwen3:8b</code></li>
+<li>Hardware: MacBook Pro, Apple M1 Pro chip, 10-core CPU, 32 GB
+memory</li>
+<li>Tagged commit (hw5):
+<code>4c6984956115f8c50e3f0573313711fba2c50528</code></li>
 <li>Collaborator access: Sbnikitha and supriyaselvanganesan have access
 to the GitHub repository.</li>
 </ul>
-<p>This homework extends the existing DATA-260 HW4 repository. The
-implementation includes a related package entity, package and
-vulnerability CRUD APIs, Redux Toolkit state management, two MCP
-servers, retry handling, a safe tool execution layer, and a local Ollama
-agent.</p>
+<p>This homework extends the HW4 repository with package relationships,
+CRUD APIs, Redux Toolkit state management, two MCP servers, retry
+handling, safe tool execution, and a local Ollama agent.</p>
 <h2 id="part-1-database-and-api-extension">Part 1: Database and API
 Extension</h2>
+<p>Passwords are never stored in plaintext. The database stores password
+hashes, and login verifies submitted passwords against the stored
+hash.</p>
 <h3 id="database-design">Database Design</h3>
-<p>The HW5 database adds a <code>packages</code> table to the existing
-vulnerability database. Each package has an integer primary key, name,
-ecosystem, unique package code, and creation and update timestamps.</p>
-<p>The <code>vulnerabilities</code> table was extended with:</p>
-<ul>
-<li><code>package_id</code> as a foreign key to
-<code>packages</code></li>
-<li><code>vulnerability_code</code> as a unique identifier</li>
-<li><code>available_count</code> with a numeric default</li>
-<li><code>created_at</code></li>
-<li><code>updated_at</code></li>
-</ul>
-<p>The migration preserved the existing HW4 records. Existing package
-names were converted into package records, and every vulnerability was
-assigned a package ID and deterministic vulnerability code.</p>
-<p>The database was verified with MySQL. It contains the
-<code>packages</code>, <code>vulnerabilities</code>,
-<code>related_items</code>, <code>users</code>, and
-<code>sessions</code> tables. The migration created 253 package records,
-assigned package IDs to all vulnerabilities, and assigned vulnerability
-codes without missing values.</p>
+<p>The database adds a <code>packages</code> table with an integer
+primary key, name, ecosystem, unique package code, and timestamps. The
+<code>vulnerabilities</code> table includes <code>package_id</code>,
+<code>vulnerability_code</code>, <code>available_count</code>,
+<code>created_at</code>, and <code>updated_at</code>. Existing HW4
+records were preserved and assigned deterministic package IDs and
+vulnerability codes.</p>
+<p>MySQL verification found the <code>packages</code>,
+<code>vulnerabilities</code>, <code>related_items</code>,
+<code>users</code>, and <code>sessions</code> tables. The database
+contains 253 packages and 5000 vulnerabilities.</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Package(Base):</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    __tablename__ <span class="op">=</span> <span class="st">&quot;packages&quot;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">id</span> <span class="op">=</span> mapped_column(Integer, primary_key<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    name <span class="op">=</span> mapped_column(String(<span class="dv">255</span>), nullable<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    ecosystem <span class="op">=</span> mapped_column(String(<span class="dv">100</span>), nullable<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    package_code <span class="op">=</span> mapped_column(String(<span class="dv">255</span>), unique<span class="op">=</span><span class="va">True</span>, nullable<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Vulnerability(Base):</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    __tablename__ <span class="op">=</span> <span class="st">&quot;vulnerabilities&quot;</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    package_id <span class="op">=</span> mapped_column(ForeignKey(<span class="st">&quot;packages.id&quot;</span>), nullable<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    vulnerability_code <span class="op">=</span> mapped_column(String(<span class="dv">255</span>), unique<span class="op">=</span><span class="va">True</span>, nullable<span class="op">=</span><span class="va">False</span>)</span></code></pre></div>
+<figure>
+<img src="evidence/database_hw5.png"
+alt="HW5 database tables and counts" />
+<figcaption aria-hidden="true">HW5 database tables and
+counts</figcaption>
+</figure>
 <h3 id="package-api">Package API</h3>
-<p>The package router provides:</p>
+<p>Routes:</p>
 <ul>
 <li><code>POST /api/packages</code></li>
 <li><code>GET /api/packages</code></li>
@@ -232,109 +324,206 @@ codes without missing values.</p>
 <li><code>DELETE /api/packages/{package_id}</code></li>
 <li><code>GET /api/packages/{package_id}/vulnerabilities</code></li>
 </ul>
-<p>The API validates package names, ecosystems, and unique package
-codes. Deleting a package that still has related vulnerabilities is
-prevented with an error response.</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="at">@package_router.delete</span>(<span class="st">&quot;/</span><span class="sc">{package_id}</span><span class="st">&quot;</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> delete_package(package_id: <span class="bu">int</span>, db: Session <span class="op">=</span> Depends(get_db)):</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    package <span class="op">=</span> db.get(Package, package_id)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> package <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> HTTPException(status_code<span class="op">=</span><span class="dv">404</span>, detail<span class="op">=</span><span class="st">&quot;Package not found&quot;</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> package.vulnerabilities:</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> HTTPException(</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>            status_code<span class="op">=</span><span class="dv">409</span>,</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>            detail<span class="op">=</span><span class="st">&quot;Package cannot be deleted while vulnerabilities use it&quot;</span>,</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    db.delete(package)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    db.commit()</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {<span class="st">&quot;message&quot;</span>: <span class="st">&quot;Package deleted successfully&quot;</span>}</span></code></pre></div>
+<figure>
+<img src="evidence/package_delete_blocked_postman.png"
+alt="Blocked package deletion" />
+<figcaption aria-hidden="true">Blocked package deletion</figcaption>
+</figure>
+<figure>
+<img src="evidence/package_create_postman.png" alt="Package create" />
+<figcaption aria-hidden="true">Package create</figcaption>
+</figure>
+<figure>
+<img src="evidence/package_list_postman.png" alt="Package list" />
+<figcaption aria-hidden="true">Package list</figcaption>
+</figure>
+<figure>
+<img src="evidence/package_detail_postman.png" alt="Package detail" />
+<figcaption aria-hidden="true">Package detail</figcaption>
+</figure>
+<figure>
+<img src="evidence/package_update_postman.png" alt="Package update" />
+<figcaption aria-hidden="true">Package update</figcaption>
+</figure>
+<figure>
+<img src="evidence/package_vulnerabilities_postman.png"
+alt="Package vulnerabilities" />
+<figcaption aria-hidden="true">Package vulnerabilities</figcaption>
+</figure>
+<figure>
+<img src="evidence/package_delete_postman.png" alt="Package delete" />
+<figcaption aria-hidden="true">Package delete</figcaption>
+</figure>
+<p>The API validates package fields, returns appropriate HTTP status
+codes, and prevents deletion when vulnerabilities still reference the
+package.</p>
 <h3 id="vulnerability-api">Vulnerability API</h3>
-<p>The vulnerability router retains the HW4 CRUD operations and now
-includes package relationships and HW5 fields in the response. List and
-detail requests use eager loading so package and related-item
-information can be returned together.</p>
-<p>The API uses Pydantic validation, authenticated sessions, correct
-HTTP status codes, and JSON error messages. Package creation returned
-<code>201 Created</code>, update returned <code>200 OK</code>, and
-deletion returned a successful deletion message.</p>
+<p>The vulnerability API retains HW4 CRUD operations and includes
+package relationships and HW5 fields. Pydantic validation, authenticated
+sessions, eager loading, and structured JSON errors are used.</p>
+<figure>
+<img src="evidence/report_list_postman.png" alt="Report list" />
+<figcaption aria-hidden="true">Report list</figcaption>
+</figure>
+<figure>
+<img src="evidence/report_detail_postman.png" alt="Report detail" />
+<figcaption aria-hidden="true">Report detail</figcaption>
+</figure>
+<figure>
+<img src="evidence/report_create_postman.png" alt="Report create" />
+<figcaption aria-hidden="true">Report create</figcaption>
+</figure>
+<figure>
+<img src="evidence/report_update_postman.png" alt="Report update" />
+<figcaption aria-hidden="true">Report update</figcaption>
+</figure>
+<figure>
+<img src="evidence/report_delete_postman.png" alt="Report delete" />
+<figcaption aria-hidden="true">Report delete</figcaption>
+</figure>
 <h3 id="redux-toolkit-and-react">Redux Toolkit and React</h3>
-<p>The React frontend uses Axios for HTTP requests and Redux Toolkit for
-centralized report state. The Redux slice defines asynchronous actions
-for fetching, creating, updating, and deleting reports.</p>
-<p>The React components dispatch Redux actions instead of managing all
-server data locally. The Home component loads reports into the Redux
-store, CreateRecord dispatches the create action, UpdateRecord
-dispatches the update action, and DeleteRecord dispatches the delete
-action.</p>
-<p>The frontend production build completed successfully with Vite.</p>
+<p>The React frontend uses Axios and Redux Toolkit. The Redux slice
+provides asynchronous actions for fetching, creating, updating, and
+deleting reports.</p>
+<figure>
+<img src="evidence/react_home_code_ui.png"
+alt="Home page with Redux code" />
+<figcaption aria-hidden="true">Home page with Redux code</figcaption>
+</figure>
+<figure>
+<img src="evidence/react_create_code_ui.png"
+alt="Create page with Redux code" />
+<figcaption aria-hidden="true">Create page with Redux code</figcaption>
+</figure>
+<figure>
+<img src="evidence/react_update_code_ui.png"
+alt="Update page with Redux code" />
+<figcaption aria-hidden="true">Update page with Redux code</figcaption>
+</figure>
+<figure>
+<img src="evidence/react_delete_code_ui.png"
+alt="Delete page with Redux code" />
+<figcaption aria-hidden="true">Delete page with Redux code</figcaption>
+</figure>
 <h2 id="part-2-mcp-servers">Part 2: MCP Servers</h2>
 <h3 id="meals-mcp-server">Meals MCP Server</h3>
-<p>The Meals MCP server uses the TheMealDB public API through a local
-STDIO MCP server. The server exposes exactly four tools:</p>
-<ol type="1">
-<li><code>search_meals_by_name(query, limit=5)</code></li>
-<li><code>meals_by_ingredient(ingredient, limit=12)</code></li>
-<li><code>random_meal()</code></li>
-<li><code>meal_details(id)</code></li>
-</ol>
-<p>The server uses HTTP requests with a bounded timeout and returns
-simplified JSON results. Search results include the meal ID, meal name,
-area, category, and thumbnail. Detailed meal results include the
-complete meal information returned by TheMealDB.</p>
-<p>The server was tested through MCP Inspector. The search tool
-successfully returned Spicy Arrabiata Penne for the query
-<code>Arrabiata</code>. The ingredient search returned chicken-based
-meals. The random-meal tool returned one meal, and the meal-detail tool
-returned the detailed information for meal ID <code>52771</code>.</p>
+<p>The Meals server uses TheMealDB through a local STDIO MCP server and
+exposes four tools.</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="at">@mcp.tool</span>()</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> search_meals_by_name(query: <span class="bu">str</span>, limit: <span class="bu">int</span> <span class="op">=</span> <span class="dv">5</span>) <span class="op">-&gt;</span> <span class="bu">dict</span>:</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> mealdb_request(<span class="st">&quot;search.php&quot;</span>, {<span class="st">&quot;s&quot;</span>: query}, limit)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="at">@mcp.tool</span>()</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> meals_by_ingredient(ingredient: <span class="bu">str</span>, limit: <span class="bu">int</span> <span class="op">=</span> <span class="dv">12</span>) <span class="op">-&gt;</span> <span class="bu">dict</span>:</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> mealdb_request(<span class="st">&quot;filter.php&quot;</span>, {<span class="st">&quot;i&quot;</span>: ingredient}, limit)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="at">@mcp.tool</span>()</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> random_meal() <span class="op">-&gt;</span> <span class="bu">dict</span>:</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> mealdb_request(<span class="st">&quot;random.php&quot;</span>, {})</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="at">@mcp.tool</span>()</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> meal_details(<span class="bu">id</span>: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">dict</span>:</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> mealdb_request(<span class="st">&quot;lookup.php&quot;</span>, {<span class="st">&quot;i&quot;</span>: <span class="bu">id</span>})</span></code></pre></div>
+<figure>
+<img src="evidence/mcp_meals_search.png" alt="Meals search" />
+<figcaption aria-hidden="true">Meals search</figcaption>
+</figure>
+<figure>
+<img src="evidence/mcp_meals_ingredient.png"
+alt="Meals ingredient search" />
+<figcaption aria-hidden="true">Meals ingredient search</figcaption>
+</figure>
+<figure>
+<img src="evidence/mcp_meals_random.png" alt="Random meal" />
+<figcaption aria-hidden="true">Random meal</figcaption>
+</figure>
+<figure>
+<img src="evidence/mcp_meals_details.png" alt="Meal details" />
+<figcaption aria-hidden="true">Meal details</figcaption>
+</figure>
 <h3 id="domain-mcp-server">Domain MCP Server</h3>
-<p>The domain MCP server uses the local <code>s9004_rel</code> database
-and exposes exactly three read-only tools:</p>
-<ol type="1">
-<li><code>search_vulnerabilities(query, limit=10)</code></li>
-<li><code>vulnerability_detail(vulnerability_id)</code></li>
-<li><code>vulnerability_aggregate()</code></li>
-</ol>
-<p>Each tool returns the same envelope:</p>
-<p>```json { “ok”: true, “data”: {}, “error”: null }</p>
+<p>The domain server uses the local <code>s9004_rel</code> database and
+exposes three read-only tools.</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="at">@mcp.tool</span>()</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> search_vulnerabilities(query: <span class="bu">str</span>, limit: <span class="bu">int</span> <span class="op">=</span> <span class="dv">10</span>) <span class="op">-&gt;</span> <span class="bu">dict</span>:</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> query.strip():</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> {<span class="st">&quot;ok&quot;</span>: <span class="va">False</span>, <span class="st">&quot;data&quot;</span>: <span class="va">None</span>, <span class="st">&quot;error&quot;</span>: <span class="st">&quot;query must not be empty&quot;</span>}</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {<span class="st">&quot;ok&quot;</span>: <span class="va">True</span>, <span class="st">&quot;data&quot;</span>: search_database(query, limit), <span class="st">&quot;error&quot;</span>: <span class="va">None</span>}</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="at">@mcp.tool</span>()</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> vulnerability_detail(vulnerability_id: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">dict</span>:</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> vulnerability_id <span class="op">&lt;=</span> <span class="dv">0</span>:</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> {<span class="st">&quot;ok&quot;</span>: <span class="va">False</span>, <span class="st">&quot;data&quot;</span>: <span class="va">None</span>,</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;error&quot;</span>: <span class="st">&quot;vulnerability_id must be positive&quot;</span>}</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {<span class="st">&quot;ok&quot;</span>: <span class="va">True</span>, <span class="st">&quot;data&quot;</span>: get_vulnerability(vulnerability_id), <span class="st">&quot;error&quot;</span>: <span class="va">None</span>}</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="at">@mcp.tool</span>()</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> vulnerability_aggregate() <span class="op">-&gt;</span> <span class="bu">dict</span>:</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {<span class="st">&quot;ok&quot;</span>: <span class="va">True</span>, <span class="st">&quot;data&quot;</span>: aggregate_database(), <span class="st">&quot;error&quot;</span>: <span class="va">None</span>}</span></code></pre></div>
+<figure>
+<img src="evidence/mcp_domain_search.png" alt="Domain search" />
+<figcaption aria-hidden="true">Domain search</figcaption>
+</figure>
+<figure>
+<img src="evidence/mcp_domain_detail.png" alt="Domain detail" />
+<figcaption aria-hidden="true">Domain detail</figcaption>
+</figure>
+<figure>
+<img src="evidence/mcp_domain_aggregate.png" alt="Domain aggregate" />
+<figcaption aria-hidden="true">Domain aggregate</figcaption>
+</figure>
+<figure>
+<img src="evidence/mcp_domain_search_invalid.png"
+alt="Invalid domain search" />
+<figcaption aria-hidden="true">Invalid domain search</figcaption>
+</figure>
+<figure>
+<img src="evidence/mcp_domain_invalid.png"
+alt="Invalid domain detail" />
+<figcaption aria-hidden="true">Invalid domain detail</figcaption>
+</figure>
 <h2 id="part-3-retry-and-fault-injection-benchmark">Part 3: Retry and
 Fault-Injection Benchmark</h2>
-<p>The retry layer uses bounded retries with exponential backoff. A
-failed operation can be attempted up to three times. The delay increases
-after each retry, which prevents immediate repeated requests from
-overwhelming a service.</p>
-<p>The retry behavior was tested in three required cases:</p>
-<ul>
-<li>First attempt succeeds immediately.</li>
-<li>First attempt fails with a temporary error and the second attempt
-succeeds.</li>
-<li>All three attempts fail and the operation returns a structured
-failure.</li>
-</ul>
-<p>The benchmark uses <code>VERIFY_SEED=269004</code> for deterministic
-fault injection. Three rejection rates were tested:</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: right;">Rejection rate</th>
-<th style="text-align: right;">Runs</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: right;">0%</td>
-<td style="text-align: right;">50</td>
-</tr>
-<tr>
-<td style="text-align: right;">20%</td>
-<td style="text-align: right;">50</td>
-</tr>
-<tr>
-<td style="text-align: right;">50%</td>
-<td style="text-align: right;">50</td>
-</tr>
-</tbody>
-</table>
-<p>The benchmark generated 150 raw records in
-<code>raw/retry_records.jsonl</code>. The metrics file records the
-number of successes, failures, success rate, mean attempts, and p99
-elapsed time for each rejection rate.</p>
-<p>The raw records preserve each individual request, including its
-attempts, error messages, retry status, and final result. This makes the
-benchmark reproducible and allows the reported metrics to be
-independently checked.</p>
-<p>The retry design is useful for batch workloads because a temporary
-failure can be retried without stopping the entire run. For interactive
-requests, the retry limit is important because users should not wait
-indefinitely. The bounded three-attempt design balances reliability with
-predictable response time.</p>
-<h3 id="required-retry-metrics">Required Retry Metrics</h3>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> retry_with_backoff(operation, max_attempts<span class="op">=</span><span class="dv">3</span>, base_delay<span class="op">=</span><span class="fl">0.01</span>):</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    attempts <span class="op">=</span> []</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> attempt <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, max_attempts <span class="op">+</span> <span class="dv">1</span>):</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">try</span>:</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>            result <span class="op">=</span> operation()</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>            attempts.append({<span class="st">&quot;attempt&quot;</span>: attempt, <span class="st">&quot;status&quot;</span>: <span class="st">&quot;success&quot;</span>})</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> {<span class="st">&quot;ok&quot;</span>: <span class="va">True</span>, <span class="st">&quot;result&quot;</span>: result, <span class="st">&quot;attempts&quot;</span>: attempts}</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">except</span> RetryableError <span class="im">as</span> error:</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>            attempts.append({<span class="st">&quot;attempt&quot;</span>: attempt,</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>                             <span class="st">&quot;status&quot;</span>: <span class="st">&quot;retryable_failure&quot;</span>,</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>                             <span class="st">&quot;error&quot;</span>: <span class="bu">str</span>(error)})</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> attempt <span class="op">==</span> max_attempts:</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>                <span class="cf">break</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>            time.sleep(base_delay <span class="op">*</span> (<span class="dv">2</span> <span class="op">**</span> (attempt <span class="op">-</span> <span class="dv">1</span>)))</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {<span class="st">&quot;ok&quot;</span>: <span class="va">False</span>, <span class="st">&quot;result&quot;</span>: <span class="va">None</span>, <span class="st">&quot;attempts&quot;</span>: attempts,</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;error&quot;</span>: <span class="st">&quot;maximum retry attempts reached&quot;</span>}</span></code></pre></div>
+<figure>
+<img src="evidence/retry_demo.png" alt="Retry demo" />
+<figcaption aria-hidden="true">Retry demo</figcaption>
+</figure>
+<p>The retry benchmark uses <code>VERIFY_SEED=269004</code>, three
+rejection rates, and 50 requests per rate, producing 150 raw JSONL
+records.</p>
 <table style="width:100%;">
 <colgroup>
 <col style="width: 16%" />
@@ -381,128 +570,117 @@ predictable response time.</p>
 </tr>
 </tbody>
 </table>
-<p>The retry policy is suitable for interactive use because all requests
-completed successfully with a maximum of three attempts and very low
-latency. For batch processing, I would allow more retries and slightly
-longer backoff delays because batch jobs can tolerate additional
-processing time in exchange for improved resilience during temporary
-failures.</p>
+<p>The latency values are measured in milliseconds using
+<code>time.perf_counter()</code> multiplied by 1000. This benchmark
+injects failures into a local in-memory operation rather than making
+network or database requests, so the measured latencies are extremely
+small. The raw records confirm the 0% row contains 50 samples totaling
+0.003 ms, producing a mean of 0.00006 ms. These values should not be
+interpreted as real network-service latency.</p>
+<p>The raw records preserve each attempt, retryable error, elapsed time,
+and final result. The bounded three-attempt policy balances reliability
+with predictable response time.</p>
 <h3 id="domain-tool-input-contracts-and-rejected-calls">Domain Tool
 Input Contracts and Rejected Calls</h3>
-<p>All three domain tools use the response envelope:</p>
-<p>```json {“ok”: true, “data”: {}, “error”: null}</p>
+<p>All domain tools return this envelope:</p>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode json"><code class="sourceCode json"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="dt">&quot;ok&quot;</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span> <span class="dt">&quot;data&quot;</span><span class="fu">:</span> <span class="fu">{},</span> <span class="dt">&quot;error&quot;</span><span class="fu">:</span> <span class="kw">null</span><span class="fu">}</span></span></code></pre></div>
+<p>Search expected schema:</p>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode json"><code class="sourceCode json"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="dt">&quot;query&quot;</span><span class="fu">:</span> <span class="st">&quot;string, required, non-empty&quot;</span><span class="fu">,</span> <span class="dt">&quot;limit&quot;</span><span class="fu">:</span> <span class="st">&quot;positive integer, optional&quot;</span><span class="fu">}</span></span></code></pre></div>
+<p>Rejected search input:</p>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode json"><code class="sourceCode json"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="dt">&quot;query&quot;</span><span class="fu">:</span> <span class="st">&quot;&quot;</span><span class="fu">,</span> <span class="dt">&quot;limit&quot;</span><span class="fu">:</span> <span class="dv">10</span><span class="fu">}</span></span></code></pre></div>
+<p>Returned error:</p>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode json"><code class="sourceCode json"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="dt">&quot;ok&quot;</span><span class="fu">:</span> <span class="kw">false</span><span class="fu">,</span> <span class="dt">&quot;data&quot;</span><span class="fu">:</span> <span class="kw">null</span><span class="fu">,</span> <span class="dt">&quot;error&quot;</span><span class="fu">:</span> <span class="st">&quot;query must not be empty&quot;</span><span class="fu">}</span></span></code></pre></div>
+<p>The request was rejected because the query cannot be empty.</p>
+<p>Detail expected schema:</p>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode json"><code class="sourceCode json"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="dt">&quot;vulnerability_id&quot;</span><span class="fu">:</span> <span class="st">&quot;positive integer, required&quot;</span><span class="fu">}</span></span></code></pre></div>
+<p>Rejected detail input:</p>
+<div class="sourceCode" id="cb11"><pre
+class="sourceCode json"><code class="sourceCode json"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="dt">&quot;vulnerability_id&quot;</span><span class="fu">:</span> <span class="dv">0</span><span class="fu">}</span></span></code></pre></div>
+<p>Returned error:</p>
+<div class="sourceCode" id="cb12"><pre
+class="sourceCode json"><code class="sourceCode json"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="dt">&quot;ok&quot;</span><span class="fu">:</span> <span class="kw">false</span><span class="fu">,</span> <span class="dt">&quot;data&quot;</span><span class="fu">:</span> <span class="kw">null</span><span class="fu">,</span> <span class="dt">&quot;error&quot;</span><span class="fu">:</span> <span class="st">&quot;vulnerability_id must be positive&quot;</span><span class="fu">}</span></span></code></pre></div>
+<p>The request was rejected because IDs must be positive integers.</p>
+<p>Aggregate expected schema:</p>
+<div class="sourceCode" id="cb13"><pre
+class="sourceCode json"><code class="sourceCode json"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{}</span></span></code></pre></div>
+<p>The aggregate tool has no input fields. The extra-field rejection was
+tested at the <code>execute_tool</code> boundary:</p>
+<div class="sourceCode" id="cb14"><pre
+class="sourceCode json"><code class="sourceCode json"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="dt">&quot;unexpected&quot;</span><span class="fu">:</span> <span class="st">&quot;value&quot;</span><span class="fu">}</span></span></code></pre></div>
+<p>Returned error:</p>
+<div class="sourceCode" id="cb15"><pre
+class="sourceCode json"><code class="sourceCode json"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="dt">&quot;ok&quot;</span><span class="fu">:</span> <span class="kw">false</span><span class="fu">,</span> <span class="dt">&quot;data&quot;</span><span class="fu">:</span> <span class="kw">null</span><span class="fu">,</span> <span class="dt">&quot;error&quot;</span><span class="fu">:</span> <span class="st">&quot;unexpected input fields are not allowed&quot;</span><span class="fu">}</span></span></code></pre></div>
+<p>The request was rejected because aggregate accepts an empty object
+only. The raw records preserve each attempt, retryable error, elapsed
+time, and final result. The bounded three-attempt policy balances
+reliability with predictable response time.</p>
 <h2 id="part-4-safe-tool-execution">Part 4: Safe Tool Execution</h2>
-<p>The <code>execute_tool(name, inputs)</code> function is the single
-entry point for domain-tool execution. It accepts a tool name and input
-object, validates the request, calls only an approved domain tool, and
-returns a JSON string.</p>
-<p>The approved tools are:</p>
-<ul>
-<li><code>search_vulnerabilities</code></li>
-<li><code>vulnerability_detail</code></li>
-<li><code>vulnerability_aggregate</code></li>
-</ul>
-<p>Unknown tools are rejected. Inputs must be JSON objects, and
-aggregate requests reject unexpected fields. Exceptions are converted
-into the standard response envelope instead of being exposed as
-unhandled errors.</p>
-<p>The offline test runner verified six cases:</p>
-<table>
-<thead>
-<tr>
-<th>Test</th>
-<th>Result</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Valid vulnerability search</td>
-<td>PASS</td>
-</tr>
-<tr>
-<td>Invalid vulnerability search</td>
-<td>PASS</td>
-</tr>
-<tr>
-<td>Valid vulnerability detail</td>
-<td>PASS</td>
-</tr>
-<tr>
-<td>Invalid vulnerability detail</td>
-<td>PASS</td>
-</tr>
-<tr>
-<td>Valid vulnerability aggregate</td>
-<td>PASS</td>
-</tr>
-<tr>
-<td>Invalid vulnerability aggregate</td>
-<td>PASS</td>
-</tr>
-</tbody>
-</table>
-<p>The final result was 6/6 tests passed. These tests run without an LLM
-and directly verify the tool boundary, input validation, error handling,
-and response-envelope format.</p>
-<p>##Part 5: Local Agent and Safety Controls</p>
-<p>The local agent uses Ollama with the <code>qwen3:8b</code> model. The
-model receives a system prompt describing the three approved domain
-tools and returns either a tool request or a final response.</p>
-<p>The agent tracks every step with:</p>
-<ul>
-<li>Step number</li>
-<li>Tool name</li>
-<li>Tool input</li>
-<li>Tool result</li>
-<li>Final response</li>
-<li>Stop reason</li>
-</ul>
-<p>The agent stops when the model finishes, when a safety rule blocks
-the request, or when the maximum step count is reached. All runs are
-stored in <code>raw/agent_runs.jsonl</code>.</p>
-<p>The safety rule blocks destructive or sensitive requests containing
-terms such as <code>delete</code>, <code>drop</code>,
-<code>password</code>, <code>secret</code>, <code>credential</code>, and
-<code>token</code>. The request to delete all vulnerability records was
-blocked before any database tool was called.</p>
-<p>The offline tests passed:</p>
-<ul>
-<li>Safety-block test: PASS</li>
-<li>Maximum-step test: PASS</li>
-</ul>
-<p>The four live Ollama scenarios were:</p>
-<table>
-<thead>
-<tr>
-<th>Scenario</th>
-<th>Stop reason</th>
-<th style="text-align: right;">Steps</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Vulnerability search</td>
-<td>Maximum step limit</td>
-<td style="text-align: right;">3</td>
-</tr>
-<tr>
-<td>Vulnerability detail</td>
-<td>Maximum step limit</td>
-<td style="text-align: right;">3</td>
-</tr>
-<tr>
-<td>Vulnerability aggregate</td>
-<td>Model finished</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr>
-<td>Destructive request</td>
-<td>Safety block</td>
-<td style="text-align: right;">0</td>
-</tr>
-</tbody>
-</table>
-<h3 id="agent-scenario-metrics">Agent Scenario Metrics</h3>
+<div class="sourceCode" id="cb16"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> execute_tool(name: <span class="bu">str</span>, inputs: <span class="bu">dict</span>) <span class="op">-&gt;</span> <span class="bu">str</span>:</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> name <span class="kw">not</span> <span class="kw">in</span> APPROVED_TOOLS:</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> error_response(<span class="st">&quot;unknown tool&quot;</span>)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> <span class="bu">isinstance</span>(inputs, <span class="bu">dict</span>):</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> error_response(<span class="st">&quot;inputs must be a JSON object&quot;</span>)</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> name <span class="op">==</span> <span class="st">&quot;vulnerability_aggregate&quot;</span> <span class="kw">and</span> inputs:</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> error_response(<span class="st">&quot;unexpected input fields are not allowed&quot;</span>)</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>        result <span class="op">=</span> APPROVED_TOOLS[name](<span class="op">**</span>inputs)</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> json.dumps({<span class="st">&quot;ok&quot;</span>: <span class="va">True</span>, <span class="st">&quot;data&quot;</span>: result, <span class="st">&quot;error&quot;</span>: <span class="va">None</span>})</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> error:</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> error_response(<span class="bu">str</span>(error))</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> execute_tool(<span class="st">&quot;search_vulnerabilities&quot;</span>, {<span class="st">&quot;query&quot;</span>: <span class="st">&quot;test&quot;</span>})</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> execute_tool(<span class="st">&quot;vulnerability_detail&quot;</span>, {<span class="st">&quot;vulnerability_id&quot;</span>: <span class="dv">10002</span>})</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> execute_tool(<span class="st">&quot;vulnerability_aggregate&quot;</span>, {})</span></code></pre></div>
+<figure>
+<img src="evidence/tool_runner_tests.png" alt="Tool runner tests" />
+<figcaption aria-hidden="true">Tool runner tests</figcaption>
+</figure>
+<p>The offline runner passed six validation cases: valid and invalid
+search, valid and invalid detail, and valid and invalid aggregate. The
+final result was 6/6 tests passed.</p>
+<h2 id="part-5-local-agent-and-safety-controls">Part 5: Local Agent and
+Safety Controls</h2>
+<div class="sourceCode" id="cb18"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> safety_blocked(user_input):</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    blocked_terms <span class="op">=</span> {<span class="st">&quot;delete&quot;</span>, <span class="st">&quot;drop&quot;</span>, <span class="st">&quot;password&quot;</span>, <span class="st">&quot;secret&quot;</span>, <span class="st">&quot;credential&quot;</span>, <span class="st">&quot;token&quot;</span>}</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    text <span class="op">=</span> user_input.lower()</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">any</span>(term <span class="kw">in</span> text <span class="cf">for</span> term <span class="kw">in</span> blocked_terms)</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> run_agent(user_input):</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> safety_blocked(user_input):</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> {</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;final&quot;</span>: <span class="st">&quot;Request blocked by domain safety policy.&quot;</span>,</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;stop_reason&quot;</span>: <span class="st">&quot;safety_block&quot;</span>,</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> step <span class="kw">in</span> <span class="bu">range</span>(MAX_STEPS):</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>        response <span class="op">=</span> ask_ollama(user_input)</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> response.tool_call:</span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>            result <span class="op">=</span> execute_tool(response.tool_call.name,</span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>                                  response.tool_call.arguments)</span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>            user_input <span class="op">=</span> result</span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> response</span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {<span class="st">&quot;stop_reason&quot;</span>: <span class="st">&quot;max_steps&quot;</span>}</span></code></pre></div>
+<figure>
+<img src="evidence/safety_allowed_blocked.png"
+alt="Allowed and blocked safety calls" />
+<figcaption aria-hidden="true">Allowed and blocked safety
+calls</figcaption>
+</figure>
+<figure>
+<img src="evidence/agent_offline_tests.png" alt="Agent offline tests" />
+<figcaption aria-hidden="true">Agent offline tests</figcaption>
+</figure>
+<p>The safety rule blocks destructive or sensitive requests before a
+database tool is called. The offline safety and maximum-step tests both
+passed.</p>
+<p>The live scenarios used the <code>qwen3:8b</code> model:</p>
 <table>
 <thead>
 <tr>
@@ -510,6 +688,7 @@ blocked before any database tool was called.</p>
 <th style="text-align: right;">Steps</th>
 <th style="text-align: right;">Tool-call count</th>
 <th>Stop reason</th>
+<th>Success</th>
 </tr>
 </thead>
 <tbody>
@@ -518,93 +697,68 @@ blocked before any database tool was called.</p>
 <td style="text-align: right;">3</td>
 <td style="text-align: right;">3</td>
 <td>Maximum step limit</td>
+<td>true</td>
 </tr>
 <tr>
 <td>Vulnerability detail</td>
 <td style="text-align: right;">3</td>
 <td style="text-align: right;">3</td>
 <td>Maximum step limit</td>
+<td>true</td>
 </tr>
 <tr>
 <td>Vulnerability aggregate</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">0</td>
 <td>Model finished</td>
+<td>true</td>
 </tr>
 <tr>
 <td>Destructive request</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">0</td>
 <td>Safety block</td>
+<td>true</td>
 </tr>
 </tbody>
 </table>
-<p>The model sometimes required multiple turns to correct its tool
-inputs. For example, one run initially supplied a vulnerability code to
-the numeric-ID detail tool, received a validation error, and then
-corrected the request using the numeric ID. This shows why structured
-tool schemas, validation, and bounded steps are important.</p>
-<h3 id="reflection">Reflection</h3>
-<p>One representative run was the vulnerability-detail request. The user
-asked the agent to show the details for vulnerability ID 10002. The
-harness first received a tool call in which the identifier was
-represented as the string <code>"10002"</code>. The detail tool rejected
-that input because the identifier must be numeric. The error was
-returned through the standard <code>{ok, data, error}</code> envelope,
-so the agent did not crash and could inspect the failure.</p>
-<p>On the next step, the model repeated the same string input, which
-produced the same validation error. On the third step, the model
-corrected the input to the integer <code>10002</code>. The tool then
-returned the vulnerability record, including its title, package,
-category, availability count, and timestamps. However, the harness
-stopped because the configured maximum of three tool steps had been
-reached. Therefore, the final stop reason was <code>max_steps</code>,
-even though the corrected tool call succeeded.</p>
-<p>This run demonstrates why typed schemas and bounded execution are
-important. The schema prevented a malformed value from reaching the
-database, while the step limit prevented the agent from continuing
-indefinitely. It also showed that the model may need more than one turn
-to recover from an input-format error. The logged steps make this
-behavior reproducible and explain exactly why the run stopped.</p>
-<h3 id="ai-use">AI Use</h3>
+<figure>
+<img src="evidence/agent_scenarios_metrics.png"
+alt="Agent scenario metrics" />
+<figcaption aria-hidden="true">Agent scenario metrics</figcaption>
+</figure>
+<h2 id="reflection">Reflection</h2>
+<p>One representative run was the vulnerability-detail request. The
+model initially represented the identifier as a string, which the
+numeric-ID detail tool rejected. The error was returned through the
+standard response envelope. On a later step, the model corrected the
+input to integer <code>10002</code>, and the tool returned the
+vulnerability record. The three-step limit then stopped the run. This
+demonstrates why typed schemas, structured errors, and bounded execution
+are important.</p>
+<h2 id="ai-use">AI Use</h2>
 <ol type="1">
-<li><p>I used an AI assistant to help interpret the homework
-requirements, troubleshoot implementation errors, organize the report,
-and explain how to run and verify the API, MCP servers, retry tests, and
-agent tests. I wrote and ran the application code, commands, tests, and
-screenshots myself.</p></li>
-<li><p>One issue I independently verified was the agent’s handling of
-vulnerability IDs. The model initially sent the ID as a string or used
-the wrong input field, which was not accepted by the numeric-ID detail
-tool.</p></li>
-<li><p>I detected the issue by checking the returned error envelope and
-reviewing the recorded steps in <code>raw/agent_runs.jsonl</code>. The
-log showed the invalid input, the validation error, and the later
-successful call using the integer ID.</p></li>
-<li><p>I kept input validation and the standard
-<code>{ok, data, error}</code> response format in the tool layer. This
-allowed invalid requests to return structured errors without crashing,
-while valid corrected requests could continue normally.</p></li>
+<li>I used an AI assistant to interpret requirements, troubleshoot
+errors, organize the report, and explain verification steps. I ran the
+code, commands, tests, and screenshots myself.</li>
+<li>One independently verified issue was that the agent initially sent a
+vulnerability ID as a string or used the wrong input field.</li>
+<li>I verified this by checking the returned error envelope and
+<code>raw/agent_runs.jsonl</code>.</li>
+<li>I kept typed input validation, structured errors, and the safety
+policy in the tool layer.</li>
 </ol>
 <h2 id="verification">Verification</h2>
-<p>The final verification script records:</p>
-<ul>
-<li>Assignment name</li>
-<li>SID4</li>
-<li>Commit hash</li>
-<li>Model</li>
-<li>Port configuration</li>
-<li>Prefix</li>
-<li>SEED</li>
-<li>VERIFY_SEED</li>
-<li>DOMAIN_ID</li>
-<li>Individual pass/fail checks</li>
-<li>Overall verification status</li>
-</ul>
-<p>The generated raw artifacts, documentation files, code files, and
-metrics are stored under <code>reports/hw05/</code>.</p>
+<p><code>verification.json</code> records the homework number, SID4,
+commit hash, model/configuration, PORT_BASE, PREFIX, SEED, VERIFY_SEED,
+DOMAIN_ID, individual pass/fail checks, and overall verification
+status.</p>
+<figure>
+<img src="evidence/hw5_verification.png" alt="HW5 verification" />
+<figcaption aria-hidden="true">HW5 verification</figcaption>
+</figure>
 <h2 id="submitted-artifacts">Submitted Artifacts</h2>
-<p>The repository contains the required HW5 files:</p>
+<p>The repository contains:</p>
 <ul>
 <li><code>RUN_LOG.txt</code></li>
 <li><code>METRICS.md</code></li>
@@ -615,154 +769,8 @@ metrics are stored under <code>reports/hw05/</code>.</p>
 <li><code>raw/retry_metrics.json</code></li>
 <li><code>raw/agent_runs.jsonl</code></li>
 <li><code>raw/agent_metrics.json</code></li>
+<li><code>report.pdf</code></li>
+<li><code>Shetty_HW5.pdf</code></li>
 </ul>
-<p>The final verification status is <code>passed</code>. The
-verification record includes the assignment, SID4, commit hash, model,
-configuration values, individual checks, and overall status.</p>
-<h2 id="evidence-screenshots">Evidence Screenshots</h2>
-<p>The <code>evidence/</code> directory contains screenshots for:</p>
-<ul>
-<li>Package CRUD API responses</li>
-<li>React package and vulnerability pages</li>
-<li>Meals MCP Inspector tools</li>
-<li>Domain MCP Inspector tools</li>
-<li>Retry benchmark output</li>
-<li>Offline tool-runner tests</li>
-<li>Agent safety and maximum-step tests</li>
-<li>Ollama agent scenario results</li>
-<li>Database table verification</li>
-</ul>
-<h2 id="evidence-screenshots-1">Evidence Screenshots</h2>
-<h3 id="meals-mcp-inspector">Meals MCP Inspector</h3>
-<figure>
-<img src="evidence/mcp_meals_search.png" alt="Meals search" />
-<figcaption aria-hidden="true">Meals search</figcaption>
-</figure>
-<figure>
-<img src="evidence/mcp_meals_ingredient.png"
-alt="Meals ingredient search" />
-<figcaption aria-hidden="true">Meals ingredient search</figcaption>
-</figure>
-<figure>
-<img src="evidence/mcp_meals_random.png" alt="Random meal" />
-<figcaption aria-hidden="true">Random meal</figcaption>
-</figure>
-<figure>
-<img src="evidence/mcp_meals_details.png" alt="Meal details" />
-<figcaption aria-hidden="true">Meal details</figcaption>
-</figure>
-<h3 id="domain-mcp-inspector">Domain MCP Inspector</h3>
-<figure>
-<img src="evidence/mcp_domain_search.png" alt="Domain search" />
-<figcaption aria-hidden="true">Domain search</figcaption>
-</figure>
-<figure>
-<img src="evidence/mcp_domain_detail.png" alt="Domain detail" />
-<figcaption aria-hidden="true">Domain detail</figcaption>
-</figure>
-<figure>
-<img src="evidence/mcp_domain_aggregate.png" alt="Domain aggregate" />
-<figcaption aria-hidden="true">Domain aggregate</figcaption>
-</figure>
-<figure>
-<img src="evidence/mcp_domain_invalid.png"
-alt="Invalid domain request" />
-<figcaption aria-hidden="true">Invalid domain request</figcaption>
-</figure>
-<h3 id="offline-tests-and-verification">Offline Tests and
-Verification</h3>
-<figure>
-<img src="evidence/retry_demo.png" alt="Retry demo" />
-<figcaption aria-hidden="true">Retry demo</figcaption>
-</figure>
-<figure>
-<img src="evidence/tool_runner_tests.png" alt="Tool runner tests" />
-<figcaption aria-hidden="true">Tool runner tests</figcaption>
-</figure>
-<figure>
-<img src="evidence/agent_offline_tests.png" alt="Agent offline tests" />
-<figcaption aria-hidden="true">Agent offline tests</figcaption>
-</figure>
-<figure>
-<img src="evidence/hw5_verification.png" alt="HW5 verification" />
-<figcaption aria-hidden="true">HW5 verification</figcaption>
-</figure>
-<h3 id="part-1-api-and-database-evidence">Part 1 API and Database
-Evidence</h3>
-<h4 id="package-api-1">Package API</h4>
-<figure>
-<img src="evidence/package_create_postman.png" alt="Package create" />
-<figcaption aria-hidden="true">Package create</figcaption>
-</figure>
-<figure>
-<img src="evidence/package_list_postman.png" alt="Package list" />
-<figcaption aria-hidden="true">Package list</figcaption>
-</figure>
-<figure>
-<img src="evidence/package_detail_postman.png" alt="Package detail" />
-<figcaption aria-hidden="true">Package detail</figcaption>
-</figure>
-<figure>
-<img src="evidence/package_update_postman.png" alt="Package update" />
-<figcaption aria-hidden="true">Package update</figcaption>
-</figure>
-<figure>
-<img src="evidence/package_vulnerabilities_postman.png"
-alt="Package vulnerabilities" />
-<figcaption aria-hidden="true">Package vulnerabilities</figcaption>
-</figure>
-<figure>
-<img src="evidence/package_delete_postman.png" alt="Package delete" />
-<figcaption aria-hidden="true">Package delete</figcaption>
-</figure>
-<h4 id="report-api">Report API</h4>
-<figure>
-<img src="evidence/report_list_postman.png" alt="Report list" />
-<figcaption aria-hidden="true">Report list</figcaption>
-</figure>
-<figure>
-<img src="evidence/report_detail_postman.png" alt="Report detail" />
-<figcaption aria-hidden="true">Report detail</figcaption>
-</figure>
-<figure>
-<img src="evidence/report_create_postman.png" alt="Report create" />
-<figcaption aria-hidden="true">Report create</figcaption>
-</figure>
-<figure>
-<img src="evidence/report_update_postman.png" alt="Report update" />
-<figcaption aria-hidden="true">Report update</figcaption>
-</figure>
-<figure>
-<img src="evidence/report_delete_postman.png" alt="Report delete" />
-<figcaption aria-hidden="true">Report delete</figcaption>
-</figure>
-<h4 id="database">Database</h4>
-<figure>
-<img src="evidence/database_hw5.png"
-alt="HW5 database tables and counts" />
-<figcaption aria-hidden="true">HW5 database tables and
-counts</figcaption>
-</figure>
-<h3 id="redux-client-evidence">Redux Client Evidence</h3>
-<figure>
-<img src="evidence/react_home_code_ui.png"
-alt="Home page with Redux code" />
-<figcaption aria-hidden="true">Home page with Redux code</figcaption>
-</figure>
-<figure>
-<img src="evidence/react_create_code_ui.png"
-alt="Create page with Redux code" />
-<figcaption aria-hidden="true">Create page with Redux code</figcaption>
-</figure>
-<figure>
-<img src="evidence/react_update_code_ui.png"
-alt="Update page with Redux code" />
-<figcaption aria-hidden="true">Update page with Redux code</figcaption>
-</figure>
-<figure>
-<img src="evidence/react_delete_code_ui.png"
-alt="Delete page with Redux code" />
-<figcaption aria-hidden="true">Delete page with Redux code</figcaption>
-</figure>
 </body>
 </html>

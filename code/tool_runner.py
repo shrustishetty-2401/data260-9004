@@ -14,23 +14,38 @@ TOOLS = {
 }
 
 
+BLOCKED_TERMS = {
+    "delete",
+    "drop",
+    "password",
+    "secret",
+    "credential",
+    "token",
+}
+
+
+def error_response(message):
+    return json.dumps(
+        {
+            "ok": False,
+            "data": None,
+            "error": message,
+        }
+    )
+
+
 def execute_tool(name, inputs):
     if name not in TOOLS:
-        return json.dumps(
-            {
-                "ok": False,
-                "data": None,
-                "error": "unknown tool",
-            }
-        )
+        return error_response("unknown tool")
 
     if not isinstance(inputs, dict):
-        return json.dumps(
-            {
-                "ok": False,
-                "data": None,
-                "error": "inputs must be an object",
-            }
+        return error_response("inputs must be an object")
+
+    input_text = json.dumps(inputs).lower()
+
+    if any(term in input_text for term in BLOCKED_TERMS):
+        return error_response(
+            "Blocked by domain safety rule"
         )
 
     try:
@@ -61,92 +76,79 @@ def execute_tool(name, inputs):
         return json.dumps(result, default=str)
 
     except Exception as error:
-        return json.dumps(
-            {
-                "ok": False,
-                "data": None,
-                "error": str(error),
-            }
-        )
+        return error_response(str(error))
 
 
 def run_offline_tests():
     tests = [
         (
-            "search_valid",
-            execute_tool(
-                "search_vulnerabilities",
-                {
-                    "query": "Seeded",
-                    "limit": 2,
-                },
-            ),
+            "valid_search",
+            "search_vulnerabilities",
+            {"query": "Seeded", "limit": 1},
+            True,
         ),
         (
-            "search_invalid",
-            execute_tool(
-                "search_vulnerabilities",
-                {
-                    "query": "",
-                    "limit": 2,
-                },
-            ),
+            "invalid_search",
+            "search_vulnerabilities",
+            {"query": ""},
+            False,
         ),
         (
-            "detail_valid",
-            execute_tool(
-                "vulnerability_detail",
-                {
-                    "vulnerability_id": 10002,
-                },
-            ),
+            "valid_detail",
+            "vulnerability_detail",
+            {"vulnerability_id": 10002},
+            True,
         ),
         (
-            "detail_invalid",
-            execute_tool(
-                "vulnerability_detail",
-                {
-                    "vulnerability_id": 0,
-                },
-            ),
+            "invalid_detail",
+            "vulnerability_detail",
+            {"vulnerability_id": 0},
+            False,
         ),
         (
-            "aggregate_valid",
-            execute_tool(
-                "vulnerability_aggregate",
-                {},
-            ),
+            "valid_aggregate",
+            "vulnerability_aggregate",
+            {},
+            True,
         ),
         (
-            "aggregate_invalid",
-            execute_tool(
-                "vulnerability_aggregate",
-                {
-                    "unexpected": True,
-                },
-            ),
+            "invalid_aggregate",
+            "vulnerability_aggregate",
+            {"unexpected": "value"},
+            False,
         ),
     ]
 
     passed = 0
 
-    for test_name, raw_result in tests:
-        result = json.loads(raw_result)
+    for name, tool_name, inputs, expected_ok in tests:
+        output = json.loads(
+            execute_tool(tool_name, inputs)
+        )
 
-        if not isinstance(result, dict):
-            raise AssertionError(
-                f"{test_name} did not return an object"
-            )
+        if output["ok"] == expected_ok:
+            print(f"PASS {name}")
+            passed += 1
+        else:
+            print(f"FAIL {name}")
+            print(output)
 
-        if set(result) != {"ok", "data", "error"}:
-            raise AssertionError(
-                f"{test_name} returned the wrong envelope"
-            )
+    blocked_output = json.loads(
+        execute_tool(
+            "search_vulnerabilities",
+            {"query": "delete"},
+        )
+    )
 
-        passed += 1
-        print(f"PASS {test_name}")
+    assert blocked_output["ok"] is False
+    assert blocked_output["error"] == (
+        "Blocked by domain safety rule"
+    )
 
-    print(f"{passed}/{len(tests)} tests passed")
+    print("PASS safety_rule")
+    passed += 1
+
+    print(f"{passed}/{len(tests) + 1} tool tests passed")
 
 
 if __name__ == "__main__":

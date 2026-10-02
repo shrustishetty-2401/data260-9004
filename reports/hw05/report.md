@@ -13,7 +13,7 @@
 - DOMAIN_ID: 4
 - Local model: qwen3:8b
 - Hardware: MacBook Pro, Apple M1 Pro chip, 10-core CPU (8 performance and 2 efficiency cores), 32 GB memory
-- Tagged commit (hw5): 9002b0c62d974f5c8882322b59860d1fca75dc4c
+- Tagged commit (hw5): 2fdc3d182e7d2e722ceaa0f1cabb4b5578c2cf74
 - Collaborator access: Sbnikitha and supriyaselvanganesan have access to the GitHub repository.
 
 

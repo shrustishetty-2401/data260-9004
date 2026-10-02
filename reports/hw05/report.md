@@ -34,7 +34,7 @@ h3 {
 - DOMAIN_ID: 4
 - Local model: `qwen3:8b`
 - Hardware: MacBook Pro, Apple M1 Pro chip, 10-core CPU, 32 GB memory
-- Tagged commit (hw5): `4c6984956115f8c50e3f0573313711fba2c50528`
+- Tagged commit (hw5): `18a0c27d03dc677c79970b149a75bf5616d8126a`
 - Collaborator access: Sbnikitha and supriyaselvanganesan have access to the GitHub repository.
 
 This homework extends the HW4 repository with package relationships, CRUD APIs, Redux Toolkit state management, two MCP servers, retry handling, safe tool execution, and a local Ollama agent.

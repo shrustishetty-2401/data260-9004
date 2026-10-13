@@ -169,74 +169,390 @@
       vertical-align: middle;
     }
     .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
 </head>
 <body>
 <h1 id="data-260-homework-6">DATA-260 Homework 6</h1>
-<p>Repository: https://github.com/shrustishetty-2401/data260-9004</p>
+<p>Name: Shrusti Shetty<br />
+SID4: 9004<br />
+Repository: https://github.com/shrustishetty-2401/data260-9004<br />
+Collaborators: Sbnikitha and supriyaselvanganesan</p>
 <h2 id="section-0---configuration">Section 0 - Configuration</h2>
 <ul>
 <li>SID4: 9004</li>
 <li>PORT_BASE: 8004</li>
-<li>PREFIX: s9004</li>
+<li>PREFIX: <code>s9004</code></li>
 <li>SEED: 9004</li>
 <li>VERIFY_SEED: 269004</li>
 <li>DOMAIN_ID: 4</li>
-<li>Domain: open-source package vulnerabilities</li>
+<li>Domain: Open-source package vulnerabilities</li>
 <li>Hardware: Apple Silicon MacBook Pro</li>
-<li>Local model: Ollama qwen3:8b</li>
-<li>Final tagged commit: 013da3dc1ea5c3af7eb5353d7fc39041c23068d7</li>
+<li>Local model: Ollama <code>qwen3:8b</code></li>
+<li>MongoDB version: MongoDB 7</li>
+<li>Final HW6 tag: <code>hw6</code></li>
+<li>Final tagged commit:
+<code>903a35f2e2dee4bc218a53a91c42aebb7566f86f</code></li>
 </ul>
 <h2 id="part-1---mongodb-document-api">Part 1 - MongoDB Document
 API</h2>
-<p>A MongoDB database named <code>s9004_doc</code> was created using
-MongoDB 7 and PyMongo.</p>
-<p>The <code>vulnerabilities</code> collection includes:</p>
+<h3 id="database-and-schema">Database and schema</h3>
+<p>The MongoDB database is <code>s9004_doc</code>, created with MongoDB
+7 and PyMongo. The main collection is <code>vulnerabilities</code>.</p>
+<p>The API schema includes:</p>
 <ul>
-<li>Required title with a maximum length of 100 characters.</li>
-<li>Optional description.</li>
-<li>Severity enum: low, medium, high, critical.</li>
-<li>Status enum: open, triaged, resolved.</li>
-<li>Required discovered_at date/time.</li>
-<li>Automatic created_at and updated_at timestamps.</li>
+<li>Required <code>title</code> with a maximum length of 100
+characters.</li>
+<li>Optional <code>description</code>.</li>
+<li>Required <code>severity</code>.</li>
+<li>Required <code>discovered_at</code>.</li>
+<li>Automatic <code>created_at</code> and <code>updated_at</code>
+timestamps.</li>
+<li>Severity values: <code>low</code>, <code>medium</code>,
+<code>high</code>, and <code>critical</code>.</li>
+<li>Status values: <code>open</code>, <code>triaged</code>, and
+<code>resolved</code>.</li>
+<li>Default status: <code>open</code>.</li>
 </ul>
+<p>API-level validation is implemented with Pydantic models.</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> VulnerabilityCreate(BaseModel):</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    title: <span class="bu">str</span> <span class="op">=</span> Field(min_length<span class="op">=</span><span class="dv">1</span>, max_length<span class="op">=</span><span class="dv">100</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    description: <span class="bu">str</span> <span class="op">|</span> <span class="va">None</span> <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    severity: Severity</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    status: VulnerabilityStatus <span class="op">=</span> VulnerabilityStatus.OPEN</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    discovered_at: datetime</span></code></pre></div>
 <p>Implemented endpoints:</p>
 <ul>
-<li>POST <code>/api/documents</code></li>
-<li>GET <code>/api/documents</code></li>
-<li>GET <code>/api/documents/{id}</code></li>
-<li>PUT <code>/api/documents/{id}</code></li>
-<li>DELETE <code>/api/documents/{id}</code></li>
+<li><code>POST /api/documents</code></li>
+<li><code>GET /api/documents</code></li>
+<li><code>GET /api/documents/{id}</code></li>
+<li><code>PUT /api/documents/{id}</code></li>
+<li><code>DELETE /api/documents/{id}</code></li>
 </ul>
-<p>Validation tests confirmed that invalid severity values, missing
-titles, and invalid date formats are rejected.</p>
-<h2 id="part-2---memory-system">Part 2 - Memory System</h2>
-<p>MongoDB collections:</p>
+<p>The endpoint implementation converts string IDs into MongoDB
+<code>ObjectId</code> values, returns HTTP 404 for missing records,
+updates <code>updated_at</code>, and returns HTTP 204 after successful
+deletion.</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="at">@router.get</span>(<span class="st">&quot;&quot;</span>, response_model<span class="op">=</span><span class="bu">list</span>[VulnerabilityResponse])</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_all_documents():</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    documents <span class="op">=</span> vulnerabilities_collection.find().sort(</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;created_at&quot;</span>,</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>        <span class="op">-</span><span class="dv">1</span>,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> [</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        serialize_document(document)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> document <span class="kw">in</span> documents</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    ]</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="at">@router.put</span>(</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;/</span><span class="sc">{document_id}</span><span class="st">&quot;</span>,</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    response_model<span class="op">=</span>VulnerabilityResponse,</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> update_document(</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    document_id: <span class="bu">str</span>,</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    payload: VulnerabilityUpdate,</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>):</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    object_id <span class="op">=</span> get_object_id(document_id)</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    changes <span class="op">=</span> payload.model_dump(exclude_unset<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>    changes[<span class="st">&quot;updated_at&quot;</span>] <span class="op">=</span> utc_now()</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> vulnerabilities_collection.update_one(</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>        {<span class="st">&quot;_id&quot;</span>: object_id},</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>        {<span class="st">&quot;$set&quot;</span>: changes},</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> result.matched_count <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> HTTPException(</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>            status_code<span class="op">=</span><span class="dv">404</span>,</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>            detail<span class="op">=</span><span class="st">&quot;Document not found&quot;</span>,</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> serialize_document(</span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>        vulnerabilities_collection.find_one(</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>            {<span class="st">&quot;_id&quot;</span>: object_id}</span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a><span class="at">@router.delete</span>(</span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;/</span><span class="sc">{document_id}</span><span class="st">&quot;</span>,</span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>    status_code<span class="op">=</span><span class="dv">204</span>,</span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> delete_document(document_id: <span class="bu">str</span>):</span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> vulnerabilities_collection.delete_one(</span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>        {<span class="st">&quot;_id&quot;</span>: get_object_id(document_id)}</span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> result.deleted_count <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> HTTPException(</span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a>            status_code<span class="op">=</span><span class="dv">404</span>,</span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a>            detail<span class="op">=</span><span class="st">&quot;Document not found&quot;</span>,</span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> Response(status_code<span class="op">=</span><span class="dv">204</span>)</span></code></pre></div>
+<p>CORS middleware allows the existing frontend origins, including
+<code>localhost:5173</code> and <code>localhost:9191</code>. The backend
+is organized into separate files for API configuration, MongoDB
+connection management, Pydantic schemas, and route handlers.</p>
+<p>Validation tests confirmed:</p>
 <ul>
-<li>messages</li>
-<li>summaries</li>
-<li>episodes</li>
+<li>Invalid severity values return HTTP 422.</li>
+<li>Missing required titles return HTTP 422.</li>
+<li>Invalid date values return HTTP 422.</li>
+<li>Numeric title values return HTTP 422.</li>
+<li>Missing document IDs return HTTP 404.</li>
+</ul>
+<figure>
+<img src="evidence/crud_operations.png"
+alt="Successful CRUD operations" />
+<figcaption aria-hidden="true">Successful CRUD operations</figcaption>
+</figure>
+<figure>
+<img src="evidence/validation_errors.png" alt="Validation errors" />
+<figcaption aria-hidden="true">Validation errors</figcaption>
+</figure>
+<h2 id="part-2---mongodb-conversational-memory">Part 2 - MongoDB
+Conversational Memory</h2>
+<p>The memory system uses these MongoDB collections:</p>
+<ul>
+<li><code>messages</code></li>
+<li><code>summaries</code></li>
+<li><code>episodes</code></li>
 </ul>
 <p>The <code>/api/chat</code> endpoint:</p>
 <ul>
-<li>Saves user and assistant messages.</li>
-<li>Loads the short-term conversation window.</li>
-<li>Loads session summaries.</li>
+<li>Stores user messages.</li>
+<li>Builds a short-term conversation window.</li>
+<li>Loads the latest session summary.</li>
+<li>Loads the lifetime user summary.</li>
+<li>Extracts up to three facts from each user message.</li>
+<li>Assigns importance values to extracted facts.</li>
+<li>Creates deterministic local embeddings.</li>
 <li>Retrieves relevant episodic facts using cosine similarity.</li>
-<li>Calls the local Ollama qwen3:8b model.</li>
+<li>Calls the local Ollama <code>qwen3:8b</code> model.</li>
+<li>Stores the assistant response.</li>
 <li>Records prompt tokens, completion tokens, total tokens, and
 latency.</li>
-<li>Creates session summaries every three user messages.</li>
+<li>Creates session and lifetime summaries every three user
+messages.</li>
 </ul>
-<p>Additional endpoints:</p>
+<p>Configuration values:</p>
 <ul>
-<li>GET <code>/api/memory/{user_id}</code></li>
-<li>GET <code>/api/aggregate/{user_id}</code></li>
+<li><code>SHORT_TERM_N=12</code></li>
+<li><code>EPISODE_TOP_K=3</code></li>
+<li><code>SUMMARIZE_EVERY_USER_MSGS=3</code></li>
+<li>Embedding method: deterministic local hashed word-vector
+embedding.</li>
+<li>Similarity method: cosine similarity.</li>
 </ul>
+<p>The prompt combines the system primer, lifetime summary, session
+summary, episodic facts, recent short-term messages, and the current
+user question.</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>context_parts <span class="op">=</span> [SYSTEM_PRIMER]</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> lifetime_summary:</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    context_parts.append(</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f&quot;Lifetime summary:</span><span class="ch">\n</span><span class="ss">&quot;</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f&quot;</span><span class="sc">{</span>lifetime_summary[<span class="st">&#39;text&#39;</span>]<span class="sc">}</span><span class="ss">&quot;</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> session_summary:</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    context_parts.append(</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f&quot;Session summary:</span><span class="ch">\n</span><span class="ss">&quot;</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f&quot;</span><span class="sc">{</span>session_summary[<span class="st">&#39;text&#39;</span>]<span class="sc">}</span><span class="ss">&quot;</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> episodes:</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    facts <span class="op">=</span> <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>.join(</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f&quot;- </span><span class="sc">{</span>episode[<span class="st">&#39;fact&#39;</span>]<span class="sc">}</span><span class="ss">&quot;</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> episode <span class="kw">in</span> episodes</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    context_parts.append(</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f&quot;Episodic facts:</span><span class="ch">\n</span><span class="sc">{</span>facts<span class="sc">}</span><span class="ss">&quot;</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>prompt_messages <span class="op">=</span> [</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>    {</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;role&quot;</span>: <span class="st">&quot;system&quot;</span>,</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;content&quot;</span>: <span class="st">&quot;</span><span class="ch">\n\n</span><span class="st">&quot;</span>.join(context_parts),</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>]</span></code></pre></div>
+<p>Facts and episodic retrieval are implemented as follows:</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> extract_facts(message: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">list</span>[<span class="bu">str</span>]:</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    parts <span class="op">=</span> [</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>        part.strip()</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> part <span class="kw">in</span> re.split(</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>            <span class="vs">r&quot;</span><span class="pp">[.!?]</span><span class="op">+</span><span class="vs">&quot;</span>,</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>            message,</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> part.strip()</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    ]</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    facts <span class="op">=</span> []</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> part <span class="kw">in</span> parts[:<span class="dv">3</span>]:</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>        fact <span class="op">=</span> part[:<span class="dv">240</span>]</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> fact <span class="kw">and</span> fact <span class="kw">not</span> <span class="kw">in</span> facts:</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>            facts.append(fact)</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> facts</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_relevant_episodes(</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>    user_id: <span class="bu">str</span>,</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>    message: <span class="bu">str</span>,</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>) <span class="op">-&gt;</span> <span class="bu">list</span>[<span class="bu">dict</span>]:</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>    query_embedding <span class="op">=</span> embed_text(message)</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>    candidates <span class="op">=</span> <span class="bu">list</span>(</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>        episodes_collection.find(</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>            {<span class="st">&quot;user_id&quot;</span>: user_id}</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> episode <span class="kw">in</span> candidates:</span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>        episode[<span class="st">&quot;similarity&quot;</span>] <span class="op">=</span> <span class="bu">round</span>(</span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>            cosine_similarity(</span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>                query_embedding,</span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>                episode.get(<span class="st">&quot;embedding&quot;</span>, []),</span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>            ),</span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>            <span class="dv">4</span>,</span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>    candidates.sort(</span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>        key<span class="op">=</span><span class="kw">lambda</span> item: (</span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>            item.get(<span class="st">&quot;similarity&quot;</span>, <span class="dv">0</span>),</span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>            item.get(<span class="st">&quot;importance&quot;</span>, <span class="dv">0</span>),</span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>        ),</span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>        reverse<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> candidates[:EPISODE_TOP_K]</span></code></pre></div>
+<p>Summarization is triggered every three user messages:</p>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    user_message_count</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">%</span> SUMMARIZE_EVERY_USER_MSGS</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">==</span> <span class="dv">0</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>):</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    summarize_session(</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>        payload.user_id,</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>        payload.session_id,</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    summarize_lifetime(</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>        payload.user_id,</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    summary_created <span class="op">=</span> <span class="va">True</span></span></code></pre></div>
 <p>A ten-message conversation was completed successfully. The memory
-response contained messages, a session summary, episodic facts,
-embeddings, and MongoDB IDs converted to JSON-safe strings.</p>
-<h2 id="part-3---memory-costs">Part 3 - Memory Costs</h2>
+response contained messages, session summaries, lifetime summaries,
+episodic facts, embeddings, and JSON-safe string IDs.</p>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="at">@router.get</span>(<span class="st">&quot;/api/memory/</span><span class="sc">{user_id}</span><span class="st">&quot;</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_memory(user_id: <span class="bu">str</span>):</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> make_json_safe({</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;messages&quot;</span>: messages,</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;latest_session_summary&quot;</span>: session_summary,</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;latest_lifetime_summary&quot;</span>: lifetime_summary,</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;episodic_facts&quot;</span>: episodes,</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="at">@router.get</span>(<span class="st">&quot;/api/aggregate/</span><span class="sc">{user_id}</span><span class="st">&quot;</span>)</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_aggregate(user_id: <span class="bu">str</span>):</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> make_json_safe({</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;daily_message_counts&quot;</span>: daily_counts,</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;recent_summaries&quot;</span>: recent_summaries,</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    })</span></code></pre></div>
+<p>The memory endpoint returns recent messages, summaries, and episodic
+facts. The aggregate endpoint returns daily message counts and recent
+summaries.</p>
+<figure>
+<img src="evidence/chat_conversation.png" alt="Chat conversation" />
+<figcaption aria-hidden="true">Chat conversation</figcaption>
+</figure>
+<figure>
+<img src="evidence/memory_endpoint.png" alt="Memory endpoint" />
+<figcaption aria-hidden="true">Memory endpoint</figcaption>
+</figure>
+<figure>
+<img src="evidence/aggregate_endpoint.png" alt="Aggregate endpoint" />
+<figcaption aria-hidden="true">Aggregate endpoint</figcaption>
+</figure>
+<h2 id="part-3---memory-costs-and-experiments">Part 3 - Memory Costs and
+Experiments</h2>
+<p>Each experiment used a fresh user and session with a 30-message
+conversation followed by five memory probes.</p>
 <table>
 <colgroup>
 <col style="width: 20%" />
@@ -254,34 +570,77 @@ embeddings, and MongoDB IDs converted to JSON-safe strings.</p>
 </thead>
 <tbody>
 <tr>
-<td>SHORT_TERM_N=4</td>
+<td><code>SHORT_TERM_N=4</code></td>
 <td style="text-align: right;">286.97</td>
 <td style="text-align: right;">5000.13</td>
 <td style="text-align: right;">3.0</td>
 </tr>
 <tr>
-<td>SHORT_TERM_N=12</td>
+<td><code>SHORT_TERM_N=12</code></td>
 <td style="text-align: right;">614.17</td>
 <td style="text-align: right;">9255.64</td>
 <td style="text-align: right;">2.8</td>
 </tr>
 <tr>
-<td>SHORT_TERM_N=30</td>
+<td><code>SHORT_TERM_N=30</code></td>
 <td style="text-align: right;">1020.77</td>
 <td style="text-align: right;">12746.58</td>
 <td style="text-align: right;">2.8</td>
 </tr>
 <tr>
-<td>Eviction policy, N=12</td>
+<td>Eviction policy, <code>N=12</code></td>
 <td style="text-align: right;">685.40</td>
 <td style="text-align: right;">10635.50</td>
 <td style="text-align: right;">3.0</td>
 </tr>
 </tbody>
 </table>
-<p>The eviction policy retains only the most recent ten episodic facts
-per user and removes older facts.</p>
-<p>Estimated costs for 10,000 thirty-turn conversations:</p>
+<p>The eviction policy limits stored episodic facts to the most recent
+ten facts per user. This bounds database growth. It did not reduce
+prompt cost in this single run because retrieval already limits the
+prompt to <code>EPISODE_TOP_K=3</code> episodic facts.</p>
+<p>Per-request metrics include component-level estimates:</p>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode json"><code class="sourceCode json"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;prompt_tokens&quot;</span><span class="fu">:</span> <span class="dv">2209</span><span class="fu">,</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;completion_tokens&quot;</span><span class="fu">:</span> <span class="dv">262</span><span class="fu">,</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;total_tokens&quot;</span><span class="fu">:</span> <span class="dv">2471</span><span class="fu">,</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;system_primer_tokens&quot;</span><span class="fu">:</span> <span class="dv">26</span><span class="fu">,</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;long_term_summary_tokens&quot;</span><span class="fu">:</span> <span class="dv">257</span><span class="fu">,</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;short_term_window_tokens&quot;</span><span class="fu">:</span> <span class="dv">1146</span><span class="fu">,</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;episodic_facts_tokens&quot;</span><span class="fu">:</span> <span class="dv">27</span><span class="fu">,</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;latency_ms&quot;</span><span class="fu">:</span> <span class="fl">33194.29</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
+<p>Probe questions and keyword-based scoring were recorded in
+<code>memory_probes.yaml</code>.</p>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="fu">id</span><span class="kw">:</span><span class="at"> preference</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">question</span><span class="kw">:</span><span class="at"> How does the user prefer explanations?</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">expected</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">concise</span><span class="kw">,</span><span class="at"> open-source</span><span class="kw">]</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="fu">id</span><span class="kw">:</span><span class="at"> recording</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">question</span><span class="kw">:</span><span class="at"> What should be recorded for a vulnerable package?</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">expected</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">package</span><span class="kw">,</span><span class="at"> severity</span><span class="kw">,</span><span class="at"> version</span><span class="kw">]</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="fu">id</span><span class="kw">:</span><span class="at"> severity</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">question</span><span class="kw">:</span><span class="at"> Which severity levels should be prioritized first?</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">expected</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">critical</span><span class="kw">,</span><span class="at"> high</span><span class="kw">]</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="fu">id</span><span class="kw">:</span><span class="at"> transitive</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">question</span><span class="kw">:</span><span class="at"> Why are transitive dependencies important?</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">expected</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">indirect</span><span class="kw">,</span><span class="at"> vulnerabilities</span><span class="kw">]</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="fu">id</span><span class="kw">:</span><span class="at"> no_patch</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">question</span><span class="kw">:</span><span class="at"> What should be done when no patch exists?</span></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">expected</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">replace</span><span class="kw">,</span><span class="at"> workaround</span><span class="kw">]</span></span></code></pre></div>
+<p>The probe score used a 1–5 scale based on the number of expected
+keywords found in the response.</p>
+<p>Estimated costs for 10,000 thirty-turn conversations were calculated
+using:</p>
+<ul>
+<li>Prompt tokens: <code>$1.00 / 1,000,000 tokens</code></li>
+<li>Completion tokens: <code>$5.00 / 1,000,000 tokens</code></li>
+</ul>
 <table>
 <thead>
 <tr>
@@ -292,92 +651,173 @@ per user and removes older facts.</p>
 </thead>
 <tbody>
 <tr>
-<td>SHORT_TERM_N=4</td>
+<td><code>SHORT_TERM_N=4</code></td>
 <td style="text-align: right;">37.93</td>
 <td style="text-align: right;">$142.99</td>
 </tr>
 <tr>
-<td>SHORT_TERM_N=12</td>
+<td><code>SHORT_TERM_N=12</code></td>
 <td style="text-align: right;">50.13</td>
 <td style="text-align: right;">$259.45</td>
 </tr>
 <tr>
-<td>SHORT_TERM_N=30</td>
+<td><code>SHORT_TERM_N=30</code></td>
 <td style="text-align: right;">44.20</td>
 <td style="text-align: right;">$372.53</td>
 </tr>
 <tr>
-<td>Eviction policy, N=12</td>
+<td>Eviction policy, <code>N=12</code></td>
 <td style="text-align: right;">57.03</td>
 <td style="text-align: right;">$291.17</td>
 </tr>
 </tbody>
 </table>
-<p>The best measured setting was SHORT_TERM_N=4 because it had the
-lowest prompt-token usage, latency, and estimated cost while maintaining
-a probe score of 3.0.</p>
-<p>The worst measured setting was SHORT_TERM_N=30 because it had the
-highest prompt-token usage, latency, and estimated cost, with a probe
-score of 2.8.</p>
-<p>The eviction policy did not reduce cost in this single run compared
-with baseline N=12. Its purpose was to demonstrate bounded
-episodic-memory growth.</p>
+<p><code>SHORT_TERM_N=4</code> had the lowest prompt-token usage,
+latency, and estimated cost while maintaining a probe score of 3.0.</p>
+<p><code>SHORT_TERM_N=30</code> had the highest prompt-token usage,
+latency, and estimated cost. Its probe score was 2.8, which did not
+improve over the smaller windows. This was a single run with a small
+probe set, so the difference may include model and run-to-run
+variation.</p>
+<p>The eviction policy did not reduce cost compared with baseline
+<code>N=12</code> in this run. Its purpose was bounded episodic-memory
+growth.</p>
+<figure>
+<img src="evidence/chat_conversation.png"
+alt="Memory cost experiment" />
+<figcaption aria-hidden="true">Memory cost experiment</figcaption>
+</figure>
 <h2 id="part-4---file-based-memory">Part 4 - File-Based Memory</h2>
-<p><code>AGENT.md</code> contains instructions covering:</p>
+<p><code>AGENT.md</code> contains:</p>
 <ul>
 <li>Project description.</li>
 <li>Technology stack.</li>
 <li>Coding conventions.</li>
 <li>Testing approach.</li>
 <li>Prohibited actions.</li>
+<li>Code review formatting requirements.</li>
 </ul>
-<p><code>MEMORY.md</code> was initially created with 55 lines, including
-duplicate and contradictory facts. The <code>/compact</code> command
-reduced it to 29 non-empty facts and recorded three contradictions for
-review.</p>
-<p>Implemented commands:</p>
+<p><code>MEMORY.md</code> was initially created with duplicate and
+contradictory facts. The original file had 55 physical lines. The
+consolidation process created
+<code>reports/hw06/MEMORY_original.md</code>, resolved duplicate facts,
+recorded explicit contradiction decisions, and reduced the consolidated
+<code>MEMORY.md</code> to 38 physical lines, below the required 40-line
+limit.</p>
+<p>The three contradictions were handled explicitly:</p>
+<ol type="1">
+<li>Concise versus detailed explanations:
+<ul>
+<li>Retained concise explanations because that is the current project
+preference.</li>
+<li>Marked detailed explanations as superseded.</li>
+<li>Verification is required if the preference changes.</li>
+</ul></li>
+<li>Open versus resolved package status:
+<ul>
+<li>Retained resolved as the operational status.</li>
+<li>Marked the decision as potentially incorrect because the original
+facts had no timestamps.</li>
+<li>Verification against the current package record is required.</li>
+</ul></li>
+<li>MongoDB versus MySQL memory:
+<ul>
+<li>Retained MongoDB for HW6 memory.</li>
+<li>Marked MySQL as incorrect for HW6, while recognizing that MySQL
+remains part of the earlier SQL application.</li>
+</ul></li>
+</ol>
+<p>The file-memory prompt loads both project instructions and durable
+memory:</p>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> build_file_memory_prompt() <span class="op">-&gt;</span> <span class="bu">str</span>:</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f&quot;Project instructions:</span><span class="ch">\n</span><span class="ss">&quot;</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f&quot;</span><span class="sc">{</span>load_agent()<span class="sc">}</span><span class="ch">\n\n</span><span class="ss">&quot;</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f&quot;Durable memory:</span><span class="ch">\n</span><span class="ss">&quot;</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f&quot;</span><span class="sc">{</span>load_memory()<span class="sc">}</span><span class="ss">&quot;</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    )</span></code></pre></div>
+<p>The consolidation rule checks both the line count and the
+timestamp:</p>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> consolidation_required() <span class="op">-&gt;</span> <span class="bu">bool</span>:</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    lines_exceed_limit <span class="op">=</span> (</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">len</span>(non_empty_memory_lines()) <span class="op">&gt;</span> <span class="dv">40</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    timestamp <span class="op">=</span> get_consolidation_timestamp()</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    older_than_one_day <span class="op">=</span> (</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>        timestamp <span class="kw">is</span> <span class="va">None</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>        <span class="kw">or</span> datetime.now(timezone.utc) <span class="op">-</span> timestamp</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>        <span class="op">&gt;</span> timedelta(hours<span class="op">=</span><span class="dv">24</span>)</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>        lines_exceed_limit</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>        <span class="kw">or</span> older_than_one_day</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>    )</span></code></pre></div>
+<p>The required commands are:</p>
 <ul>
 <li><code>/memory</code></li>
 <li><code>/compact</code></li>
 <li><code>/dream</code></li>
 <li><code>/help</code></li>
 </ul>
-<p>A type-hinted function using UTC timestamps was implemented and
-verified against the AGENT.md instructions.</p>
-<h2 id="verification">Verification</h2>
-<p>The HW6 smoke test passed:</p>
-<ul>
-<li>FastAPI health endpoint</li>
-<li>MongoDB document list</li>
-<li>MongoDB document creation</li>
-<li>MongoDB document deletion</li>
-<li>Memory endpoint</li>
-<li>Aggregate endpoint</li>
-</ul>
-<h2 id="ai-use">AI Use</h2>
-<p>See <code>AI_USE.md</code>.</p>
-<h2 id="raw-evidence">Raw Evidence</h2>
-<ul>
-<li><code>raw/chat_metrics.jsonl</code></li>
-<li><code>raw/experiment_short_term_4.json</code></li>
-<li><code>raw/experiment_short_term_12.json</code></li>
-<li><code>raw/experiment_short_term_30.json</code></li>
-<li><code>raw/experiment_eviction_12.json</code></li>
-<li><code>raw/memory_student-9004.json</code></li>
-<li><code>raw/aggregate_student-9004.json</code></li>
-<li><code>memory_probes.yaml</code></li>
-<li><code>verification.json</code></li>
-</ul>
-<h2 id="evidence-screenshots">Evidence Screenshots</h2>
-<h3 id="mongodb-collections-and-sample-documents">MongoDB Collections
-and Sample Documents</h3>
+<div class="sourceCode" id="cb11"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> memory_command(</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    command: <span class="bu">str</span>,</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    recent_conversation: <span class="bu">str</span> <span class="op">=</span> <span class="st">&quot;&quot;</span>,</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>) <span class="op">-&gt;</span> <span class="bu">dict</span>:</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> command <span class="op">==</span> <span class="st">&quot;/memory&quot;</span>:</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> {</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;command&quot;</span>: command,</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;memory&quot;</span>: load_memory(),</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> command <span class="op">==</span> <span class="st">&quot;/compact&quot;</span>:</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>        result <span class="op">=</span> consolidate_memory()</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> {</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;command&quot;</span>: command,</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;details&quot;</span>: result,</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> command <span class="op">==</span> <span class="st">&quot;/dream&quot;</span>:</span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>        facts <span class="op">=</span> [</span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>            line.strip()</span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> line <span class="kw">in</span> recent_conversation.splitlines()</span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> line.strip()</span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>        ]</span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> {</span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;command&quot;</span>: command,</span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;added_facts&quot;</span>: facts[:<span class="dv">3</span>],</span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> command <span class="op">==</span> <span class="st">&quot;/help&quot;</span>:</span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> {</span>
+<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;command&quot;</span>: command,</span>
+<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;commands&quot;</span>: {</span>
+<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;/memory&quot;</span>: <span class="st">&quot;Display file-based memory.&quot;</span>,</span>
+<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;/compact&quot;</span>: <span class="st">&quot;Consolidate MEMORY.md.&quot;</span>,</span>
+<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;/dream&quot;</span>: <span class="st">&quot;Save useful recent facts.&quot;</span>,</span>
+<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;/help&quot;</span>: <span class="st">&quot;Display available commands.&quot;</span>,</span>
+<span id="cb11-37"><a href="#cb11-37" aria-hidden="true" tabindex="-1"></a>            },</span>
+<span id="cb11-38"><a href="#cb11-38" aria-hidden="true" tabindex="-1"></a>        }</span></code></pre></div>
+<p>The type-hinted file-memory functions use UTC timestamps and were
+verified against the project instructions in <code>AGENT.md</code>.</p>
 <figure>
-<img src="evidence/mongodb_samples.png"
-alt="MongoDB collections and sample documents" />
-<figcaption aria-hidden="true">MongoDB collections and sample
-documents</figcaption>
+<img src="evidence/file_memory_commands.png"
+alt="File-based memory commands" />
+<figcaption aria-hidden="true">File-based memory commands</figcaption>
 </figure>
-<h2 id="memory-system-comparison">Memory System Comparison</h2>
+<figure>
+<img src="evidence/agent_function_verification.png"
+alt="AGENT.md function verification" />
+<figcaption aria-hidden="true">AGENT.md function
+verification</figcaption>
+</figure>
+<h2 id="mongodb-and-file-based-memory-comparison">MongoDB and File-Based
+Memory Comparison</h2>
 <table>
 <colgroup>
 <col style="width: 33%" />
@@ -394,58 +834,107 @@ documents</figcaption>
 <tbody>
 <tr>
 <td>Inspectability</td>
-<td>Queryable collections with structured fields, timestamps,
-embeddings, and summaries.</td>
-<td>Directly readable Markdown files, making facts and instructions easy
-to inspect.</td>
+<td>Structured collections with timestamps, embeddings, and
+summaries.</td>
+<td>Directly readable Markdown files.</td>
 </tr>
 <tr>
 <td>Persistence after restart</td>
-<td>Persists in MongoDB and remains available after the API
-restarts.</td>
-<td>Persists directly in <code>AGENT.md</code> and
-<code>MEMORY.md</code>.</td>
+<td>Persists in MongoDB across API restarts.</td>
+<td>Persists in <code>AGENT.md</code> and <code>MEMORY.md</code>.</td>
 </tr>
 <tr>
-<td>Scalability across sessions</td>
-<td>Better for many users and sessions because records are indexed and
-queryable.</td>
-<td>Less scalable because one Markdown file can become large and
-difficult to manage.</td>
+<td>Scalability</td>
+<td>Better for many users and sessions.</td>
+<td>Less scalable as one file grows.</td>
+</tr>
+<tr>
+<td>Retrieval</td>
+<td>Supports queryable messages, summaries, and episodic facts.</td>
+<td>Best for durable instructions and verified facts.</td>
 </tr>
 <tr>
 <td>Facts that must not be forgotten</td>
-<td>Lifetime summaries and episodic facts provide structured
-persistence.</td>
-<td>Best for durable instructions and manually verified facts that
-should always be included.</td>
+<td>Lifetime summaries and episodic records.</td>
+<td>Stable instructions and manually verified facts.</td>
 </tr>
 </tbody>
 </table>
 <p>MongoDB memory is better for conversational history, retrieval, and
-many sessions. File-based memory is better for stable instructions,
-verified preferences, and facts that should remain visible and
-inspectable.</p>
-<h2 id="ai-use-details">AI Use Details</h2>
-<ol type="1">
-<li><p>I used an AI assistant to help plan the HW6 implementation,
-create FastAPI and PyMongo code, design memory retrieval and
-summarization logic, prepare experiment scripts, and organize the
-report.</p></li>
-<li><p>One unsuitable result was the initial memory endpoint response,
-which failed because MongoDB <code>ObjectId</code> values were not JSON
-serializable.</p></li>
-<li><p>I detected the problem by calling
+multiple sessions. File-based memory is better for stable instructions
+and durable facts that should remain visible and inspectable.</p>
+<h2 id="verification">Verification</h2>
+<p>The HW6 verification script passed all checks:</p>
+<ul>
+<li>FastAPI health endpoint.</li>
+<li><code>POST /api/chat</code>.</li>
+<li>MongoDB document list endpoint.</li>
+<li>MongoDB document creation endpoint.</li>
+<li>MongoDB document deletion endpoint.</li>
+<li>Memory endpoint.</li>
+<li>Aggregate endpoint.</li>
+</ul>
+<p>The result was:</p>
+<div class="sourceCode" id="cb12"><pre
+class="sourceCode json"><code class="sourceCode json"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;homework&quot;</span><span class="fu">:</span> <span class="st">&quot;HW6&quot;</span><span class="fu">,</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;sid4&quot;</span><span class="fu">:</span> <span class="dv">9004</span><span class="fu">,</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;model&quot;</span><span class="fu">:</span> <span class="st">&quot;qwen3:8b&quot;</span><span class="fu">,</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;SEED&quot;</span><span class="fu">:</span> <span class="dv">9004</span><span class="fu">,</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;VERIFY_SEED&quot;</span><span class="fu">:</span> <span class="dv">269004</span><span class="fu">,</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;passed&quot;</span><span class="fu">:</span> <span class="kw">true</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
+<p>The verification output is stored in:</p>
+<ul>
+<li><code>reports/hw06/verification.json</code></li>
+</ul>
+<h2 id="ai-use">AI Use</h2>
+<p>See <code>AI_USE.md</code>.</p>
+<p>AI assistance was used to help plan the implementation, write FastAPI
+and PyMongo code, design memory retrieval and summarization logic,
+prepare experiment scripts, and organize the report.</p>
+<p>One unsuitable result was the initial memory endpoint response. It
+failed because MongoDB <code>ObjectId</code> values were not JSON
+serializable. The problem was detected by calling
 <code>GET /api/memory/student-9004</code> and checking the FastAPI
-traceback. The error identified the <code>ObjectId</code> serialization
-issue.</p></li>
-<li><p>I added a recursive <code>make_json_safe</code> function that
-converts <code>ObjectId</code> values to strings before returning API
-responses. I then recompiled the code and verified that both the memory
-and aggregate endpoints returned valid JSON.</p></li>
-</ol>
-<h2 id="additional-evidence-screenshots">Additional Evidence
-Screenshots</h2>
+traceback.</p>
+<p>The issue was fixed by adding a recursive <code>make_json_safe</code>
+function that converts <code>ObjectId</code> values to strings before
+returning API responses. The memory and aggregate endpoints were then
+recompiled and verified successfully.</p>
+<h2 id="raw-evidence">Raw Evidence</h2>
+<p>The following reproducible evidence files are included:</p>
+<ul>
+<li><code>raw/chat_metrics.jsonl</code></li>
+<li><code>raw/experiment_short_term_4.json</code></li>
+<li><code>raw/experiment_short_term_12.json</code></li>
+<li><code>raw/experiment_short_term_30.json</code></li>
+<li><code>raw/experiment_eviction_12.json</code></li>
+<li><code>raw/memory_student-9004.json</code></li>
+<li><code>raw/aggregate_student-9004.json</code></li>
+<li><code>raw/memory_hw6-evidence-user.json</code></li>
+<li><code>raw/aggregate_hw6-evidence-user.json</code></li>
+<li><code>raw/memory_lifetime-test.json</code></li>
+<li><code>memory_probes.yaml</code></li>
+<li><code>verification.json</code></li>
+<li><code>RUN_LOG.txt</code></li>
+<li><code>METRICS.md</code></li>
+<li><code>AI_USE.md</code></li>
+</ul>
+<h2 id="evidence-screenshots">Evidence Screenshots</h2>
+<h3 id="mongodb-collections-and-sample-documents">MongoDB Collections
+and Sample Documents</h3>
+<figure>
+<img src="evidence/mongodb_collections_all.png"
+alt="MongoDB collections and sample documents" />
+<figcaption aria-hidden="true">MongoDB collections and sample
+documents</figcaption>
+</figure>
+<figure>
+<img src="evidence/mongodb_samples.png"
+alt="MongoDB sample documents" />
+<figcaption aria-hidden="true">MongoDB sample documents</figcaption>
+</figure>
 <h3 id="successful-crud-operations">Successful CRUD Operations</h3>
 <figure>
 <img src="evidence/crud_operations.png"
@@ -467,18 +956,19 @@ alt="Successful CRUD operations" />
 <img src="evidence/memory_endpoint.png" alt="Memory endpoint" />
 <figcaption aria-hidden="true">Memory endpoint</figcaption>
 </figure>
+<figure>
+<img src="evidence/memory_endpoint1.png"
+alt="Memory endpoint details" />
+<figcaption aria-hidden="true">Memory endpoint details</figcaption>
+</figure>
+<figure>
+<img src="evidence/memory_endpoint2.png" alt="Memory endpoint JSON" />
+<figcaption aria-hidden="true">Memory endpoint JSON</figcaption>
+</figure>
 <h3 id="aggregate-endpoint">Aggregate Endpoint</h3>
 <figure>
 <img src="evidence/aggregate_endpoint.png" alt="Aggregate endpoint" />
 <figcaption aria-hidden="true">Aggregate endpoint</figcaption>
-</figure>
-<h3 id="mongodb-collections-and-sample-documents-1">MongoDB Collections
-and Sample Documents</h3>
-<figure>
-<img src="evidence/mongodb_collections_all.png"
-alt="MongoDB collections and sample documents" />
-<figcaption aria-hidden="true">MongoDB collections and sample
-documents</figcaption>
 </figure>
 <h3 id="file-based-memory-commands">File-Based Memory Commands</h3>
 <figure>

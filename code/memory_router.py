@@ -26,7 +26,7 @@ SUMMARIZE_EVERY_USER_MSGS = int(
 )
 EPISODE_TOP_K = int(os.getenv("EPISODE_TOP_K", "3"))
 MAX_EPISODES_PER_USER = int(
-    os.getenv("MAX_EPISODES_PER_USER", "1000000")
+    os.getenv("MAX_EPISODES_PER_USER", "10")
 )
 
 METRICS_PATH = Path("reports/hw06/raw/chat_metrics.jsonl")

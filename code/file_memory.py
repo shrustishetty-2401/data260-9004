@@ -12,19 +12,62 @@ ORIGINAL_MEMORY_PATH = (
 )
 
 
+CONTRADICTION_DECISIONS = [
+    {
+        "left": "the user prefers concise explanations",
+        "right": "the user prefers detailed explanations",
+        "decision": (
+            "Retained concise explanations because the current "
+            "user preference is concise technical answers."
+        ),
+        "incorrect_fact": (
+            "The detailed-explanations fact is superseded for this project."
+        ),
+        "verification": (
+            "Verify again if the user's preference changes."
+        ),
+    },
+    {
+        "left": "the package status is open",
+        "right": "the package status is resolved",
+        "decision": (
+            "Retained resolved as the latest operational status."
+        ),
+        "incorrect_fact": (
+            "The open status is treated as outdated, but this decision "
+            "may be incorrect because the source facts have no timestamps."
+        ),
+        "verification": (
+            "Verify against the current package record."
+        ),
+    },
+    {
+        "left": "use mongodb for memory",
+        "right": "use mysql for memory",
+        "decision": (
+            "Retained MongoDB because HW6 explicitly uses MongoDB "
+            "for document and conversational memory."
+        ),
+        "incorrect_fact": (
+            "The MySQL memory instruction is incorrect for HW6, although "
+            "MySQL remains part of the earlier SQL application."
+        ),
+        "verification": (
+            "Verify against the HW6 architecture and AGENT.md."
+        ),
+    },
+]
+
+
 def load_agent() -> str:
-    return AGENT_PATH.read_text(
-        encoding="utf-8"
-    )
+    return AGENT_PATH.read_text(encoding="utf-8")
 
 
 def load_memory() -> str:
     if not MEMORY_PATH.exists():
         return ""
 
-    return MEMORY_PATH.read_text(
-        encoding="utf-8"
-    )
+    return MEMORY_PATH.read_text(encoding="utf-8")
 
 
 def build_file_memory_prompt() -> str:
@@ -55,9 +98,16 @@ def get_consolidation_timestamp() -> datetime | None:
         return None
 
     try:
-        return datetime.fromisoformat(
+        timestamp = datetime.fromisoformat(
             match.group(1).strip()
         )
+
+        if timestamp.tzinfo is None:
+            timestamp = timestamp.replace(
+                tzinfo=timezone.utc
+            )
+
+        return timestamp
     except ValueError:
         return None
 
@@ -93,36 +143,29 @@ def detect_contradictions(
         for fact in facts
     }
 
-    contradictions = []
+    decisions = []
 
-    pairs = [
-        (
-            "the user prefers concise explanations",
-            "the user prefers detailed explanations",
-        ),
-        (
-            "the package status is open",
-            "the package status is resolved",
-        ),
-        (
-            "use mongodb for memory",
-            "use mysql for memory",
-        ),
-    ]
+    for item in CONTRADICTION_DECISIONS:
+        left_present = item["left"] in normalized
+        right_present = item["right"] in normalized
 
-    for left, right in pairs:
-        if left in normalized and right in normalized:
-            contradictions.append(
-                f"Contradiction resolved: "
-                f"'{left}' conflicts with '{right}'. "
-                f"The newer or more specific fact must be verified."
+        if left_present and right_present:
+            decisions.append(
+                "Contradiction decision: "
+                f"'{item['left']}' conflicts with "
+                f"'{item['right']}'. "
+                f"Decision: {item['decision']} "
+                f"Incorrect or outdated fact identified: "
+                f"{item['incorrect_fact']} "
+                f"Verification: {item['verification']}"
             )
 
-    return contradictions
+    return decisions
 
 
 def consolidate_memory() -> dict:
     facts = non_empty_memory_lines()
+    before_count = len(facts)
 
     if MEMORY_PATH.exists():
         ORIGINAL_MEMORY_PATH.parent.mkdir(
@@ -131,9 +174,7 @@ def consolidate_memory() -> dict:
         )
 
         ORIGINAL_MEMORY_PATH.write_text(
-            MEMORY_PATH.read_text(
-                encoding="utf-8"
-            ),
+            MEMORY_PATH.read_text(encoding="utf-8"),
             encoding="utf-8",
         )
 
@@ -170,7 +211,7 @@ def consolidate_memory() -> dict:
         output_lines.extend(
             [
                 "",
-                "## Contradictions Requiring Review",
+                "## Explicit Contradiction Decisions",
             ]
         )
 
@@ -184,12 +225,21 @@ def consolidate_memory() -> dict:
         encoding="utf-8",
     )
 
+    after_count = len(
+        non_empty_memory_lines()
+    )
+
     return {
-        "before": len(facts),
-        "after": len(
-            non_empty_memory_lines()
-        ),
+        "before": before_count,
+        "after": after_count,
         "contradictions": contradictions,
+        "original_memory": str(
+            ORIGINAL_MEMORY_PATH
+        ),
+        "consolidated_memory": str(
+            MEMORY_PATH
+        ),
+        "consolidation_timestamp": timestamp,
     }
 
 
@@ -205,6 +255,7 @@ def memory_command(
 
     if command == "/compact":
         result = consolidate_memory()
+
         return {
             "command": command,
             "message": (
@@ -221,6 +272,11 @@ def memory_command(
             for line in recent_conversation.splitlines()
             if line.strip()
         ]
+
+        MEMORY_PATH.parent.mkdir(
+            parents=True,
+            exist_ok=True,
+        )
 
         with MEMORY_PATH.open(
             "a",

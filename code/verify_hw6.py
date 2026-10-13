@@ -38,7 +38,7 @@ def request_json(
 
     with urllib.request.urlopen(
         request,
-        timeout=30,
+        timeout=120,
     ) as response:
         content = response.read().decode("utf-8")
 
@@ -63,6 +63,40 @@ def main() -> None:
                 "passed": (
                     status == 200
                     and payload.get("status") == "ok"
+                ),
+            }
+        )
+
+        status, chat_response = request_json(
+            "POST",
+            "/api/chat",
+            {
+                "user_id": "hw6-verification-user",
+                "session_id": "hw6-verification-session",
+                "message": (
+                    "Give one concise fact about "
+                    "package vulnerabilities."
+                ),
+            },
+        )
+
+        checks.append(
+            {
+                "name": "POST /api/chat endpoint",
+                "passed": (
+                    status == 200
+                    and isinstance(
+                        chat_response.get("reply"),
+                        str,
+                    )
+                    and isinstance(
+                        chat_response.get("memory_used"),
+                        dict,
+                    )
+                    and isinstance(
+                        chat_response.get("metrics"),
+                        dict,
+                    )
                 ),
             }
         )
@@ -132,6 +166,9 @@ def main() -> None:
                 "passed": (
                     status == 200
                     and "messages" in memory
+                    and "latest_session_summary" in memory
+                    and "latest_lifetime_summary" in memory
+                    and "episodic_facts" in memory
                 ),
             }
         )
@@ -146,8 +183,8 @@ def main() -> None:
                 "name": "Aggregate endpoint",
                 "passed": (
                     status == 200
-                    and "daily_message_counts"
-                    in aggregate
+                    and "daily_message_counts" in aggregate
+                    and "recent_summaries" in aggregate
                 ),
             }
         )

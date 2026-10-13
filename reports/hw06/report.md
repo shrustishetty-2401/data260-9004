@@ -1,5 +1,9 @@
 # DATA-260 Homework 6
 
+Name: Shrusti Shetty
+
+Collaborators: Sbnikitha and supriyaselvanganesan
+
 Repository: https://github.com/shrustishetty-2401/data260-9004
 
 ## Section 0 - Configuration
@@ -28,6 +32,16 @@ The `vulnerabilities` collection includes:
 - Required discovered_at date/time.
 - Automatic created_at and updated_at timestamps.
 
+Representative Pydantic schema:
+
+```python
+class VulnerabilityCreate(BaseModel):
+    title: str = Field(min_length=1, max_length=100)
+    description: str | None = None
+    severity: Severity
+    status: VulnerabilityStatus = VulnerabilityStatus.OPEN
+    discovered_at: datetime
+
 Implemented endpoints:
 
 - POST `/api/documents`
@@ -37,6 +51,7 @@ Implemented endpoints:
 - DELETE `/api/documents/{id}`
 
 Validation tests confirmed that invalid severity values, missing titles, and invalid date formats are rejected.
+A nonexistent document ID returned HTTP 404, and a numeric `title` value returned HTTP 422 because the title must be a string.
 
 ## Part 2 - Memory System
 
@@ -51,10 +66,33 @@ The `/api/chat` endpoint:
 - Saves user and assistant messages.
 - Loads the short-term conversation window.
 - Loads session summaries.
+- Loads lifetime summaries with `scope="user"` and `session_id=null`.
 - Retrieves relevant episodic facts using cosine similarity.
 - Calls the local Ollama qwen3:8b model.
 - Records prompt tokens, completion tokens, total tokens, and latency.
 - Creates session summaries every three user messages.
+
+Representative prompt assembly:
+
+```python
+context_parts = [SYSTEM_PRIMER]
+
+if lifetime_summary:
+    context_parts.append(
+        f"Lifetime summary:\n{lifetime_summary['text']}"
+    )
+
+if session_summary:
+    context_parts.append(
+        f"Session summary:\n{session_summary['text']}"
+    )
+
+prompt_messages = [
+    {
+        "role": "system",
+        "content": "\n\n".join(context_parts),
+    }
+]
 
 Additional endpoints:
 
@@ -65,12 +103,48 @@ A ten-message conversation was completed successfully. The memory response conta
 
 ## Part 3 - Memory Costs
 
+The raw JSONL record stores the required token components for every request:
+
+```json
+{
+  "system_primer_tokens": 26,
+  "long_term_summary_tokens": 257,
+  "short_term_window_tokens": 1146,
+  "episodic_facts_tokens": 27,
+  "prompt_tokens": 2209,
+  "completion_tokens": 262,
+  "latency_ms": 33194.29
+}
+
 | Setting | Mean prompt tokens/turn | Mean latency (ms) | Probe quality |
 |---|---:|---:|---:|
 | SHORT_TERM_N=4 | 286.97 | 5000.13 | 3.0 |
 | SHORT_TERM_N=12 | 614.17 | 9255.64 | 2.8 |
 | SHORT_TERM_N=30 | 1020.77 | 12746.58 | 2.8 |
 | Eviction policy, N=12 | 685.40 | 10635.50 | 3.0 |
+
+The five fixed memory probes were:
+
+```yaml
+- id: preference
+  question: How does the user prefer explanations?
+  expected: [concise, open-source]
+
+- id: recording
+  question: What should be recorded for a vulnerable package?
+  expected: [package, severity, version]
+
+- id: severity
+  question: Which severity levels should be prioritized first?
+  expected: [critical, high]
+
+- id: transitive
+  question: Why are transitive dependencies important?
+  expected: [indirect, vulnerabilities]
+
+- id: no_patch
+  question: What should be done when no patch exists?
+  expected: [replace, workaround]
 
 The eviction policy retains only the most recent ten episodic facts per user and removes older facts.
 
@@ -87,7 +161,7 @@ The best measured setting was SHORT_TERM_N=4 because it had the lowest prompt-to
 
 The worst measured setting was SHORT_TERM_N=30 because it had the highest prompt-token usage, latency, and estimated cost, with a probe score of 2.8.
 
-The eviction policy did not reduce cost in this single run compared with baseline N=12. Its purpose was to demonstrate bounded episodic-memory growth.
+The eviction policy did not reduce prompt cost in this single run because retrieval already limits episodic context to EPISODE_TOP_K=3. Its purpose is to demonstrate bounded episodic-memory growth rather than reduce the prompt window.
 
 ## Part 4 - File-Based Memory
 
@@ -99,7 +173,7 @@ The eviction policy did not reduce cost in this single run compared with baselin
 - Testing approach.
 - Prohibited actions.
 
-`MEMORY.md` was initially created with 55 lines, including duplicate and contradictory facts. The `/compact` command reduced it to 29 non-empty facts and recorded three contradictions for review.
+`MEMORY.md` was initially created with 55 physical lines, including duplicate and contradictory facts. The `/compact` command reduced it to 38 physical lines, below the required 40-line limit. Three contradictions were explicitly resolved: concise versus detailed explanations, open versus resolved package status, and MongoDB versus MySQL memory. The package-status decision was marked as potentially incorrect because the original facts had no timestamps.
 
 Implemented commands:
 
@@ -108,6 +182,26 @@ Implemented commands:
 - `/dream`
 - `/help`
 
+Representative file-memory functions:
+
+```python
+def load_memory() -> str:
+    if not MEMORY_PATH.exists():
+        return ""
+
+    return MEMORY_PATH.read_text(
+        encoding="utf-8"
+    )
+
+
+def build_file_memory_prompt() -> str:
+    return (
+        "Project instructions:\n"
+        f"{load_agent()}\n\n"
+        "Durable memory:\n"
+        f"{load_memory()}"
+    )
+
 A type-hinted function using UTC timestamps was implemented and verified against the AGENT.md instructions.
 
 ## Verification
@@ -115,6 +209,7 @@ A type-hinted function using UTC timestamps was implemented and verified against
 The HW6 smoke test passed:
 
 - FastAPI health endpoint
+- POST /api/chat endpoint
 - MongoDB document list
 - MongoDB document creation
 - MongoDB document deletion

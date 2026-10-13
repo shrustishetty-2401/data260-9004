@@ -1,0 +1,40 @@
+rubric:
+  1: "Incorrect or missing answer"
+  2: "Mostly incorrect; important details missing"
+  3: "Partially correct answer with some relevant details"
+  4: "Correct answer with minor omissions"
+  5: "Correct, complete, and clearly explained answer"
+
+probes:
+  - id: preference
+    question: "How does the user prefer explanations?"
+    expected_answer_criteria:
+      - "The user prefers concise explanations."
+      - "The preference concerns open-source package vulnerabilities."
+
+  - id: vulnerability_record
+    question: "What information should be recorded for a vulnerable package?"
+    expected_answer_criteria:
+      - "Package name and affected version"
+      - "Vulnerability ID and severity"
+      - "Description, affected projects, remediation, and source"
+
+  - id: severity
+    question: "Which vulnerability severity levels should be prioritized first?"
+    expected_answer_criteria:
+      - "Critical and high severity should be prioritized first."
+      - "Impact and exploitability should also be considered."
+
+  - id: transitive_dependency
+    question: "Why are transitive dependencies important?"
+    expected_answer_criteria:
+      - "They are indirect dependencies."
+      - "They can introduce hidden vulnerabilities."
+      - "They should be included in dependency scanning."
+
+  - id: no_patch
+    question: "What should be done when no security patch exists?"
+    expected_answer_criteria:
+      - "Consider removing or replacing the package."
+      - "Use a temporary workaround or isolation."
+      - "Monitor advisories and add security controls."

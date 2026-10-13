@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>report</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+</head>
+<body>
+<h1 id="data-260-homework-6">DATA-260 Homework 6</h1>
+<p>Repository: https://github.com/shrustishetty-2401/data260-9004</p>
+<h2 id="section-0---configuration">Section 0 - Configuration</h2>
+<ul>
+<li>SID4: 9004</li>
+<li>PORT_BASE: 8004</li>
+<li>PREFIX: s9004</li>
+<li>SEED: 9004</li>
+<li>VERIFY_SEED: 269004</li>
+<li>DOMAIN_ID: 4</li>
+<li>Domain: open-source package vulnerabilities</li>
+<li>Hardware: Apple Silicon MacBook Pro</li>
+<li>Local model: Ollama qwen3:8b</li>
+<li>Final tagged commit: 013da3dc1ea5c3af7eb5353d7fc39041c23068d7</li>
+</ul>
+<h2 id="part-1---mongodb-document-api">Part 1 - MongoDB Document
+API</h2>
+<p>A MongoDB database named <code>s9004_doc</code> was created using
+MongoDB 7 and PyMongo.</p>
+<p>The <code>vulnerabilities</code> collection includes:</p>
+<ul>
+<li>Required title with a maximum length of 100 characters.</li>
+<li>Optional description.</li>
+<li>Severity enum: low, medium, high, critical.</li>
+<li>Status enum: open, triaged, resolved.</li>
+<li>Required discovered_at date/time.</li>
+<li>Automatic created_at and updated_at timestamps.</li>
+</ul>
+<p>Implemented endpoints:</p>
+<ul>
+<li>POST <code>/api/documents</code></li>
+<li>GET <code>/api/documents</code></li>
+<li>GET <code>/api/documents/{id}</code></li>
+<li>PUT <code>/api/documents/{id}</code></li>
+<li>DELETE <code>/api/documents/{id}</code></li>
+</ul>
+<p>Validation tests confirmed that invalid severity values, missing
+titles, and invalid date formats are rejected.</p>
+<h2 id="part-2---memory-system">Part 2 - Memory System</h2>
+<p>MongoDB collections:</p>
+<ul>
+<li>messages</li>
+<li>summaries</li>
+<li>episodes</li>
+</ul>
+<p>The <code>/api/chat</code> endpoint:</p>
+<ul>
+<li>Saves user and assistant messages.</li>
+<li>Loads the short-term conversation window.</li>
+<li>Loads session summaries.</li>
+<li>Retrieves relevant episodic facts using cosine similarity.</li>
+<li>Calls the local Ollama qwen3:8b model.</li>
+<li>Records prompt tokens, completion tokens, total tokens, and
+latency.</li>
+<li>Creates session summaries every three user messages.</li>
+</ul>
+<p>Additional endpoints:</p>
+<ul>
+<li>GET <code>/api/memory/{user_id}</code></li>
+<li>GET <code>/api/aggregate/{user_id}</code></li>
+</ul>
+<p>A ten-message conversation was completed successfully. The memory
+response contained messages, a session summary, episodic facts,
+embeddings, and MongoDB IDs converted to JSON-safe strings.</p>
+<h2 id="part-3---memory-costs">Part 3 - Memory Costs</h2>
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 26%" />
+<col style="width: 26%" />
+<col style="width: 26%" />
+</colgroup>
+<thead>
+<tr>
+<th>Setting</th>
+<th style="text-align: right;">Mean prompt tokens/turn</th>
+<th style="text-align: right;">Mean latency (ms)</th>
+<th style="text-align: right;">Probe quality</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SHORT_TERM_N=4</td>
+<td style="text-align: right;">286.97</td>
+<td style="text-align: right;">5000.13</td>
+<td style="text-align: right;">3.0</td>
+</tr>
+<tr>
+<td>SHORT_TERM_N=12</td>
+<td style="text-align: right;">614.17</td>
+<td style="text-align: right;">9255.64</td>
+<td style="text-align: right;">2.8</td>
+</tr>
+<tr>
+<td>SHORT_TERM_N=30</td>
+<td style="text-align: right;">1020.77</td>
+<td style="text-align: right;">12746.58</td>
+<td style="text-align: right;">2.8</td>
+</tr>
+<tr>
+<td>Eviction policy, N=12</td>
+<td style="text-align: right;">685.40</td>
+<td style="text-align: right;">10635.50</td>
+<td style="text-align: right;">3.0</td>
+</tr>
+</tbody>
+</table>
+<p>The eviction policy retains only the most recent ten episodic facts
+per user and removes older facts.</p>
+<p>Estimated costs for 10,000 thirty-turn conversations:</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th style="text-align: right;">Mean completion tokens/turn</th>
+<th style="text-align: right;">Estimated cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SHORT_TERM_N=4</td>
+<td style="text-align: right;">37.93</td>
+<td style="text-align: right;">$142.99</td>
+</tr>
+<tr>
+<td>SHORT_TERM_N=12</td>
+<td style="text-align: right;">50.13</td>
+<td style="text-align: right;">$259.45</td>
+</tr>
+<tr>
+<td>SHORT_TERM_N=30</td>
+<td style="text-align: right;">44.20</td>
+<td style="text-align: right;">$372.53</td>
+</tr>
+<tr>
+<td>Eviction policy, N=12</td>
+<td style="text-align: right;">57.03</td>
+<td style="text-align: right;">$291.17</td>
+</tr>
+</tbody>
+</table>
+<p>The best measured setting was SHORT_TERM_N=4 because it had the
+lowest prompt-token usage, latency, and estimated cost while maintaining
+a probe score of 3.0.</p>
+<p>The worst measured setting was SHORT_TERM_N=30 because it had the
+highest prompt-token usage, latency, and estimated cost, with a probe
+score of 2.8.</p>
+<p>The eviction policy did not reduce cost in this single run compared
+with baseline N=12. Its purpose was to demonstrate bounded
+episodic-memory growth.</p>
+<h2 id="part-4---file-based-memory">Part 4 - File-Based Memory</h2>
+<p><code>AGENT.md</code> contains instructions covering:</p>
+<ul>
+<li>Project description.</li>
+<li>Technology stack.</li>
+<li>Coding conventions.</li>
+<li>Testing approach.</li>
+<li>Prohibited actions.</li>
+</ul>
+<p><code>MEMORY.md</code> was initially created with 55 lines, including
+duplicate and contradictory facts. The <code>/compact</code> command
+reduced it to 29 non-empty facts and recorded three contradictions for
+review.</p>
+<p>Implemented commands:</p>
+<ul>
+<li><code>/memory</code></li>
+<li><code>/compact</code></li>
+<li><code>/dream</code></li>
+<li><code>/help</code></li>
+</ul>
+<p>A type-hinted function using UTC timestamps was implemented and
+verified against the AGENT.md instructions.</p>
+<h2 id="verification">Verification</h2>
+<p>The HW6 smoke test passed:</p>
+<ul>
+<li>FastAPI health endpoint</li>
+<li>MongoDB document list</li>
+<li>MongoDB document creation</li>
+<li>MongoDB document deletion</li>
+<li>Memory endpoint</li>
+<li>Aggregate endpoint</li>
+</ul>
+<h2 id="ai-use">AI Use</h2>
+<p>See <code>AI_USE.md</code>.</p>
+<h2 id="raw-evidence">Raw Evidence</h2>
+<ul>
+<li><code>raw/chat_metrics.jsonl</code></li>
+<li><code>raw/experiment_short_term_4.json</code></li>
+<li><code>raw/experiment_short_term_12.json</code></li>
+<li><code>raw/experiment_short_term_30.json</code></li>
+<li><code>raw/experiment_eviction_12.json</code></li>
+<li><code>raw/memory_student-9004.json</code></li>
+<li><code>raw/aggregate_student-9004.json</code></li>
+<li><code>memory_probes.yaml</code></li>
+<li><code>verification.json</code></li>
+</ul>
+<h2 id="evidence-screenshots">Evidence Screenshots</h2>
+<h3 id="mongodb-collections-and-sample-documents">MongoDB Collections
+and Sample Documents</h3>
+<figure>
+<img src="evidence/mongodb_samples.png"
+alt="MongoDB collections and sample documents" />
+<figcaption aria-hidden="true">MongoDB collections and sample
+documents</figcaption>
+</figure>
+<h2 id="memory-system-comparison">Memory System Comparison</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Criterion</th>
+<th>MongoDB-backed memory</th>
+<th>File-based memory</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Inspectability</td>
+<td>Queryable collections with structured fields, timestamps,
+embeddings, and summaries.</td>
+<td>Directly readable Markdown files, making facts and instructions easy
+to inspect.</td>
+</tr>
+<tr>
+<td>Persistence after restart</td>
+<td>Persists in MongoDB and remains available after the API
+restarts.</td>
+<td>Persists directly in <code>AGENT.md</code> and
+<code>MEMORY.md</code>.</td>
+</tr>
+<tr>
+<td>Scalability across sessions</td>
+<td>Better for many users and sessions because records are indexed and
+queryable.</td>
+<td>Less scalable because one Markdown file can become large and
+difficult to manage.</td>
+</tr>
+<tr>
+<td>Facts that must not be forgotten</td>
+<td>Lifetime summaries and episodic facts provide structured
+persistence.</td>
+<td>Best for durable instructions and manually verified facts that
+should always be included.</td>
+</tr>
+</tbody>
+</table>
+<p>MongoDB memory is better for conversational history, retrieval, and
+many sessions. File-based memory is better for stable instructions,
+verified preferences, and facts that should remain visible and
+inspectable.</p>
+<h2 id="ai-use-details">AI Use Details</h2>
+<ol type="1">
+<li><p>I used an AI assistant to help plan the HW6 implementation,
+create FastAPI and PyMongo code, design memory retrieval and
+summarization logic, prepare experiment scripts, and organize the
+report.</p></li>
+<li><p>One unsuitable result was the initial memory endpoint response,
+which failed because MongoDB <code>ObjectId</code> values were not JSON
+serializable.</p></li>
+<li><p>I detected the problem by calling
+<code>GET /api/memory/student-9004</code> and checking the FastAPI
+traceback. The error identified the <code>ObjectId</code> serialization
+issue.</p></li>
+<li><p>I added a recursive <code>make_json_safe</code> function that
+converts <code>ObjectId</code> values to strings before returning API
+responses. I then recompiled the code and verified that both the memory
+and aggregate endpoints returned valid JSON.</p></li>
+</ol>
+<h2 id="additional-evidence-screenshots">Additional Evidence
+Screenshots</h2>
+<h3 id="successful-crud-operations">Successful CRUD Operations</h3>
+<figure>
+<img src="evidence/crud_operations.png"
+alt="Successful CRUD operations" />
+<figcaption aria-hidden="true">Successful CRUD operations</figcaption>
+</figure>
+<h3 id="validation-errors">Validation Errors</h3>
+<figure>
+<img src="evidence/validation_errors.png" alt="Validation errors" />
+<figcaption aria-hidden="true">Validation errors</figcaption>
+</figure>
+<h3 id="chat-conversation">Chat Conversation</h3>
+<figure>
+<img src="evidence/chat_conversation.png" alt="Chat conversation" />
+<figcaption aria-hidden="true">Chat conversation</figcaption>
+</figure>
+<h3 id="memory-endpoint">Memory Endpoint</h3>
+<figure>
+<img src="evidence/memory_endpoint.png" alt="Memory endpoint" />
+<figcaption aria-hidden="true">Memory endpoint</figcaption>
+</figure>
+<h3 id="aggregate-endpoint">Aggregate Endpoint</h3>
+<figure>
+<img src="evidence/aggregate_endpoint.png" alt="Aggregate endpoint" />
+<figcaption aria-hidden="true">Aggregate endpoint</figcaption>
+</figure>
+<h3 id="mongodb-collections-and-sample-documents-1">MongoDB Collections
+and Sample Documents</h3>
+<figure>
+<img src="evidence/mongodb_collections_all.png"
+alt="MongoDB collections and sample documents" />
+<figcaption aria-hidden="true">MongoDB collections and sample
+documents</figcaption>
+</figure>
+<h3 id="file-based-memory-commands">File-Based Memory Commands</h3>
+<figure>
+<img src="evidence/file_memory_commands.png"
+alt="File-based memory commands" />
+<figcaption aria-hidden="true">File-based memory commands</figcaption>
+</figure>
+<h3 id="agent.md-function-verification">AGENT.md Function
+Verification</h3>
+<figure>
+<img src="evidence/agent_function_verification.png"
+alt="AGENT.md function verification" />
+<figcaption aria-hidden="true">AGENT.md function
+verification</figcaption>
+</figure>
+</body>
+</html>

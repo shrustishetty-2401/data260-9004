@@ -1,0 +1,74 @@
+HW6 RUN LOG
+Repository: data260-9004
+Branch: hw6
+SID4: 9004
+Domain: open-source package vulnerabilities
+Model: qwen3:8b
+
+[2026-10-12]
+Command: docker ps
+Result: data260-hw6-mongo container running on port 27017.
+
+Command: python -c "from pymongo import MongoClient; ..."
+Result: {'ok': 1.0}
+Result: pymongo OK
+
+Command: python -m py_compile code/mongo_database.py
+Result: Passed.
+
+Command: python -m py_compile code/document_schemas.py
+Result: Passed.
+
+Command: python -m py_compile code/document_router.py
+Result: Passed.
+
+Command: python -m py_compile code/api.py
+Result: Passed.
+
+Command: curl GET /health
+Result: HTTP 200 OK.
+
+Command: curl POST /api/documents
+Result: HTTP 201 Created. MongoDB document ID returned.
+
+Command: curl GET /api/documents
+Result: HTTP 200 OK. Documents returned.
+
+Command: curl GET /api/documents/{id}
+Result: HTTP 200 OK. Single document returned.
+
+Command: curl PUT /api/documents/{id}
+Result: Updated severity and status successfully.
+
+Command: curl DELETE /api/documents/{id}
+Result: HTTP 204 No Content.
+
+Validation tests:
+- Invalid severity rejected.
+- Missing title rejected.
+- Invalid date rejected.
+
+[2026-10-13]
+Command: curl POST /api/chat
+Result: Assistant reply returned with memory_used and token metrics.
+
+Command: curl GET /api/memory/student-9004
+Result: Messages, session summary, episodic facts, embeddings, and string IDs returned.
+
+Command: curl GET /api/aggregate/student-9004
+Result: Daily message counts and recent summaries returned.
+
+Command: python code/verify_hw6.py
+Result: All smoke-test checks passed.
+
+Command: PYTHONPATH=code python -c "...memory_command('/compact')..."
+Result: Consolidated MEMORY.md from 55 lines to 29 lines.
+
+Command: PYTHONPATH=code python -c "...summarize_memory_state..."
+Result: AGENT.md-compliant function returned UTC timestamp.
+
+Part 3 experiments:
+- SHORT_TERM_N=4: mean prompt 286.97, mean latency 5000.13 ms, probe quality 3.0.
+- SHORT_TERM_N=12: mean prompt 614.17, mean latency 9255.64 ms, probe quality 2.8.
+- SHORT_TERM_N=30: mean prompt 1020.77, mean latency 12746.58 ms, probe quality 2.8.
+- Eviction policy: mean prompt 685.40, mean latency 10635.50 ms, probe quality 3.0.

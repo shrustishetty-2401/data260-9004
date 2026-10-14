@@ -1,3 +1,31 @@
+<style>
+body {
+  font-size: 11pt;
+}
+
+h1,
+h2 {
+  font-size: 14pt;
+  font-weight: bold;
+}
+
+h3 {
+  font-size: 12pt;
+  font-weight: bold;
+}
+
+code,
+pre {
+  font-size: 9pt;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+</style>
+
+
 # DATA-260 Homework 6
 
 Name: Shrusti Shetty  
@@ -156,6 +184,41 @@ The `/api/chat` endpoint:
 - Records prompt tokens, completion tokens, total tokens, and latency.
 - Creates session and lifetime summaries every three user messages.
 
+{
+  "reply": "The assistant response...",
+  "memory_used": {
+    "short_term_count": 12,
+    "short_term_messages": [
+      {
+        "role": "user",
+        "content": "Previous question..."
+      },
+      {
+        "role": "assistant",
+        "content": "Previous answer..."
+      }
+    ],
+    "long_term_summary": "Session summary text...",
+    "lifetime_summary": "Lifetime summary text...",
+    "episodic_facts": [
+      {
+        "fact": "The user prefers concise explanations",
+        "importance": 0.8,
+        "similarity": 0.74
+      }
+    ]
+  },
+  "metrics": {
+    "prompt_tokens": 614,
+    "completion_tokens": 50,
+    "total_tokens": 664,
+    "latency_ms": 9255.64,
+    "summary_created": false
+  }
+}
+
+The response exposes both the generated reply and the memory actually used for that turn, including the short-term window, summaries, and retrieved episodic facts.
+
 Configuration values:
 
 - `SHORT_TERM_N=12`
@@ -273,6 +336,94 @@ if (
     summary_created = True
 ```
 
+def embed_text(
+    text: str,
+    dimensions: int = 32,
+) -> list[float]:
+    vector = [0.0] * dimensions
+
+    for word in re.findall(
+        r"[a-zA-Z0-9']+",
+        text.lower(),
+    ):
+        digest = hashlib.sha256(
+            word.encode("utf-8")
+        ).digest()
+
+        index = int.from_bytes(
+            digest[:4],
+            "big",
+        ) % dimensions
+
+        vector[index] += (
+            1.0 if digest[4] % 2 == 0 else -1.0
+        )
+
+    magnitude = math.sqrt(
+        sum(value * value for value in vector)
+    )
+
+    return (
+        vector
+        if magnitude == 0
+        else [value / magnitude for value in vector]
+    )
+
+
+importance = (
+    0.8
+    if any(
+        word in fact.lower()
+        for word in [
+            "my",
+            "i am",
+            "i'm",
+            "always",
+            "never",
+            "prefer",
+        ]
+    )
+    else 0.5
+)
+
+
+@router.post("/api/chat")
+def chat_endpoint(payload: ChatRequest):
+    messages_collection.insert_one({
+        "user_id": payload.user_id,
+        "session_id": payload.session_id,
+        "role": "user",
+        "content": payload.message,
+        "created_at": utc_now(),
+    })
+
+    store_episodes(
+        payload.user_id,
+        payload.session_id,
+        payload.message,
+    )
+
+    prompt_messages, used = build_prompt(
+        payload.user_id,
+        payload.session_id,
+        payload.message,
+    )
+
+    result = complete(prompt_messages)
+
+    messages = list(
+    messages_collection.find({"user_id": user_id})
+    .sort("created_at", -1)
+    .limit(16)
+)
+
+episodes = list(
+    episodes_collection.find({"user_id": user_id})
+    .sort("created_at", -1)
+    .limit(20)
+)
+The embedding function creates deterministic 32-dimensional vectors. Importance is assigned as 0.8 for preference or personal facts and 0.5 for ordinary facts. The memory endpoint limits its response to 16 messages and 20 episodic facts.
+
 A ten-message conversation was completed successfully. The memory response contained messages, session summaries, lifetime summaries, episodic facts, embeddings, and JSON-safe string IDs.
 
 ```python
@@ -295,12 +446,17 @@ def get_aggregate(user_id: str):
 ```
 
 The memory endpoint returns recent messages, summaries, and episodic facts. The aggregate endpoint returns daily message counts and recent summaries.
+The local `qwen3:8b` model is called through the existing HW1 model adapter in `src/model_client.py`. The API also catches database errors and returns HTTP 500 with a clear error message when a server-side database failure occurs.
 
 ![Chat conversation](evidence/chat_conversation.png)
 
 ![Memory endpoint](evidence/memory_endpoint.png)
 
 ![Aggregate endpoint](evidence/aggregate_endpoint.png)
+
+![MongoDB memory documents](evidence/mongodb_memory_documents.png)
+
+The MongoDB evidence shows stored documents in the `messages`, `summaries`, and `episodes` collections.
 
 ## Part 3 - Memory Costs and Experiments
 
@@ -312,6 +468,10 @@ Each experiment used a fresh user and session with a 30-message conversation fol
 | `SHORT_TERM_N=12` | 614.17 | 9255.64 | 2.8 |
 | `SHORT_TERM_N=30` | 1020.77 | 12746.58 | 2.8 |
 | Eviction policy, `N=12` | 685.40 | 10635.50 | 3.0 |
+
+The component estimates do not equal the complete model prompt because they exclude the current user message, role labels, message formatting, and other prompt serialization overhead. In the recorded example, the listed components total 1,456 estimated tokens, while the Ollama prompt total is 2,209 tokens; the remaining 753 tokens come from the current message, conversation formatting, role markers, and model prompt overhead.
+
+The eviction run used 685.40 mean prompt tokens compared with 614.17 for baseline N=12, an increase of 71.23 tokens per turn, or approximately 11.6%. Therefore, this single run did not demonstrate token savings. The policy demonstrated bounded episodic-memory storage instead.
 
 The eviction policy limits stored episodic facts to the most recent ten facts per user. This bounds database growth. It did not reduce prompt cost in this single run because retrieval already limits the prompt to `EPISODE_TOP_K=3` episodic facts.
 
@@ -343,7 +503,7 @@ Probe questions and keyword-based scoring were recorded in `memory_probes.yaml`.
 
 - id: severity
   question: Which severity levels should be prioritized first?
-  expected: [critical, high]
+  expected: [critical, high]f
 
 - id: transitive
   question: Why are transitive dependencies important?
@@ -368,13 +528,28 @@ Estimated costs for 10,000 thirty-turn conversations were calculated using:
 | `SHORT_TERM_N=30` | 44.20 | $372.53 |
 | Eviction policy, `N=12` | 57.03 | $291.17 |
 
+rubric:
+  1: The response is incorrect or does not answer the question.
+  2: The response gives a weak or mostly incomplete answer.
+  3: The response answers the question generally and includes at least one expected concept.
+  4: The response is correct and includes most expected concepts.
+  5: The response is complete, accurate, and includes all important expected concepts.
+
+  The keyword matches provided an automatic baseline score, and the 1–5 rubric was used to interpret response quality.
+
 `SHORT_TERM_N=4` had the lowest prompt-token usage, latency, and estimated cost while maintaining a probe score of 3.0.
 
 `SHORT_TERM_N=30` had the highest prompt-token usage, latency, and estimated cost. Its probe score was 2.8, which did not improve over the smaller windows. This was a single run with a small probe set, so the difference may include model and run-to-run variation.
 
 The eviction policy did not reduce cost compared with baseline `N=12` in this run. Its purpose was bounded episodic-memory growth.
 
-![Memory cost experiment](evidence/chat_conversation.png)
+The experiment results were saved as JSON under `reports/hw06/raw/`.
+
+```text
+SHORT_TERM_N=4   mean_prompt=286.97   latency=5000.13 ms   quality=3.0
+SHORT_TERM_N=12  mean_prompt=614.17   latency=9255.64 ms   quality=2.8
+SHORT_TERM_N=30  mean_prompt=1020.77  latency=12746.58 ms  quality=2.8
+EVICTION_N=12    mean_prompt=685.40   latency=10635.50 ms  quality=3.0
 
 ## Part 4 - File-Based Memory
 
@@ -465,15 +640,23 @@ def memory_command(
         }
 
     if command == "/dream":
-        facts = [
-            line.strip()
-            for line in recent_conversation.splitlines()
-            if line.strip()
-        ]
-        return {
-            "command": command,
-            "added_facts": facts[:3],
-        }
+    facts = [
+        line.strip()
+        for line in recent_conversation.splitlines()
+        if line.strip()
+    ]
+
+    with MEMORY_PATH.open(
+        "a",
+        encoding="utf-8",
+    ) as file:
+        for fact in facts[:3]:
+            file.write(f"- {fact}\n")
+
+    return {
+        "command": command,
+        "added_facts": facts[:3],
+    }
 
     if command == "/help":
         return {
@@ -506,6 +689,53 @@ The type-hinted file-memory functions use UTC timestamps and were verified again
 MongoDB memory is better for conversational history, retrieval, and multiple sessions. File-based memory is better for stable instructions and durable facts that should remain visible and inspectable.
 
 ## Verification
+
+{
+  "homework": "HW6",
+  "sid4": 9004,
+  "commit_hash": "ab68f1e782b70c1875b5096e37c28be6bb80b39c",
+  "model": "qwen3:8b",
+  "configuration": {
+    "PORT_BASE": 8004,
+    "PREFIX": "s9004",
+    "DOMAIN_ID": 4
+  },
+  "SEED": 9004,
+  "VERIFY_SEED": 269004,
+  "timestamp": "2026-10-13T23:18:44.619347+00:00",
+  "checks": [
+    {
+      "name": "FastAPI health endpoint",
+      "passed": true
+    },
+    {
+      "name": "POST /api/chat endpoint",
+      "passed": true
+    },
+    {
+      "name": "MongoDB document list endpoint",
+      "passed": true
+    },
+    {
+      "name": "MongoDB document create endpoint",
+      "passed": true
+    },
+    {
+      "name": "MongoDB document delete endpoint",
+      "passed": true
+    },
+    {
+      "name": "Memory endpoint",
+      "passed": true
+    },
+    {
+      "name": "Aggregate endpoint",
+      "passed": true
+    }
+  ],
+  "passed": true
+}
+
 
 The HW6 verification script passed all checks:
 
@@ -543,6 +773,8 @@ AI assistance was used to help plan the implementation, write FastAPI and PyMong
 One unsuitable result was the initial memory endpoint response. It failed because MongoDB `ObjectId` values were not JSON serializable. The problem was detected by calling `GET /api/memory/student-9004` and checking the FastAPI traceback.
 
 The issue was fixed by adding a recursive `make_json_safe` function that converts `ObjectId` values to strings before returning API responses. The memory and aggregate endpoints were then recompiled and verified successfully.
+The generated function was checked against the AGENT.md requirements for type hints, UTC timestamps, file-based memory persistence, the 40-line consolidation rule, contradiction handling, and the required memory commands.
+I completed the database setup, installed and configured MongoDB and Ollama, created the screenshots and raw experiment evidence, ran the endpoint tests, reviewed the generated outputs, corrected the ObjectId serialization error, resolved the memory contradictions, and made the final submission decisions myself.
 
 ## Raw Evidence
 
@@ -563,43 +795,3 @@ The following reproducible evidence files are included:
 - `RUN_LOG.txt`
 - `METRICS.md`
 - `AI_USE.md`
-
-## Evidence Screenshots
-
-### MongoDB Collections and Sample Documents
-
-![MongoDB collections and sample documents](evidence/mongodb_collections_all.png)
-
-![MongoDB sample documents](evidence/mongodb_samples.png)
-
-### Successful CRUD Operations
-
-![Successful CRUD operations](evidence/crud_operations.png)
-
-### Validation Errors
-
-![Validation errors](evidence/validation_errors.png)
-
-### Chat Conversation
-
-![Chat conversation](evidence/chat_conversation.png)
-
-### Memory Endpoint
-
-![Memory endpoint](evidence/memory_endpoint.png)
-
-![Memory endpoint details](evidence/memory_endpoint1.png)
-
-![Memory endpoint JSON](evidence/memory_endpoint2.png)
-
-### Aggregate Endpoint
-
-![Aggregate endpoint](evidence/aggregate_endpoint.png)
-
-### File-Based Memory Commands
-
-![File-based memory commands](evidence/file_memory_commands.png)
-
-### AGENT.md Function Verification
-
-![AGENT.md function verification](evidence/agent_function_verification.png)

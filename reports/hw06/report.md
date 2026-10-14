@@ -45,8 +45,8 @@ Collaborators: Sbnikitha and supriyaselvanganesan
 - Hardware: Apple Silicon MacBook Pro
 - Local model: Ollama `qwen3:8b`
 - MongoDB version: MongoDB 7
-- Final HW6 tag: `hw6`
-- Final tagged commit: `903a35f2e2dee4bc218a53a91c42aebb7566f86f`
+- Final HW6 Git tag: `hw6`
+- Final tagged commit: `5837797212049e93a73eb53ca23aaa2a5e3272fc`
 
 ## Part 1 - MongoDB Document API
 
@@ -563,6 +563,7 @@ EVICTION_N=12    mean_prompt=685.40   latency=10635.50 ms  quality=3.0
 - Code review formatting requirements.
 
 `MEMORY.md` was initially created with duplicate and contradictory facts. The original file had 55 physical lines. The consolidation process created `reports/hw06/MEMORY_original.md`, resolved duplicate facts, recorded explicit contradiction decisions, and reduced the consolidated `MEMORY.md` to 38 physical lines, below the required 40-line limit.
+The terminal evidence also showed a first run of 54 to 34 because that command counted non-empty memory facts rather than physical file lines. A later 34 to 35 result occurred because the consolidation timestamp and headings were rewritten; the final physical-line check is the authoritative 38-line result.
 
 The three contradictions were handled explicitly:
 
@@ -690,6 +691,19 @@ MongoDB memory is better for conversational history, retrieval, and multiple ses
 
 ## Verification
 
+The HW6 verification script passed all checks:
+
+- FastAPI health endpoint.
+- `POST /api/chat`.
+- MongoDB document list endpoint.
+- MongoDB document creation endpoint.
+- MongoDB document deletion endpoint.
+- Memory endpoint.
+- Aggregate endpoint.
+
+The complete verification output was:
+
+```json
 {
   "homework": "HW6",
   "sid4": 9004,
@@ -735,46 +749,23 @@ MongoDB memory is better for conversational history, retrieval, and multiple ses
   ],
   "passed": true
 }
-
-
-The HW6 verification script passed all checks:
-
-- FastAPI health endpoint.
-- `POST /api/chat`.
-- MongoDB document list endpoint.
-- MongoDB document creation endpoint.
-- MongoDB document deletion endpoint.
-- Memory endpoint.
-- Aggregate endpoint.
-
-The result was:
-
-```json
-{
-  "homework": "HW6",
-  "sid4": 9004,
-  "model": "qwen3:8b",
-  "SEED": 9004,
-  "VERIFY_SEED": 269004,
-  "passed": true
-}
 ```
 
-The verification output is stored in:
-
-- `reports/hw06/verification.json`
+The verification output is stored in `reports/hw06/verification.json`.
 
 ## AI Use
 
 See `AI_USE.md`.
 
-AI assistance was used to help plan the implementation, write FastAPI and PyMongo code, design memory retrieval and summarization logic, prepare experiment scripts, and organize the report.
+AI assistance helped plan the implementation, write FastAPI and PyMongo code, design memory retrieval and summarization logic, prepare experiment scripts, and organize the report.
 
-One unsuitable result was the initial memory endpoint response. It failed because MongoDB `ObjectId` values were not JSON serializable. The problem was detected by calling `GET /api/memory/student-9004` and checking the FastAPI traceback.
+One unsuitable result was the initial memory endpoint response. It failed because MongoDB `ObjectId` values were not JSON serializable. I detected the issue by calling `GET /api/memory/student-9004` and reviewing the FastAPI traceback.
 
-The issue was fixed by adding a recursive `make_json_safe` function that converts `ObjectId` values to strings before returning API responses. The memory and aggregate endpoints were then recompiled and verified successfully.
-The generated function was checked against the AGENT.md requirements for type hints, UTC timestamps, file-based memory persistence, the 40-line consolidation rule, contradiction handling, and the required memory commands.
-I completed the database setup, installed and configured MongoDB and Ollama, created the screenshots and raw experiment evidence, ran the endpoint tests, reviewed the generated outputs, corrected the ObjectId serialization error, resolved the memory contradictions, and made the final submission decisions myself.
+I fixed the issue by adding a recursive `make_json_safe` function that converts `ObjectId` values to strings before returning API responses. I then recompiled the code and verified that the memory and aggregate endpoints returned valid JSON.
+
+I personally completed the database setup, configured MongoDB and Ollama, created screenshots and raw experiment evidence, ran endpoint tests, reviewed outputs, resolved memory contradictions, and made the final submission decisions.
+
+The generated file-memory function was checked against the `AGENT.md` requirements for type hints, UTC timestamps, file persistence, the 40-line consolidation rule, contradiction handling, and the required memory commands.
 
 ## Raw Evidence
 

@@ -38,3 +38,10 @@ probes:
       - "Consider removing or replacing the package."
       - "Use a temporary workaround or isolation."
       - "Monitor advisories and add security controls."
+
+      scoring_rubric:
+  1: Incorrect or does not answer the question.
+  2: Mostly incomplete or weak answer.
+  3: Generally correct answer with at least one expected concept.
+  4: Correct answer containing most expected concepts.
+  5: Complete and accurate answer containing all important expected concepts.

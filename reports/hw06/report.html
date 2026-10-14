@@ -280,9 +280,9 @@ Collaborators: Sbnikitha and supriyaselvanganesan</p>
 <li>Hardware: Apple Silicon MacBook Pro</li>
 <li>Local model: Ollama <code>qwen3:8b</code></li>
 <li>MongoDB version: MongoDB 7</li>
-<li>Final HW6 tag: <code>hw6</code></li>
+<li>Final HW6 Git tag: <code>hw6</code></li>
 <li>Final tagged commit:
-<code>903a35f2e2dee4bc218a53a91c42aebb7566f86f</code></li>
+<code>5837797212049e93a73eb53ca23aaa2a5e3272fc</code></li>
 </ul>
 <h2 id="part-1---mongodb-document-api">Part 1 - MongoDB Document
 API</h2>
@@ -829,6 +829,7 @@ EVICTION_N=12    mean_prompt=685.40   latency=10635.50 ms  quality=3.0
 - Code review formatting requirements.
 
 `MEMORY.md` was initially created with duplicate and contradictory facts. The original file had 55 physical lines. The consolidation process created `reports/hw06/MEMORY_original.md`, resolved duplicate facts, recorded explicit contradiction decisions, and reduced the consolidated `MEMORY.md` to 38 physical lines, below the required 40-line limit.
+The terminal evidence also showed a first run of 54 to 34 because that command counted non-empty memory facts rather than physical file lines. A later 34 to 35 result occurred because the consolidation timestamp and headings were rewritten; the final physical-line check is the authoritative 38-line result.
 
 The three contradictions were handled explicitly:
 
@@ -991,17 +992,6 @@ summaries.</td>
 multiple sessions. File-based memory is better for stable instructions
 and durable facts that should remain visible and inspectable.</p>
 <h2 id="verification">Verification</h2>
-<p>{ “homework”: “HW6”, “sid4”: 9004, “commit_hash”:
-“ab68f1e782b70c1875b5096e37c28be6bb80b39c”, “model”: “qwen3:8b”,
-“configuration”: { “PORT_BASE”: 8004, “PREFIX”: “s9004”, “DOMAIN_ID”: 4
-}, “SEED”: 9004, “VERIFY_SEED”: 269004, “timestamp”:
-“2026-10-13T23:18:44.619347+00:00”, “checks”: [ { “name”: “FastAPI
-health endpoint”, “passed”: true }, { “name”: “POST /api/chat endpoint”,
-“passed”: true }, { “name”: “MongoDB document list endpoint”, “passed”:
-true }, { “name”: “MongoDB document create endpoint”, “passed”: true },
-{ “name”: “MongoDB document delete endpoint”, “passed”: true }, {
-“name”: “Memory endpoint”, “passed”: true }, { “name”: “Aggregate
-endpoint”, “passed”: true } ], “passed”: true }</p>
 <p>The HW6 verification script passed all checks:</p>
 <ul>
 <li>FastAPI health endpoint.</li>
@@ -1012,42 +1002,77 @@ endpoint”, “passed”: true } ], “passed”: true }</p>
 <li>Memory endpoint.</li>
 <li>Aggregate endpoint.</li>
 </ul>
-<p>The result was:</p>
+<p>The complete verification output was:</p>
 <div class="sourceCode" id="cb14"><pre
 class="sourceCode json"><code class="sourceCode json"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;homework&quot;</span><span class="fu">:</span> <span class="st">&quot;HW6&quot;</span><span class="fu">,</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;sid4&quot;</span><span class="fu">:</span> <span class="dv">9004</span><span class="fu">,</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;model&quot;</span><span class="fu">:</span> <span class="st">&quot;qwen3:8b&quot;</span><span class="fu">,</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;SEED&quot;</span><span class="fu">:</span> <span class="dv">9004</span><span class="fu">,</span></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;VERIFY_SEED&quot;</span><span class="fu">:</span> <span class="dv">269004</span><span class="fu">,</span></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;passed&quot;</span><span class="fu">:</span> <span class="kw">true</span></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
-<p>The verification output is stored in:</p>
-<ul>
-<li><code>reports/hw06/verification.json</code></li>
-</ul>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;commit_hash&quot;</span><span class="fu">:</span> <span class="st">&quot;ab68f1e782b70c1875b5096e37c28be6bb80b39c&quot;</span><span class="fu">,</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;model&quot;</span><span class="fu">:</span> <span class="st">&quot;qwen3:8b&quot;</span><span class="fu">,</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;configuration&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;PORT_BASE&quot;</span><span class="fu">:</span> <span class="dv">8004</span><span class="fu">,</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;PREFIX&quot;</span><span class="fu">:</span> <span class="st">&quot;s9004&quot;</span><span class="fu">,</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;DOMAIN_ID&quot;</span><span class="fu">:</span> <span class="dv">4</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">},</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;SEED&quot;</span><span class="fu">:</span> <span class="dv">9004</span><span class="fu">,</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;VERIFY_SEED&quot;</span><span class="fu">:</span> <span class="dv">269004</span><span class="fu">,</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;timestamp&quot;</span><span class="fu">:</span> <span class="st">&quot;2026-10-13T23:18:44.619347+00:00&quot;</span><span class="fu">,</span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;checks&quot;</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;FastAPI health endpoint&quot;</span><span class="fu">,</span></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;passed&quot;</span><span class="fu">:</span> <span class="kw">true</span></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;POST /api/chat endpoint&quot;</span><span class="fu">,</span></span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;passed&quot;</span><span class="fu">:</span> <span class="kw">true</span></span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;MongoDB document list endpoint&quot;</span><span class="fu">,</span></span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;passed&quot;</span><span class="fu">:</span> <span class="kw">true</span></span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;MongoDB document create endpoint&quot;</span><span class="fu">,</span></span>
+<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;passed&quot;</span><span class="fu">:</span> <span class="kw">true</span></span>
+<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;MongoDB document delete endpoint&quot;</span><span class="fu">,</span></span>
+<span id="cb14-33"><a href="#cb14-33" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;passed&quot;</span><span class="fu">:</span> <span class="kw">true</span></span>
+<span id="cb14-34"><a href="#cb14-34" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb14-35"><a href="#cb14-35" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb14-36"><a href="#cb14-36" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;Memory endpoint&quot;</span><span class="fu">,</span></span>
+<span id="cb14-37"><a href="#cb14-37" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;passed&quot;</span><span class="fu">:</span> <span class="kw">true</span></span>
+<span id="cb14-38"><a href="#cb14-38" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb14-39"><a href="#cb14-39" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb14-40"><a href="#cb14-40" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;Aggregate endpoint&quot;</span><span class="fu">,</span></span>
+<span id="cb14-41"><a href="#cb14-41" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;passed&quot;</span><span class="fu">:</span> <span class="kw">true</span></span>
+<span id="cb14-42"><a href="#cb14-42" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
+<span id="cb14-43"><a href="#cb14-43" aria-hidden="true" tabindex="-1"></a>  <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb14-44"><a href="#cb14-44" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;passed&quot;</span><span class="fu">:</span> <span class="kw">true</span></span>
+<span id="cb14-45"><a href="#cb14-45" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
+<p>The verification output is stored in
+<code>reports/hw06/verification.json</code>.</p>
 <h2 id="ai-use">AI Use</h2>
 <p>See <code>AI_USE.md</code>.</p>
-<p>AI assistance was used to help plan the implementation, write FastAPI
-and PyMongo code, design memory retrieval and summarization logic,
-prepare experiment scripts, and organize the report.</p>
+<p>AI assistance helped plan the implementation, write FastAPI and
+PyMongo code, design memory retrieval and summarization logic, prepare
+experiment scripts, and organize the report.</p>
 <p>One unsuitable result was the initial memory endpoint response. It
 failed because MongoDB <code>ObjectId</code> values were not JSON
-serializable. The problem was detected by calling
-<code>GET /api/memory/student-9004</code> and checking the FastAPI
+serializable. I detected the issue by calling
+<code>GET /api/memory/student-9004</code> and reviewing the FastAPI
 traceback.</p>
-<p>The issue was fixed by adding a recursive <code>make_json_safe</code>
+<p>I fixed the issue by adding a recursive <code>make_json_safe</code>
 function that converts <code>ObjectId</code> values to strings before
-returning API responses. The memory and aggregate endpoints were then
-recompiled and verified successfully. The generated function was checked
-against the AGENT.md requirements for type hints, UTC timestamps,
-file-based memory persistence, the 40-line consolidation rule,
-contradiction handling, and the required memory commands. I completed
-the database setup, installed and configured MongoDB and Ollama, created
-the screenshots and raw experiment evidence, ran the endpoint tests,
-reviewed the generated outputs, corrected the ObjectId serialization
-error, resolved the memory contradictions, and made the final submission
-decisions myself.</p>
+returning API responses. I then recompiled the code and verified that
+the memory and aggregate endpoints returned valid JSON.</p>
+<p>I personally completed the database setup, configured MongoDB and
+Ollama, created screenshots and raw experiment evidence, ran endpoint
+tests, reviewed outputs, resolved memory contradictions, and made the
+final submission decisions.</p>
+<p>The generated file-memory function was checked against the
+<code>AGENT.md</code> requirements for type hints, UTC timestamps, file
+persistence, the 40-line consolidation rule, contradiction handling, and
+the required memory commands.</p>
 <h2 id="raw-evidence">Raw Evidence</h2>
 <p>The following reproducible evidence files are included:</p>
 <ul>

@@ -44,9 +44,7 @@ def execute_tool(name, inputs):
     input_text = json.dumps(inputs).lower()
 
     if any(term in input_text for term in BLOCKED_TERMS):
-        return error_response(
-            "Blocked by domain safety rule"
-        )
+        return error_response("Blocked by domain safety rule")
 
     try:
         if name == "search_vulnerabilities":
@@ -122,9 +120,7 @@ def run_offline_tests():
     passed = 0
 
     for name, tool_name, inputs, expected_ok in tests:
-        output = json.loads(
-            execute_tool(tool_name, inputs)
-        )
+        output = json.loads(execute_tool(tool_name, inputs))
 
         if output["ok"] == expected_ok:
             print(f"PASS {name}")
@@ -141,9 +137,7 @@ def run_offline_tests():
     )
 
     assert blocked_output["ok"] is False
-    assert blocked_output["error"] == (
-        "Blocked by domain safety rule"
-    )
+    assert blocked_output["error"] == ("Blocked by domain safety rule")
 
     print("PASS safety_rule")
     passed += 1

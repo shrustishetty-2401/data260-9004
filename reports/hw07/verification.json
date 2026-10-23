@@ -1,0 +1,28 @@
+{
+  "homework": "HW7",
+  "sid4": 9004,
+  "commit_hash": "b61344a581f6eff8fd7a5ebc93418008a0f81071",
+  "model": "qwen3:8b",
+  "configuration": {
+    "PORT_BASE": 8004,
+    "PREFIX": "s9004",
+    "DOMAIN_ID": 4
+  },
+  "SEED": 9004,
+  "VERIFY_SEED": 269004,
+  "timestamp": "2026-10-23T23:40:00Z",
+  "status": "complete",
+  "evidence": {
+    "metrics": "reports/hw07/METRICS.md",
+    "ai_use": "reports/hw07/AI_USE.md",
+    "run_log": "reports/hw07/RUN_LOG.txt",
+    "report": "reports/hw07/report.md",
+    "agent_reliability": "reports/hw07/raw/agent_reliability.json",
+    "reflexion_comparison": "reports/hw07/raw/reflexion_comparison.json",
+    "reflections": "reports/hw07/raw/reflections.json",
+    "prompt_injection": "reports/hw07/raw/prompt_injection_results.json",
+    "file_tools": "reports/hw07/raw/file_tools_results.json",
+    "membership_screenshot": "reports/hw07/evidence/part4_membership_wins.png",
+    "pay_per_use_screenshot": "reports/hw07/evidence/part4_pay_per_use_wins.png"
+  }
+}

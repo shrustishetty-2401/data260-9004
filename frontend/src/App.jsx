@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import {
   BrowserRouter,
+  Link,
   Navigate,
   Route,
   Routes,
@@ -12,12 +13,14 @@ import {
   getCurrentUser,
   logout,
 } from "./api";
+import BikeSharePlanner from "./components/BikeSharePlanner";
 import CreateRecord from "./components/CreateRecord";
 import DeleteRecord from "./components/DeleteRecord";
 import Home from "./components/Home";
 import Login from "./components/Login";
 import UpdateRecord from "./components/UpdateRecord";
 import "./App.css";
+
 
 function ProtectedRoute({ user, children }) {
   if (!user) {
@@ -26,6 +29,7 @@ function ProtectedRoute({ user, children }) {
 
   return children;
 }
+
 
 function UpdatePage({ onSaved, onCancel }) {
   const { id } = useParams();
@@ -39,6 +43,7 @@ function UpdatePage({ onSaved, onCancel }) {
   );
 }
 
+
 function DeletePage({ onDeleted, onCancel }) {
   const { id } = useParams();
 
@@ -50,6 +55,7 @@ function DeletePage({ onDeleted, onCancel }) {
     />
   );
 }
+
 
 function AppContent() {
   const [user, setUser] = useState(null);
@@ -84,12 +90,18 @@ function AppContent() {
   return (
     <>
       <header className="navbar">
-        <strong>DATA-260 HW4</strong>
+        <strong>DATA-260 HW7</strong>
 
         {user && (
-          <button className="secondary" onClick={handleLogout}>
-            Logout
-          </button>
+          <>
+            <Link to="/bikeshare" className="secondary">
+              Bike-Share Planner
+            </Link>
+
+            <button className="secondary" onClick={handleLogout}>
+              Logout
+            </button>
+          </>
         )}
       </header>
 
@@ -159,11 +171,24 @@ function AppContent() {
           }
         />
 
-        <Route path="*" element={<Navigate to="/" replace />} />
+        <Route
+          path="/bikeshare"
+          element={
+            <ProtectedRoute user={user}>
+              <BikeSharePlanner />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="*"
+          element={<Navigate to="/" replace />}
+        />
       </Routes>
     </>
   );
 }
+
 
 export default function App() {
   return (

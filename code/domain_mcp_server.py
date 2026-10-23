@@ -3,7 +3,7 @@ from datetime import datetime
 from mcp.server.fastmcp import FastMCP
 from sqlalchemy import func, select
 
-from database import db_session_basede26
+from database import SessionLocal
 from models import Vulnerability
 
 mcp = FastMCP("s9004-domain")
@@ -48,7 +48,7 @@ def search_vulnerabilities(query: str, limit: int = 10):
 
     pattern = f"%{query.strip()}%"
 
-    with db_session_basede26() as db:
+    with SessionLocal() as db:
         statement = (
             select(Vulnerability)
             .where(
@@ -70,7 +70,7 @@ def vulnerability_detail(vulnerability_id: int):
     if vulnerability_id < 1:
         return failure("vulnerability_id must be positive")
 
-    with db_session_basede26() as db:
+    with SessionLocal() as db:
         item = db.get(Vulnerability, vulnerability_id)
 
     if item is None:
@@ -81,10 +81,8 @@ def vulnerability_detail(vulnerability_id: int):
 
 @mcp.tool()
 def vulnerability_aggregate():
-    with db_session_basede26() as db:
-        total = db.scalar(
-            select(func.count()).select_from(Vulnerability)
-        )
+    with SessionLocal() as db:
+        total = db.scalar(select(func.count()).select_from(Vulnerability))
 
         category_rows = db.execute(
             select(

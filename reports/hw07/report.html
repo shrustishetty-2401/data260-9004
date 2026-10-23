@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>DATA-260 Homework 7</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">DATA-260 Homework 7</h1>
+</header>
+<h1 id="data-260-homework-7">DATA-260 Homework 7</h1>
+<h2 id="student-and-configuration">Student and Configuration</h2>
+<ul>
+<li>Student: Shrusti Shetty</li>
+<li>SID4: 9004</li>
+<li>Port base: 8004</li>
+<li>Prefix: <code>s9004</code></li>
+<li>Domain ID: 4</li>
+<li>Seed: 9004</li>
+<li>Verify seed: 269004</li>
+<li>Branch: <code>hw6</code></li>
+<li>Final tag: <code>hw7</code></li>
+</ul>
+<h2 id="part-1-jwt-authentication-and-roles">Part 1: JWT Authentication
+and Roles</h2>
+<p>Implemented JWT authentication with MySQL-backed users.</p>
+<p>Test users:</p>
+<ul>
+<li><code>reader</code> / <code>data260</code></li>
+<li><code>writer</code> / <code>data260</code></li>
+<li><code>moderator</code> / <code>data260</code></li>
+</ul>
+<p>Verified:</p>
+<ul>
+<li>Successful login returns a JWT.</li>
+<li>Missing token returns HTTP 401.</li>
+<li>Invalid credentials return HTTP 401.</li>
+<li>Reader package creation returns HTTP 403.</li>
+<li>Writer package creation returns HTTP 201.</li>
+<li>Writer package deletion returns HTTP 403.</li>
+<li>Moderator package deletion returns HTTP 200.</li>
+</ul>
+<p>Ruff and pre-commit checks passed.</p>
+<h2 id="part-2-tool-using-agent">Part 2: Tool-Using Agent</h2>
+<p>Implemented a tool-using agent with:</p>
+<ul>
+<li><code>search_vulnerabilities</code></li>
+<li><code>vulnerability_detail</code></li>
+<li><code>vulnerability_aggregate</code></li>
+</ul>
+<p>The agent supports:</p>
+<ul>
+<li>Multiple tool calls.</li>
+<li>Tool-role messages.</li>
+<li>Input validation.</li>
+<li>Malformed-argument repair.</li>
+<li>Unknown-tool blocking.</li>
+<li>Maximum-step limits.</li>
+<li>Safe handling of nonexistent vulnerability IDs.</li>
+</ul>
+<p>Evidence:</p>
+<ul>
+<li><code>raw/agent_reliability.json</code></li>
+<li><code>RUN_LOG.txt</code></li>
+</ul>
+<h2 id="part-3-reflexion">Part 3: Reflexion</h2>
+<p>Implemented a Reflexion workflow with:</p>
+<ul>
+<li>Deterministic verification.</li>
+<li>Reflection after failed attempts.</li>
+<li>Revised strategy.</li>
+<li>Maximum two retries.</li>
+<li>Tool and token budgets.</li>
+<li>Stored reflection evidence.</li>
+</ul>
+<p>Results:</p>
+<ul>
+<li>Original successful tasks: 2</li>
+<li>Reflexion successful tasks: 3</li>
+<li>Original retry rate: 0.000</li>
+<li>Reflexion retry rate: 0.333</li>
+<li>Verifier false rejections: 0</li>
+</ul>
+<p>Evidence:</p>
+<ul>
+<li><code>raw/reflexion_comparison.json</code></li>
+<li><code>raw/reflections.json</code></li>
+</ul>
+<h2 id="part-4-bike-share-reactmrkl-application">Part 4: Bike-Share
+ReAct/MRKL Application</h2>
+<p>Implemented a React/Vite bike-share decision application.</p>
+<p>Tools:</p>
+<ol type="1">
+<li><code>csv_sql</code></li>
+<li><code>policy_retriever</code></li>
+<li><code>calculator</code></li>
+</ol>
+<p>The application displays:</p>
+<ul>
+<li>Uploaded CSV filename.</li>
+<li>Tool execution timeline.</li>
+<li>Weekly comparison table.</li>
+<li>Membership or pay-per-use decision.</li>
+<li>Pricing source.</li>
+<li>Pricing snapshot SHA-256 hash.</li>
+<li>Completion stop reason.</li>
+</ul>
+<p>Datasets:</p>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 22%" />
+<col style="width: 22%" />
+<col style="width: 22%" />
+<col style="width: 16%" />
+</colgroup>
+<thead>
+<tr>
+<th>Dataset</th>
+<th style="text-align: right;">Rows</th>
+<th style="text-align: right;">Member rides</th>
+<th style="text-align: right;">Casual rides</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>bikeshare_membership_wins.csv</code></td>
+<td style="text-align: right;">800</td>
+<td style="text-align: right;">700</td>
+<td style="text-align: right;">100</td>
+<td>Membership is stronger</td>
+</tr>
+<tr>
+<td><code>bikeshare_pay_per_use_wins.csv</code></td>
+<td style="text-align: right;">800</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">700</td>
+<td>Pay-per-use is stronger</td>
+</tr>
+</tbody>
+</table>
+<p>Screenshots:</p>
+<ul>
+<li><code>evidence/part4_membership_wins.png</code></li>
+<li><code>evidence/part4_pay_per_use_wins.png</code></li>
+</ul>
+<p>Pricing evidence:</p>
+<ul>
+<li><code>raw/pricing_snapshot.txt</code></li>
+<li><code>raw/pricing_snapshot.sha256</code></li>
+</ul>
+<h2 id="part-5-prompt-injection-defense">Part 5: Prompt-Injection
+Defense</h2>
+<p>Tested three attacks:</p>
+<ul>
+<li>Instruction override.</li>
+<li>Unauthorized tool abuse.</li>
+<li>CSV-based prompt injection.</li>
+</ul>
+<p>Results:</p>
+<ul>
+<li>Attack cases: 3</li>
+<li>Defended cases: 3</li>
+<li>Defense success rate: 100%</li>
+</ul>
+<p>Evidence:</p>
+<ul>
+<li><code>raw/prompt_injection_results.json</code></li>
+</ul>
+<h2 id="part-6-file-tools-and-safety">Part 6: File Tools and Safety</h2>
+<p>Implemented safe file tools for the approved HW7 directory.</p>
+<p>Verified:</p>
+<ul>
+<li>File listing works.</li>
+<li>File reading works.</li>
+<li>Unconfirmed writes are blocked.</li>
+<li>Path traversal is blocked.</li>
+</ul>
+<p>Evidence:</p>
+<ul>
+<li><code>raw/file_tools_results.json</code></li>
+</ul>
+<h2 id="reproducibility-evidence">Reproducibility Evidence</h2>
+<ul>
+<li><code>RUN_LOG.txt</code></li>
+<li><code>METRICS.md</code></li>
+<li><code>AI_USE.md</code></li>
+<li><code>verification.json</code></li>
+<li><code>raw/agent_reliability.json</code></li>
+<li><code>raw/reflexion_comparison.json</code></li>
+<li><code>raw/reflections.json</code></li>
+<li><code>raw/prompt_injection_results.json</code></li>
+<li><code>raw/file_tools_results.json</code></li>
+</ul>
+<h2 id="final-verification">Final Verification</h2>
+<p>The following checks passed:</p>
+<ul>
+<li>Python compilation.</li>
+<li>Ruff check.</li>
+<li>Pre-commit hooks.</li>
+<li>Backend API startup.</li>
+<li>JWT authentication tests.</li>
+<li>Role-permission tests.</li>
+<li>Agent tests.</li>
+<li>Tool tests.</li>
+<li>Reliability experiments.</li>
+<li>Reflexion experiments.</li>
+<li>Bike-share API test.</li>
+<li>React production build.</li>
+<li>Prompt-injection tests.</li>
+<li>File-safety tests.</li>
+</ul>
+<p>Final commit and tag will be recorded after the completed report is
+committed.</p>
+</body>
+</html>

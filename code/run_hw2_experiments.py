@@ -1,4 +1,5 @@
 import argparse
+import importlib
 import io
 import json
 import sys
@@ -14,40 +15,63 @@ CODE_DIR = REPO_ROOT / "code"
 sys.path.insert(0, str(REPO_ROOT))
 sys.path.insert(0, str(CODE_DIR))
 
-import langgraph_demo
+langgraph_demo = importlib.import_module("langgraph_demo")
 
 
 def load_input(path: Path) -> dict:
-    with path.open("r", encoding="utf-8") as file:
+    with path.open(
+        "r",
+        encoding="utf-8",
+    ) as file:
         return json.load(file)
 
 
-def classify_result(final_state: dict, ceiling: int) -> str:
+def classify_result(
+    final_state: dict,
+    ceiling: int,
+) -> str:
     if final_state.get("final_output"):
-        turns = final_state.get("turn_count", 0)
+        turns = final_state.get(
+            "turn_count",
+            0,
+        )
 
         if turns == 1:
             return "valid first attempt"
+
         if turns == 2:
             return "valid after one retry"
+
         return "valid after two or more retries"
 
-    if final_state.get("turn_count", 0) >= ceiling:
+    if (
+        final_state.get(
+            "turn_count",
+            0,
+        )
+        >= ceiling
+    ):
         return "abandoned at the ceiling"
 
     return "incomplete"
 
 
-def run_once(input_data: dict, ceiling: int) -> dict:
+def run_once(
+    input_data: dict,
+    ceiling: int,
+) -> dict:
     langgraph_demo.TURN_CEILING = ceiling
     langgraph_demo.FORCE_REVIEWER_FAILURE = False
 
     initial_state = {
         "title": input_data["title"],
         "content": input_data["content"],
-        "email": input_data.get("email", "student@sjsu.edu"),
+        "email": input_data.get(
+            "email",
+            "student@sjsu.edu",
+        ),
         "strict": True,
-        "task": "Create exactly three tags and a summary.",
+        "task": ("Create exactly three tags and a summary."),
         "turn_count": 0,
     }
 
@@ -62,38 +86,53 @@ def run_once(input_data: dict, ceiling: int) -> dict:
                 if isinstance(update, dict):
                     final_state.update(update)
 
-    latency_ms = round((time.perf_counter() - started) * 1000, 2)
+    latency_ms = round(
+        (time.perf_counter() - started) * 1000,
+        2,
+    )
 
     return {
         "timestamp_utc": datetime.now(timezone.utc).isoformat(),
         "ceiling": ceiling,
         "latency_ms": latency_ms,
-        "classification": classify_result(final_state, ceiling),
-        "turn_count": final_state.get("turn_count", 0),
+        "classification": classify_result(
+            final_state,
+            ceiling,
+        ),
+        "turn_count": final_state.get(
+            "turn_count",
+            0,
+        ),
         "final_output": final_state.get("final_output"),
-        "validation_error": final_state.get("validation_error", ""),
+        "validation_error": final_state.get(
+            "validation_error",
+            "",
+        ),
     }
 
 
-def main():
+def main() -> None:
     parser = argparse.ArgumentParser(
-        description="Run repeatable Homework 2 LangGraph experiments."
+        description=("Run repeatable Homework 2 LangGraph experiments.")
     )
 
     parser.add_argument(
         "--input",
-        default="reports/hw02/cases/schema_input.json",
+        default=("reports/hw02/cases/schema_input.json"),
     )
+
     parser.add_argument(
         "--runs",
         type=int,
         required=True,
     )
+
     parser.add_argument(
         "--ceiling",
         type=int,
         required=True,
     )
+
     parser.add_argument(
         "--output",
         required=True,
@@ -111,8 +150,15 @@ def main():
     print(f"Runs: {args.runs}")
     print(f"Turn ceiling: {args.ceiling}")
 
-    for run_number in range(1, args.runs + 1):
-        result = run_once(input_data, args.ceiling)
+    for run_number in range(
+        1,
+        args.runs + 1,
+    ):
+        result = run_once(
+            input_data,
+            args.ceiling,
+        )
+
         result["run_number"] = run_number
         results.append(result)
 
@@ -123,7 +169,10 @@ def main():
             f"latency_ms={result['latency_ms']}"
         )
 
-    output_path.parent.mkdir(parents=True, exist_ok=True)
+    output_path.parent.mkdir(
+        parents=True,
+        exist_ok=True,
+    )
 
     experiment = {
         "homework": "DATA-260 Homework 2",
@@ -132,8 +181,15 @@ def main():
         "runs": results,
     }
 
-    with output_path.open("w", encoding="utf-8") as file:
-        json.dump(experiment, file, indent=2)
+    with output_path.open(
+        "w",
+        encoding="utf-8",
+    ) as file:
+        json.dump(
+            experiment,
+            file,
+            indent=2,
+        )
 
     print(f"Saved results to: {output_path}")
 

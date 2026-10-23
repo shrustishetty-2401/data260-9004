@@ -2,7 +2,6 @@ import json
 from pathlib import Path
 
 import faiss
-import numpy as np
 from sentence_transformers import SentenceTransformer
 
 
@@ -14,17 +13,14 @@ TOP_K = 3
 CORPUS_DIR = Path("reports/hw04/corpus")
 OUTPUT_DIR = Path("reports/hw04/raw")
 
-REFUSAL = (
-    "I cannot answer this question from the provided documents"
-)
+REFUSAL = "I cannot answer this question from the provided documents"
 
 
 QUESTIONS = [
     {
         "id": "q1",
         "question": (
-            "What does the CISA Known Exploited Vulnerabilities "
-            "Catalog contain?"
+            "What does the CISA Known Exploited Vulnerabilities Catalog contain?"
         ),
         "expected_sources": ["cisa_kev.json"],
         "expected_terms": ["known", "exploited", "vulnerabilities"],
@@ -46,8 +42,7 @@ QUESTIONS = [
     {
         "id": "q3",
         "question": (
-            "What security topics are covered by the CISA and "
-            "OWASP documents?"
+            "What security topics are covered by the CISA and OWASP documents?"
         ),
         "expected_sources": [
             "cisa_kev.json",
@@ -58,9 +53,7 @@ QUESTIONS = [
     },
     {
         "id": "q4",
-        "question": (
-            "What does the word session mean in this project?"
-        ),
+        "question": ("What does the word session mean in this project?"),
         "expected_sources": [
             "project_readme.md",
             "domain_schema.md",
@@ -71,18 +64,14 @@ QUESTIONS = [
     },
     {
         "id": "q5",
-        "question": (
-            "What is the university tuition refund policy?"
-        ),
+        "question": ("What is the university tuition refund policy?"),
         "expected_sources": [],
         "expected_terms": [],
         "must_refuse": True,
     },
     {
         "id": "q6",
-        "question": (
-            "Who won the most recent World Series?"
-        ),
+        "question": ("Who won the most recent World Series?"),
         "expected_sources": [],
         "expected_terms": [],
         "must_refuse": True,
@@ -205,9 +194,7 @@ def engineer_context(results: list[dict]) -> list[dict]:
 
 
 def answer_without_rag(question: str) -> str:
-    return (
-        "No document context was provided for this baseline response."
-    )
+    return "No document context was provided for this baseline response."
 
 
 def answer_with_context(
@@ -239,41 +226,25 @@ def evaluate(
     retrieved: list[dict],
     answer: str,
 ) -> dict:
-    source_names = {
-        item["source"]
-        for item in retrieved
-    }
+    source_names = {item["source"] for item in retrieved}
 
     retrieved_expected_source = all(
-        source in source_names
-        for source in question_info["expected_sources"]
+        source in source_names for source in question_info["expected_sources"]
     )
 
-    retrieved_text = " ".join(
-        item["text"].lower()
-        for item in retrieved
-    )
+    retrieved_text = " ".join(item["text"].lower() for item in retrieved)
 
     answer_lower = answer.lower()
 
     correct_answer = all(
-        term in retrieved_text
-        for term in question_info["expected_terms"]
+        term in retrieved_text for term in question_info["expected_terms"]
     )
 
-    grounded = (
-        answer == REFUSAL
-        or any(
-            item["text"][:100].lower() in answer_lower
-            for item in retrieved
-        )
+    grounded = answer == REFUSAL or any(
+        item["text"][:100].lower() in answer_lower for item in retrieved
     )
 
-    refused_when_needed = (
-        answer == REFUSAL
-        if question_info["must_refuse"]
-        else True
-    )
+    refused_when_needed = answer == REFUSAL if question_info["must_refuse"] else True
 
     return {
         "correct_retrieval": retrieved_expected_source,
@@ -313,9 +284,7 @@ def main() -> None:
         ]:
             if configuration == "no_rag":
                 retrieved = []
-                answer = answer_without_rag(
-                    question_info["question"]
-                )
+                answer = answer_without_rag(question_info["question"])
             else:
                 retrieved = retrieve(
                     question_info["question"],
@@ -355,15 +324,10 @@ def main() -> None:
             evaluation_results.append(result)
 
             printout_lines.append(
-                f"\nQUESTION {question_info['id']} | "
-                f"{configuration}\n"
+                f"\nQUESTION {question_info['id']} | {configuration}\n"
             )
-            printout_lines.append(
-                f"{question_info['question']}\n"
-            )
-            printout_lines.append(
-                f"ANSWER:\n{answer}\n"
-            )
+            printout_lines.append(f"{question_info['question']}\n")
+            printout_lines.append(f"ANSWER:\n{answer}\n")
 
             for item in retrieved:
                 printout_lines.append(
@@ -393,10 +357,7 @@ def main() -> None:
                 {
                     "question_id": question_info["id"],
                     "k": k,
-                    "retrieved_sources": [
-                        item["source"]
-                        for item in retrieved
-                    ],
+                    "retrieved_sources": [item["source"] for item in retrieved],
                     "answer": answer,
                     "evaluation": evaluate(
                         question_info,

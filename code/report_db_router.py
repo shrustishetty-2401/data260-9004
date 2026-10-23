@@ -6,13 +6,20 @@ from pydantic import BaseModel, ConfigDict, Field
 from sqlalchemy import select
 from sqlalchemy.orm import Session, selectinload
 
-from auth_db_router import current_user
+from auth_db_router import current_user, require_roles
 from database import get_db
-from models import Package, RelatedItem, Vulnerability
+from models import Package, Vulnerability
 
 
-router = APIRouter(prefix="/api/reports", tags=["reports"])
-package_router = APIRouter(prefix="/api/packages", tags=["packages"])
+router = APIRouter(
+    prefix="/api/reports",
+    tags=["reports"],
+)
+
+package_router = APIRouter(
+    prefix="/api/packages",
+    tags=["packages"],
+)
 
 
 class PackageCreate(BaseModel):
@@ -36,7 +43,9 @@ class PackageOut(BaseModel):
     created_at: datetime
     updated_at: datetime
 
-    model_config = ConfigDict(from_attributes=True)
+    model_config = ConfigDict(
+        from_attributes=True,
+    )
 
 
 class ReportCreate(BaseModel):
@@ -44,20 +53,25 @@ class ReportCreate(BaseModel):
         min_length=1,
         alias="vulnerabilityTitle",
     )
+
     package_name: str = Field(
         min_length=1,
         alias="packageName",
     )
+
     submitter_email: str = Field(
         min_length=3,
         pattern=r"^[^@\s]+@[^@\s]+\.[^@\s]+$",
         alias="submitterEmail",
     )
+
     description: str = Field(min_length=26)
     category: str = Field(min_length=1)
     terms_accepted: bool = Field(alias="termsAccepted")
 
-    model_config = ConfigDict(populate_by_name=True)
+    model_config = ConfigDict(
+        populate_by_name=True,
+    )
 
 
 class ReportUpdate(BaseModel):
@@ -65,19 +79,24 @@ class ReportUpdate(BaseModel):
         min_length=1,
         alias="vulnerabilityTitle",
     )
+
     package_name: str = Field(
         min_length=1,
         alias="packageName",
     )
 
-    model_config = ConfigDict(populate_by_name=True)
+    model_config = ConfigDict(
+        populate_by_name=True,
+    )
 
 
 class RelatedItemOut(BaseModel):
     id: int
     related_text: str
 
-    model_config = ConfigDict(from_attributes=True)
+    model_config = ConfigDict(
+        from_attributes=True,
+    )
 
 
 class ReportOut(BaseModel):
@@ -85,16 +104,36 @@ class ReportOut(BaseModel):
     package_id: int
     vulnerability_code: str
     available_count: int
-    vulnerability_title: str = Field(alias="vulnerabilityTitle")
-    package_name: str = Field(alias="packageName")
-    submitter_email: str = Field(alias="submitterEmail")
+
+    vulnerability_title: str = Field(
+        alias="vulnerabilityTitle",
+    )
+
+    package_name: str = Field(
+        alias="packageName",
+    )
+
+    submitter_email: str = Field(
+        alias="submitterEmail",
+    )
+
     description: str
     category: str
-    terms_accepted: bool = Field(alias="termsAccepted")
-    submission_date: datetime = Field(alias="submissionDate")
+
+    terms_accepted: bool = Field(
+        alias="termsAccepted",
+    )
+
+    submission_date: datetime = Field(
+        alias="submissionDate",
+    )
+
     created_at: datetime
     updated_at: datetime
-    related_items: list[RelatedItemOut] = Field(default_factory=list)
+
+    related_items: list[RelatedItemOut] = Field(
+        default_factory=list,
+    )
 
     model_config = ConfigDict(
         from_attributes=True,
@@ -102,13 +141,17 @@ class ReportOut(BaseModel):
     )
 
 
-def serialize_report(report: Vulnerability) -> dict:
+def serialize_report(
+    report: Vulnerability,
+) -> dict:
     return ReportOut.model_validate(report).model_dump(
         by_alias=True,
     )
 
 
-def package_code_for_name(package_name: str) -> str:
+def package_code_for_name(
+    package_name: str,
+) -> str:
     safe_name = package_name.strip().lower()
     safe_name = safe_name.replace(" ", "-")
     return f"pkg-{safe_name}"
@@ -118,7 +161,9 @@ def get_or_create_package(
     package_name: str,
     db: Session,
 ) -> Package:
-    package_code = package_code_for_name(package_name)
+    package_code = package_code_for_name(
+        package_name,
+    )
 
     package = db.scalar(
         select(Package).where(
@@ -149,7 +194,7 @@ def get_or_create_package(
 def create_package(
     payload: PackageCreate,
     db: Session = Depends(get_db),
-    _user=Depends(current_user),
+    _user=Depends(require_roles("writer", "moderator")),
 ):
     existing_package = db.scalar(
         select(Package).where(
@@ -186,12 +231,7 @@ def list_packages(
     db: Session = Depends(get_db),
     _user=Depends(current_user),
 ):
-    statement = (
-        select(Package)
-        .order_by(Package.id.desc())
-        .offset(skip)
-        .limit(limit)
-    )
+    statement = select(Package).order_by(Package.id.desc()).offset(skip).limit(limit)
 
     return db.scalars(statement).all()
 
@@ -224,7 +264,7 @@ def update_package(
     package_id: int,
     payload: PackageUpdate,
     db: Session = Depends(get_db),
-    _user=Depends(current_user),
+    _user=Depends(require_roles("writer", "moderator")),
 ):
     package = db.get(Package, package_id)
 
@@ -263,7 +303,7 @@ def update_package(
 def delete_package(
     package_id: int,
     db: Session = Depends(get_db),
-    _user=Depends(current_user),
+    _user=Depends(require_roles("moderator")),
 ):
     package = db.get(Package, package_id)
 
@@ -274,15 +314,13 @@ def delete_package(
         )
 
     linked_vulnerability = db.scalar(
-        select(Vulnerability.id)
-        .where(Vulnerability.package_id == package_id)
-        .limit(1)
+        select(Vulnerability.id).where(Vulnerability.package_id == package_id).limit(1)
     )
 
     if linked_vulnerability is not None:
         raise HTTPException(
             status_code=409,
-            detail="Package cannot be deleted while vulnerabilities use it",
+            detail=("Package cannot be deleted while vulnerabilities use it"),
         )
 
     db.delete(package)
@@ -315,7 +353,10 @@ def list_package_vulnerabilities(
 
     statement = (
         select(Vulnerability)
-        .options(selectinload(Vulnerability.related_items))
+        .options(
+            selectinload(Vulnerability.related_items),
+            selectinload(Vulnerability.package),
+        )
         .where(Vulnerability.package_id == package_id)
         .order_by(Vulnerability.id.desc())
         .offset(skip)
@@ -324,10 +365,7 @@ def list_package_vulnerabilities(
 
     reports = db.scalars(statement).all()
 
-    return [
-        serialize_report(report)
-        for report in reports
-    ]
+    return [serialize_report(report) for report in reports]
 
 
 @router.get(
@@ -353,10 +391,7 @@ def list_reports(
 
     reports = db.scalars(statement).all()
 
-    return [
-        serialize_report(report)
-        for report in reports
-    ]
+    return [serialize_report(report) for report in reports]
 
 
 @router.get(
@@ -396,7 +431,7 @@ def get_report(
 def create_report(
     payload: ReportCreate,
     db: Session = Depends(get_db),
-    _user=Depends(current_user),
+    _user=Depends(require_roles("writer", "moderator")),
 ):
     if not payload.terms_accepted:
         raise HTTPException(
@@ -439,9 +474,12 @@ def update_report(
     report_id: int,
     payload: ReportUpdate,
     db: Session = Depends(get_db),
-    _user=Depends(current_user),
+    _user=Depends(require_roles("writer", "moderator")),
 ):
-    report = db.get(Vulnerability, report_id)
+    report = db.get(
+        Vulnerability,
+        report_id,
+    )
 
     if report is None:
         raise HTTPException(
@@ -470,9 +508,12 @@ def update_report(
 def delete_report(
     report_id: int,
     db: Session = Depends(get_db),
-    _user=Depends(current_user),
+    _user=Depends(require_roles("moderator")),
 ):
-    report = db.get(Vulnerability, report_id)
+    report = db.get(
+        Vulnerability,
+        report_id,
+    )
 
     if report is None:
         raise HTTPException(

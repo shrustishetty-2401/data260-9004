@@ -1,3 +1,4 @@
+import argparse
 import json
 from typing import Annotated, Any, Dict, TypedDict
 
@@ -26,16 +27,26 @@ class AgentState(TypedDict, total=False):
     turn_count: int
 
 
-Tag = Annotated[str, Field(min_length=3, max_length=30)]
+Tag = Annotated[
+    str,
+    Field(min_length=3, max_length=30),
+]
 
 
 class PlannerOutput(BaseModel):
-    tags: list[Tag] = Field(min_length=3, max_length=3)
+    tags: list[Tag] = Field(
+        min_length=3,
+        max_length=3,
+    )
+
     summary: str
 
     @field_validator("summary")
     @classmethod
-    def summary_must_be_at_most_25_words(cls, value: str) -> str:
+    def summary_must_be_at_most_25_words(
+        cls,
+        value: str,
+    ) -> str:
         if len(value.split()) > 25:
             raise ValueError("Summary must contain at most 25 words.")
 
@@ -47,7 +58,9 @@ PLANNER_SCHEMA = {
     "properties": {
         "tags": {
             "type": "array",
-            "items": {"type": "string"},
+            "items": {
+                "type": "string",
+            },
             "minItems": 3,
             "maxItems": 3,
         },
@@ -55,7 +68,10 @@ PLANNER_SCHEMA = {
             "type": "string",
         },
     },
-    "required": ["tags", "summary"],
+    "required": [
+        "tags",
+        "summary",
+    ],
     "additionalProperties": False,
 }
 
@@ -64,21 +80,26 @@ TURN_CEILING = 10
 FORCE_REVIEWER_FAILURE = False
 
 
-def planner_node(state: AgentState) -> Dict[str, Any]:
+def planner_node(
+    state: AgentState,
+) -> Dict[str, Any]:
     print("--- NODE: Planner ---")
 
     correction_message = ""
 
     if state.get("validation_error"):
         correction_message = (
-            "\nPrevious output failed validation. Correct this problem:\n"
+            "\nPrevious output failed validation. "
+            "Correct this problem:\n"
             f"{state['validation_error']}\n"
         )
 
     system_message = (
-        "You are the Planner agent. Analyze only the supplied title and content. "
-        "Create exactly three topical tags. Each tag must be 3 to 30 characters. "
-        "Write a summary of at most 25 words. Return only valid JSON."
+        "You are the Planner agent. Analyze only the "
+        "supplied title and content. Create exactly "
+        "three topical tags. Each tag must be 3 to 30 "
+        "characters. Write a summary of at most 25 "
+        "words. Return only valid JSON."
     )
 
     user_message = (
@@ -90,15 +111,24 @@ def planner_node(state: AgentState) -> Dict[str, Any]:
 
     response = complete(
         messages=[
-            {"role": "system", "content": system_message},
-            {"role": "user", "content": user_message},
+            {
+                "role": "system",
+                "content": system_message,
+            },
+            {
+                "role": "user",
+                "content": user_message,
+            },
         ],
         format=PLANNER_SCHEMA,
-        options={"temperature": 0.0},
+        options={
+            "temperature": 0.0,
+        },
     )
 
     print(
-        f"Planner tokens: input={response.input_tokens}, "
+        f"Planner tokens: "
+        f"input={response.input_tokens}, "
         f"output={response.output_tokens}, "
         f"total={response.total_tokens}"
     )
@@ -111,8 +141,11 @@ def planner_node(state: AgentState) -> Dict[str, Any]:
     }
 
 
-def reviewer_node(state: AgentState) -> Dict[str, Any]:
+def reviewer_node(
+    state: AgentState,
+) -> Dict[str, Any]:
     print("--- NODE: Reviewer ---")
+
     if FORCE_REVIEWER_FAILURE:
         print("Reviewer result: forced issue for testing")
 
@@ -121,7 +154,7 @@ def reviewer_node(state: AgentState) -> Dict[str, Any]:
                 "valid": False,
                 "message": "Temporary forced issue.",
             },
-            "validation_error": "Temporary forced validation error.",
+            "validation_error": ("Temporary forced validation error."),
         }
 
     proposal = state["planner_proposal"]
@@ -134,9 +167,9 @@ def reviewer_node(state: AgentState) -> Dict[str, Any]:
         return {
             "reviewer_feedback": {
                 "valid": True,
-                "message": "Planner output passed validation.",
+                "message": ("Planner output passed validation."),
             },
-            "final_output": validated_output.model_dump(),
+            "final_output": (validated_output.model_dump()),
             "validation_error": "",
         }
 
@@ -149,16 +182,22 @@ def reviewer_node(state: AgentState) -> Dict[str, Any]:
         return {
             "reviewer_feedback": {
                 "valid": False,
-                "message": "Planner output failed validation.",
+                "message": ("Planner output failed validation."),
             },
             "validation_error": error_message,
         }
 
 
-def supervisor_node(state: AgentState) -> Dict[str, Any]:
+def supervisor_node(
+    state: AgentState,
+) -> Dict[str, Any]:
     print("--- NODE: Supervisor ---")
 
-    current_turn = state.get("turn_count", 0)
+    current_turn = state.get(
+        "turn_count",
+        0,
+    )
+
     next_turn = current_turn + 1
 
     print(f"Turn count: {next_turn}/{TURN_CEILING}")
@@ -168,10 +207,23 @@ def supervisor_node(state: AgentState) -> Dict[str, Any]:
     }
 
 
-def router_logic(state: AgentState) -> str:
-    reviewer_feedback = state.get("reviewer_feedback", {})
-    is_valid = reviewer_feedback.get("valid", False)
-    turn_count = state.get("turn_count", 0)
+def router_logic(
+    state: AgentState,
+) -> str:
+    reviewer_feedback = state.get(
+        "reviewer_feedback",
+        {},
+    )
+
+    is_valid = reviewer_feedback.get(
+        "valid",
+        False,
+    )
+
+    turn_count = state.get(
+        "turn_count",
+        0,
+    )
 
     if is_valid:
         print("Router decision: END")
@@ -188,13 +240,35 @@ def router_logic(state: AgentState) -> str:
 def build_graph():
     graph_builder = StateGraph(AgentState)
 
-    graph_builder.add_node("planner", planner_node)
-    graph_builder.add_node("reviewer", reviewer_node)
-    graph_builder.add_node("supervisor", supervisor_node)
+    graph_builder.add_node(
+        "planner",
+        planner_node,
+    )
 
-    graph_builder.add_edge(START, "planner")
-    graph_builder.add_edge("planner", "reviewer")
-    graph_builder.add_edge("reviewer", "supervisor")
+    graph_builder.add_node(
+        "reviewer",
+        reviewer_node,
+    )
+
+    graph_builder.add_node(
+        "supervisor",
+        supervisor_node,
+    )
+
+    graph_builder.add_edge(
+        START,
+        "planner",
+    )
+
+    graph_builder.add_edge(
+        "planner",
+        "reviewer",
+    )
+
+    graph_builder.add_edge(
+        "reviewer",
+        "supervisor",
+    )
 
     graph_builder.add_conditional_edges(
         "supervisor",
@@ -207,16 +281,22 @@ def build_graph():
 
     return graph_builder.compile()
 
-import argparse
 
-
-def main():
+def main() -> None:
     parser = argparse.ArgumentParser(
-        description="Run the stateful Planner/Reviewer graph."
+        description=("Run the stateful Planner/Reviewer graph.")
     )
 
-    parser.add_argument("--title", required=True)
-    parser.add_argument("--content", required=True)
+    parser.add_argument(
+        "--title",
+        required=True,
+    )
+
+    parser.add_argument(
+        "--content",
+        required=True,
+    )
+
     parser.add_argument(
         "--email",
         default="student@sjsu.edu",
@@ -229,7 +309,7 @@ def main():
         "content": args.content,
         "email": args.email,
         "strict": True,
-        "task": "Create exactly three tags and a summary.",
+        "task": ("Create exactly three tags and a summary."),
         "turn_count": 0,
     }
 
@@ -240,14 +320,26 @@ def main():
 
     for event in graph.stream(initial_state):
         print("\nGRAPH EVENT:")
-        print(json.dumps(event, indent=2, default=str))
+        print(
+            json.dumps(
+                event,
+                indent=2,
+                default=str,
+            )
+        )
 
         for update in event.values():
             if isinstance(update, dict):
                 final_state.update(update)
 
     print("\n=== Final state ===")
-    print(json.dumps(final_state, indent=2, default=str))
+    print(
+        json.dumps(
+            final_state,
+            indent=2,
+            default=str,
+        )
+    )
 
 
 if __name__ == "__main__":

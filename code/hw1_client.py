@@ -1,6 +1,5 @@
 import argparse
 import json
-import sys
 from pathlib import Path
 
 from src.model_client import complete
@@ -18,8 +17,7 @@ class Conversation:
             {
                 "role": "system",
                 "content": (
-                    "Follow these project instructions exactly:\n\n"
-                    f"{instructions}"
+                    f"Follow these project instructions exactly:\n\n{instructions}"
                 ),
             }
         ]
@@ -34,9 +32,7 @@ class Conversation:
             "turn_count": self.turn_count,
             "cumulative_input_tokens": self.input_tokens,
             "cumulative_output_tokens": self.output_tokens,
-            "cumulative_total_tokens": (
-                self.input_tokens + self.output_tokens
-            ),
+            "cumulative_total_tokens": (self.input_tokens + self.output_tokens),
             "serialized_history_length": len(serialized),
         }
 
@@ -95,9 +91,7 @@ def run_demo():
     first_response = conversation.send(prompts[0])
 
     nonempty_lines = [
-        line.strip()
-        for line in first_response.splitlines()
-        if line.strip()
+        line.strip() for line in first_response.splitlines() if line.strip()
     ]
     bullet_only = bool(nonempty_lines) and all(
         line.startswith("-") for line in nonempty_lines
@@ -105,9 +99,11 @@ def run_demo():
 
     print(
         "\nAGENT.md verification: "
-        + ("PASS - code review used bullet-only output"
-           if bullet_only
-           else "FAIL - response was not bullet-only")
+        + (
+            "PASS - code review used bullet-only output"
+            if bullet_only
+            else "FAIL - response was not bullet-only"
+        )
     )
 
     conversation.send(prompts[1])

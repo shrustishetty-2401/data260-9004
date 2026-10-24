@@ -1,21 +1,96 @@
 {
-  "list_files": [
-    "agent_reliability.json",
-    "bikeshare_membership_wins.csv",
-    "bikeshare_pay_per_use_wins.csv",
-    "pricing_snapshot.sha256",
-    "pricing_snapshot.txt",
-    "prompt_injection_results.json",
-    "reflections.json",
-    "reflexion_comparison.json"
+  "integration_test": {
+    "glob": {
+      "ok": true,
+      "matches": [
+        "alpha.py",
+        "beta.py",
+        "gamma.py"
+      ]
+    },
+    "search": {
+      "ok": true,
+      "query": "DEBUG",
+      "matches": [
+        "beta.py"
+      ]
+    },
+    "read": {
+      "ok": true,
+      "path": "beta.py",
+      "content": "DEBUG = True\nprint(\"beta\")"
+    }
+  },
+  "safety_gate_test": [
+    {
+      "command": "pwd",
+      "expected_allowed": true,
+      "actual_allowed": true,
+      "passed": true
+    },
+    {
+      "command": "ls",
+      "expected_allowed": true,
+      "actual_allowed": true,
+      "passed": true
+    },
+    {
+      "command": "echo hello",
+      "expected_allowed": true,
+      "actual_allowed": true,
+      "passed": true
+    },
+    {
+      "command": "printf test",
+      "expected_allowed": true,
+      "actual_allowed": true,
+      "passed": true
+    },
+    {
+      "command": "grep DEBUG beta.py",
+      "expected_allowed": true,
+      "actual_allowed": true,
+      "passed": true
+    },
+    {
+      "command": "rm -rf .",
+      "expected_allowed": false,
+      "actual_allowed": false,
+      "passed": true
+    },
+    {
+      "command": "sudo ls",
+      "expected_allowed": false,
+      "actual_allowed": false,
+      "passed": true
+    },
+    {
+      "command": "chmod 777 beta.py",
+      "expected_allowed": false,
+      "actual_allowed": false,
+      "passed": true
+    },
+    {
+      "command": "dd if=/dev/zero of=/dev/disk1",
+      "expected_allowed": false,
+      "actual_allowed": false,
+      "passed": true
+    },
+    {
+      "command": "echo secret > /etc/hosts",
+      "expected_allowed": false,
+      "actual_allowed": false,
+      "passed": true
+    }
   ],
-  "read_test": "{\n  \"homework\": \"DATA-260 Homework 7\",\n  \"timestamp_utc\": \"2026-10-23T23:34:13.756677+00:00\",\n  \"trusted_policy\": {\n    \"allowed_tools\": [\n      \"csv_sql\",\n      \"policy_retriever\",\n      \"calculator\"",
+  "safety_passed": 10,
+  "safety_total": 10,
   "write_without_confirmation": {
     "ok": false,
-    "error": "Write blocked. Explicit confirmation is required before modifying a file."
+    "error": "Write blocked without confirmation."
   },
-  "path_traversal_test": {
+  "path_traversal": {
     "blocked": true,
-    "error": "Blocked: path is outside the approved HW7 directory."
+    "reason": "Blocked: path is outside the approved sandbox."
   }
 }

@@ -176,6 +176,8 @@
 <h1 class="title">DATA-260 Homework 7</h1>
 </header>
 <h1 id="data-260-homework-7">DATA-260 Homework 7</h1>
+<p>GitHub repository:
+https://github.com/shrustishetty-2401/data260-9004</p>
 <h2 id="student-and-configuration">Student and Configuration</h2>
 <ul>
 <li>Student: Shrusti Shetty</li>
@@ -185,11 +187,14 @@
 <li>Domain ID: 4</li>
 <li>Seed: 9004</li>
 <li>Verify seed: 269004</li>
-<li>Branch: <code>hw6</code></li>
-<li>Final tag: <code>hw7</code></li>
+<li>Hardware: MacBook Pro, Apple Silicon</li>
+<li>Local model: <code>qwen3:8b</code></li>
+<li>Branch: <code>hw7</code></li>
+<li>Final tagged commit:
+<code>0af80386bf98421cdcab15176c2276a70a1e8dfe</code></li>
 </ul>
-<h2 id="part-1-jwt-authentication-and-roles">Part 1: JWT Authentication
-and Roles</h2>
+<h2 id="part-1-jwt-authentication-roles-and-linting">Part 1: JWT
+Authentication, Roles, and Linting</h2>
 <p>Implemented JWT authentication with MySQL-backed users.</p>
 <p>Test users:</p>
 <ul>
@@ -199,15 +204,58 @@ and Roles</h2>
 </ul>
 <p>Verified:</p>
 <ul>
-<li>Successful login returns a JWT.</li>
+<li>Valid login returns HTTP 200 and a JWT.</li>
+<li>Invalid login returns HTTP 401.</li>
 <li>Missing token returns HTTP 401.</li>
-<li>Invalid credentials return HTTP 401.</li>
+<li>Invalid token returns HTTP 401.</li>
 <li>Reader package creation returns HTTP 403.</li>
 <li>Writer package creation returns HTTP 201.</li>
 <li>Writer package deletion returns HTTP 403.</li>
 <li>Moderator package deletion returns HTTP 200.</li>
+<li>Authenticated list/read request returns HTTP 200.</li>
+<li>Ruff and pre-commit checks pass.</li>
 </ul>
-<p>Ruff and pre-commit checks passed.</p>
+<h3 id="login-evidence">Login Evidence</h3>
+<figure>
+<img src="evidence/part1_login_success_failure.png"
+alt="Login success and invalid login" />
+<figcaption aria-hidden="true">Login success and invalid
+login</figcaption>
+</figure>
+<h3 id="authentication-failure-evidence">Authentication Failure
+Evidence</h3>
+<figure>
+<img src="evidence/part1_auth_me_401.png"
+alt="Missing and invalid token responses" />
+<figcaption aria-hidden="true">Missing and invalid token
+responses</figcaption>
+</figure>
+<h3 id="create-permission-evidence">Create Permission Evidence</h3>
+<figure>
+<img src="evidence/part1_create_permissions.png"
+alt="Reader 403 and writer 201 responses" />
+<figcaption aria-hidden="true">Reader 403 and writer 201
+responses</figcaption>
+</figure>
+<h3 id="delete-permission-evidence">Delete Permission Evidence</h3>
+<figure>
+<img src="evidence/part1_delete_permissions.png"
+alt="Writer 403 and moderator 200 responses" />
+<figcaption aria-hidden="true">Writer 403 and moderator 200
+responses</figcaption>
+</figure>
+<h3 id="authenticated-read-evidence">Authenticated Read Evidence</h3>
+<figure>
+<img src="evidence/part1_read_200.png"
+alt="Authenticated list request" />
+<figcaption aria-hidden="true">Authenticated list request</figcaption>
+</figure>
+<h3 id="linting-evidence">Linting Evidence</h3>
+<figure>
+<img src="evidence/part1_linting.png"
+alt="Ruff and pre-commit evidence" />
+<figcaption aria-hidden="true">Ruff and pre-commit evidence</figcaption>
+</figure>
 <h2 id="part-2-tool-using-agent">Part 2: Tool-Using Agent</h2>
 <p>Implemented a tool-using agent with:</p>
 <ul>
@@ -225,38 +273,100 @@ and Roles</h2>
 <li>Maximum-step limits.</li>
 <li>Safe handling of nonexistent vulnerability IDs.</li>
 </ul>
+<h3 id="verification-tasks">Verification Tasks</h3>
+<p>Task A searched for a seeded vulnerability and retrieved the first
+result.</p>
+<p>Task B retrieved an aggregate summary and searched for a supporting
+package example.</p>
+<p>Task C searched for <code>package-0</code> and retrieved details for
+vulnerability IDs <code>10002</code> and <code>9752</code>.</p>
+<figure>
+<img src="evidence/part2_tasks_abc.png" alt="Tasks A, B, and C" />
+<figcaption aria-hidden="true">Tasks A, B, and C</figcaption>
+</figure>
+<h3 id="error-recovery">Error Recovery</h3>
+<p>The nonexistent-ID test used vulnerability ID <code>999999999</code>.
+The tool returned <code>vulnerability not found</code>, and the agent
+responded without crashing.</p>
+<figure>
+<img src="evidence/part2_nonexistent_id.png"
+alt="Nonexistent ID recovery" />
+<figcaption aria-hidden="true">Nonexistent ID recovery</figcaption>
+</figure>
 <p>Evidence:</p>
 <ul>
 <li><code>raw/agent_reliability.json</code></li>
 <li><code>RUN_LOG.txt</code></li>
 </ul>
-<h2 id="part-3-reflexion">Part 3: Reflexion</h2>
-<p>Implemented a Reflexion workflow with:</p>
+<h2 id="part-3-reflexion-and-bounded-self-correction">Part 3: Reflexion
+and Bounded Self-Correction</h2>
+<p>Implemented:</p>
 <ul>
 <li>Deterministic verification.</li>
 <li>Reflection after failed attempts.</li>
-<li>Revised strategy.</li>
+<li>Revised strategies.</li>
 <li>Maximum two retries.</li>
 <li>Tool and token budgets.</li>
 <li>Stored reflection evidence.</li>
 </ul>
-<p>Results:</p>
-<ul>
-<li>Original successful tasks: 2</li>
-<li>Reflexion successful tasks: 3</li>
-<li>Original retry rate: 0.000</li>
-<li>Reflexion retry rate: 0.333</li>
-<li>Verifier false rejections: 0</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th style="text-align: right;">Original loop</th>
+<th style="text-align: right;">Reflexion loop</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Task success</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr>
+<td>Retry rate</td>
+<td style="text-align: right;">0.000</td>
+<td style="text-align: right;">0.333</td>
+</tr>
+<tr>
+<td>Tool calls</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">7</td>
+</tr>
+<tr>
+<td>Estimated tokens</td>
+<td style="text-align: right;">2278</td>
+<td style="text-align: right;">3506</td>
+</tr>
+<tr>
+<td>Latency</td>
+<td style="text-align: right;">41793.48 ms</td>
+<td style="text-align: right;">61113.38 ms</td>
+</tr>
+<tr>
+<td>Verifier false rejections</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+<figure>
+<img src="evidence/part3_reflexion_comparison.png"
+alt="Reflexion comparison" />
+<figcaption aria-hidden="true">Reflexion comparison</figcaption>
+</figure>
+<p>The verifier recorded zero false rejections. The stored reflections
+contain concise failure evidence and revised strategies without hidden
+chain-of-thought.</p>
 <p>Evidence:</p>
 <ul>
 <li><code>raw/reflexion_comparison.json</code></li>
 <li><code>raw/reflections.json</code></li>
 </ul>
-<h2 id="part-4-bike-share-reactmrkl-application">Part 4: Bike-Share
+<h2 id="part-4-citi-bike-reactmrkl-application">Part 4: Citi Bike
 ReAct/MRKL Application</h2>
-<p>Implemented a React/Vite bike-share decision application.</p>
-<p>Tools:</p>
+<p>Implemented a React/Vite Citi Bike decision application with the
+following tools:</p>
 <ol type="1">
 <li><code>csv_sql</code></li>
 <li><code>policy_retriever</code></li>
@@ -266,13 +376,15 @@ ReAct/MRKL Application</h2>
 <ul>
 <li>Uploaded CSV filename.</li>
 <li>Tool execution timeline.</li>
-<li>Weekly comparison table.</li>
+<li>Weekly member/casual comparison.</li>
 <li>Membership or pay-per-use decision.</li>
 <li>Pricing source.</li>
+<li>Pricing capture time.</li>
 <li>Pricing snapshot SHA-256 hash.</li>
+<li>Calculator output.</li>
 <li>Completion stop reason.</li>
 </ul>
-<p>Datasets:</p>
+<h3 id="dataset-results">Dataset Results</h3>
 <table style="width:100%;">
 <colgroup>
 <col style="width: 16%" />
@@ -307,11 +419,24 @@ ReAct/MRKL Application</h2>
 </tr>
 </tbody>
 </table>
-<p>Screenshots:</p>
-<ul>
-<li><code>evidence/part4_membership_wins.png</code></li>
-<li><code>evidence/part4_pay_per_use_wins.png</code></li>
-</ul>
+<h3 id="membership-win-scenario">Membership-Win Scenario</h3>
+<figure>
+<img src="evidence/part4_membership_wins.png"
+alt="Membership-win scenario" />
+<figcaption aria-hidden="true">Membership-win scenario</figcaption>
+</figure>
+<p>The membership-win dataset contains 700 member rides and 100 casual
+rides. The application selected membership because member usage was
+dominant.</p>
+<h3 id="pay-per-use-win-scenario">Pay-Per-Use-Win Scenario</h3>
+<figure>
+<img src="evidence/part4_pay_per_use_wins.png"
+alt="Pay-per-use-win scenario" />
+<figcaption aria-hidden="true">Pay-per-use-win scenario</figcaption>
+</figure>
+<p>The pay-per-use-win dataset contains 100 member rides and 700 casual
+rides. The application selected pay-per-use because casual usage was
+dominant.</p>
 <p>Pricing evidence:</p>
 <ul>
 <li><code>raw/pricing_snapshot.txt</code></li>
@@ -319,7 +444,21 @@ ReAct/MRKL Application</h2>
 </ul>
 <h2 id="part-5-prompt-injection-defense">Part 5: Prompt-Injection
 Defense</h2>
-<p>Tested three attacks:</p>
+<h3 id="threat-model">Threat Model</h3>
+<p>The threat model covers:</p>
+<ul>
+<li>Recommendation override: an attacker attempts to force an incorrect
+plan recommendation.</li>
+<li>Non-read-only tool misuse: an attacker attempts to make the SQL tool
+modify data.</li>
+<li>Data exfiltration: an attacker attempts to include restricted
+uploaded content in the final answer.</li>
+</ul>
+<p>The hostile fixture is stored at:</p>
+<ul>
+<li><code>raw/hostile_pricing_fixture.html</code></li>
+</ul>
+<p>Tested attacks:</p>
 <ul>
 <li>Instruction override.</li>
 <li>Unauthorized tool abuse.</li>
@@ -331,19 +470,53 @@ Defense</h2>
 <li>Defended cases: 3</li>
 <li>Defense success rate: 100%</li>
 </ul>
+<figure>
+<img src="evidence/part5_injection_defense.png"
+alt="Prompt-injection defense" />
+<figcaption aria-hidden="true">Prompt-injection defense</figcaption>
+</figure>
+<p>Retrieved text is treated as untrusted data. Tool-boundary
+enforcement is stronger than prompt-only defense because the tool itself
+rejects unsafe operations even if an input attempts to bypass the
+instructions.</p>
 <p>Evidence:</p>
 <ul>
 <li><code>raw/prompt_injection_results.json</code></li>
+<li><code>raw/hostile_pricing_fixture.html</code></li>
 </ul>
-<h2 id="part-6-file-tools-and-safety">Part 6: File Tools and Safety</h2>
-<p>Implemented safe file tools for the approved HW7 directory.</p>
-<p>Verified:</p>
+<h2 id="part-6-file-tools-and-safety-gate">Part 6: File Tools and Safety
+Gate</h2>
+<p>Implemented:</p>
 <ul>
-<li>File listing works.</li>
-<li>File reading works.</li>
-<li>Unconfirmed writes are blocked.</li>
-<li>Path traversal is blocked.</li>
+<li><code>read_file</code></li>
+<li><code>write_file</code></li>
+<li><code>edit_file</code></li>
+<li><code>glob_files</code></li>
+<li><code>search_in_files</code></li>
+<li><code>bash</code></li>
 </ul>
+<p>The safety gate includes:</p>
+<ul>
+<li><code>SAFE_PREFIXES</code></li>
+<li><code>is_destructive</code></li>
+<li><code>confirm_bash</code></li>
+<li>Explicit confirmation for destructive commands.</li>
+<li>Path traversal protection.</li>
+<li>Unconfirmed write protection.</li>
+</ul>
+<p>The integration test performed:</p>
+<pre class="text"><code>glob -&gt; search -&gt; read</code></pre>
+<p>The safety suite tested ten commands. Five safe commands were allowed
+and five destructive or restricted commands were blocked.</p>
+<p>The results confirmed that file listing, file search, file reading,
+unconfirmed-write blocking, path-traversal blocking, and
+destructive-command confirmation all work as intended.</p>
+<figure>
+<img src="evidence/part6_file_tools_safety.png"
+alt="File tools and safety evidence" />
+<figcaption aria-hidden="true">File tools and safety
+evidence</figcaption>
+</figure>
 <p>Evidence:</p>
 <ul>
 <li><code>raw/file_tools_results.json</code></li>
@@ -359,6 +532,11 @@ Defense</h2>
 <li><code>raw/reflections.json</code></li>
 <li><code>raw/prompt_injection_results.json</code></li>
 <li><code>raw/file_tools_results.json</code></li>
+<li><code>raw/pricing_snapshot.txt</code></li>
+<li><code>raw/pricing_snapshot.sha256</code></li>
+<li><code>raw/hostile_pricing_fixture.html</code></li>
+<li><code>raw/bikeshare_membership_wins.csv</code></li>
+<li><code>raw/bikeshare_pay_per_use_wins.csv</code></li>
 </ul>
 <h2 id="final-verification">Final Verification</h2>
 <p>The following checks passed:</p>
@@ -368,17 +546,26 @@ Defense</h2>
 <li>Pre-commit hooks.</li>
 <li>Backend API startup.</li>
 <li>JWT authentication tests.</li>
+<li>Invalid-login test.</li>
+<li>Missing-token test.</li>
 <li>Role-permission tests.</li>
+<li>Authenticated read test.</li>
 <li>Agent tests.</li>
 <li>Tool tests.</li>
-<li>Reliability experiments.</li>
-<li>Reflexion experiments.</li>
+<li>Reliability experiment.</li>
+<li>Reflexion experiment.</li>
 <li>Bike-share API test.</li>
 <li>React production build.</li>
 <li>Prompt-injection tests.</li>
 <li>File-safety tests.</li>
 </ul>
-<p>Final commit and tag will be recorded after the completed report is
-committed.</p>
+<p>The final <code>hw7</code> branch and tag point to:</p>
+<p><code>0af80386bf98421cdcab15176c2276a70a1e8dfe</code></p>
+<h2 id="submission-files">Submission Files</h2>
+<p>The final submission PDF is:</p>
+<p><code>reports/hw07/Shetty_HW7.pdf</code></p>
+<p>The report includes screenshots for Parts 1 through 6,
+machine-readable experiment outputs, verification results, and
+reproducibility evidence.</p>
 </body>
 </html>

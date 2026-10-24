@@ -14,7 +14,9 @@ GitHub repository: https://github.com/shrustishetty-2401/data260-9004
 - Hardware: MacBook Pro, Apple Silicon
 - Local model: `qwen3:8b`
 - Branch: `hw7`
-- Final tagged commit: `a3810a884db0d15a38095d3db051f89eb6396525`
+- Final branch/tag: `hw7`
+- Final implementation commit: `2b816ca`
+- Final branch and tag were verified with `git ls-remote`.
 
 ## Part 1: JWT Authentication, Roles, and Linting
 
@@ -149,6 +151,11 @@ The application displays:
 - Pricing capture time.
 - Pricing snapshot SHA-256 hash.
 - Calculator output.
+- Membership cost.
+- Pay-per-use cost.
+- Break-even point.
+- Step count.
+- Total execution time.
 - Completion stop reason.
 
 ### Dataset Results
@@ -162,13 +169,13 @@ The application displays:
 
 ![Membership-win scenario](evidence/part4_membership_wins.png)
 
-The membership-win dataset contains 700 member rides and 100 casual rides. The application selected membership because member usage was dominant.
+The membership-win dataset contains 700 member rides and 100 casual rides. The application selected `Buy Monthly Membership` because member usage was dominant.
 
 ### Pay-Per-Use-Win Scenario
 
 ![Pay-per-use-win scenario](evidence/part4_pay_per_use_wins.png)
 
-The pay-per-use-win dataset contains 100 member rides and 700 casual rides. The application selected pay-per-use because casual usage was dominant.
+The pay-per-use-win dataset contains 100 member rides and 700 casual rides. The application selected `Pay Per Ride/Minute` because casual usage was dominant.
 
 Pricing evidence:
 
@@ -295,9 +302,14 @@ The following checks passed:
 - Prompt-injection tests.
 - File-safety tests.
 
-The final `hw7` branch and tag point to:
+The final branch and tag are both named `hw7` and were verified with:
 
-`a3810a884db0d15a38095d3db051f89eb6396525`
+```bash
+git ls-remote --heads origin hw7
+git ls-remote --tags origin hw7
+```
+
+Both references pointed to the same final commit at submission time.
 
 ## Submission Files
 

@@ -169,6 +169,71 @@
       vertical-align: middle;
     }
     .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
 </head>
 <body>
@@ -190,8 +255,10 @@ https://github.com/shrustishetty-2401/data260-9004</p>
 <li>Hardware: MacBook Pro, Apple Silicon</li>
 <li>Local model: <code>qwen3:8b</code></li>
 <li>Branch: <code>hw7</code></li>
-<li>Final tagged commit:
-<code>a3810a884db0d15a38095d3db051f89eb6396525</code></li>
+<li>Final branch/tag: <code>hw7</code></li>
+<li>Final implementation commit: <code>2b816ca</code></li>
+<li>Final branch and tag were verified with
+<code>git ls-remote</code>.</li>
 </ul>
 <h2 id="part-1-jwt-authentication-roles-and-linting">Part 1: JWT
 Authentication, Roles, and Linting</h2>
@@ -382,6 +449,11 @@ following tools:</p>
 <li>Pricing capture time.</li>
 <li>Pricing snapshot SHA-256 hash.</li>
 <li>Calculator output.</li>
+<li>Membership cost.</li>
+<li>Pay-per-use cost.</li>
+<li>Break-even point.</li>
+<li>Step count.</li>
+<li>Total execution time.</li>
 <li>Completion stop reason.</li>
 </ul>
 <h3 id="dataset-results">Dataset Results</h3>
@@ -426,8 +498,8 @@ alt="Membership-win scenario" />
 <figcaption aria-hidden="true">Membership-win scenario</figcaption>
 </figure>
 <p>The membership-win dataset contains 700 member rides and 100 casual
-rides. The application selected membership because member usage was
-dominant.</p>
+rides. The application selected <code>Buy Monthly Membership</code>
+because member usage was dominant.</p>
 <h3 id="pay-per-use-win-scenario">Pay-Per-Use-Win Scenario</h3>
 <figure>
 <img src="evidence/part4_pay_per_use_wins.png"
@@ -435,8 +507,8 @@ alt="Pay-per-use-win scenario" />
 <figcaption aria-hidden="true">Pay-per-use-win scenario</figcaption>
 </figure>
 <p>The pay-per-use-win dataset contains 100 member rides and 700 casual
-rides. The application selected pay-per-use because casual usage was
-dominant.</p>
+rides. The application selected <code>Pay Per Ride/Minute</code> because
+casual usage was dominant.</p>
 <p>Pricing evidence:</p>
 <ul>
 <li><code>raw/pricing_snapshot.txt</code></li>
@@ -601,8 +673,13 @@ evidence</figcaption>
 <li>Prompt-injection tests.</li>
 <li>File-safety tests.</li>
 </ul>
-<p>The final <code>hw7</code> branch and tag point to:</p>
-<p><code>a3810a884db0d15a38095d3db051f89eb6396525</code></p>
+<p>The final branch and tag are both named <code>hw7</code> and were
+verified with:</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> ls-remote <span class="at">--heads</span> origin hw7</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> ls-remote <span class="at">--tags</span> origin hw7</span></code></pre></div>
+<p>Both references pointed to the same final commit at submission
+time.</p>
 <h2 id="submission-files">Submission Files</h2>
 <p>The final submission PDF is:</p>
 <p><code>reports/hw07/Shetty_HW7.pdf</code></p>

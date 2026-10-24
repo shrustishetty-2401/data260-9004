@@ -14,7 +14,7 @@ GitHub repository: https://github.com/shrustishetty-2401/data260-9004
 - Hardware: MacBook Pro, Apple Silicon
 - Local model: `qwen3:8b`
 - Branch: `hw7`
-- Final tagged commit: `0af80386bf98421cdcab15176c2276a70a1e8dfe`
+- Final tagged commit: `a3810a884db0d15a38095d3db051f89eb6396525`
 
 ## Part 1: JWT Authentication, Roles, and Linting
 
@@ -297,7 +297,7 @@ The following checks passed:
 
 The final `hw7` branch and tag point to:
 
-`0af80386bf98421cdcab15176c2276a70a1e8dfe`
+`a3810a884db0d15a38095d3db051f89eb6396525`
 
 ## Submission Files
 

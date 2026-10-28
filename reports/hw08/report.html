@@ -256,6 +256,8 @@ https://github.com/shrustishetty-2401/data260-9004</p>
 <li>Local model: <code>qwen3:8b</code></li>
 <li>Final branch: <code>hw8</code></li>
 <li>Final tag: <code>hw8</code></li>
+<li>Final tagged commit:
+<code>77a0183ccdbdc33524bda338b35d8cd1b30caf18</code></li>
 </ul>
 <h2 id="part-1-kafka-vulnerability-requestresponse-service">Part 1:
 Kafka Vulnerability Request/Response Service</h2>
@@ -283,31 +285,39 @@ class="sourceCode json"><code class="sourceCode json"><span id="cb1-1"><a href="
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;terms_accepted&quot;</span><span class="fu">:</span> <span class="kw">true</span></span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">}</span></span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
-<h3 id="response-schema">Response Schema</h3>
-<p>Successful CREATE and GET responses use the following structure:</p>
+<h3 id="response-schemas">Response Schemas</h3>
+<p>Successful CREATE responses return the generated UUID:</p>
 <div class="sourceCode" id="cb2"><pre
 class="sourceCode json"><code class="sourceCode json"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;correlation_id&quot;</span><span class="fu">:</span> <span class="st">&quot;same-request-id&quot;</span><span class="fu">,</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;success&quot;</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;entity_id&quot;</span><span class="fu">:</span> <span class="st">&quot;uuid&quot;</span><span class="fu">,</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;entity&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;vulnerability_code&quot;</span><span class="fu">:</span> <span class="st">&quot;HW8-DEMO-001&quot;</span><span class="fu">,</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;vulnerability_title&quot;</span><span class="fu">:</span> <span class="st">&quot;Kafka demonstration vulnerability&quot;</span><span class="fu">,</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;package_name&quot;</span><span class="fu">:</span> <span class="st">&quot;package-0&quot;</span><span class="fu">,</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;submitter_email&quot;</span><span class="fu">:</span> <span class="st">&quot;student@example.com&quot;</span><span class="fu">,</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;description&quot;</span><span class="fu">:</span> <span class="st">&quot;A sufficiently long vulnerability description.&quot;</span><span class="fu">,</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;category&quot;</span><span class="fu">:</span> <span class="st">&quot;Input Validation&quot;</span><span class="fu">,</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;terms_accepted&quot;</span><span class="fu">:</span> <span class="kw">true</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">}</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
-<p>Error responses preserve the correlation ID and include an error
-message:</p>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;message&quot;</span><span class="fu">:</span> <span class="st">&quot;Entity created&quot;</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
+<p>Successful GET responses return the complete entity:</p>
 <div class="sourceCode" id="cb3"><pre
 class="sourceCode json"><code class="sourceCode json"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;correlation_id&quot;</span><span class="fu">:</span> <span class="st">&quot;same-request-id&quot;</span><span class="fu">,</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;success&quot;</span><span class="fu">:</span> <span class="kw">false</span><span class="fu">,</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;error&quot;</span><span class="fu">:</span> <span class="st">&quot;Entity not found&quot;</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;success&quot;</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;entity&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;entity_id&quot;</span><span class="fu">:</span> <span class="st">&quot;generated-uuid&quot;</span><span class="fu">,</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;vulnerability_code&quot;</span><span class="fu">:</span> <span class="st">&quot;HW8-DEMO-001&quot;</span><span class="fu">,</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;vulnerability_title&quot;</span><span class="fu">:</span> <span class="st">&quot;Kafka demonstration vulnerability&quot;</span><span class="fu">,</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;package_name&quot;</span><span class="fu">:</span> <span class="st">&quot;package-0&quot;</span><span class="fu">,</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;submitter_email&quot;</span><span class="fu">:</span> <span class="st">&quot;student@example.com&quot;</span><span class="fu">,</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;description&quot;</span><span class="fu">:</span> <span class="st">&quot;A sufficiently long vulnerability description.&quot;</span><span class="fu">,</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;category&quot;</span><span class="fu">:</span> <span class="st">&quot;Input Validation&quot;</span><span class="fu">,</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;terms_accepted&quot;</span><span class="fu">:</span> <span class="kw">true</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">}</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
+<p>Error responses preserve the correlation ID and include an error
+message:</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode json"><code class="sourceCode json"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;correlation_id&quot;</span><span class="fu">:</span> <span class="st">&quot;same-request-id&quot;</span><span class="fu">,</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;success&quot;</span><span class="fu">:</span> <span class="kw">false</span><span class="fu">,</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;error&quot;</span><span class="fu">:</span> <span class="st">&quot;Entity not found&quot;</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
 <h3 id="functionality">Functionality</h3>
 <ul>
 <li>CREATE vulnerability requests</li>
@@ -473,6 +483,93 @@ recovery, and key-based ordering.</p>
 <p>Kafka adds durable asynchronous coordination, but it also requires
 explicit handling of commits, retries, duplicate messages, consumer
 failures, and ordering.</p>
+<p>Two benefits gained from Kafka were independent scaling of agents and
+decoupled failure recovery. Two new responsibilities were
+duplicate/idempotency handling and explicit ordering and offset
+management.</p>
+<h3 id="failure-comparison-table">Failure Comparison Table</h3>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Failure scenario</th>
+<th>Before fix</th>
+<th>After fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Duplicate delivery</td>
+<td>Replay could create an additional side effect.</td>
+<td>The same entity ID was returned and the duplicate was
+prevented.</td>
+</tr>
+<tr>
+<td>Consumer killed mid-work</td>
+<td>Processing stopped before the offset was committed.</td>
+<td>Restart caused redelivery and successful completion.</td>
+</tr>
+<tr>
+<td>Poison message</td>
+<td>A bad message could continue failing without bounded handling.</td>
+<td>The message was retried three times and moved to
+<code>s9004_dead_letter</code>.</td>
+</tr>
+<tr>
+<td>Two partitions/two consumers</td>
+<td>Unkeyed related messages were not globally ordered.</td>
+<td>Keyed related messages used one partition and preserved order.</td>
+</tr>
+</tbody>
+</table>
+<p>Each row is supported by the matching raw JSON or log evidence listed
+in the Part 3 sections above.</p>
+<h3 id="short-implementation-evidence">Short Implementation
+Evidence</h3>
+<p>The worker dispatches only the two required operations:</p>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> operation <span class="op">==</span> <span class="st">&quot;CREATE_VULNERABILITY&quot;</span>:</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    response <span class="op">=</span> create_vulnerability(data)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> operation <span class="op">==</span> <span class="st">&quot;GET_VULNERABILITY&quot;</span>:</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    response <span class="op">=</span> get_vulnerability(data)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    response <span class="op">=</span> {<span class="st">&quot;success&quot;</span>: <span class="va">False</span>, <span class="st">&quot;error&quot;</span>: <span class="st">&quot;Unknown operation&quot;</span>}</span></code></pre></div>
+<p>Every response preserves the request correlation ID:</p>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>response[<span class="st">&quot;correlation_id&quot;</span>] <span class="op">=</span> message[<span class="st">&quot;correlation_id&quot;</span>]</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="cf">await</span> producer.send_and_wait(reply_to, json.dumps(response).encode())</span></code></pre></div>
+<p>Poison messages use bounded retries and then move to the dead-letter
+topic:</p>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> retry_number <span class="op">&gt;=</span> MAX_RETRIES:</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">await</span> producer.send_and_wait(DEAD_LETTER_TOPIC, encoded_message)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">await</span> consumer.commit()</span></code></pre></div>
+<p>Ordering uses the related entity as the Kafka message key:</p>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>key <span class="op">=</span> <span class="st">b&quot;vulnerability-42&quot;</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="cf">await</span> producer.send_and_wait(TASKS_TOPIC, payload, key<span class="op">=</span>key)</span></code></pre></div>
+<h3 id="ai-use">AI Use</h3>
+<ol type="1">
+<li>AI assistance was used for drafting Kafka client, worker,
+multi-agent, retry, dead-letter, ordering, verification, and report
+code. The student ran the commands, inspected the outputs, captured the
+evidence, and made the final repository changes.</li>
+<li>One initial AI-produced design created the Kafka producer outside an
+asynchronous function, which failed with a Python 3.13 event-loop error.
+Another initial retry design waited for Kafka redelivery instead of
+retrying poison messages immediately.</li>
+<li>These problems were detected by running the Docker service and
+poison-message tests. The API failed during startup in the first case,
+and the poison test timed out in the second case.</li>
+<li>The producer and consumer objects were moved into the asynchronous
+startup method. The Writer was changed to retry in a bounded loop, send
+the message to <code>s9004_dead_letter</code> after three failures, and
+commit the offset only after dead-letter publication.</li>
+</ol>
 <h2 id="reproducibility-evidence">Reproducibility Evidence</h2>
 <ul>
 <li><code>RUN_LOG.txt</code></li>

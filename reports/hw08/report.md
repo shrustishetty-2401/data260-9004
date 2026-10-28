@@ -15,6 +15,7 @@ GitHub repository: https://github.com/shrustishetty-2401/data260-9004
 - Local model: `qwen3:8b`
 - Final branch: `hw8`
 - Final tag: `hw8`
+- Final tagged commit: `77a0183ccdbdc33524bda338b35d8cd1b30caf18`
 
 ## Part 1: Kafka Vulnerability Request/Response Service
 
@@ -46,16 +47,27 @@ The worker stores entities in an in-memory dictionary. Clients communicate with 
 }
 ```
 
-### Response Schema
+### Response Schemas
 
-Successful CREATE and GET responses use the following structure:
+Successful CREATE responses return the generated UUID:
 
 ```json
 {
   "correlation_id": "same-request-id",
   "success": true,
   "entity_id": "uuid",
+  "message": "Entity created"
+}
+```
+
+Successful GET responses return the complete entity:
+
+```json
+{
+  "correlation_id": "same-request-id",
+  "success": true,
   "entity": {
+    "entity_id": "generated-uuid",
     "vulnerability_code": "HW8-DEMO-001",
     "vulnerability_title": "Kafka demonstration vulnerability",
     "package_name": "package-0",
@@ -204,6 +216,61 @@ The producer is responsible for publishing valid messages and using stable keys 
 HW2 used a simpler request/response workflow. HW8 extends that design with Kafka topics, independent consumers, consumer groups, offset commits, retries, dead-letter handling, idempotency, consumer restart recovery, and key-based ordering.
 
 Kafka adds durable asynchronous coordination, but it also requires explicit handling of commits, retries, duplicate messages, consumer failures, and ordering.
+
+Two benefits gained from Kafka were independent scaling of agents and decoupled failure recovery. Two new responsibilities were duplicate/idempotency handling and explicit ordering and offset management.
+
+### Failure Comparison Table
+
+| Failure scenario | Before fix | After fix |
+|---|---|---|
+| Duplicate delivery | Replay could create an additional side effect. | The same entity ID was returned and the duplicate was prevented. |
+| Consumer killed mid-work | Processing stopped before the offset was committed. | Restart caused redelivery and successful completion. |
+| Poison message | A bad message could continue failing without bounded handling. | The message was retried three times and moved to `s9004_dead_letter`. |
+| Two partitions/two consumers | Unkeyed related messages were not globally ordered. | Keyed related messages used one partition and preserved order. |
+
+Each row is supported by the matching raw JSON or log evidence listed in the Part 3 sections above.
+
+### Short Implementation Evidence
+
+The worker dispatches only the two required operations:
+
+```python
+if operation == "CREATE_VULNERABILITY":
+    response = create_vulnerability(data)
+elif operation == "GET_VULNERABILITY":
+    response = get_vulnerability(data)
+else:
+    response = {"success": False, "error": "Unknown operation"}
+```
+
+Every response preserves the request correlation ID:
+
+```python
+response["correlation_id"] = message["correlation_id"]
+await producer.send_and_wait(reply_to, json.dumps(response).encode())
+```
+
+Poison messages use bounded retries and then move to the dead-letter topic:
+
+```python
+if retry_number >= MAX_RETRIES:
+    await producer.send_and_wait(DEAD_LETTER_TOPIC, encoded_message)
+    await consumer.commit()
+```
+
+Ordering uses the related entity as the Kafka message key:
+
+```python
+key = b"vulnerability-42"
+await producer.send_and_wait(TASKS_TOPIC, payload, key=key)
+```
+
+### AI Use
+
+1. AI assistance was used for drafting Kafka client, worker, multi-agent, retry, dead-letter, ordering, verification, and report code. The student ran the commands, inspected the outputs, captured the evidence, and made the final repository changes.
+2. One initial AI-produced design created the Kafka producer outside an asynchronous function, which failed with a Python 3.13 event-loop error. Another initial retry design waited for Kafka redelivery instead of retrying poison messages immediately.
+3. These problems were detected by running the Docker service and poison-message tests. The API failed during startup in the first case, and the poison test timed out in the second case.
+4. The producer and consumer objects were moved into the asynchronous startup method. The Writer was changed to retry in a bounded loop, send the message to `s9004_dead_letter` after three failures, and commit the offset only after dead-letter publication.
 
 ## Reproducibility Evidence
 

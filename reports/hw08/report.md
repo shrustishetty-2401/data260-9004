@@ -27,6 +27,56 @@ The worker stores entities in an in-memory dictionary. Clients communicate with 
 - `s9004_vulnerability_requests`
 - `s9004_vulnerability_responses`
 
+### Request Schema
+
+```json
+{
+  "correlation_id": "unique-request-id",
+  "reply_to": "s9004_vulnerability_responses",
+  "operation": "CREATE_VULNERABILITY",
+  "data": {
+    "vulnerability_code": "HW8-DEMO-001",
+    "vulnerability_title": "Kafka demonstration vulnerability",
+    "package_name": "package-0",
+    "submitter_email": "student@example.com",
+    "description": "A sufficiently long vulnerability description.",
+    "category": "Input Validation",
+    "terms_accepted": true
+  }
+}
+```
+
+### Response Schema
+
+Successful CREATE and GET responses use the following structure:
+
+```json
+{
+  "correlation_id": "same-request-id",
+  "success": true,
+  "entity_id": "uuid",
+  "entity": {
+    "vulnerability_code": "HW8-DEMO-001",
+    "vulnerability_title": "Kafka demonstration vulnerability",
+    "package_name": "package-0",
+    "submitter_email": "student@example.com",
+    "description": "A sufficiently long vulnerability description.",
+    "category": "Input Validation",
+    "terms_accepted": true
+  }
+}
+```
+
+Error responses preserve the correlation ID and include an error message:
+
+```json
+{
+  "correlation_id": "same-request-id",
+  "success": false,
+  "error": "Entity not found"
+}
+```
+
 ### Functionality
 
 - CREATE vulnerability requests
@@ -123,7 +173,7 @@ Twenty unkeyed and twenty keyed messages were tested.
 | Unkeyed messages | 2 | No |
 | Keyed messages | 1 | Yes |
 
-The keyed messages used the same entity key, so Kafka routed them to one partition and preserved their order.
+The ordering experiment used two Kafka partitions and two consumer processes. Unkeyed messages were distributed across partitions and were not globally ordered. Keyed messages used the same entity key, were routed to one partition, and preserved their order.
 
 - `keyed_order_preserved`: `true`
 - Verification seed: `269004`
@@ -148,6 +198,12 @@ Kafka provides:
 - Decoupling between independent services
 
 The producer is responsible for publishing valid messages and using stable keys when ordering matters. The consumer is responsible for validation, idempotency, retries, offset commits, and dead-letter handling.
+
+### Comparison with HW2
+
+HW2 used a simpler request/response workflow. HW8 extends that design with Kafka topics, independent consumers, consumer groups, offset commits, retries, dead-letter handling, idempotency, consumer restart recovery, and key-based ordering.
+
+Kafka adds durable asynchronous coordination, but it also requires explicit handling of commits, retries, duplicate messages, consumer failures, and ordering.
 
 ## Reproducibility Evidence
 

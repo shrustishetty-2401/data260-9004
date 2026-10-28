@@ -15,7 +15,7 @@ GitHub repository: https://github.com/shrustishetty-2401/data260-9004
 - Local model: `qwen3:8b`
 - Final branch: `hw8`
 - Final tag: `hw8`
-- Final tagged commit: `77a0183ccdbdc33524bda338b35d8cd1b30caf18`
+- Final tagged commit: `1c8cb440841a2fa223a0ba7e2f9d315fdf77c5df`
 
 ## Part 1: Kafka Vulnerability Request/Response Service
 
@@ -185,7 +185,7 @@ Twenty unkeyed and twenty keyed messages were tested.
 | Unkeyed messages | 2 | No |
 | Keyed messages | 1 | Yes |
 
-The ordering experiment used two Kafka partitions and two consumer processes. Unkeyed messages were distributed across partitions and were not globally ordered. Keyed messages used the same entity key, were routed to one partition, and preserved their order.
+The ordering experiment used two Kafka partitions and two Writer instances in the same consumer group. Unkeyed messages were distributed across partitions and were not globally ordered. Keyed messages used the same entity key, were routed to one partition, and preserved their order.
 
 - `keyed_order_preserved`: `true`
 - Verification seed: `269004`
@@ -196,6 +196,16 @@ Evidence:
 
 - `raw/ordering_results.json`
 - `raw/part3_failure_summary.log`
+
+- `raw/ordering_writer_a.log`
+- `raw/ordering_writer_b.log`
+
+![Writer A](evidence/part3_writer_a.png)
+
+![Writer B](evidence/part3_writer_b.png)
+
+![Ordering result](evidence/part3_ordering_result.png)
+
 
 ## Kafka Reliability Conclusions
 

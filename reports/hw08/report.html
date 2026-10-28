@@ -257,7 +257,7 @@ https://github.com/shrustishetty-2401/data260-9004</p>
 <li>Final branch: <code>hw8</code></li>
 <li>Final tag: <code>hw8</code></li>
 <li>Final tagged commit:
-<code>77a0183ccdbdc33524bda338b35d8cd1b30caf18</code></li>
+<code>1c8cb440841a2fa223a0ba7e2f9d315fdf77c5df</code></li>
 </ul>
 <h2 id="part-1-kafka-vulnerability-requestresponse-service">Part 1:
 Kafka Vulnerability Request/Response Service</h2>
@@ -440,10 +440,11 @@ each message three times and then moved it to the dead-letter topic.</p>
 </tr>
 </tbody>
 </table>
-<p>The ordering experiment used two Kafka partitions and two consumer
-processes. Unkeyed messages were distributed across partitions and were
-not globally ordered. Keyed messages used the same entity key, were
-routed to one partition, and preserved their order.</p>
+<p>The ordering experiment used two Kafka partitions and two Writer
+instances in the same consumer group. Unkeyed messages were distributed
+across partitions and were not globally ordered. Keyed messages used the
+same entity key, were routed to one partition, and preserved their
+order.</p>
 <ul>
 <li><code>keyed_order_preserved</code>: <code>true</code></li>
 <li>Verification seed: <code>269004</code></li>
@@ -456,9 +457,23 @@ evidence</figcaption>
 </figure>
 <p>Evidence:</p>
 <ul>
-<li><code>raw/ordering_results.json</code></li>
-<li><code>raw/part3_failure_summary.log</code></li>
+<li><p><code>raw/ordering_results.json</code></p></li>
+<li><p><code>raw/part3_failure_summary.log</code></p></li>
+<li><p><code>raw/ordering_writer_a.log</code></p></li>
+<li><p><code>raw/ordering_writer_b.log</code></p></li>
 </ul>
+<figure>
+<img src="evidence/part3_writer_a.png" alt="Writer A" />
+<figcaption aria-hidden="true">Writer A</figcaption>
+</figure>
+<figure>
+<img src="evidence/part3_writer_b.png" alt="Writer B" />
+<figcaption aria-hidden="true">Writer B</figcaption>
+</figure>
+<figure>
+<img src="evidence/part3_ordering_result.png" alt="Ordering result" />
+<figcaption aria-hidden="true">Ordering result</figcaption>
+</figure>
 <h2 id="kafka-reliability-conclusions">Kafka Reliability
 Conclusions</h2>
 <p>Kafka provides:</p>

@@ -1,0 +1,45 @@
+[WRITER] Listening on s9004_tasks
+[WRITER] Received task_id=unkeyed-01-7b6767095b9e3e0b partition=0 offset=49
+[WRITER] sequence=1 entity_key=vulnerability-42
+[WRITER] Draft sent to s9004_drafts task_id=unkeyed-01-7b6767095b9e3e0b
+[WRITER] Offset committed for task_id=unkeyed-01-7b6767095b9e3e0b
+[WRITER] Received task_id=unkeyed-02-ab8d95aa7a28ab34 partition=0 offset=50
+[WRITER] sequence=2 entity_key=vulnerability-42
+[WRITER] Draft sent to s9004_drafts task_id=unkeyed-02-ab8d95aa7a28ab34
+[WRITER] Offset committed for task_id=unkeyed-02-ab8d95aa7a28ab34
+[WRITER] Received task_id=unkeyed-03-5b102eecf3d63632 partition=0 offset=51
+[WRITER] sequence=3 entity_key=vulnerability-42
+[WRITER] Draft sent to s9004_drafts task_id=unkeyed-03-5b102eecf3d63632
+[WRITER] Offset committed for task_id=unkeyed-03-5b102eecf3d63632
+[WRITER] Received task_id=unkeyed-04-e2f2d03dcd3d8cac partition=0 offset=52
+[WRITER] sequence=4 entity_key=vulnerability-42
+[WRITER] Draft sent to s9004_drafts task_id=unkeyed-04-e2f2d03dcd3d8cac
+[WRITER] Offset committed for task_id=unkeyed-04-e2f2d03dcd3d8cac
+[WRITER] Received task_id=unkeyed-07-1926bca90ca95df9 partition=0 offset=53
+[WRITER] sequence=7 entity_key=vulnerability-42
+[WRITER] Draft sent to s9004_drafts task_id=unkeyed-07-1926bca90ca95df9
+[WRITER] Offset committed for task_id=unkeyed-07-1926bca90ca95df9
+[WRITER] Received task_id=unkeyed-09-4f8e9c6940d80cb1 partition=0 offset=54
+[WRITER] sequence=9 entity_key=vulnerability-42
+[WRITER] Draft sent to s9004_drafts task_id=unkeyed-09-4f8e9c6940d80cb1
+[WRITER] Offset committed for task_id=unkeyed-09-4f8e9c6940d80cb1
+[WRITER] Received task_id=unkeyed-11-22b5a05761037bb6 partition=0 offset=55
+[WRITER] sequence=11 entity_key=vulnerability-42
+[WRITER] Draft sent to s9004_drafts task_id=unkeyed-11-22b5a05761037bb6
+[WRITER] Offset committed for task_id=unkeyed-11-22b5a05761037bb6
+[WRITER] Received task_id=unkeyed-12-eb84466d7344996d partition=0 offset=56
+[WRITER] sequence=12 entity_key=vulnerability-42
+[WRITER] Draft sent to s9004_drafts task_id=unkeyed-12-eb84466d7344996d
+[WRITER] Offset committed for task_id=unkeyed-12-eb84466d7344996d
+[WRITER] Received task_id=unkeyed-17-76727df48f696faa partition=0 offset=57
+[WRITER] sequence=17 entity_key=vulnerability-42
+[WRITER] Draft sent to s9004_drafts task_id=unkeyed-17-76727df48f696faa
+[WRITER] Offset committed for task_id=unkeyed-17-76727df48f696faa
+[WRITER] Received task_id=unkeyed-19-39edb3934ba1ace9 partition=0 offset=58
+[WRITER] sequence=19 entity_key=vulnerability-42
+[WRITER] Draft sent to s9004_drafts task_id=unkeyed-19-39edb3934ba1ace9
+[WRITER] Offset committed for task_id=unkeyed-19-39edb3934ba1ace9
+[WRITER] Received task_id=unkeyed-20-14d983db0159119d partition=0 offset=59
+[WRITER] sequence=20 entity_key=vulnerability-42
+[WRITER] Draft sent to s9004_drafts task_id=unkeyed-20-14d983db0159119d
+[WRITER] Offset committed for task_id=unkeyed-20-14d983db0159119d

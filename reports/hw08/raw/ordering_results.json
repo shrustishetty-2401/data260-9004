@@ -30,23 +30,23 @@
     "received_sequences": [
       1,
       2,
-      3,
       7,
-      4,
-      5,
+      3,
       8,
+      4,
       10,
+      5,
+      12,
       6,
       9,
-      11,
-      12,
-      15,
       16,
-      13,
-      14,
+      11,
       17,
       18,
+      13,
       20,
+      14,
+      15,
       19
     ],
     "partitions_seen": [
@@ -54,26 +54,26 @@
       1
     ],
     "offsets_in_receive_order": [
-      15,
-      32,
-      33,
-      16,
-      34,
-      35,
-      17,
-      18,
-      36,
-      37,
-      19,
-      20,
-      38,
-      39,
-      21,
-      22,
-      40,
-      23,
-      41,
-      24
+      60,
+      61,
+      62,
+      129,
+      63,
+      130,
+      64,
+      131,
+      65,
+      132,
+      133,
+      66,
+      134,
+      67,
+      68,
+      135,
+      69,
+      136,
+      137,
+      138
     ],
     "message_count": 20,
     "same_partition": false,
@@ -83,140 +83,140 @@
         "sequence": 1,
         "entity_key": "vulnerability-42",
         "input_partition": 0,
-        "input_offset": 15,
+        "input_offset": 60,
         "task_id": "unkeyed-01-7b6767095b9e3e0b"
       },
       {
         "sequence": 2,
         "entity_key": "vulnerability-42",
-        "input_partition": 1,
-        "input_offset": 32,
+        "input_partition": 0,
+        "input_offset": 61,
         "task_id": "unkeyed-02-ab8d95aa7a28ab34"
-      },
-      {
-        "sequence": 3,
-        "entity_key": "vulnerability-42",
-        "input_partition": 1,
-        "input_offset": 33,
-        "task_id": "unkeyed-03-5b102eecf3d63632"
       },
       {
         "sequence": 7,
         "entity_key": "vulnerability-42",
         "input_partition": 0,
-        "input_offset": 16,
+        "input_offset": 62,
         "task_id": "unkeyed-07-1926bca90ca95df9"
       },
       {
-        "sequence": 4,
+        "sequence": 3,
         "entity_key": "vulnerability-42",
         "input_partition": 1,
-        "input_offset": 34,
-        "task_id": "unkeyed-04-e2f2d03dcd3d8cac"
-      },
-      {
-        "sequence": 5,
-        "entity_key": "vulnerability-42",
-        "input_partition": 1,
-        "input_offset": 35,
-        "task_id": "unkeyed-05-32e5417e8f3b3e7d"
+        "input_offset": 129,
+        "task_id": "unkeyed-03-5b102eecf3d63632"
       },
       {
         "sequence": 8,
         "entity_key": "vulnerability-42",
         "input_partition": 0,
-        "input_offset": 17,
+        "input_offset": 63,
         "task_id": "unkeyed-08-202c8fc00092f51c"
+      },
+      {
+        "sequence": 4,
+        "entity_key": "vulnerability-42",
+        "input_partition": 1,
+        "input_offset": 130,
+        "task_id": "unkeyed-04-e2f2d03dcd3d8cac"
       },
       {
         "sequence": 10,
         "entity_key": "vulnerability-42",
         "input_partition": 0,
-        "input_offset": 18,
+        "input_offset": 64,
         "task_id": "unkeyed-10-21ff52c15a9d38eb"
+      },
+      {
+        "sequence": 5,
+        "entity_key": "vulnerability-42",
+        "input_partition": 1,
+        "input_offset": 131,
+        "task_id": "unkeyed-05-32e5417e8f3b3e7d"
+      },
+      {
+        "sequence": 12,
+        "entity_key": "vulnerability-42",
+        "input_partition": 0,
+        "input_offset": 65,
+        "task_id": "unkeyed-12-eb84466d7344996d"
       },
       {
         "sequence": 6,
         "entity_key": "vulnerability-42",
         "input_partition": 1,
-        "input_offset": 36,
+        "input_offset": 132,
         "task_id": "unkeyed-06-2e5b9a35aa02087a"
       },
       {
         "sequence": 9,
         "entity_key": "vulnerability-42",
         "input_partition": 1,
-        "input_offset": 37,
+        "input_offset": 133,
         "task_id": "unkeyed-09-4f8e9c6940d80cb1"
-      },
-      {
-        "sequence": 11,
-        "entity_key": "vulnerability-42",
-        "input_partition": 0,
-        "input_offset": 19,
-        "task_id": "unkeyed-11-22b5a05761037bb6"
-      },
-      {
-        "sequence": 12,
-        "entity_key": "vulnerability-42",
-        "input_partition": 0,
-        "input_offset": 20,
-        "task_id": "unkeyed-12-eb84466d7344996d"
-      },
-      {
-        "sequence": 15,
-        "entity_key": "vulnerability-42",
-        "input_partition": 1,
-        "input_offset": 38,
-        "task_id": "unkeyed-15-fa19eab6d046a3bb"
       },
       {
         "sequence": 16,
         "entity_key": "vulnerability-42",
-        "input_partition": 1,
-        "input_offset": 39,
+        "input_partition": 0,
+        "input_offset": 66,
         "task_id": "unkeyed-16-4119c169100fbe9f"
       },
       {
-        "sequence": 13,
+        "sequence": 11,
         "entity_key": "vulnerability-42",
-        "input_partition": 0,
-        "input_offset": 21,
-        "task_id": "unkeyed-13-4185c6bdfcb820b1"
-      },
-      {
-        "sequence": 14,
-        "entity_key": "vulnerability-42",
-        "input_partition": 0,
-        "input_offset": 22,
-        "task_id": "unkeyed-14-6ee306435c9c1f0e"
+        "input_partition": 1,
+        "input_offset": 134,
+        "task_id": "unkeyed-11-22b5a05761037bb6"
       },
       {
         "sequence": 17,
         "entity_key": "vulnerability-42",
-        "input_partition": 1,
-        "input_offset": 40,
+        "input_partition": 0,
+        "input_offset": 67,
         "task_id": "unkeyed-17-76727df48f696faa"
       },
       {
         "sequence": 18,
         "entity_key": "vulnerability-42",
         "input_partition": 0,
-        "input_offset": 23,
+        "input_offset": 68,
         "task_id": "unkeyed-18-2633b78486d55084"
+      },
+      {
+        "sequence": 13,
+        "entity_key": "vulnerability-42",
+        "input_partition": 1,
+        "input_offset": 135,
+        "task_id": "unkeyed-13-4185c6bdfcb820b1"
       },
       {
         "sequence": 20,
         "entity_key": "vulnerability-42",
-        "input_partition": 1,
-        "input_offset": 41,
+        "input_partition": 0,
+        "input_offset": 69,
         "task_id": "unkeyed-20-14d983db0159119d"
+      },
+      {
+        "sequence": 14,
+        "entity_key": "vulnerability-42",
+        "input_partition": 1,
+        "input_offset": 136,
+        "task_id": "unkeyed-14-6ee306435c9c1f0e"
+      },
+      {
+        "sequence": 15,
+        "entity_key": "vulnerability-42",
+        "input_partition": 1,
+        "input_offset": 137,
+        "task_id": "unkeyed-15-fa19eab6d046a3bb"
       },
       {
         "sequence": 19,
         "entity_key": "vulnerability-42",
-        "input_partition": 0,
-        "input_offset": 24,
+        "input_partition": 1,
+        "input_offset": 138,
         "task_id": "unkeyed-19-39edb3934ba1ace9"
       }
     ]
@@ -224,7 +224,7 @@
   "keyed": {
     "case": "keyed",
     "key_used": true,
-    "seed": 269005,
+    "seed": 269004,
     "sent_sequences": [
       1,
       2,
@@ -273,26 +273,26 @@
       1
     ],
     "offsets_in_receive_order": [
-      42,
-      43,
-      44,
-      45,
-      46,
-      47,
-      48,
-      49,
-      50,
-      51,
-      52,
-      53,
-      54,
-      55,
-      56,
-      57,
-      58,
-      59,
-      60,
-      61
+      139,
+      140,
+      141,
+      142,
+      143,
+      144,
+      145,
+      146,
+      147,
+      148,
+      149,
+      150,
+      151,
+      152,
+      153,
+      154,
+      155,
+      156,
+      157,
+      158
     ],
     "message_count": 20,
     "same_partition": true,
@@ -302,141 +302,141 @@
         "sequence": 1,
         "entity_key": "vulnerability-42",
         "input_partition": 1,
-        "input_offset": 42,
-        "task_id": "keyed-01-a4167b5448e6f100"
+        "input_offset": 139,
+        "task_id": "keyed-01-7b6767095b9e3e0b"
       },
       {
         "sequence": 2,
         "entity_key": "vulnerability-42",
         "input_partition": 1,
-        "input_offset": 43,
-        "task_id": "keyed-02-0f08ca3660b7b315"
+        "input_offset": 140,
+        "task_id": "keyed-02-ab8d95aa7a28ab34"
       },
       {
         "sequence": 3,
         "entity_key": "vulnerability-42",
         "input_partition": 1,
-        "input_offset": 44,
-        "task_id": "keyed-03-17991c060fee06eb"
+        "input_offset": 141,
+        "task_id": "keyed-03-5b102eecf3d63632"
       },
       {
         "sequence": 4,
         "entity_key": "vulnerability-42",
         "input_partition": 1,
-        "input_offset": 45,
-        "task_id": "keyed-04-9c74f2718944da6f"
+        "input_offset": 142,
+        "task_id": "keyed-04-e2f2d03dcd3d8cac"
       },
       {
         "sequence": 5,
         "entity_key": "vulnerability-42",
         "input_partition": 1,
-        "input_offset": 46,
-        "task_id": "keyed-05-068e9b775367d7c6"
+        "input_offset": 143,
+        "task_id": "keyed-05-32e5417e8f3b3e7d"
       },
       {
         "sequence": 6,
         "entity_key": "vulnerability-42",
         "input_partition": 1,
-        "input_offset": 47,
-        "task_id": "keyed-06-d336bb16119ba5a5"
+        "input_offset": 144,
+        "task_id": "keyed-06-2e5b9a35aa02087a"
       },
       {
         "sequence": 7,
         "entity_key": "vulnerability-42",
         "input_partition": 1,
-        "input_offset": 48,
-        "task_id": "keyed-07-4dca502acd76e7e5"
+        "input_offset": 145,
+        "task_id": "keyed-07-1926bca90ca95df9"
       },
       {
         "sequence": 8,
         "entity_key": "vulnerability-42",
         "input_partition": 1,
-        "input_offset": 49,
-        "task_id": "keyed-08-ace4079cddaa68e8"
+        "input_offset": 146,
+        "task_id": "keyed-08-202c8fc00092f51c"
       },
       {
         "sequence": 9,
         "entity_key": "vulnerability-42",
         "input_partition": 1,
-        "input_offset": 50,
-        "task_id": "keyed-09-2a92e147b8a4b6bc"
+        "input_offset": 147,
+        "task_id": "keyed-09-4f8e9c6940d80cb1"
       },
       {
         "sequence": 10,
         "entity_key": "vulnerability-42",
         "input_partition": 1,
-        "input_offset": 51,
-        "task_id": "keyed-10-e1f08a8d36738f35"
+        "input_offset": 148,
+        "task_id": "keyed-10-21ff52c15a9d38eb"
       },
       {
         "sequence": 11,
         "entity_key": "vulnerability-42",
         "input_partition": 1,
-        "input_offset": 52,
-        "task_id": "keyed-11-495dba885d520252"
+        "input_offset": 149,
+        "task_id": "keyed-11-22b5a05761037bb6"
       },
       {
         "sequence": 12,
         "entity_key": "vulnerability-42",
         "input_partition": 1,
-        "input_offset": 53,
-        "task_id": "keyed-12-c1f1a7b6b5939531"
+        "input_offset": 150,
+        "task_id": "keyed-12-eb84466d7344996d"
       },
       {
         "sequence": 13,
         "entity_key": "vulnerability-42",
         "input_partition": 1,
-        "input_offset": 54,
-        "task_id": "keyed-13-0183cfd3c7c7fde3"
+        "input_offset": 151,
+        "task_id": "keyed-13-4185c6bdfcb820b1"
       },
       {
         "sequence": 14,
         "entity_key": "vulnerability-42",
         "input_partition": 1,
-        "input_offset": 55,
-        "task_id": "keyed-14-82897541b900a09c"
+        "input_offset": 152,
+        "task_id": "keyed-14-6ee306435c9c1f0e"
       },
       {
         "sequence": 15,
         "entity_key": "vulnerability-42",
         "input_partition": 1,
-        "input_offset": 56,
-        "task_id": "keyed-15-6e3b91901718c140"
+        "input_offset": 153,
+        "task_id": "keyed-15-fa19eab6d046a3bb"
       },
       {
         "sequence": 16,
         "entity_key": "vulnerability-42",
         "input_partition": 1,
-        "input_offset": 57,
-        "task_id": "keyed-16-322e14b6f00e000c"
+        "input_offset": 154,
+        "task_id": "keyed-16-4119c169100fbe9f"
       },
       {
         "sequence": 17,
         "entity_key": "vulnerability-42",
         "input_partition": 1,
-        "input_offset": 58,
-        "task_id": "keyed-17-edbabe5725e854b7"
+        "input_offset": 155,
+        "task_id": "keyed-17-76727df48f696faa"
       },
       {
         "sequence": 18,
         "entity_key": "vulnerability-42",
         "input_partition": 1,
-        "input_offset": 59,
-        "task_id": "keyed-18-9d65b23feb71ce31"
+        "input_offset": 156,
+        "task_id": "keyed-18-2633b78486d55084"
       },
       {
         "sequence": 19,
         "entity_key": "vulnerability-42",
         "input_partition": 1,
-        "input_offset": 60,
-        "task_id": "keyed-19-34e4446e057bcb81"
+        "input_offset": 157,
+        "task_id": "keyed-19-39edb3934ba1ace9"
       },
       {
         "sequence": 20,
         "entity_key": "vulnerability-42",
         "input_partition": 1,
-        "input_offset": 61,
-        "task_id": "keyed-20-4ba9357888da9adc"
+        "input_offset": 158,
+        "task_id": "keyed-20-14d983db0159119d"
       }
     ]
   },

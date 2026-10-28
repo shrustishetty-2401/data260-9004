@@ -1,0 +1,13 @@
+FROM python:3.13-slim
+
+WORKDIR /app
+
+COPY requirements-hw8.txt /app/requirements-hw8.txt
+
+RUN pip install --no-cache-dir -r /app/requirements-hw8.txt
+
+COPY code /app/code
+
+ENV PYTHONPATH=/app/code
+
+CMD ["python", "code/hw8_worker.py"]

@@ -1,0 +1,8 @@
+{
+  "task_id": "95ab02cb-27ad-468b-a182-39cf5edc7095",
+  "correlation_id": "7b545105-c6a6-497b-80fd-a33385cb9639",
+  "dead_letter_topic": "s9004_dead_letter",
+  "retry_count": 3,
+  "dead_letter_reason": "Poison message requested failure",
+  "moved_to_dead_letter": true
+}

@@ -1,0 +1,100 @@
+services:
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.5.0
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    ports:
+      - "2181:2181"
+
+  kafka:
+    image: confluentinc/cp-kafka:7.5.0
+    depends_on:
+      - zookeeper
+    ports:
+      - "9092:9092"
+      - "29092:29092"
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INTERNAL:PLAINTEXT,EXTERNAL:PLAINTEXT
+      KAFKA_ADVERTISED_LISTENERS: INTERNAL://kafka:9092,EXTERNAL://localhost:29092
+      KAFKA_LISTENERS: INTERNAL://0.0.0.0:9092,EXTERNAL://0.0.0.0:29092
+      KAFKA_INTER_BROKER_LISTENER_NAME: INTERNAL
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "false"
+
+  kafka-init:
+    image: confluentinc/cp-kafka:7.5.0
+    depends_on:
+      - kafka
+    entrypoint: ["/bin/bash", "-c"]
+    command: >-
+      "until kafka-topics --bootstrap-server kafka:9092 --list
+      >/dev/null 2>&1; do sleep 2; done;
+      kafka-topics --create --if-not-exists
+      --topic s9004_vulnerability_requests
+      --bootstrap-server kafka:9092
+      --partitions 1
+      --replication-factor 1;
+      kafka-topics --create --if-not-exists
+      --topic s9004_vulnerability_responses
+      --bootstrap-server kafka:9092
+      --partitions 1
+      --replication-factor 1;
+      kafka-topics --create --if-not-exists
+      --topic s9004_inbox
+      --bootstrap-server kafka:9092
+      --partitions 1
+      --replication-factor 1;
+      kafka-topics --create --if-not-exists
+      --topic s9004_tasks
+      --bootstrap-server kafka:9092
+      --partitions 2
+      --replication-factor 1;
+      kafka-topics --create --if-not-exists
+      --topic s9004_drafts
+      --bootstrap-server kafka:9092
+      --partitions 1
+      --replication-factor 1;
+      kafka-topics --create --if-not-exists
+      --topic s9004_final
+      --bootstrap-server kafka:9092
+      --partitions 1
+      --replication-factor 1;
+      kafka-topics --create --if-not-exists
+      --topic s9004_dead_letter
+      --bootstrap-server kafka:9092
+      --partitions 1
+      --replication-factor 1;
+      echo 'All HW8 Kafka topics created.'"
+
+  worker:
+    build:
+      context: .
+      dockerfile: code/Dockerfile.hw8
+    command: python code/hw8_worker.py
+    environment:
+      KAFKA_BOOTSTRAP_SERVERS: kafka:9092
+    depends_on:
+      kafka-init:
+        condition: service_completed_successfully
+
+  api:
+    build:
+      context: .
+      dockerfile: code/Dockerfile.hw8
+    command:
+      - uvicorn
+      - hw8_api:app
+      - --host
+      - 0.0.0.0
+      - --port
+      - "8004"
+    environment:
+      KAFKA_BOOTSTRAP_SERVERS: kafka:9092
+    ports:
+      - "8004:8004"
+    depends_on:
+      kafka-init:
+        condition: service_completed_successfully

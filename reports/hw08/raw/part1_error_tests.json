@@ -1,0 +1,17 @@
+{
+  "unknown_operation": {
+    "correlation_id": "f3692176-e830-4b9d-ab6d-02b3d9f20a38",
+    "success": false,
+    "error": "Unknown operation"
+  },
+  "unknown_entity": {
+    "correlation_id": "10c6066d-f8a5-48c8-a595-7e92b23ec206",
+    "success": false,
+    "error": "Entity not found"
+  },
+  "invalid_create": {
+    "correlation_id": "05d14a93-625f-412c-8cae-2c00d58586f8",
+    "success": false,
+    "error": "package_name must be a non-empty string"
+  }
+}

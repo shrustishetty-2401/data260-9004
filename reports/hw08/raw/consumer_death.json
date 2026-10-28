@@ -1,0 +1,13 @@
+{
+  "task_id": "7da3be47-b718-4afd-bc94-0622cefe896a",
+  "correlation_id": "4fd5ff85-783c-4cce-ba57-0a983ea7a444",
+  "recovered_after_restart": true,
+  "draft_received": true,
+  "result": {
+    "task_id": "7da3be47-b718-4afd-bc94-0622cefe896a",
+    "correlation_id": "4fd5ff85-783c-4cce-ba57-0a983ea7a444",
+    "question": "Consumer restart recovery test",
+    "draft": "Answer draft for 'Consumer restart recovery test': Following the planner's approach, The Writer should recover this task after a mid-processing restart. The main recommendation is to use a clear, evidence-based answer that directly addresses the question.",
+    "from_agent": "writer"
+  }
+}

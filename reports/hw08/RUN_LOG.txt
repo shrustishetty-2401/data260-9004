@@ -1,0 +1,88 @@
+===== HW8 PART 1 RUN =====
+Tue Oct 27 17:43:27 UTC 2026
+===== DOCKER STATUS =====
+NAME                       IMAGE                             COMMAND                  SERVICE     CREATED          STATUS          PORTS
+data260-9004-api-1         data260-9004-api                  "uvicorn hw8_api:app…"   api         12 minutes ago   Up 12 minutes   0.0.0.0:8004->8004/tcp, [::]:8004->8004/tcp
+data260-9004-kafka-1       confluentinc/cp-kafka:7.5.0       "/etc/confluent/dock…"   kafka       12 minutes ago   Up 12 minutes   0.0.0.0:9092->9092/tcp, [::]:9092->9092/tcp, 0.0.0.0:29092->29092/tcp, [::]:29092->29092/tcp
+data260-9004-worker-1      data260-9004-worker               "python code/hw8_wor…"   worker      12 minutes ago   Up 12 minutes   
+data260-9004-zookeeper-1   confluentinc/cp-zookeeper:7.5.0   "/etc/confluent/dock…"   zookeeper   12 minutes ago   Up 12 minutes   0.0.0.0:2181->2181/tcp, [::]:2181->2181/tcp
+===== WORKER LOG =====
+worker-1  | Group Coordinator Request failed: [Error 15] GroupCoordinatorNotAvailableError
+worker-1  | Group Coordinator Request failed: [Error 15] GroupCoordinatorNotAvailableError
+worker-1  | Group Coordinator Request failed: [Error 15] GroupCoordinatorNotAvailableError
+worker-1  | Group Coordinator Request failed: [Error 15] GroupCoordinatorNotAvailableError
+worker-1  | Group Coordinator Request failed: [Error 15] GroupCoordinatorNotAvailableError
+worker-1  | Group Coordinator Request failed: [Error 15] GroupCoordinatorNotAvailableError
+worker-1  | Consumer is ready and listening...
+worker-1  | Listening on s9004_vulnerability_requests
+worker-1  | [WORKER] Received operation=CREATE_VULNERABILITY correlation_id=b87016bf-04ba-4c38-be00-619ae900f6a1
+worker-1  | [WORKER] Sending response to s9004_vulnerability_responses correlation_id=b87016bf-04ba-4c38-be00-619ae900f6a1
+worker-1  | [WORKER] Completed operation=CREATE_VULNERABILITY success=True
+worker-1  | [WORKER] Received operation=CREATE_VULNERABILITY correlation_id=bd58ccea-0794-4efe-87fc-2d0aecd7b7ed
+worker-1  | [WORKER] Sending response to s9004_vulnerability_responses correlation_id=bd58ccea-0794-4efe-87fc-2d0aecd7b7ed
+worker-1  | [WORKER] Completed operation=CREATE_VULNERABILITY success=True
+worker-1  | [WORKER] Received operation=GET_VULNERABILITY correlation_id=bd58ccea-0794-4efe-87fc-2d0aecd7b7ed
+worker-1  | [WORKER] Duplicate correlation_id ignored: bd58ccea-0794-4efe-87fc-2d0aecd7b7ed
+worker-1  | [WORKER] Sending response to s9004_vulnerability_responses correlation_id=bd58ccea-0794-4efe-87fc-2d0aecd7b7ed
+worker-1  | [WORKER] Completed operation=GET_VULNERABILITY success=True
+worker-1  | [WORKER] Received operation=CREATE_VULNERABILITY correlation_id=1ea65e54-e0ea-4e05-9fbc-d83713d5c50b
+worker-1  | [WORKER] Sending response to s9004_vulnerability_responses correlation_id=1ea65e54-e0ea-4e05-9fbc-d83713d5c50b
+worker-1  | [WORKER] Completed operation=CREATE_VULNERABILITY success=True
+worker-1  | [WORKER] Received operation=GET_VULNERABILITY correlation_id=9ac1707d-fa30-4bc5-8cd0-e11be5eb447f
+worker-1  | [WORKER] Sending response to s9004_vulnerability_responses correlation_id=9ac1707d-fa30-4bc5-8cd0-e11be5eb447f
+worker-1  | [WORKER] Completed operation=GET_VULNERABILITY success=True
+===== API LOG =====
+api-1  | INFO:     Started server process [1]
+api-1  | INFO:     Waiting for application startup.
+api-1  | Group Coordinator Request failed: [Error 15] GroupCoordinatorNotAvailableError
+api-1  | Group Coordinator Request failed: [Error 15] GroupCoordinatorNotAvailableError
+api-1  | Group Coordinator Request failed: [Error 15] GroupCoordinatorNotAvailableError
+api-1  | [CLIENT] Listening on s9004_vulnerability_responses
+api-1  | INFO:     Application startup complete.
+api-1  | INFO:     Uvicorn running on http://0.0.0.0:8004 (Press CTRL+C to quit)
+api-1  | INFO:     192.168.65.1:32833 - "GET /health HTTP/1.1" 200 OK
+===== DEMO OUTPUT =====
+[CLIENT] Listening on s9004_vulnerability_responses
+
+=== CREATE_VULNERABILITY SEQUENCE ===
+[CLIENT] Sending CREATE_VULNERABILITY to s9004_vulnerability_requests
+[CLIENT] correlation_id=7c5e19c3-5bf4-445a-aec4-390ff8d80485
+[CLIENT] message={"correlation_id": "7c5e19c3-5bf4-445a-aec4-390ff8d80485", "reply_to": "s9004_vulnerability_responses", "operation": "CREATE_VULNERABILITY", "data": {"vulnerability_code": "HW8-DEMO-001", "vulnerability_title": "Kafka demonstration vulnerability", "package_name": "package-0", "submitter_email": "student@example.com", "description": "This description is long enough for the HW8 vulnerability validation requirement.", "category": "Input Validation", "terms_accepted": true}}
+[CLIENT] Request sent to s9004_vulnerability_requests
+[CLIENT] Response received from s9004_vulnerability_responses
+[CLIENT] response={"correlation_id": "7c5e19c3-5bf4-445a-aec4-390ff8d80485", "success": true, "entity_id": "033a9be7-106d-4f59-80dc-11f17a045760", "message": "Entity created"}
+[DEMO] CREATE response: {
+  "correlation_id": "7c5e19c3-5bf4-445a-aec4-390ff8d80485",
+  "success": true,
+  "entity_id": "033a9be7-106d-4f59-80dc-11f17a045760",
+  "message": "Entity created"
+}
+
+=== GET_VULNERABILITY SEQUENCE ===
+[CLIENT] Sending GET_VULNERABILITY to s9004_vulnerability_requests
+[CLIENT] correlation_id=02c17b83-f66f-4728-b5a4-1cdafea355bc
+[CLIENT] message={"correlation_id": "02c17b83-f66f-4728-b5a4-1cdafea355bc", "reply_to": "s9004_vulnerability_responses", "operation": "GET_VULNERABILITY", "data": {"entity_id": "033a9be7-106d-4f59-80dc-11f17a045760"}}
+[CLIENT] Request sent to s9004_vulnerability_requests
+[CLIENT] Response received from s9004_vulnerability_responses
+[CLIENT] response={"correlation_id": "02c17b83-f66f-4728-b5a4-1cdafea355bc", "success": true, "entity": {"entity_id": "033a9be7-106d-4f59-80dc-11f17a045760", "vulnerability_code": "HW8-DEMO-001", "vulnerability_title": "Kafka demonstration vulnerability", "package_name": "package-0", "submitter_email": "student@example.com", "description": "This description is long enough for the HW8 vulnerability validation requirement.", "category": "Input Validation", "terms_accepted": true}}
+[DEMO] GET response: {
+  "correlation_id": "02c17b83-f66f-4728-b5a4-1cdafea355bc",
+  "success": true,
+  "entity": {
+    "entity_id": "033a9be7-106d-4f59-80dc-11f17a045760",
+    "vulnerability_code": "HW8-DEMO-001",
+    "vulnerability_title": "Kafka demonstration vulnerability",
+    "package_name": "package-0",
+    "submitter_email": "student@example.com",
+    "description": "This description is long enough for the HW8 vulnerability validation requirement.",
+    "category": "Input Validation",
+    "terms_accepted": true
+  }
+}
+
+[DEMO] CREATE correlation_id preserved: True
+[DEMO] GET correlation_id preserved: True
+[DEMO] GET returned entity: True
+[DEMO] generated entity_id: 033a9be7-106d-4f59-80dc-11f17a045760
+===== END RUN =====
+Tue Oct 27 17:43:30 UTC 2026

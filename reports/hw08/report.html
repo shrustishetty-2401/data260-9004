@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>DATA-260 Homework 8</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">DATA-260 Homework 8</h1>
+</header>
+<h1 id="data-260-homework-8">DATA-260 Homework 8</h1>
+<p>GitHub repository:
+https://github.com/shrustishetty-2401/data260-9004</p>
+<h2 id="student-and-configuration">Student and Configuration</h2>
+<ul>
+<li>Student: Shrusti Shetty</li>
+<li>SID4: 9004</li>
+<li>PORT_BASE: 8004</li>
+<li>PREFIX: <code>s9004</code></li>
+<li>SEED: 9004</li>
+<li>VERIFY_SEED: 269004</li>
+<li>DOMAIN_ID: 4</li>
+<li>Hardware: MacBook Pro, Apple Silicon</li>
+<li>Local model: <code>qwen3:8b</code></li>
+<li>Final branch: <code>hw8</code></li>
+<li>Final tag: <code>hw8</code></li>
+</ul>
+<h2 id="part-1-kafka-vulnerability-requestresponse-service">Part 1:
+Kafka Vulnerability Request/Response Service</h2>
+<p>The primary domain entity is <code>Vulnerability</code>.</p>
+<p>The worker stores entities in an in-memory dictionary. Clients
+communicate with the worker only through Kafka.</p>
+<h3 id="kafka-topics">Kafka Topics</h3>
+<ul>
+<li><code>s9004_vulnerability_requests</code></li>
+<li><code>s9004_vulnerability_responses</code></li>
+</ul>
+<h3 id="functionality">Functionality</h3>
+<ul>
+<li>CREATE vulnerability requests</li>
+<li>GET vulnerability requests</li>
+<li>UUID entity identifiers</li>
+<li>Correlation IDs preserved in every response</li>
+<li>Input validation</li>
+<li>Unknown-operation errors</li>
+<li>Missing-entity errors</li>
+<li>Duplicate correlation handling</li>
+</ul>
+<p>The CREATE then GET demonstration succeeded. The GET request returned
+the created vulnerability entity, and correlation IDs were
+preserved.</p>
+<figure>
+<img src="evidence/part1_services.png" alt="Part 1 service evidence" />
+<figcaption aria-hidden="true">Part 1 service evidence</figcaption>
+</figure>
+<figure>
+<img src="evidence/part1_create_get.png"
+alt="Part 1 CREATE and GET evidence" />
+<figcaption aria-hidden="true">Part 1 CREATE and GET
+evidence</figcaption>
+</figure>
+<p>Evidence:</p>
+<ul>
+<li><code>raw/part1_create_get.log</code></li>
+<li><code>raw/part1_error_tests.json</code></li>
+<li><code>raw/part1_services.log</code></li>
+</ul>
+<h2 id="part-2-multi-agent-kafka-pipeline">Part 2: Multi-Agent Kafka
+Pipeline</h2>
+<p>Implemented separate Planner, Writer, and Reviewer processes.</p>
+<h3 id="kafka-topics-1">Kafka Topics</h3>
+<ul>
+<li><code>s9004_inbox</code></li>
+<li><code>s9004_tasks</code></li>
+<li><code>s9004_drafts</code></li>
+<li><code>s9004_final</code></li>
+</ul>
+<h3 id="agent-responsibilities">Agent Responsibilities</h3>
+<ul>
+<li>Planner receives the question and creates a plan.</li>
+<li>Writer creates an answer draft.</li>
+<li>Reviewer evaluates the draft.</li>
+<li>Approved results are published to the final topic.</li>
+</ul>
+<p>The pipeline completed successfully with status
+<code>approved</code>. The task ID and correlation ID were preserved
+through the pipeline.</p>
+<figure>
+<img src="evidence/part2_pipeline.png" alt="Part 2 pipeline evidence" />
+<figcaption aria-hidden="true">Part 2 pipeline evidence</figcaption>
+</figure>
+<p>Evidence:</p>
+<ul>
+<li><code>raw/part2_pipeline_result.json</code></li>
+<li><code>raw/part2_pipeline.log</code></li>
+<li><code>RUN_LOG.txt</code></li>
+</ul>
+<h2 id="part-3-reliability-failure-handling-and-ordering">Part 3:
+Reliability, Failure Handling, and Ordering</h2>
+<h3 id="duplicate-delivery-and-idempotency">Duplicate Delivery and
+Idempotency</h3>
+<p>The same CREATE request was delivered twice. Both responses returned
+the same entity ID.</p>
+<ul>
+<li><code>same_entity_id</code>: <code>true</code></li>
+<li><code>duplicate_prevented</code>: <code>true</code></li>
+</ul>
+<p>Evidence:</p>
+<ul>
+<li><code>raw/duplicate_delivery.json</code></li>
+</ul>
+<h3 id="consumer-death-and-recovery">Consumer Death and Recovery</h3>
+<p>The Writer was stopped during a simulated long-running task. After
+restarting the Writer, Kafka redelivered the uncommitted message and the
+task completed successfully.</p>
+<ul>
+<li><code>recovered_after_restart</code>: <code>true</code></li>
+<li><code>draft_received</code>: <code>true</code></li>
+</ul>
+<p>Evidence:</p>
+<ul>
+<li><code>raw/consumer_death.json</code></li>
+</ul>
+<h3 id="poison-messages-and-dead-letter-handling">Poison Messages and
+Dead-Letter Handling</h3>
+<p>Poison messages intentionally failed processing. The Writer retried
+each message three times and then moved it to the dead-letter topic.</p>
+<ul>
+<li>Retry limit: 3</li>
+<li>Dead-letter topic: <code>s9004_dead_letter</code></li>
+<li><code>moved_to_dead_letter</code>: <code>true</code></li>
+</ul>
+<p>Evidence:</p>
+<ul>
+<li><code>raw/poison_message.json</code></li>
+</ul>
+<h3 id="kafka-ordering">Kafka Ordering</h3>
+<p>Twenty unkeyed and twenty keyed messages were tested.</p>
+<table>
+<thead>
+<tr>
+<th>Case</th>
+<th style="text-align: right;">Partitions</th>
+<th>Order preserved</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Unkeyed messages</td>
+<td style="text-align: right;">2</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Keyed messages</td>
+<td style="text-align: right;">1</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p>The keyed messages used the same entity key, so Kafka routed them to
+one partition and preserved their order.</p>
+<ul>
+<li><code>keyed_order_preserved</code>: <code>true</code></li>
+<li>Verification seed: <code>269004</code></li>
+</ul>
+<figure>
+<img src="evidence/part3_failures.png"
+alt="Part 3 failure and ordering evidence" />
+<figcaption aria-hidden="true">Part 3 failure and ordering
+evidence</figcaption>
+</figure>
+<p>Evidence:</p>
+<ul>
+<li><code>raw/ordering_results.json</code></li>
+<li><code>raw/part3_failure_summary.log</code></li>
+</ul>
+<h2 id="kafka-reliability-conclusions">Kafka Reliability
+Conclusions</h2>
+<p>Kafka provides:</p>
+<ul>
+<li>Durable message storage</li>
+<li>Consumer-group coordination</li>
+<li>Redelivery of uncommitted messages</li>
+<li>Retry and dead-letter processing</li>
+<li>Correlation between requests and responses</li>
+<li>Per-key ordering through partition assignment</li>
+<li>Decoupling between independent services</li>
+</ul>
+<p>The producer is responsible for publishing valid messages and using
+stable keys when ordering matters. The consumer is responsible for
+validation, idempotency, retries, offset commits, and dead-letter
+handling.</p>
+<h2 id="reproducibility-evidence">Reproducibility Evidence</h2>
+<ul>
+<li><code>RUN_LOG.txt</code></li>
+<li><code>METRICS.md</code></li>
+<li><code>AI_USE.md</code></li>
+<li><code>verification.json</code></li>
+<li><code>raw/part1_create_get.log</code></li>
+<li><code>raw/part1_error_tests.json</code></li>
+<li><code>raw/part1_services.log</code></li>
+<li><code>raw/part2_pipeline_result.json</code></li>
+<li><code>raw/part2_pipeline.log</code></li>
+<li><code>raw/duplicate_delivery.json</code></li>
+<li><code>raw/consumer_death.json</code></li>
+<li><code>raw/poison_message.json</code></li>
+<li><code>raw/ordering_results.json</code></li>
+<li><code>raw/part3_failure_summary.log</code></li>
+</ul>
+<h2 id="final-verification">Final Verification</h2>
+<p>The verification script reported:</p>
+<ul>
+<li>API health: passed</li>
+<li>Part 1 CREATE/GET evidence: passed</li>
+<li>Part 1 error tests: passed</li>
+<li>Part 2 pipeline approval: passed</li>
+<li>Duplicate delivery prevention: passed</li>
+<li>Consumer death recovery: passed</li>
+<li>Poison dead-letter handling: passed</li>
+<li>Keyed ordering preservation: passed</li>
+<li>Required evidence directory: passed</li>
+</ul>
+<p>Overall result: <code>all_passed: true</code></p>
+<h2 id="submission-files">Submission Files</h2>
+<p>The final report PDF is:</p>
+<p><code>reports/hw08/Shetty_HW8.pdf</code></p>
+<p>The final submission includes the implementation, Docker/Kafka
+configuration, tests, screenshots, raw JSON results, logs, metrics,
+AI-use documentation, verification output, and the final PDF.</p>
+</body>
+</html>

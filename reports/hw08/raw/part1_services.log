@@ -1,0 +1,33 @@
+===== DATA-260 HW8 PART 1 SERVICES =====
+Wed Oct 28 00:29:52 PDT 2026
+NAME                       IMAGE                             COMMAND                  SERVICE     CREATED        STATUS        PORTS
+data260-9004-api-1         data260-9004-api                  "uvicorn hw8_api:app…"   api         14 hours ago   Up 14 hours   0.0.0.0:8004->8004/tcp, [::]:8004->8004/tcp
+data260-9004-kafka-1       confluentinc/cp-kafka:7.5.0       "/etc/confluent/dock…"   kafka       14 hours ago   Up 14 hours   0.0.0.0:9092->9092/tcp, [::]:9092->9092/tcp, 0.0.0.0:29092->29092/tcp, [::]:29092->29092/tcp
+data260-9004-worker-1      data260-9004-worker               "python code/hw8_wor…"   worker      14 hours ago   Up 14 hours   
+data260-9004-zookeeper-1   confluentinc/cp-zookeeper:7.5.0   "/etc/confluent/dock…"   zookeeper   14 hours ago   Up 14 hours   0.0.0.0:2181->2181/tcp, [::]:2181->2181/tcp
+===== WORKER LOG =====
+worker-1  | Group Coordinator Request failed: [Error 15] GroupCoordinatorNotAvailableError
+worker-1  | Group Coordinator Request failed: [Error 15] GroupCoordinatorNotAvailableError
+worker-1  | Group Coordinator Request failed: [Error 15] GroupCoordinatorNotAvailableError
+worker-1  | Group Coordinator Request failed: [Error 15] GroupCoordinatorNotAvailableError
+worker-1  | Group Coordinator Request failed: [Error 15] GroupCoordinatorNotAvailableError
+worker-1  | Consumer is ready and listening...
+worker-1  | Listening on s9004_vulnerability_requests
+worker-1  | [WORKER] Received operation=CREATE_VULNERABILITY correlation_id=c8d5b26e-e08c-4441-9cda-f84f3702869c
+worker-1  | [WORKER] Sending response to s9004_vulnerability_responses correlation_id=c8d5b26e-e08c-4441-9cda-f84f3702869c
+worker-1  | [WORKER] Completed operation=CREATE_VULNERABILITY success=True
+worker-1  | [WORKER] Received operation=CREATE_VULNERABILITY correlation_id=c8d5b26e-e08c-4441-9cda-f84f3702869c
+worker-1  | [WORKER] Duplicate correlation_id ignored: c8d5b26e-e08c-4441-9cda-f84f3702869c
+worker-1  | [WORKER] Sending response to s9004_vulnerability_responses correlation_id=c8d5b26e-e08c-4441-9cda-f84f3702869c
+worker-1  | [WORKER] Completed operation=CREATE_VULNERABILITY success=True
+===== API LOG =====
+api-1  | INFO:     Started server process [1]
+api-1  | INFO:     Waiting for application startup.
+api-1  | Group Coordinator Request failed: [Error 15] GroupCoordinatorNotAvailableError
+api-1  | Group Coordinator Request failed: [Error 15] GroupCoordinatorNotAvailableError
+api-1  | [CLIENT] Listening on s9004_vulnerability_responses
+api-1  | INFO:     Application startup complete.
+api-1  | INFO:     Uvicorn running on http://0.0.0.0:8004 (Press CTRL+C to quit)
+api-1  | INFO:     192.168.65.1:35252 - "GET /health HTTP/1.1" 200 OK
+===== API HEALTH =====
+{"status":"ok","service":"hw8-kafka-api"}

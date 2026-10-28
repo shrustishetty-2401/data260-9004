@@ -1,0 +1,19 @@
+===== DUPLICATE DELIVERY =====
+same_entity_id: True
+duplicate_prevented: True
+
+===== CONSUMER DEATH =====
+recovered_after_restart: True
+draft_received: True
+
+===== POISON MESSAGE =====
+retry_count: 3
+dead_letter_topic: s9004_dead_letter
+moved_to_dead_letter: True
+
+===== ORDERING =====
+unkeyed partitions: [0, 1]
+unkeyed received order: [1, 2, 3, 7, 4, 5, 8, 10, 6, 9, 11, 12, 15, 16, 13, 14, 17, 18, 20, 19]
+keyed partitions: [1]
+keyed received order: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+keyed_order_preserved: True

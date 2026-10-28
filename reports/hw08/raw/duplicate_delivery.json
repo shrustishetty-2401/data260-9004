@@ -1,0 +1,17 @@
+{
+  "correlation_id": "c8d5b26e-e08c-4441-9cda-f84f3702869c",
+  "first_response": {
+    "correlation_id": "c8d5b26e-e08c-4441-9cda-f84f3702869c",
+    "success": true,
+    "entity_id": "3c4613a8-e999-4358-a0c4-c175213db986",
+    "message": "Entity created"
+  },
+  "second_response": {
+    "correlation_id": "c8d5b26e-e08c-4441-9cda-f84f3702869c",
+    "success": true,
+    "entity_id": "3c4613a8-e999-4358-a0c4-c175213db986",
+    "message": "Entity created"
+  },
+  "same_entity_id": true,
+  "duplicate_prevented": true
+}

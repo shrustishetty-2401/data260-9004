@@ -1,0 +1,6 @@
+aiokafka==0.14.0
+async-timeout==5.0.1
+fastapi
+uvicorn
+requests
+python-multipart

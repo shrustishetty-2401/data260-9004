@@ -15,7 +15,7 @@ GitHub repository: https://github.com/shrustishetty-2401/data260-9004
 - Local model: `qwen3:8b`
 - Final branch: `hw8`
 - Final tag: `hw8`
-- Final tagged commit: `1c8cb440841a2fa223a0ba7e2f9d315fdf77c5df`
+Final tagged commit: `701d86691fb7f53273388130b1569b3d62da11d4`
 
 ## Part 1: Kafka Vulnerability Request/Response Service
 
@@ -111,6 +111,18 @@ Evidence:
 - `raw/part1_create_get.log`
 - `raw/part1_error_tests.json`
 - `raw/part1_services.log`
+
+
+### Part 1 Implementation Evidence
+
+![Kafka client implementation](evidence/part1_code_client.png)
+
+![Homework demo implementation](evidence/part1_code_demo.png)
+
+![Kafka worker implementation](evidence/part1_code_worker.png)
+
+![API wrapper implementation](evidence/part1_code_api.png)
+
 
 ## Part 2: Multi-Agent Kafka Pipeline
 

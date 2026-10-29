@@ -1,0 +1,42 @@
+[CLIENT] Listening on s9004_vulnerability_responses
+
+=== CREATE_VULNERABILITY SEQUENCE ===
+[CLIENT] Sending CREATE_VULNERABILITY to s9004_vulnerability_requests
+[CLIENT] correlation_id=51488e8c-af58-4989-861b-7e0835f8b1f3
+[CLIENT] message={"correlation_id": "51488e8c-af58-4989-861b-7e0835f8b1f3", "reply_to": "s9004_vulnerability_responses", "operation": "CREATE_VULNERABILITY", "data": {"vulnerability_code": "HW8-DEMO-001", "vulnerability_title": "Kafka demonstration vulnerability", "package_name": "package-0", "submitter_email": "student@example.com", "description": "This description is long enough for the HW8 vulnerability validation requirement.", "category": "Input Validation", "terms_accepted": true}}
+[CLIENT] Request sent to s9004_vulnerability_requests
+[CLIENT] Response received from s9004_vulnerability_responses
+[CLIENT] response={"correlation_id": "51488e8c-af58-4989-861b-7e0835f8b1f3", "success": true, "entity_id": "1fff659f-bf25-48a5-b90e-69846abb9089", "message": "Entity created"}
+[DEMO] CREATE response: {
+  "correlation_id": "51488e8c-af58-4989-861b-7e0835f8b1f3",
+  "success": true,
+  "entity_id": "1fff659f-bf25-48a5-b90e-69846abb9089",
+  "message": "Entity created"
+}
+
+=== GET_VULNERABILITY SEQUENCE ===
+[CLIENT] Sending GET_VULNERABILITY to s9004_vulnerability_requests
+[CLIENT] correlation_id=ae5a6715-3f25-4b0d-9755-d33ed047263c
+[CLIENT] message={"correlation_id": "ae5a6715-3f25-4b0d-9755-d33ed047263c", "reply_to": "s9004_vulnerability_responses", "operation": "GET_VULNERABILITY", "data": {"entity_id": "1fff659f-bf25-48a5-b90e-69846abb9089"}}
+[CLIENT] Request sent to s9004_vulnerability_requests
+[CLIENT] Response received from s9004_vulnerability_responses
+[CLIENT] response={"correlation_id": "ae5a6715-3f25-4b0d-9755-d33ed047263c", "success": true, "entity": {"entity_id": "1fff659f-bf25-48a5-b90e-69846abb9089", "vulnerability_code": "HW8-DEMO-001", "vulnerability_title": "Kafka demonstration vulnerability", "package_name": "package-0", "submitter_email": "student@example.com", "description": "This description is long enough for the HW8 vulnerability validation requirement.", "category": "Input Validation", "terms_accepted": true}}
+[DEMO] GET response: {
+  "correlation_id": "ae5a6715-3f25-4b0d-9755-d33ed047263c",
+  "success": true,
+  "entity": {
+    "entity_id": "1fff659f-bf25-48a5-b90e-69846abb9089",
+    "vulnerability_code": "HW8-DEMO-001",
+    "vulnerability_title": "Kafka demonstration vulnerability",
+    "package_name": "package-0",
+    "submitter_email": "student@example.com",
+    "description": "This description is long enough for the HW8 vulnerability validation requirement.",
+    "category": "Input Validation",
+    "terms_accepted": true
+  }
+}
+
+[DEMO] CREATE correlation_id preserved: True
+[DEMO] GET correlation_id preserved: True
+[DEMO] GET returned entity: True
+[DEMO] generated entity_id: 1fff659f-bf25-48a5-b90e-69846abb9089

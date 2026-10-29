@@ -9,151 +9,6 @@
     /* Default styles provided by pandoc.
     ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
     */
-    html {
-      color: #1a1a1a;
-      background-color: #fdfdfd;
-    }
-    body {
-      margin: 0 auto;
-      max-width: 36em;
-      padding-left: 50px;
-      padding-right: 50px;
-      padding-top: 50px;
-      padding-bottom: 50px;
-      hyphens: auto;
-      overflow-wrap: break-word;
-      text-rendering: optimizeLegibility;
-      font-kerning: normal;
-    }
-    @media (max-width: 600px) {
-      body {
-        font-size: 0.9em;
-        padding: 12px;
-      }
-      h1 {
-        font-size: 1.8em;
-      }
-    }
-    @media print {
-      html {
-        background-color: white;
-      }
-      body {
-        background-color: transparent;
-        color: black;
-        font-size: 12pt;
-      }
-      p, h2, h3 {
-        orphans: 3;
-        widows: 3;
-      }
-      h2, h3, h4 {
-        page-break-after: avoid;
-      }
-    }
-    p {
-      margin: 1em 0;
-    }
-    a {
-      color: #1a1a1a;
-    }
-    a:visited {
-      color: #1a1a1a;
-    }
-    img {
-      max-width: 100%;
-    }
-    svg {
-      height: auto;
-      max-width: 100%;
-    }
-    h1, h2, h3, h4, h5, h6 {
-      margin-top: 1.4em;
-    }
-    h5, h6 {
-      font-size: 1em;
-      font-style: italic;
-    }
-    h6 {
-      font-weight: normal;
-    }
-    ol, ul {
-      padding-left: 1.7em;
-      margin-top: 1em;
-    }
-    li > ol, li > ul {
-      margin-top: 0;
-    }
-    blockquote {
-      margin: 1em 0 1em 1.7em;
-      padding-left: 1em;
-      border-left: 2px solid #e6e6e6;
-      color: #606060;
-    }
-    code {
-      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
-      font-size: 85%;
-      margin: 0;
-      hyphens: manual;
-    }
-    pre {
-      margin: 1em 0;
-      overflow: auto;
-    }
-    pre code {
-      padding: 0;
-      overflow: visible;
-      overflow-wrap: normal;
-    }
-    .sourceCode {
-     background-color: transparent;
-     overflow: visible;
-    }
-    hr {
-      border: none;
-      border-top: 1px solid #1a1a1a;
-      height: 1px;
-      margin: 1em 0;
-    }
-    table {
-      margin: 1em 0;
-      border-collapse: collapse;
-      width: 100%;
-      overflow-x: auto;
-      display: block;
-      font-variant-numeric: lining-nums tabular-nums;
-    }
-    table caption {
-      margin-bottom: 0.75em;
-    }
-    tbody {
-      margin-top: 0.5em;
-      border-top: 1px solid #1a1a1a;
-      border-bottom: 1px solid #1a1a1a;
-    }
-    th {
-      border-top: 1px solid #1a1a1a;
-      padding: 0.25em 0.5em 0.25em 0.5em;
-    }
-    td {
-      padding: 0.125em 0.5em 0.25em 0.5em;
-    }
-    header {
-      margin-bottom: 4em;
-      text-align: center;
-    }
-    #TOC li {
-      list-style: none;
-    }
-    #TOC ul {
-      padding-left: 1.3em;
-    }
-    #TOC > ul {
-      padding-left: 0;
-    }
-    #TOC a:not(:hover) {
-      text-decoration: none;
-    }
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -235,6 +90,7 @@
     code span.vs { color: #4070a0; } /* VerbatimString */
     code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
+  <link rel="stylesheet" href="report.css" />
 </head>
 <body>
 <header id="title-block-header">
@@ -346,7 +202,14 @@ evidence</figcaption>
 <li><code>raw/part1_create_get.log</code></li>
 <li><code>raw/part1_error_tests.json</code></li>
 <li><code>raw/part1_services.log</code></li>
+<li><code>raw/part1_worker_full.log</code></li>
+<li><code>raw/part1_demo_full.log</code></li>
 </ul>
+<h3 id="fastapi-health-evidence">FastAPI Health Evidence</h3>
+<p>The API listens on <code>0.0.0.0:8004</code> inside Docker so that
+the container port is reachable. From the host, the service was verified
+through <code>http://127.0.0.1:8004/health</code> and returned HTTP
+200.</p>
 <h3 id="part-1-implementation-evidence">Part 1 Implementation
 Evidence</h3>
 <figure>
@@ -369,6 +232,20 @@ alt="Kafka worker implementation" />
 alt="API wrapper implementation" />
 <figcaption aria-hidden="true">API wrapper implementation</figcaption>
 </figure>
+<figure>
+<img src="evidence/part1_worker_full.png"
+alt="Complete worker message flow" />
+<figcaption aria-hidden="true">Complete worker message flow</figcaption>
+</figure>
+<figure>
+<img src="evidence/part1_demo_full.png"
+alt="Complete client message flow" />
+<figcaption aria-hidden="true">Complete client message flow</figcaption>
+</figure>
+<figure>
+<img src="evidence/part1_health.png" alt="FastAPI health check" />
+<figcaption aria-hidden="true">FastAPI health check</figcaption>
+</figure>
 <h2 id="part-2-multi-agent-kafka-pipeline">Part 2: Multi-Agent Kafka
 Pipeline</h2>
 <p>Implemented separate Planner, Writer, and Reviewer processes.</p>
@@ -389,16 +266,34 @@ Pipeline</h2>
 <p>The pipeline completed successfully with status
 <code>approved</code>. The task ID and correlation ID were preserved
 through the pipeline.</p>
-<figure>
-<img src="evidence/part2_pipeline.png" alt="Part 2 pipeline evidence" />
-<figcaption aria-hidden="true">Part 2 pipeline evidence</figcaption>
-</figure>
+<h3 id="coordination-explanation">Coordination Explanation</h3>
+<p>Kafka coordinates the agents through independent topics. The Planner
+publishes a plan to <code>s9004_tasks</code>, the Writer publishes a
+draft to <code>s9004_drafts</code>, and the Reviewer publishes the
+approved result to <code>s9004_final</code>. Task IDs and correlation
+IDs connect the stages without requiring the agents to run in one
+process.</p>
+<p><img src="evidence/part2_pipeline.png"
+alt="Part 2 pipeline evidence" /> <img
+src="evidence/part2_full_pipeline.png"
+alt="Complete Planner, Writer, and Reviewer pipeline" /></p>
 <p>Evidence:</p>
 <ul>
 <li><code>raw/part2_pipeline_result.json</code></li>
 <li><code>raw/part2_pipeline.log</code></li>
 <li><code>RUN_LOG.txt</code></li>
+<li><code>raw/part2_planner_full.log</code></li>
+<li><code>raw/part2_writer_full.log</code></li>
+<li><code>raw/part2_reviewer_full.log</code></li>
+<li><code>raw/part2_sender_full.log</code></li>
 </ul>
+<p>For the same task, the Planner received the question and sent a plan
+to <code>s9004_tasks</code>; the Writer received that plan and sent a
+draft to <code>s9004_drafts</code>; and the Reviewer received the draft
+and sent the approved result to <code>s9004_final</code>. The task ID
+<code>389c9797-34ab-4de6-8545-046dfb50da47</code> and correlation ID
+<code>5017368c-5c7a-4048-87ca-c80056795513</code> were preserved across
+all stages.</p>
 <h2 id="part-3-reliability-failure-handling-and-ordering">Part 3:
 Reliability, Failure Handling, and Ordering</h2>
 <h3 id="duplicate-delivery-and-idempotency">Duplicate Delivery and
@@ -414,6 +309,17 @@ the same entity ID.</p>
 <li><code>raw/duplicate_delivery.json</code></li>
 </ul>
 <h3 id="consumer-death-and-recovery">Consumer Death and Recovery</h3>
+<h3 id="consumer-restart-evidence">Consumer Restart Evidence</h3>
+<p>The Writer was killed while processing task
+<code>b7bbc560-49e1-41f3-a711-158351720305</code>. After restart, Kafka
+redelivered the uncommitted task. The Writer completed the task,
+published the draft, committed the offset, and the test reported
+<code>recovered_after_restart: true</code>.</p>
+<p>Evidence:</p>
+<ul>
+<li><code>raw/part3_consumer_death_writer.log</code></li>
+<li><code>raw/part3_consumer_death_test.log</code></li>
+</ul>
 <p>The Writer was stopped during a simulated long-running task. After
 restarting the Writer, Kafka redelivered the uncommitted message and the
 task completed successfully.</p>
@@ -425,6 +331,22 @@ task completed successfully.</p>
 <ul>
 <li><code>raw/consumer_death.json</code></li>
 </ul>
+<p>Evidence:</p>
+<ul>
+<li><code>raw/consumer_death.json</code></li>
+</ul>
+<figure>
+<img src="evidence/part3_consumer_death_writer.png"
+alt="Consumer death Writer evidence" />
+<figcaption aria-hidden="true">Consumer death Writer
+evidence</figcaption>
+</figure>
+<figure>
+<img src="evidence/part3_consumer_death_test.png"
+alt="Consumer death recovery result" />
+<figcaption aria-hidden="true">Consumer death recovery
+result</figcaption>
+</figure>
 <h3 id="poison-messages-and-dead-letter-handling">Poison Messages and
 Dead-Letter Handling</h3>
 <p>Poison messages intentionally failed processing. The Writer retried
@@ -478,10 +400,13 @@ evidence</figcaption>
 </figure>
 <p>Evidence:</p>
 <ul>
-<li><p><code>raw/ordering_results.json</code></p></li>
-<li><p><code>raw/part3_failure_summary.log</code></p></li>
-<li><p><code>raw/ordering_writer_a.log</code></p></li>
-<li><p><code>raw/ordering_writer_b.log</code></p></li>
+<li><code>raw/ordering_results.json</code></li>
+<li><code>raw/part3_failure_summary.log</code></li>
+<li><code>raw/ordering_writer_a.log</code></li>
+<li><code>raw/ordering_writer_b.log</code></li>
+<li><code>raw/part3_writer_failure_full.log</code></li>
+<li><code>raw/part3_poison_full.log</code></li>
+<li><code>raw/part3_after_poison_full.log</code></li>
 </ul>
 <figure>
 <img src="evidence/part3_writer_a.png" alt="Writer A" />
@@ -494,6 +419,18 @@ evidence</figcaption>
 <figure>
 <img src="evidence/part3_ordering_result.png" alt="Ordering result" />
 <figcaption aria-hidden="true">Ordering result</figcaption>
+</figure>
+<figure>
+<img src="evidence/part3_poison_recovery.png"
+alt="Poison retry, dead-letter, and recovery" />
+<figcaption aria-hidden="true">Poison retry, dead-letter, and
+recovery</figcaption>
+</figure>
+<figure>
+<img src="evidence/part3_writers_processing.png"
+alt="Writer A and Writer B processing evidence" />
+<figcaption aria-hidden="true">Writer A and Writer B processing
+evidence</figcaption>
 </figure>
 <h2 id="kafka-reliability-conclusions">Kafka Reliability
 Conclusions</h2>
@@ -511,6 +448,10 @@ Conclusions</h2>
 stable keys when ordering matters. The consumer is responsible for
 validation, idempotency, retries, offset commits, and dead-letter
 handling.</p>
+<p>The Writer was killed during a simulated long-running task before
+committing its offset. After restart, Kafka redelivered the uncommitted
+task. The Writer completed the task, published the draft, and committed
+the offset.</p>
 <h3 id="comparison-with-hw2">Comparison with HW2</h3>
 <p>HW2 used a simpler request/response workflow. HW8 extends that design
 with Kafka topics, independent consumers, consumer groups, offset
@@ -583,11 +524,34 @@ topic:</p>
 <div class="sourceCode" id="cb7"><pre
 class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> retry_number <span class="op">&gt;=</span> MAX_RETRIES:</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">await</span> producer.send_and_wait(DEAD_LETTER_TOPIC, encoded_message)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">await</span> consumer.commit()</span></code></pre></div>
-<p>Ordering uses the related entity as the Kafka message key:</p>
-<div class="sourceCode" id="cb8"><pre
-class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>key <span class="op">=</span> <span class="st">b&quot;vulnerability-42&quot;</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="cf">await</span> producer.send_and_wait(TASKS_TOPIC, payload, key<span class="op">=</span>key)</span></code></pre></div>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">await</span> consumer.commit()</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>```The Writer retries failed messages <span class="kw">in</span> a bounded loop:</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>```python</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="va">True</span>:</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">await</span> process_message(message, producer)</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">await</span> consumer.commit()</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">break</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> error:</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>        attempts[attempt_key] <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>        retry_number <span class="op">=</span> attempts[attempt_key]</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> retry_number <span class="op">&gt;=</span> MAX_RETRIES:</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>            <span class="cf">await</span> producer.send_and_wait(</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>                DEAD_LETTER_TOPIC,</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>                encoded_message,</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>            <span class="cf">await</span> consumer.commit()</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>            <span class="cf">break</span></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>        <span class="cf">await</span> asyncio.sleep(<span class="dv">1</span>)</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>Ordering uses the related entity <span class="im">as</span> the Kafka message key:</span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>```python</span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>key <span class="op">=</span> <span class="st">b&quot;vulnerability-42&quot;</span></span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a><span class="cf">await</span> producer.send_and_wait(TASKS_TOPIC, payload, key<span class="op">=</span>key)</span></code></pre></div>
 <h3 id="ai-use">AI Use</h3>
 <ol type="1">
 <li>AI assistance was used for drafting Kafka client, worker,
@@ -622,6 +586,17 @@ commit the offset only after dead-letter publication.</li>
 <li><code>raw/poison_message.json</code></li>
 <li><code>raw/ordering_results.json</code></li>
 <li><code>raw/part3_failure_summary.log</code></li>
+<li><code>raw/part1_worker_full.log</code></li>
+<li><code>raw/part1_demo_full.log</code></li>
+<li><code>raw/part2_planner_full.log</code></li>
+<li><code>raw/part2_writer_full.log</code></li>
+<li><code>raw/part2_reviewer_full.log</code></li>
+<li><code>raw/part2_sender_full.log</code></li>
+<li><code>raw/part3_writer_failure_full.log</code></li>
+<li><code>raw/part3_poison_full.log</code></li>
+<li><code>raw/part3_after_poison_full.log</code></li>
+<li><code>raw/ordering_writer_a.log</code></li>
+<li><code>raw/ordering_writer_b.log</code></li>
 </ul>
 <h2 id="final-verification">Final Verification</h2>
 <p>The verification script reported:</p>
@@ -637,6 +612,28 @@ commit the offset only after dead-letter publication.</li>
 <li>Required evidence directory: passed</li>
 </ul>
 <p>Overall result: <code>all_passed: true</code></p>
+<p>The final <code>verification.json</code> reported
+<code>all_passed: true</code> for API health, CREATE/GET evidence, error
+tests, pipeline approval, duplicate prevention, consumer recovery,
+dead-letter handling, keyed ordering, and the required evidence
+directory.</p>
+<p>{ “homework”: “DATA-260 Homework 8”, “sid4”: 9004, “commit_hash”:
+“688891208660e40cb943af9927e0dd04f73ad9af”, “model”: “qwen3:8b”,
+“port_base”: 8004, “prefix”: “s9004”, “seed”: 9004, “verify_seed”:
+269004, “domain_id”: 4, “checks”: { “api_health”: true,
+“part1_create_get_evidence”: true, “part1_error_tests”: true,
+“part2_pipeline_approved”: true, “duplicate_delivery_prevented”: true,
+“consumer_death_recovered”: true, “poison_dead_letter”: true,
+“keyed_ordering_preserved”: true, “required_evidence_directory”: true },
+“all_passed”: true }</p>
+<h3 id="verification-json">Verification JSON</h3>
+<p>The complete machine-readable verification output is stored in:</p>
+<ul>
+<li><code>verification.json</code></li>
+</ul>
+<p>It records the homework name, SID4, commit hash, model, port
+configuration, seeds, domain ID, all verification checks, and the final
+<code>all_passed</code> result.</p>
 <h2 id="submission-files">Submission Files</h2>
 <p>The final report PDF is:</p>
 <p><code>reports/hw08/Shetty_HW8.pdf</code></p>

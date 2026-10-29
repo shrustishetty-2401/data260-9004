@@ -1,0 +1,8 @@
+Consumer is ready and listening...
+Listening on s9004_vulnerability_requests
+[WORKER] Received operation=CREATE_VULNERABILITY correlation_id=51488e8c-af58-4989-861b-7e0835f8b1f3
+[WORKER] Sending response to s9004_vulnerability_responses correlation_id=51488e8c-af58-4989-861b-7e0835f8b1f3
+[WORKER] Completed operation=CREATE_VULNERABILITY success=True
+[WORKER] Received operation=GET_VULNERABILITY correlation_id=ae5a6715-3f25-4b0d-9755-d33ed047263c
+[WORKER] Sending response to s9004_vulnerability_responses correlation_id=ae5a6715-3f25-4b0d-9755-d33ed047263c
+[WORKER] Completed operation=GET_VULNERABILITY success=True

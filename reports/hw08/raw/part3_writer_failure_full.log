@@ -1,0 +1,11 @@
+[WRITER] Listening on s9004_tasks
+[WRITER] Received task_id=fd7e3473-ecd2-48a2-a8e4-5c8bfe02e14b partition=1 offset=160
+[WRITER] sequence=None entity_key=None
+[WRITER] Processing failed for task_id=fd7e3473-ecd2-48a2-a8e4-5c8bfe02e14b; retry=1/3; error=Poison message requested failure
+[WRITER] Processing failed for task_id=fd7e3473-ecd2-48a2-a8e4-5c8bfe02e14b; retry=2/3; error=Poison message requested failure
+[WRITER] Processing failed for task_id=fd7e3473-ecd2-48a2-a8e4-5c8bfe02e14b; retry=3/3; error=Poison message requested failure
+[WRITER] Sent task_id=fd7e3473-ecd2-48a2-a8e4-5c8bfe02e14b to s9004_dead_letter
+[WRITER] Received task_id=3a58062e-9a65-460b-8686-37cfe72878f9 partition=0 offset=70
+[WRITER] sequence=None entity_key=None
+[WRITER] Draft sent to s9004_drafts task_id=3a58062e-9a65-460b-8686-37cfe72878f9
+[WRITER] Offset committed for task_id=3a58062e-9a65-460b-8686-37cfe72878f9

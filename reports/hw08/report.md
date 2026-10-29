@@ -111,7 +111,12 @@ Evidence:
 - `raw/part1_create_get.log`
 - `raw/part1_error_tests.json`
 - `raw/part1_services.log`
+- `raw/part1_worker_full.log`
+- `raw/part1_demo_full.log`
 
+### FastAPI Health Evidence
+
+The API listens on `0.0.0.0:8004` inside Docker so that the container port is reachable. From the host, the service was verified through `http://127.0.0.1:8004/health` and returned HTTP 200.
 
 ### Part 1 Implementation Evidence
 
@@ -123,6 +128,11 @@ Evidence:
 
 ![API wrapper implementation](evidence/part1_code_api.png)
 
+![Complete worker message flow](evidence/part1_worker_full.png)
+
+![Complete client message flow](evidence/part1_demo_full.png)
+
+![FastAPI health check](evidence/part1_health.png)
 
 ## Part 2: Multi-Agent Kafka Pipeline
 
@@ -144,13 +154,26 @@ Implemented separate Planner, Writer, and Reviewer processes.
 
 The pipeline completed successfully with status `approved`. The task ID and correlation ID were preserved through the pipeline.
 
+### Coordination Explanation
+
+Kafka coordinates the agents through independent topics. The Planner publishes a plan to `s9004_tasks`, the Writer publishes a draft to `s9004_drafts`, and the Reviewer publishes the approved result to `s9004_final`. Task IDs and correlation IDs connect the stages without requiring the agents to run in one process.
+
 ![Part 2 pipeline evidence](evidence/part2_pipeline.png)
+![Complete Planner, Writer, and Reviewer pipeline](evidence/part2_full_pipeline.png)
+
 
 Evidence:
 
 - `raw/part2_pipeline_result.json`
 - `raw/part2_pipeline.log`
 - `RUN_LOG.txt`
+- `raw/part2_planner_full.log`
+- `raw/part2_writer_full.log`
+- `raw/part2_reviewer_full.log`
+- `raw/part2_sender_full.log`
+
+For the same task, the Planner received the question and sent a plan to `s9004_tasks`; the Writer received that plan and sent a draft to `s9004_drafts`; and the Reviewer received the draft and sent the approved result to `s9004_final`. The task ID `389c9797-34ab-4de6-8545-046dfb50da47` and correlation ID `5017368c-5c7a-4048-87ca-c80056795513` were preserved across all stages.
+
 
 ## Part 3: Reliability, Failure Handling, and Ordering
 
@@ -167,6 +190,15 @@ Evidence:
 
 ### Consumer Death and Recovery
 
+### Consumer Restart Evidence
+
+The Writer was killed while processing task `b7bbc560-49e1-41f3-a711-158351720305`. After restart, Kafka redelivered the uncommitted task. The Writer completed the task, published the draft, committed the offset, and the test reported `recovered_after_restart: true`.
+
+Evidence:
+
+- `raw/part3_consumer_death_writer.log`
+- `raw/part3_consumer_death_test.log`
+
 The Writer was stopped during a simulated long-running task. After restarting the Writer, Kafka redelivered the uncommitted message and the task completed successfully.
 
 - `recovered_after_restart`: `true`
@@ -175,6 +207,14 @@ The Writer was stopped during a simulated long-running task. After restarting th
 Evidence:
 
 - `raw/consumer_death.json`
+
+Evidence:
+
+- `raw/consumer_death.json`
+
+![Consumer death Writer evidence](evidence/part3_consumer_death_writer.png)
+
+![Consumer death recovery result](evidence/part3_consumer_death_test.png)
 
 ### Poison Messages and Dead-Letter Handling
 
@@ -208,15 +248,21 @@ Evidence:
 
 - `raw/ordering_results.json`
 - `raw/part3_failure_summary.log`
-
 - `raw/ordering_writer_a.log`
 - `raw/ordering_writer_b.log`
+- `raw/part3_writer_failure_full.log`
+- `raw/part3_poison_full.log`
+- `raw/part3_after_poison_full.log`
 
 ![Writer A](evidence/part3_writer_a.png)
 
 ![Writer B](evidence/part3_writer_b.png)
 
 ![Ordering result](evidence/part3_ordering_result.png)
+
+![Poison retry, dead-letter, and recovery](evidence/part3_poison_recovery.png)
+
+![Writer A and Writer B processing evidence](evidence/part3_writers_processing.png)
 
 
 ## Kafka Reliability Conclusions
@@ -232,6 +278,8 @@ Kafka provides:
 - Decoupling between independent services
 
 The producer is responsible for publishing valid messages and using stable keys when ordering matters. The consumer is responsible for validation, idempotency, retries, offset commits, and dead-letter handling.
+
+The Writer was killed during a simulated long-running task before committing its offset. After restart, Kafka redelivered the uncommitted task. The Writer completed the task, published the draft, and committed the offset.
 
 ### Comparison with HW2
 
@@ -278,7 +326,27 @@ Poison messages use bounded retries and then move to the dead-letter topic:
 if retry_number >= MAX_RETRIES:
     await producer.send_and_wait(DEAD_LETTER_TOPIC, encoded_message)
     await consumer.commit()
-```
+```The Writer retries failed messages in a bounded loop:
+
+```python
+while True:
+    try:
+        await process_message(message, producer)
+        await consumer.commit()
+        break
+    except Exception as error:
+        attempts[attempt_key] += 1
+        retry_number = attempts[attempt_key]
+
+        if retry_number >= MAX_RETRIES:
+            await producer.send_and_wait(
+                DEAD_LETTER_TOPIC,
+                encoded_message,
+            )
+            await consumer.commit()
+            break
+
+        await asyncio.sleep(1)
 
 Ordering uses the related entity as the Kafka message key:
 
@@ -310,6 +378,17 @@ await producer.send_and_wait(TASKS_TOPIC, payload, key=key)
 - `raw/poison_message.json`
 - `raw/ordering_results.json`
 - `raw/part3_failure_summary.log`
+- `raw/part1_worker_full.log`
+- `raw/part1_demo_full.log`
+- `raw/part2_planner_full.log`
+- `raw/part2_writer_full.log`
+- `raw/part2_reviewer_full.log`
+- `raw/part2_sender_full.log`
+- `raw/part3_writer_failure_full.log`
+- `raw/part3_poison_full.log`
+- `raw/part3_after_poison_full.log`
+- `raw/ordering_writer_a.log`
+- `raw/ordering_writer_b.log`
 
 ## Final Verification
 
@@ -326,6 +405,40 @@ The verification script reported:
 - Required evidence directory: passed
 
 Overall result: `all_passed: true`
+
+The final `verification.json` reported `all_passed: true` for API health, CREATE/GET evidence, error tests, pipeline approval, duplicate prevention, consumer recovery, dead-letter handling, keyed ordering, and the required evidence directory.
+
+{
+  "homework": "DATA-260 Homework 8",
+  "sid4": 9004,
+  "commit_hash": "688891208660e40cb943af9927e0dd04f73ad9af",
+  "model": "qwen3:8b",
+  "port_base": 8004,
+  "prefix": "s9004",
+  "seed": 9004,
+  "verify_seed": 269004,
+  "domain_id": 4,
+  "checks": {
+    "api_health": true,
+    "part1_create_get_evidence": true,
+    "part1_error_tests": true,
+    "part2_pipeline_approved": true,
+    "duplicate_delivery_prevented": true,
+    "consumer_death_recovered": true,
+    "poison_dead_letter": true,
+    "keyed_ordering_preserved": true,
+    "required_evidence_directory": true
+  },
+  "all_passed": true
+}
+
+### Verification JSON
+
+The complete machine-readable verification output is stored in:
+
+- `verification.json`
+
+It records the homework name, SID4, commit hash, model, port configuration, seeds, domain ID, all verification checks, and the final `all_passed` result.
 
 ## Submission Files
 

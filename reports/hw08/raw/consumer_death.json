@@ -1,13 +1,17 @@
 {
-  "task_id": "7da3be47-b718-4afd-bc94-0622cefe896a",
-  "correlation_id": "4fd5ff85-783c-4cce-ba57-0a983ea7a444",
+  "task_id": "b7bbc560-49e1-41f3-a711-158351720305",
+  "correlation_id": "7404c35e-2904-4bc1-beb3-497838fe52fe",
   "recovered_after_restart": true,
   "draft_received": true,
   "result": {
-    "task_id": "7da3be47-b718-4afd-bc94-0622cefe896a",
-    "correlation_id": "4fd5ff85-783c-4cce-ba57-0a983ea7a444",
+    "task_id": "b7bbc560-49e1-41f3-a711-158351720305",
+    "correlation_id": "7404c35e-2904-4bc1-beb3-497838fe52fe",
     "question": "Consumer restart recovery test",
     "draft": "Answer draft for 'Consumer restart recovery test': Following the planner's approach, The Writer should recover this task after a mid-processing restart. The main recommendation is to use a clear, evidence-based answer that directly addresses the question.",
-    "from_agent": "writer"
+    "from_agent": "writer",
+    "sequence": null,
+    "entity_key": null,
+    "input_partition": 0,
+    "input_offset": 71
   }
 }

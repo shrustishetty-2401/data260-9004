@@ -1,0 +1,10 @@
+[WRITER] Listening on s9004_tasks
+[WRITER] Received task_id=b7bbc560-49e1-41f3-a711-158351720305 partition=0 offset=71
+[WRITER] sequence=None entity_key=None
+[WRITER] Simulating work for 20.0 seconds
+[WRITER] Listening on s9004_tasks
+[WRITER] Received task_id=b7bbc560-49e1-41f3-a711-158351720305 partition=0 offset=71
+[WRITER] sequence=None entity_key=None
+[WRITER] Simulating work for 20.0 seconds
+[WRITER] Draft sent to s9004_drafts task_id=b7bbc560-49e1-41f3-a711-158351720305
+[WRITER] Offset committed for task_id=b7bbc560-49e1-41f3-a711-158351720305

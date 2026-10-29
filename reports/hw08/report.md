@@ -440,10 +440,13 @@ The complete machine-readable verification output is stored in:
 
 It records the homework name, SID4, commit hash, model, port configuration, seeds, domain ID, all verification checks, and the final `all_passed` result.
 
+
 ## Submission Files
 
-The final report PDF is:
+The final HW8 report is available here:
+
+[Open the final HW8 report PDF on GitHub](https://github.com/shrustishetty-2401/data260-9004/blob/hw8/reports/hw08/Shetty_HW8.pdf)
+
+Local repository path:
 
 `reports/hw08/Shetty_HW8.pdf`
-
-The final submission includes the implementation, Docker/Kafka configuration, tests, screenshots, raw JSON results, logs, metrics, AI-use documentation, verification output, and the final PDF.

@@ -1,6 +1,6 @@
 # DATA-260 Homework 9
 
-GitHub repository: https://github.com/shrustishetty-2401/data260-9004
+GitHub repository: https://github.com/shrustishetty-2401/data260-9004/blob/hw9/reports/hw09/report.pdf
 
 ## Student and Configuration
 

@@ -30,7 +30,7 @@
 <body>
 <h1 id="data-260-homework-9">DATA-260 Homework 9</h1>
 <p>GitHub repository:
-https://github.com/shrustishetty-2401/data260-9004</p>
+https://github.com/shrustishetty-2401/data260-9004/blob/hw9/reports/hw09/report.pdf</p>
 <h2 id="student-and-configuration">Student and Configuration</h2>
 <ul>
 <li>Student: Shrusti Shetty</li>
@@ -77,9 +77,8 @@ Redis-Backed Vulnerability View Counter</h2>
 <pre class="text"><code>s9004:views:vulnerability:&lt;entity_id&gt;</code></pre>
 <p>The counter uses Redis <code>INCR</code>. The in-memory entity is
 synchronized every ten views. The test performed 25 accesses and
-produced synchronization events at counts 10 and 20.</p>
-<p>The counter returns the current access count and preserves the Redis
-prefix requirement.</p>
+produced synchronization events at counts 10 and 20. The counter returns
+the current access count and preserves the Redis prefix requirement.</p>
 <p><strong>Figure 1. Redis-backed vulnerability view
 counter</strong></p>
 <figure>
@@ -160,15 +159,9 @@ paraphrases, new domain questions, and unrelated questions.</p>
 </tr>
 </tbody>
 </table>
-<p>These are the measured results from the experiment. The cache reduced
-the number of agent executions for repeated or sufficiently similar
-queries, while unrelated and low-similarity questions followed the
-normal answer path.</p>
-<p>Evidence:</p>
-<ul>
-<li><code>raw/part2_cache_10_queries.json</code></li>
-<li><code>raw/part2_cache_10_queries.log</code></li>
-</ul>
+<p>These measured results show that repeated or sufficiently similar
+queries can avoid another agent execution, while unrelated and
+low-similarity questions follow the normal answer path.</p>
 <p><strong>Figure 2. Ten-query semantic cache experiment</strong></p>
 <figure>
 <img src="evidence/part2_cache_10_queries.png"
@@ -241,6 +234,19 @@ unrelated questions.</p>
 correct cache miss, and 30 to a false hit. Threshold 0.95 had the lowest
 total cost of 310 and produced zero false hits, so it was selected for
 deployment.</p>
+<p><strong>Figure 3. Semantic-cache threshold sweep</strong></p>
+<figure>
+<img src="evidence/part3_threshold_sweep.png"
+alt="Threshold sweep evidence" />
+<figcaption aria-hidden="true">Threshold sweep evidence</figcaption>
+</figure>
+<p>Evidence:</p>
+<ul>
+<li><code>raw/threshold_sweep.json</code></li>
+<li><code>raw/threshold_sweep.log</code></li>
+<li><code>code/hw9_threshold_sweep.py</code></li>
+<li><code>cache_cases.yaml</code></li>
+</ul>
 <h3 id="complete-false-hit-example">Complete False-Hit Example</h3>
 <p>The following false hit occurred at threshold <code>0.85</code>.</p>
 <ul>
@@ -258,28 +264,10 @@ available.</li>
 identifier and package-related wording. The embedding model therefore
 considered them highly similar even though one asks which package
 contains the vulnerability and the other asks about a dependency
-relationship. The cached answer was semantically related but did not
-answer the incoming question.</li>
+relationship. The cached answer was related but did not answer the
+incoming question.</li>
 </ul>
-<p><strong>Figure 3. Semantic-cache threshold sweep</strong></p>
-<figure>
-<img src="evidence/part3_threshold_sweep.png"
-alt="Threshold sweep evidence" />
-<figcaption aria-hidden="true">Threshold sweep evidence</figcaption>
-</figure>
-<p>Evidence:</p>
-<ul>
-<li><code>raw/threshold_sweep.json</code></li>
-<li><code>raw/threshold_sweep.log</code></li>
-<li><code>code/hw9_threshold_sweep.py</code></li>
-<li><code>cache_cases.yaml</code></li>
-<li><code>raw/false_hit_example.json</code></li>
-<li><code>raw/false_hit_example.log</code></li>
-</ul>
-<h3 id="false-hit-demonstration">False-Hit Demonstration</h3>
-<p>At threshold <code>0.85</code>, three false hits were observed. These
-queries were semantically close to stored questions but required
-different answers.</p>
+<p>At threshold <code>0.85</code>, three false hits were observed:</p>
 <table>
 <colgroup>
 <col style="width: 42%" />
@@ -317,7 +305,6 @@ different answers.</p>
 <li><code>raw/false_hit_example.log</code></li>
 </ul>
 <h3 id="cost-model">Cost Model</h3>
-<p>The relative cost model was:</p>
 <table>
 <thead>
 <tr>
@@ -343,7 +330,7 @@ different answers.</p>
 <p>False hits receive the largest penalty because an incorrect
 vulnerability answer is more harmful than recomputing a response. The
 selected threshold is <code>0.95</code> because it produced zero false
-hits.</p>
+hits and the lowest total cost.</p>
 <p><strong>Figure 5. Cache cost-model comparison</strong></p>
 <figure>
 <img src="evidence/part3_cost_model.png" alt="Cost-model evidence" />
@@ -362,8 +349,6 @@ Invalidation</h3>
 version returned the old cached answer. After invalidating version
 <code>v1</code>, the query was executed under version <code>v2</code>
 and returned the updated answer.</p>
-<h3 id="stale-record-and-invalidation-strategy">Stale Record and
-Invalidation Strategy</h3>
 <p>The cached answer depends on the vulnerability reference record for
 <code>HW9-001</code>, including its package and category values. In this
 implementation, the record state is represented by the cache data
@@ -385,8 +370,6 @@ and recomputation.</p>
 <li><code>invalidated_entries</code>: <code>1</code></li>
 <li><code>fresh_answer_was_returned</code>: <code>true</code></li>
 </ul>
-<p>The data-version marker prevents stale answers from being reused
-after reference data changes.</p>
 <p><strong>Figure 6. Stale-cache invalidation</strong></p>
 <figure>
 <img src="evidence/part3_stale_cache.png" alt="Stale-cache evidence" />
@@ -401,17 +384,17 @@ after reference data changes.</p>
 <h2 id="part-4-answering-agent-and-evaluator-agent">Part 4: Answering
 Agent and Evaluator Agent</h2>
 <p>Part 4 implements an Answering Agent and an Evaluator Agent. The
-system includes reference data, input-only training/validation/test
-datasets, validated lessons, controlled failure, bounded repair, and
-four experiment variants.</p>
+system includes reference data, input-only training, validation, and
+test datasets, validated lessons, controlled failure, bounded repair,
+and four experiment variants.</p>
 <p>The datasets contain questions only. Expected answers are stored
 separately in the reference data and used by the evaluator.</p>
 <p>Files:</p>
 <ul>
 <li><code>data/reference_data.json</code></li>
-<li><code>data/train.jsonl</code></li>
-<li><code>data/validation.jsonl</code></li>
-<li><code>data/test.jsonl</code></li>
+<li><code>data/training_data.json</code></li>
+<li><code>data/validation_data.json</code></li>
+<li><code>data/test_data.json</code></li>
 <li><code>raw/lessons.json</code></li>
 </ul>
 <p>The system allows a maximum of two attempts. The Evaluator Agent
@@ -432,9 +415,9 @@ kept only when failure cases improve or remain unchanged, previously
 correct answers remain correct, and unrelated questions do not receive
 unsupported answers.</p>
 <p>One limitation is that the evaluator uses word-overlap matching
-against a small reference dataset. It may therefore accept an answer
-with similar wording even when the explanation is incomplete, or reject
-a correct answer phrased very differently.</p>
+against a small reference dataset. It may accept an answer with similar
+wording even when the explanation is incomplete, or reject a correct
+answer phrased very differently.</p>
 <h3 id="variant-comparison">Variant Comparison</h3>
 <table>
 <colgroup>
@@ -489,11 +472,7 @@ question. The Evaluator Repair variant detected the failure, used a
 second attempt, and corrected the answer. The Lesson Memory and
 Validated Improvement variants loaded the validated stale-data lesson
 before answering.</p>
-<p>The Baseline intentionally failed on the stale-cache question. The
-Evaluator Repair variant detected the error and corrected it on the
-second attempt:</p>
-<p>The complete revision sequence produced:</p>
-<p>The complete revision sequence was:</p>
+<h3 id="complete-revision-sequence">Complete Revision Sequence</h3>
 <ul>
 <li>Question: What happens when a cached answer becomes stale?</li>
 <li>Initial answer: The cache always returns the previous answer without
@@ -532,20 +511,6 @@ alt="Part 4 experiment evidence" />
 <li><code>code/hw9_part4_setup.py</code></li>
 <li><code>code/hw9_part4_experiment.py</code></li>
 </ul>
-<h3 id="required-part-4-dataset-files">Required Part 4 Dataset
-Files</h3>
-<p>The required input-only datasets are:</p>
-<ul>
-<li><code>data/training_data.json</code></li>
-<li><code>data/validation_data.json</code></li>
-<li><code>data/test_data.json</code></li>
-</ul>
-<p>The evaluator uses the separate reference dataset:</p>
-<ul>
-<li><code>data/reference_data.json</code></li>
-</ul>
-<p>The training, validation, and test datasets contain questions only
-and do not contain expected answers.</p>
 <h3 id="lesson-reuse-demonstration">Lesson Reuse Demonstration</h3>
 <p>After the evaluator identified the stale-answer failure pattern, the
 system saved the following reusable lesson:</p>
@@ -558,15 +523,18 @@ system saved the following reusable lesson:</p>
 }</code></pre>
 <p>A later stale-cache question loaded <code>lesson_001</code> and
 reused its correction.</p>
-<p>The lesson-reuse result was:</p>
 <pre class="json"><code>{
   &quot;lesson_loaded&quot;: true,
   &quot;lesson_id&quot;: &quot;lesson_001&quot;,
   &quot;passed&quot;: true,
   &quot;use_count&quot;: 2
 }</code></pre>
-<p>Evidence: - raw/lesson_reuse.json - raw/lesson_reuse.log -
-raw/lessons.json</p>
+<p>Evidence:</p>
+<ul>
+<li><code>raw/lesson_reuse.json</code></li>
+<li><code>raw/lesson_reuse.log</code></li>
+<li><code>raw/lessons.json</code></li>
+</ul>
 <h2 id="short-implementation-evidence">Short Implementation
 Evidence</h2>
 <h3 id="redis-view-counter">Redis View Counter</h3>
@@ -631,12 +599,11 @@ return {
         ):
             return self.lessons[question_id]
 
-        return REFERENCE_ANSWERS[question_id]
-
-        class EvaluatorAgent:
+        return REFERENCE_ANSWERS[question_id]</code></pre>
+<h3 id="evaluator-agent">Evaluator Agent</h3>
+<pre class="python"><code>class EvaluatorAgent:
     def evaluate(self, question_id, answer):
         expected = REFERENCE_ANSWERS[question_id]
-
         passed = answer.strip() == expected.strip()
 
         return {
@@ -645,42 +612,27 @@ return {
             &quot;explanation&quot;: (
                 &quot;The answer matches the reference facts.&quot;
                 if passed
-                else (
-                    &quot;The answer does not correctly address &quot;
-                    &quot;the reference facts.&quot;
-                )
+                else &quot;The answer does not correctly address the reference facts.&quot;
             ),
             &quot;feedback&quot;: (
                 &quot;No revision needed.&quot;
                 if passed
-                else (
-                    &quot;Check the reference data and correct &quot;
-                    &quot;the stale-data explanation.&quot;
-                )
+                else &quot;Check the reference data and correct the stale-data explanation.&quot;
             ),
-        }
-
-### Data-Version Invalidation
-
-~~~python
-stored_version = cache_entry[&quot;data_version&quot;]
+        }</code></pre>
+<h3 id="data-version-invalidation">Data-Version Invalidation</h3>
+<pre class="python"><code>stored_version = cache_entry[&quot;data_version&quot;]
 
 if stored_version != current_data_version:
     cache.invalidate_version(stored_version)
     return answer_function(query)
 
-return cached_answer
-~~~
-
-### Evaluator Repair and Two-Attempt Limit
-
-~~~python
-for attempt in range(1, 3):
+return cached_answer</code></pre>
+<h3 id="evaluator-repair-and-two-attempt-limit">Evaluator Repair and
+Two-Attempt Limit</h3>
+<pre class="python"><code>for attempt in range(1, 3):
     answer = answering_agent.answer(question)
-    evaluation = evaluator_agent.evaluate(
-        question,
-        answer,
-    )
+    evaluation = evaluator_agent.evaluate(question, answer)
 
     if evaluation[&quot;evaluation&quot;] == &quot;PASS&quot;:
         break
@@ -689,13 +641,9 @@ for attempt in range(1, 3):
         answer = answering_agent.revise(
             answer,
             evaluation[&quot;feedback&quot;],
-        )
-~~~
-
-### Lesson Validation
-
-~~~python
-lesson = evaluator_agent.create_lesson(
+        )</code></pre>
+<h3 id="lesson-validation">Lesson Validation</h3>
+<pre class="python"><code>lesson = evaluator_agent.create_lesson(
     failure_pattern,
     correction,
 )
@@ -704,56 +652,62 @@ if validation_passes(lesson):
     lessons.append(lesson)
     save_lessons(lessons)
 else:
-    discard(lesson)
-~~~
-
-
-## Conclusions
-
-Redis provides atomic counters, low-latency response retrieval, vector similarity search, cache invalidation, and reusable lessons.
-
-The experiments demonstrate a trade-off between cache hit rate and answer correctness. Lower thresholds increase hits but also increase false hits. For this vulnerability domain, threshold `0.95` is the safest choice because it produced zero false hits.
-
-The data-version marker protects against stale responses. When reference data changes, old entries can be invalidated and the next request computes a fresh answer.
-
-The Evaluator Agent improves reliability by detecting incorrect answers and allowing one controlled repair attempt. Validated lessons provide reusable guidance for later questions.
-
-## Reproducibility Evidence
-
-- `RUN_LOG.txt`
-- `METRICS.md`
-- `AI_USE.md`
-- `data/reference_data.json`
-- `data/train.jsonl`
-- `data/validation.jsonl`
-- `data/test.jsonl`
-- `raw/part1_counter.log`
-- `raw/part2_cache_smoke.log`
-- `raw/part2_cache_10_queries.json`
-- `raw/threshold_sweep.json`
-- `raw/false_hit_example.json`
-- `raw/cost_model.json`
-- `raw/stale_cache.json`
-- `raw/lessons.json`
-- `raw/part4_results.json`
-
-## AI Use
-
-AI assistance was used to draft Redis counter code, Redis Stack vector-search code, cache experiments, threshold analysis, stale-data invalidation, agent evaluation logic, datasets, and report text.
-
-The student ran the commands locally, inspected outputs, corrected implementation issues, captured evidence screenshots, and made the final repository changes.
-
-During testing, the initial vector search selected the nearest entry across all data versions before checking the version marker. The search was corrected to filter by `data_version` before KNN search.
-
-The initial cache test also returned the vulnerability answer for an unrelated question because the answer function returned the same answer for every input. The answer function was corrected to return a no-match response for unrelated questions.
-
-## Submission Contents
-
-The HW9 submission includes the implementation files, Redis and Redis Stack experiments, reference data, input-only datasets, lessons, raw JSON results, raw logs, screenshots, metrics, AI-use documentation, and this report.
-
-Final PDF target:
-
-```text
-reports/hw09/Shetty_HW9.pdf</code></pre>
+    discard(lesson)</code></pre>
+<h2 id="conclusions">Conclusions</h2>
+<p>Redis provides atomic counters, low-latency response retrieval,
+vector similarity search, cache invalidation, and reusable lessons.</p>
+<p>The experiments demonstrate a trade-off between cache hit rate and
+answer correctness. Lower thresholds increase hits but also increase
+false hits. For this vulnerability domain, threshold <code>0.95</code>
+is the safest choice because it produced zero false hits and the lowest
+total cost.</p>
+<p>The data-version marker protects against stale responses. When
+reference data changes, old entries can be invalidated and the next
+request computes a fresh answer.</p>
+<p>The Evaluator Agent improves reliability by detecting incorrect
+answers and allowing one controlled repair attempt. Validated lessons
+provide reusable guidance for later questions.</p>
+<h2 id="reproducibility-evidence">Reproducibility Evidence</h2>
+<ul>
+<li><code>RUN_LOG.txt</code></li>
+<li><code>METRICS.md</code></li>
+<li><code>AI_USE.md</code></li>
+<li><code>data/reference_data.json</code></li>
+<li><code>data/training_data.json</code></li>
+<li><code>data/validation_data.json</code></li>
+<li><code>data/test_data.json</code></li>
+<li><code>raw/part1_counter.log</code></li>
+<li><code>raw/part2_cache_smoke.log</code></li>
+<li><code>raw/part2_cache_10_queries.json</code></li>
+<li><code>raw/threshold_sweep.json</code></li>
+<li><code>raw/false_hit_example.json</code></li>
+<li><code>raw/cost_model.json</code></li>
+<li><code>raw/stale_cache.json</code></li>
+<li><code>raw/lessons.json</code></li>
+<li><code>raw/lesson_reuse.json</code></li>
+<li><code>raw/part4_results.json</code></li>
+</ul>
+<h2 id="ai-use">AI Use</h2>
+<p>AI assistance was used to draft Redis counter code, Redis Stack
+vector-search code, cache experiments, threshold analysis, stale-data
+invalidation, agent evaluation logic, datasets, and report text.</p>
+<p>The student ran the commands locally, inspected outputs, corrected
+implementation issues, captured evidence screenshots, and made the final
+repository changes.</p>
+<p>During testing, the initial vector search selected the nearest entry
+across all data versions before checking the version marker. The search
+was corrected to filter by <code>data_version</code> before KNN
+search.</p>
+<p>The initial cache test also returned the vulnerability answer for an
+unrelated question because the answer function returned the same answer
+for every input. The answer function was corrected to return a no-match
+response for unrelated questions.</p>
+<h2 id="submission-contents">Submission Contents</h2>
+<p>The HW9 submission includes the implementation files, Redis and Redis
+Stack experiments, reference data, input-only datasets, lessons, raw
+JSON results, raw logs, screenshots, metrics, AI-use documentation, and
+this report.</p>
+<p>Final PDF target:</p>
+<pre class="text"><code>reports/hw09/Shetty_HW9.pdf</code></pre>
 </body>
 </html>

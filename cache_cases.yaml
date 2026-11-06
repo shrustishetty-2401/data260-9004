@@ -1,0 +1,199 @@
+- case_id: exact_01
+  label: exact_duplicate
+  group: package_question_1
+  query: "What package contains vulnerability HW9-001?"
+
+- case_id: exact_02
+  label: exact_duplicate
+  group: package_question_2
+  query: "What package contains vulnerability HW9-002?"
+
+- case_id: exact_03
+  label: exact_duplicate
+  group: category_question_1
+  query: "What category is vulnerability HW9-001 in?"
+
+- case_id: exact_04
+  label: exact_duplicate
+  group: category_question_2
+  query: "What category is vulnerability HW9-002 in?"
+
+- case_id: exact_05
+  label: exact_duplicate
+  group: topic_question_1
+  query: "Which Kafka topic receives vulnerability requests?"
+
+- case_id: exact_06
+  label: exact_duplicate
+  group: topic_question_2
+  query: "Which Kafka topic receives vulnerability responses?"
+
+- case_id: exact_07
+  label: exact_duplicate
+  group: redis_question_1
+  query: "What does Redis store for the semantic cache?"
+
+- case_id: exact_08
+  label: exact_duplicate
+  group: counter_question_1
+  query: "When are vulnerability views synchronized to the database?"
+
+- case_id: exact_09
+  label: exact_duplicate
+  group: entity_question_1
+  query: "What is the primary domain entity?"
+
+- case_id: exact_10
+  label: exact_duplicate
+  group: id_question_1
+  query: "What identifies each vulnerability record?"
+
+- case_id: paraphrase_01
+  label: paraphrase_should_hit
+  group: package_question_1
+  query: "Which package is HW9-001 associated with?"
+
+- case_id: paraphrase_02
+  label: paraphrase_should_hit
+  group: package_question_2
+  query: "Where is vulnerability HW9-002 stored?"
+
+- case_id: paraphrase_03
+  label: paraphrase_should_hit
+  group: category_question_1
+  query: "Which category does HW9-001 belong to?"
+
+- case_id: paraphrase_04
+  label: paraphrase_should_hit
+  group: category_question_2
+  query: "How is vulnerability HW9-002 categorized?"
+
+- case_id: paraphrase_05
+  label: paraphrase_should_hit
+  group: topic_question_1
+  query: "Where are vulnerability request messages published?"
+
+- case_id: paraphrase_06
+  label: paraphrase_should_hit
+  group: topic_question_2
+  query: "Where are vulnerability response messages sent?"
+
+- case_id: paraphrase_07
+  label: paraphrase_should_hit
+  group: redis_question_1
+  query: "Which information is saved in Redis for a cached response?"
+
+- case_id: paraphrase_08
+  label: paraphrase_should_hit
+  group: counter_question_1
+  query: "After how many views does the system update the database?"
+
+- case_id: paraphrase_09
+  label: paraphrase_should_hit
+  group: entity_question_1
+  query: "What type of record is the system built around?"
+
+- case_id: paraphrase_10
+  label: paraphrase_should_hit
+  group: id_question_1
+  query: "How are vulnerability records uniquely identified?"
+
+- case_id: similar_different_01
+  label: similar_different_answer
+  group: package_question_1
+  query: "Which package depends on vulnerability HW9-001?"
+
+- case_id: similar_different_02
+  label: similar_different_answer
+  group: package_question_2
+  query: "Which ecosystem contains vulnerability HW9-002?"
+
+- case_id: similar_different_03
+  label: similar_different_answer
+  group: category_question_1
+  query: "Which category should vulnerability HW9-001 be excluded from?"
+
+- case_id: similar_different_04
+  label: similar_different_answer
+  group: category_question_2
+  query: "Which category has the highest number of HW9-002 reports?"
+
+- case_id: similar_different_05
+  label: similar_different_answer
+  group: topic_question_1
+  query: "Which Kafka topic stores completed vulnerability entities?"
+
+- case_id: similar_different_06
+  label: similar_different_answer
+  group: topic_question_2
+  query: "Which Kafka topic stores failed vulnerability requests?"
+
+- case_id: similar_different_07
+  label: similar_different_answer
+  group: redis_question_1
+  query: "Which Redis database stores the production cache?"
+
+- case_id: similar_different_08
+  label: similar_different_answer
+  group: counter_question_1
+  query: "How many views are required before the cache is cleared?"
+
+- case_id: similar_different_09
+  label: similar_different_answer
+  group: entity_question_1
+  query: "Which secondary entity is used for package metadata?"
+
+- case_id: similar_different_10
+  label: similar_different_answer
+  group: id_question_1
+  query: "Which field identifies the Kafka request rather than the vulnerability?"
+
+- case_id: unrelated_01
+  label: unrelated_should_miss
+  group: unrelated
+  query: "What is the weather forecast for tomorrow?"
+
+- case_id: unrelated_02
+  label: unrelated_should_miss
+  group: unrelated
+  query: "What is the capital city of France?"
+
+- case_id: unrelated_03
+  label: unrelated_should_miss
+  group: unrelated
+  query: "How do I prepare a chocolate cake?"
+
+- case_id: unrelated_04
+  label: unrelated_should_miss
+  group: unrelated
+  query: "What time does the library open?"
+
+- case_id: unrelated_05
+  label: unrelated_should_miss
+  group: unrelated
+  query: "Which laptop is best for college students?"
+
+- case_id: unrelated_06
+  label: unrelated_should_miss
+  group: unrelated
+  query: "How many miles are in a kilometer?"
+
+- case_id: unrelated_07
+  label: unrelated_should_miss
+  group: unrelated
+  query: "Who won the baseball game yesterday?"
+
+- case_id: unrelated_08
+  label: unrelated_should_miss
+  group: unrelated
+  query: "What are the symptoms of seasonal allergies?"
+
+- case_id: unrelated_09
+  label: unrelated_should_miss
+  group: unrelated
+  query: "How can I improve my sleep schedule?"
+
+- case_id: unrelated_10
+  label: unrelated_should_miss
+  group: unrelated
+  query: "What is the recipe for vegetable soup?"

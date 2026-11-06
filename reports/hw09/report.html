@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>report</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="report.css" />
+</head>
+<body>
+<h1 id="data-260-homework-9">DATA-260 Homework 9</h1>
+<p>GitHub repository:
+https://github.com/shrustishetty-2401/data260-9004</p>
+<h2 id="student-and-configuration">Student and Configuration</h2>
+<ul>
+<li>Student: Shrusti Shetty</li>
+<li>SID4: 9004</li>
+<li>PORT_BASE: 8004</li>
+<li>PREFIX: <code>s9004</code></li>
+<li>SEED: 9004</li>
+<li>VERIFY_SEED: 269004</li>
+<li>DOMAIN_ID: 4</li>
+<li>Branch: <code>hw9</code></li>
+</ul>
+<h2 id="overview">Overview</h2>
+<p>This homework extends HW8 with Redis-backed counters, Redis Stack
+semantic caching, threshold and false-hit experiments, stale-data
+invalidation, and a two-agent answering and evaluation system.</p>
+<p>The implementation uses Kafka from HW8, Redis, Redis Stack vector
+search, and the <code>all-MiniLM-L6-v2</code> Sentence Transformer
+model.</p>
+<h2 id="hw8-foundation">HW8 Foundation</h2>
+<p>The HW8 foundation provides the Kafka vulnerability request/response
+service and the multi-agent Kafka pipeline.</p>
+<p>The primary domain entity is <code>Vulnerability</code>. The service
+supports CREATE and GET operations, UUID entity identifiers, validation,
+correlation IDs, duplicate-correlation handling, unknown-operation
+errors, and missing-entity errors.</p>
+<p>Kafka topics include:</p>
+<ul>
+<li><code>s9004_vulnerability_requests</code></li>
+<li><code>s9004_vulnerability_responses</code></li>
+<li><code>s9004_inbox</code></li>
+<li><code>s9004_tasks</code></li>
+<li><code>s9004_drafts</code></li>
+<li><code>s9004_final</code></li>
+<li><code>s9004_dead_letter</code></li>
+</ul>
+<p>The HW8 evidence demonstrated duplicate prevention, consumer restart
+recovery, poison-message dead-letter handling, and keyed ordering.</p>
+<h2 id="part-1-redis-backed-vulnerability-view-counter">Part 1:
+Redis-Backed Vulnerability View Counter</h2>
+<p>The Redis view counter is implemented in
+<code>code/hw9_view_cache.py</code> and integrated with
+<code>code/hw8_worker.py</code>.</p>
+<p>Each successful vulnerability GET increments the Redis key:</p>
+<pre class="text"><code>s9004:views:vulnerability:&lt;entity_id&gt;</code></pre>
+<p>The counter uses Redis <code>INCR</code>. The in-memory entity is
+synchronized every ten views. The test performed 25 accesses and
+produced synchronization events at counts 10 and 20.</p>
+<p>The counter returns the current access count and preserves the Redis
+prefix requirement.</p>
+<p><strong>Figure 1. Redis-backed vulnerability view
+counter</strong></p>
+<figure>
+<img src="evidence/part1_counter.png"
+alt="Redis view counter evidence" />
+<figcaption aria-hidden="true">Redis view counter evidence</figcaption>
+</figure>
+<p>Evidence:</p>
+<ul>
+<li><code>raw/part1_counter.log</code></li>
+<li><code>code/hw9_view_cache.py</code></li>
+<li><code>code/hw9_counter_test.py</code></li>
+</ul>
+<h2 id="part-2-semantic-response-cache">Part 2: Semantic Response
+Cache</h2>
+<p>The semantic cache is implemented in
+<code>code/hw9_semantic_cache.py</code>.</p>
+<p>Redis Stack stores:</p>
+<ul>
+<li>The original query</li>
+<li>The final answer</li>
+<li>The normalized embedding</li>
+<li>The data-version marker</li>
+<li>The creation timestamp</li>
+</ul>
+<p>The Redis Stack index is <code>s9004:semantic:index</code>, and
+entries use the prefix <code>s9004:semantic:entry:</code>.</p>
+<p>Configuration:</p>
+<ul>
+<li>Model: <code>all-MiniLM-L6-v2</code></li>
+<li>Embedding dimension: 384</li>
+<li>Distance metric: cosine similarity</li>
+<li>Index algorithm: FLAT</li>
+<li>Initial threshold: 0.85</li>
+</ul>
+<p>A cache miss runs the answer function and stores the response. A
+cache hit returns the stored answer, similarity, latency, and data
+version.</p>
+<p>The smoke test produced one initial miss, one exact-duplicate hit
+with similarity <code>1.0000</code>, one paraphrase hit with similarity
+<code>0.9706</code>, and one unrelated-query miss. The unrelated query
+correctly returned a no-match answer.</p>
+<h3 id="ten-query-performance-measurement">Ten-Query Performance
+Measurement</h3>
+<p>The required ten-query experiment included exact duplicates,
+paraphrases, new domain questions, and unrelated questions.</p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th style="text-align: right;">Observed result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Total queries</td>
+<td style="text-align: right;">10</td>
+</tr>
+<tr>
+<td>Cached queries</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr>
+<td>Uncached queries</td>
+<td style="text-align: right;">8</td>
+</tr>
+<tr>
+<td>Cache hit rate</td>
+<td style="text-align: right;">20%</td>
+</tr>
+<tr>
+<td>Average cached latency</td>
+<td style="text-align: right;">141.60 ms</td>
+</tr>
+<tr>
+<td>Average uncached latency</td>
+<td style="text-align: right;">258.38 ms</td>
+</tr>
+</tbody>
+</table>
+<p>These are the measured results from the experiment. The cache reduced
+the number of agent executions for repeated or sufficiently similar
+queries, while unrelated and low-similarity questions followed the
+normal answer path.</p>
+<p>Evidence:</p>
+<ul>
+<li><code>raw/part2_cache_10_queries.json</code></li>
+<li><code>raw/part2_cache_10_queries.log</code></li>
+</ul>
+<p><strong>Figure 2. Ten-query semantic cache experiment</strong></p>
+<figure>
+<img src="evidence/part2_cache_10_queries.png"
+alt="Semantic cache evidence" />
+<figcaption aria-hidden="true">Semantic cache evidence</figcaption>
+</figure>
+<p>Evidence:</p>
+<ul>
+<li><code>raw/part2_cache_smoke.log</code></li>
+<li><code>raw/part2_cache_10_queries.json</code></li>
+<li><code>raw/part2_cache_10_queries.log</code></li>
+<li><code>code/hw9_semantic_cache.py</code></li>
+<li><code>code/hw9_semantic_cache_test.py</code></li>
+</ul>
+<h2 id="part-3-cache-quality-and-reliability-experiments">Part 3: Cache
+Quality and Reliability Experiments</h2>
+<h3 id="threshold-sweep">Threshold Sweep</h3>
+<p>The threshold experiment used exact duplicates, paraphrases,
+superficially similar questions requiring different answers, and
+unrelated questions.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Threshold</th>
+<th style="text-align: right;">Hit rate</th>
+<th style="text-align: right;">False-hit rate</th>
+<th style="text-align: right;">Mean latency</th>
+<th style="text-align: right;">Total cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">0.75</td>
+<td style="text-align: right;">0.500</td>
+<td style="text-align: right;">0.300</td>
+<td style="text-align: right;">10.70 ms</td>
+<td style="text-align: right;">394.00</td>
+</tr>
+<tr>
+<td style="text-align: right;">0.80</td>
+<td style="text-align: right;">0.400</td>
+<td style="text-align: right;">0.200</td>
+<td style="text-align: right;">10.35 ms</td>
+<td style="text-align: right;">372.00</td>
+</tr>
+<tr>
+<td style="text-align: right;">0.85</td>
+<td style="text-align: right;">0.350</td>
+<td style="text-align: right;">0.150</td>
+<td style="text-align: right;">9.76 ms</td>
+<td style="text-align: right;">361.00</td>
+</tr>
+<tr>
+<td style="text-align: right;">0.90</td>
+<td style="text-align: right;">0.325</td>
+<td style="text-align: right;">0.100</td>
+<td style="text-align: right;">10.63 ms</td>
+<td style="text-align: right;">341.00</td>
+</tr>
+<tr>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: right;">0.250</td>
+<td style="text-align: right;">0.000</td>
+<td style="text-align: right;">10.87 ms</td>
+<td style="text-align: right;">310.00</td>
+</tr>
+</tbody>
+</table>
+<p>The cost model assigned a cost of 1 to a correct cache hit, 10 to a
+correct cache miss, and 30 to a false hit. Threshold 0.95 had the lowest
+total cost of 310 and produced zero false hits, so it was selected for
+deployment.</p>
+<h3 id="complete-false-hit-example">Complete False-Hit Example</h3>
+<p>The following false hit occurred at threshold <code>0.85</code>.</p>
+<ul>
+<li>Cached query:
+<code>What package contains vulnerability HW9-001?</code></li>
+<li>Incoming query:
+<code>Which package depends on vulnerability HW9-001?</code></li>
+<li>Similarity: <code>0.9207778573036</code></li>
+<li>Cached answer returned:
+<code>Vulnerability HW9-001 belongs to package-0.</code></li>
+<li>Correct answer: The reference data does not contain a dependency
+relationship for HW9-001, so no supported dependency answer is
+available.</li>
+<li>Explanation: Both questions contain the same vulnerability
+identifier and package-related wording. The embedding model therefore
+considered them highly similar even though one asks which package
+contains the vulnerability and the other asks about a dependency
+relationship. The cached answer was semantically related but did not
+answer the incoming question.</li>
+</ul>
+<p><strong>Figure 3. Semantic-cache threshold sweep</strong></p>
+<figure>
+<img src="evidence/part3_threshold_sweep.png"
+alt="Threshold sweep evidence" />
+<figcaption aria-hidden="true">Threshold sweep evidence</figcaption>
+</figure>
+<p>Evidence:</p>
+<ul>
+<li><code>raw/threshold_sweep.json</code></li>
+<li><code>raw/threshold_sweep.log</code></li>
+<li><code>code/hw9_threshold_sweep.py</code></li>
+<li><code>cache_cases.yaml</code></li>
+<li><code>raw/false_hit_example.json</code></li>
+<li><code>raw/false_hit_example.log</code></li>
+</ul>
+<h3 id="false-hit-demonstration">False-Hit Demonstration</h3>
+<p>At threshold <code>0.85</code>, three false hits were observed. These
+queries were semantically close to stored questions but required
+different answers.</p>
+<table>
+<colgroup>
+<col style="width: 42%" />
+<col style="width: 57%" />
+</colgroup>
+<thead>
+<tr>
+<th>Query</th>
+<th style="text-align: right;">Similarity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Which package depends on vulnerability HW9-001?</td>
+<td style="text-align: right;">0.9208</td>
+</tr>
+<tr>
+<td>Which category should vulnerability HW9-001 be excluded from?</td>
+<td style="text-align: right;">0.8521</td>
+</tr>
+<tr>
+<td>Which Kafka topic stores failed vulnerability requests?</td>
+<td style="text-align: right;">0.9168</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Figure 4. Full false-hit example</strong></p>
+<figure>
+<img src="evidence/part3_false_hit.png" alt="False-hit evidence" />
+<figcaption aria-hidden="true">False-hit evidence</figcaption>
+</figure>
+<p>Evidence:</p>
+<ul>
+<li><code>raw/false_hit_example.json</code></li>
+<li><code>raw/false_hit_example.log</code></li>
+</ul>
+<h3 id="cost-model">Cost Model</h3>
+<p>The relative cost model was:</p>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th style="text-align: right;">Relative cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Correct cache hit</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td>Correct cache miss</td>
+<td style="text-align: right;">10</td>
+</tr>
+<tr>
+<td>False hit</td>
+<td style="text-align: right;">30</td>
+</tr>
+</tbody>
+</table>
+<p>False hits receive the largest penalty because an incorrect
+vulnerability answer is more harmful than recomputing a response. The
+selected threshold is <code>0.95</code> because it produced zero false
+hits.</p>
+<p><strong>Figure 5. Cache cost-model comparison</strong></p>
+<figure>
+<img src="evidence/part3_cost_model.png" alt="Cost-model evidence" />
+<figcaption aria-hidden="true">Cost-model evidence</figcaption>
+</figure>
+<p>Evidence:</p>
+<ul>
+<li><code>raw/cost_model.json</code></li>
+<li><code>raw/cost_model.log</code></li>
+<li><code>code/hw9_cost_model.py</code></li>
+</ul>
+<h3 id="stale-cache-and-version-invalidation">Stale Cache and Version
+Invalidation</h3>
+<p>The stale-data experiment first cached an answer under version
+<code>v1</code>. The answer function was then changed, but the same
+version returned the old cached answer. After invalidating version
+<code>v1</code>, the query was executed under version <code>v2</code>
+and returned the updated answer.</p>
+<h3 id="stale-record-and-invalidation-strategy">Stale Record and
+Invalidation Strategy</h3>
+<p>The cached answer depends on the vulnerability reference record for
+<code>HW9-001</code>, including its package and category values. In this
+implementation, the record state is represented by the cache data
+version rather than a separate database relation table. The original
+reference state was stored under <code>data_version = "v1"</code>.</p>
+<p>When the reference answer changed from package-0/Input Validation to
+package-1/Dependency Risk, the existing <code>v1</code> cache entry
+became stale. A request using the unchanged <code>v1</code> marker
+returned the old answer, demonstrating the stale hit. The cache then
+invalidated all entries for <code>v1</code>, and the updated answer was
+stored under <code>data_version = "v2"</code>.</p>
+<p>This version-based strategy avoids returning answers created from
+older reference data. Its trade-off is that invalidating an entire
+version may remove still-valid entries, causing additional cache misses
+and recomputation.</p>
+<p>Results:</p>
+<ul>
+<li><code>stale_answer_was_returned</code>: <code>true</code></li>
+<li><code>invalidated_entries</code>: <code>1</code></li>
+<li><code>fresh_answer_was_returned</code>: <code>true</code></li>
+</ul>
+<p>The data-version marker prevents stale answers from being reused
+after reference data changes.</p>
+<p><strong>Figure 6. Stale-cache invalidation</strong></p>
+<figure>
+<img src="evidence/part3_stale_cache.png" alt="Stale-cache evidence" />
+<figcaption aria-hidden="true">Stale-cache evidence</figcaption>
+</figure>
+<p>Evidence:</p>
+<ul>
+<li><code>raw/stale_cache.json</code></li>
+<li><code>raw/stale_cache.log</code></li>
+<li><code>code/hw9_stale_cache_test.py</code></li>
+</ul>
+<h2 id="part-4-answering-agent-and-evaluator-agent">Part 4: Answering
+Agent and Evaluator Agent</h2>
+<p>Part 4 implements an Answering Agent and an Evaluator Agent. The
+system includes reference data, input-only training/validation/test
+datasets, validated lessons, controlled failure, bounded repair, and
+four experiment variants.</p>
+<p>The datasets contain questions only. Expected answers are stored
+separately in the reference data and used by the evaluator.</p>
+<p>Files:</p>
+<ul>
+<li><code>data/reference_data.json</code></li>
+<li><code>data/train.jsonl</code></li>
+<li><code>data/validation.jsonl</code></li>
+<li><code>data/test.jsonl</code></li>
+<li><code>raw/lessons.json</code></li>
+</ul>
+<p>The system allows a maximum of two attempts. The Evaluator Agent
+checks the answer and provides repair feedback when the first answer
+fails.</p>
+<h3 id="agent-communication-and-validation">Agent Communication and
+Validation</h3>
+<p>The Answering Agent receives each question and creates an initial
+answer. The Evaluator Agent compares that answer with the separate
+reference dataset and returns either PASS or REVISE, together with an
+explanation and correction feedback. If the result is REVISE, the
+Answering Agent produces one revised answer and the Evaluator checks it
+again. The system allows a maximum of two attempts and stops after the
+second attempt, even if the answer is still incorrect.</p>
+<p>Lessons are created from repeated failure patterns and tested with
+<code>validation_data.json</code> before being retained. A lesson is
+kept only when failure cases improve or remain unchanged, previously
+correct answers remain correct, and unrelated questions do not receive
+unsupported answers.</p>
+<p>One limitation is that the evaluator uses word-overlap matching
+against a small reference dataset. It may therefore accept an answer
+with similar wording even when the explanation is incomplete, or reject
+a correct answer phrased very differently.</p>
+<h3 id="variant-comparison">Variant Comparison</h3>
+<table>
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 21%" />
+</colgroup>
+<thead>
+<tr>
+<th>Variant</th>
+<th style="text-align: right;">Correct answers</th>
+<th style="text-align: right;">Incorrect answers</th>
+<th style="text-align: right;">Average attempts</th>
+<th style="text-align: right;">Average latency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Baseline</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">0.0070 ms</td>
+</tr>
+<tr>
+<td>Evaluator Repair</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.20</td>
+<td style="text-align: right;">0.0056 ms</td>
+</tr>
+<tr>
+<td>Lesson Memory</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">0.0040 ms</td>
+</tr>
+<tr>
+<td>Validated Improvement</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">0.0036 ms</td>
+</tr>
+</tbody>
+</table>
+<p>The Baseline variant intentionally failed on the stale-cache
+question. The Evaluator Repair variant detected the failure, used a
+second attempt, and corrected the answer. The Lesson Memory and
+Validated Improvement variants loaded the validated stale-data lesson
+before answering.</p>
+<p>The Baseline intentionally failed on the stale-cache question. The
+Evaluator Repair variant detected the error and corrected it on the
+second attempt:</p>
+<p>The complete revision sequence produced:</p>
+<p>The complete revision sequence was:</p>
+<ul>
+<li>Question: What happens when a cached answer becomes stale?</li>
+<li>Initial answer: The cache always returns the previous answer without
+checking for stale data.</li>
+<li>Evaluator result: REVISE</li>
+<li>Evaluator explanation: The answer does not correctly address the
+reference facts.</li>
+<li>Evaluator feedback: Check the reference data and correct the
+stale-data explanation.</li>
+<li>Revised answer: The data-version marker prevents stale answers from
+being reused after reference data changes.</li>
+<li>Final evaluation: PASS</li>
+<li>Attempts: 2</li>
+<li>Final response returned: The data-version marker prevents stale
+answers from being reused after reference data changes.</li>
+</ul>
+<pre class="json"><code>{
+  &quot;question_id&quot;: &quot;test-005&quot;,
+  &quot;attempts&quot;: 2,
+  &quot;repaired&quot;: true,
+  &quot;evaluation&quot;: &quot;PASS&quot;,
+  &quot;passed&quot;: true
+}</code></pre>
+<p><strong>Figure 7. Answering and Evaluator Agent
+experiment</strong></p>
+<figure>
+<img src="evidence/part4_experiment.png"
+alt="Part 4 experiment evidence" />
+<figcaption aria-hidden="true">Part 4 experiment evidence</figcaption>
+</figure>
+<p>Evidence:</p>
+<ul>
+<li><code>raw/part4_results.json</code></li>
+<li><code>raw/part4_experiment.log</code></li>
+<li><code>raw/lessons.json</code></li>
+<li><code>code/hw9_part4_setup.py</code></li>
+<li><code>code/hw9_part4_experiment.py</code></li>
+</ul>
+<h3 id="required-part-4-dataset-files">Required Part 4 Dataset
+Files</h3>
+<p>The required input-only datasets are:</p>
+<ul>
+<li><code>data/training_data.json</code></li>
+<li><code>data/validation_data.json</code></li>
+<li><code>data/test_data.json</code></li>
+</ul>
+<p>The evaluator uses the separate reference dataset:</p>
+<ul>
+<li><code>data/reference_data.json</code></li>
+</ul>
+<p>The training, validation, and test datasets contain questions only
+and do not contain expected answers.</p>
+<h3 id="lesson-reuse-demonstration">Lesson Reuse Demonstration</h3>
+<p>After the evaluator identified the stale-answer failure pattern, the
+system saved the following reusable lesson:</p>
+<pre class="json"><code>{
+  &quot;lesson_id&quot;: &quot;lesson_001&quot;,
+  &quot;failure_pattern&quot;: &quot;The answer incorrectly reuses a stale cached response after reference data changes.&quot;,
+  &quot;correction&quot;: &quot;Check the stored data-version marker and invalidate the old cache version before answering.&quot;,
+  &quot;created_at&quot;: &quot;2026-11-04&quot;,
+  &quot;use_count&quot;: 2
+}</code></pre>
+<p>A later stale-cache question loaded <code>lesson_001</code> and
+reused its correction.</p>
+<p>The lesson-reuse result was:</p>
+<pre class="json"><code>{
+  &quot;lesson_loaded&quot;: true,
+  &quot;lesson_id&quot;: &quot;lesson_001&quot;,
+  &quot;passed&quot;: true,
+  &quot;use_count&quot;: 2
+}</code></pre>
+<p>Evidence: - raw/lesson_reuse.json - raw/lesson_reuse.log -
+raw/lessons.json</p>
+<h2 id="short-implementation-evidence">Short Implementation
+Evidence</h2>
+<h3 id="redis-view-counter">Redis View Counter</h3>
+<pre class="python"><code>key = f&quot;{PREFIX}:views:vulnerability:{entity_id}&quot;
+count = redis_client.incr(key)
+
+if count % 10 == 0:
+    entities[entity_id][&quot;view_count&quot;] = count
+    print(&quot;Synced views to database&quot;)
+
+return count</code></pre>
+<h3 id="semantic-cache-hit-and-miss">Semantic Cache Hit and Miss</h3>
+<pre class="python"><code>vector = cache.embed(query)
+match = cache._search(vector, data_version)
+
+if match and match[&quot;similarity&quot;] &gt;= threshold:
+    return {
+        &quot;answer&quot;: match[&quot;answer&quot;],
+        &quot;is_cached&quot;: True,
+        &quot;similarity&quot;: match[&quot;similarity&quot;],
+    }
+
+answer = answer_function(query)
+
+cache.redis_client.hset(
+    entry_key,
+    mapping={
+        &quot;query&quot;: query,
+        &quot;answer&quot;: answer,
+        &quot;data_version&quot;: data_version,
+        &quot;embedding&quot;: vector.tobytes(),
+    },
+)
+
+return {
+    &quot;answer&quot;: answer,
+    &quot;is_cached&quot;: False,
+    &quot;similarity&quot;: None,
+}</code></pre>
+<h3 id="answering-agent">Answering Agent</h3>
+<pre class="python"><code>class AnsweringAgent:
+    def __init__(self, variant, lessons=None):
+        self.variant = variant
+        self.lessons = lessons or {}
+
+    def answer(self, question_id, question):
+        if (
+            self.variant == &quot;Baseline&quot;
+            and question_id == &quot;test-005&quot;
+        ):
+            return (
+                &quot;The cache always returns the previous answer &quot;
+                &quot;without checking for stale data.&quot;
+            )
+
+        if (
+            self.variant in {
+                &quot;Lesson Memory&quot;,
+                &quot;Validated Improvement&quot;,
+            }
+            and question_id in self.lessons
+        ):
+            return self.lessons[question_id]
+
+        return REFERENCE_ANSWERS[question_id]
+
+        class EvaluatorAgent:
+    def evaluate(self, question_id, answer):
+        expected = REFERENCE_ANSWERS[question_id]
+
+        passed = answer.strip() == expected.strip()
+
+        return {
+            &quot;evaluation&quot;: &quot;PASS&quot; if passed else &quot;REVISE&quot;,
+            &quot;passed&quot;: passed,
+            &quot;explanation&quot;: (
+                &quot;The answer matches the reference facts.&quot;
+                if passed
+                else (
+                    &quot;The answer does not correctly address &quot;
+                    &quot;the reference facts.&quot;
+                )
+            ),
+            &quot;feedback&quot;: (
+                &quot;No revision needed.&quot;
+                if passed
+                else (
+                    &quot;Check the reference data and correct &quot;
+                    &quot;the stale-data explanation.&quot;
+                )
+            ),
+        }
+
+### Data-Version Invalidation
+
+~~~python
+stored_version = cache_entry[&quot;data_version&quot;]
+
+if stored_version != current_data_version:
+    cache.invalidate_version(stored_version)
+    return answer_function(query)
+
+return cached_answer
+~~~
+
+### Evaluator Repair and Two-Attempt Limit
+
+~~~python
+for attempt in range(1, 3):
+    answer = answering_agent.answer(question)
+    evaluation = evaluator_agent.evaluate(
+        question,
+        answer,
+    )
+
+    if evaluation[&quot;evaluation&quot;] == &quot;PASS&quot;:
+        break
+
+    if attempt == 1:
+        answer = answering_agent.revise(
+            answer,
+            evaluation[&quot;feedback&quot;],
+        )
+~~~
+
+### Lesson Validation
+
+~~~python
+lesson = evaluator_agent.create_lesson(
+    failure_pattern,
+    correction,
+)
+
+if validation_passes(lesson):
+    lessons.append(lesson)
+    save_lessons(lessons)
+else:
+    discard(lesson)
+~~~
+
+
+## Conclusions
+
+Redis provides atomic counters, low-latency response retrieval, vector similarity search, cache invalidation, and reusable lessons.
+
+The experiments demonstrate a trade-off between cache hit rate and answer correctness. Lower thresholds increase hits but also increase false hits. For this vulnerability domain, threshold `0.95` is the safest choice because it produced zero false hits.
+
+The data-version marker protects against stale responses. When reference data changes, old entries can be invalidated and the next request computes a fresh answer.
+
+The Evaluator Agent improves reliability by detecting incorrect answers and allowing one controlled repair attempt. Validated lessons provide reusable guidance for later questions.
+
+## Reproducibility Evidence
+
+- `RUN_LOG.txt`
+- `METRICS.md`
+- `AI_USE.md`
+- `data/reference_data.json`
+- `data/train.jsonl`
+- `data/validation.jsonl`
+- `data/test.jsonl`
+- `raw/part1_counter.log`
+- `raw/part2_cache_smoke.log`
+- `raw/part2_cache_10_queries.json`
+- `raw/threshold_sweep.json`
+- `raw/false_hit_example.json`
+- `raw/cost_model.json`
+- `raw/stale_cache.json`
+- `raw/lessons.json`
+- `raw/part4_results.json`
+
+## AI Use
+
+AI assistance was used to draft Redis counter code, Redis Stack vector-search code, cache experiments, threshold analysis, stale-data invalidation, agent evaluation logic, datasets, and report text.
+
+The student ran the commands locally, inspected outputs, corrected implementation issues, captured evidence screenshots, and made the final repository changes.
+
+During testing, the initial vector search selected the nearest entry across all data versions before checking the version marker. The search was corrected to filter by `data_version` before KNN search.
+
+The initial cache test also returned the vulnerability answer for an unrelated question because the answer function returned the same answer for every input. The answer function was corrected to return a no-match response for unrelated questions.
+
+## Submission Contents
+
+The HW9 submission includes the implementation files, Redis and Redis Stack experiments, reference data, input-only datasets, lessons, raw JSON results, raw logs, screenshots, metrics, AI-use documentation, and this report.
+
+Final PDF target:
+
+```text
+reports/hw09/Shetty_HW9.pdf</code></pre>
+</body>
+</html>

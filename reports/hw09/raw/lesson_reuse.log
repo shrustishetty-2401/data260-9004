@@ -1,0 +1,11 @@
+{
+  "question": "What happens when a cached answer becomes stale?",
+  "lesson_loaded": true,
+  "lesson_id": "lesson_001",
+  "lesson_correction": "Check the stored data-version marker and invalidate the old cache version before answering.",
+  "answer": "The data-version marker prevents stale answers from being reused after reference data changes.",
+  "passed": true,
+  "use_count": 2,
+  "used_on": "2026-11-04"
+}
+Saved results to reports/hw09/raw/lesson_reuse.json

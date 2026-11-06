@@ -1,0 +1,5 @@
+{"question_id": "train-001", "question": "What is the primary entity in the system?"}
+{"question_id": "train-002", "question": "Where are vulnerability requests published?"}
+{"question_id": "train-003", "question": "How are vulnerability records identified?"}
+{"question_id": "train-004", "question": "How does the system handle duplicate correlation IDs?"}
+{"question_id": "train-005", "question": "Where does the Writer publish drafts?"}

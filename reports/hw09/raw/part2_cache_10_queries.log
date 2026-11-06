@@ -1,0 +1,109 @@
+[CACHE] MISS
+{
+  "query_number": 1,
+  "query": "What package contains vulnerability HW9-001?",
+  "answer": "Vulnerability HW9-001 belongs to package-0.",
+  "is_cached": false,
+  "similarity": null,
+  "latency_ms": 211.8727919878438,
+  "data_version": "experiment-v1"
+}
+[CACHE] MISS
+{
+  "query_number": 2,
+  "query": "What package contains vulnerability HW9-001?",
+  "answer": "Vulnerability HW9-001 belongs to package-0.",
+  "is_cached": false,
+  "similarity": null,
+  "latency_ms": 11.96116697974503,
+  "data_version": "experiment-v1"
+}
+[CACHE] MISS
+{
+  "query_number": 3,
+  "query": "Which package is vulnerability HW9-001 associated with?",
+  "answer": "Vulnerability HW9-001 belongs to package-0.",
+  "is_cached": false,
+  "similarity": null,
+  "latency_ms": 13.120666000759229,
+  "data_version": "experiment-v1"
+}
+[CACHE] HIT similarity=0.8913 latency_ms=272.89
+{
+  "query_number": 4,
+  "query": "What category is vulnerability HW9-001 in?",
+  "answer": "Vulnerability HW9-001 belongs to package-0.",
+  "is_cached": true,
+  "similarity": 0.891312479973,
+  "latency_ms": 272.8855829918757,
+  "data_version": "experiment-v1"
+}
+[CACHE] HIT similarity=0.8811 latency_ms=10.30
+{
+  "query_number": 5,
+  "query": "Which category contains vulnerability HW9-001?",
+  "answer": "Vulnerability HW9-001 belongs to package-0.",
+  "is_cached": true,
+  "similarity": 0.88110178709,
+  "latency_ms": 10.304583003744483,
+  "data_version": "experiment-v1"
+}
+[CACHE] MISS
+{
+  "query_number": 6,
+  "query": "Which Kafka topic receives vulnerability requests?",
+  "answer": "Vulnerability requests use the s9004_vulnerability_requests topic.",
+  "is_cached": false,
+  "similarity": 0.337781608105,
+  "latency_ms": 220.447083003819,
+  "data_version": "experiment-v1"
+}
+[CACHE] MISS
+{
+  "query_number": 7,
+  "query": "What topic handles vulnerability requests?",
+  "answer": "Vulnerability requests use the s9004_vulnerability_requests topic.",
+  "is_cached": false,
+  "similarity": 0.699083924294,
+  "latency_ms": 1377.6077500078827,
+  "data_version": "experiment-v1"
+}
+[CACHE] MISS
+{
+  "query_number": 8,
+  "query": "What does Redis store for the semantic cache?",
+  "answer": "Redis stores the cached embedding, answer, and data-version marker.",
+  "is_cached": false,
+  "similarity": 0.11603200435600003,
+  "latency_ms": 11.607332999119535,
+  "data_version": "experiment-v1"
+}
+[CACHE] MISS
+{
+  "query_number": 9,
+  "query": "What is the weather forecast today?",
+  "answer": "No matching vulnerability fact was found in the reference data.",
+  "is_cached": false,
+  "similarity": null,
+  "latency_ms": 208.57499999692664,
+  "data_version": "experiment-v1"
+}
+[CACHE] MISS
+{
+  "query_number": 10,
+  "query": "What is the capital of France?",
+  "answer": "No matching vulnerability fact was found in the reference data.",
+  "is_cached": false,
+  "similarity": 0.24586158990899998,
+  "latency_ms": 11.811166012194008,
+  "data_version": "experiment-v1"
+}
+{
+  "query_count": 10,
+  "cached_count": 2,
+  "uncached_count": 8,
+  "cache_hit_rate": 0.2,
+  "average_cached_latency_ms": 141.5950829978101,
+  "average_uncached_latency_ms": 258.37536962353624
+}
+Saved results to reports/hw09/raw/part2_cache_10_queries.json

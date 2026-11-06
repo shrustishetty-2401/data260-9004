@@ -1,0 +1,85 @@
+[CACHE] Invalidated version=v1 entries=2
+[CACHE] MISS
+{
+  "query_number": 1,
+  "query": "What package contains vulnerability HW9-001?",
+  "answer": "Vulnerability HW9-001 belongs to package-0 and is categorized as Input Validation.",
+  "is_cached": false,
+  "similarity": null,
+  "latency_ms": 179.5032500231173,
+  "data_version": "v1"
+}
+[CACHE] HIT similarity=1.0000 latency_ms=10.65
+{
+  "query_number": 2,
+  "query": "What package contains vulnerability HW9-001?",
+  "answer": "Vulnerability HW9-001 belongs to package-0 and is categorized as Input Validation.",
+  "is_cached": true,
+  "similarity": 1.0,
+  "latency_ms": 10.652958997525275,
+  "data_version": "v1"
+}
+[CACHE] HIT similarity=0.9706 latency_ms=11.97
+{
+  "query_number": 3,
+  "query": "Which package is vulnerability HW9-001 associated with?",
+  "answer": "Vulnerability HW9-001 belongs to package-0 and is categorized as Input Validation.",
+  "is_cached": true,
+  "similarity": 0.970552444458,
+  "latency_ms": 11.974583001574501,
+  "data_version": "v1"
+}
+[CACHE] MISS
+{
+  "query_number": 4,
+  "query": "What is the unrelated weather forecast today?",
+  "answer": "No matching vulnerability fact was found in the reference data.",
+  "is_cached": false,
+  "similarity": 0.178060889244,
+  "latency_ms": 12.464625004213303,
+  "data_version": "v1"
+}
+{
+  "query_count": 4,
+  "cached_count": 2,
+  "uncached_count": 2,
+  "cache_hit_rate": 0.5,
+  "results": [
+    {
+      "query_number": 1,
+      "query": "What package contains vulnerability HW9-001?",
+      "answer": "Vulnerability HW9-001 belongs to package-0 and is categorized as Input Validation.",
+      "is_cached": false,
+      "similarity": null,
+      "latency_ms": 179.5032500231173,
+      "data_version": "v1"
+    },
+    {
+      "query_number": 2,
+      "query": "What package contains vulnerability HW9-001?",
+      "answer": "Vulnerability HW9-001 belongs to package-0 and is categorized as Input Validation.",
+      "is_cached": true,
+      "similarity": 1.0,
+      "latency_ms": 10.652958997525275,
+      "data_version": "v1"
+    },
+    {
+      "query_number": 3,
+      "query": "Which package is vulnerability HW9-001 associated with?",
+      "answer": "Vulnerability HW9-001 belongs to package-0 and is categorized as Input Validation.",
+      "is_cached": true,
+      "similarity": 0.970552444458,
+      "latency_ms": 11.974583001574501,
+      "data_version": "v1"
+    },
+    {
+      "query_number": 4,
+      "query": "What is the unrelated weather forecast today?",
+      "answer": "No matching vulnerability fact was found in the reference data.",
+      "is_cached": false,
+      "similarity": 0.178060889244,
+      "latency_ms": 12.464625004213303,
+      "data_version": "v1"
+    }
+  ]
+}

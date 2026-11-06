@@ -1,0 +1,5 @@
+{"question_id": "validation-001", "question": "How many attempts are allowed for a poison message?"}
+{"question_id": "validation-002", "question": "Where are failed poison messages sent?"}
+{"question_id": "validation-003", "question": "How does Kafka preserve order for related messages?"}
+{"question_id": "validation-004", "question": "What information is kept in the semantic cache?"}
+{"question_id": "validation-005", "question": "Why does the cache store a data version?"}

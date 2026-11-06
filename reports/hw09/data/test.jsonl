@@ -1,0 +1,5 @@
+{"question_id": "test-001", "question": "Which Kafka topic receives vulnerability responses?"}
+{"question_id": "test-002", "question": "What does Redis keep for a cached response?"}
+{"question_id": "test-003", "question": "Which similarity measure does the cache use?"}
+{"question_id": "test-004", "question": "What threshold was selected for the cache?"}
+{"question_id": "test-005", "question": "What happens when a cached answer becomes stale?"}

@@ -1,0 +1,61 @@
+{
+  "cost_assumptions": {
+    "cache_hit_cost": 1.0,
+    "correct_miss_cost": 10.0,
+    "false_hit_penalty": 30.0
+  },
+  "results": [
+    {
+      "threshold": 0.75,
+      "hit_rate": 0.5,
+      "false_hit_rate": 0.3,
+      "cache_hits": 14,
+      "correct_misses": 20,
+      "false_hits": 6,
+      "total_cost": 394.0,
+      "cost_per_query": 9.85
+    },
+    {
+      "threshold": 0.8,
+      "hit_rate": 0.4,
+      "false_hit_rate": 0.2,
+      "cache_hits": 12,
+      "correct_misses": 24,
+      "false_hits": 4,
+      "total_cost": 372.0,
+      "cost_per_query": 9.3
+    },
+    {
+      "threshold": 0.85,
+      "hit_rate": 0.35,
+      "false_hit_rate": 0.15,
+      "cache_hits": 11,
+      "correct_misses": 26,
+      "false_hits": 3,
+      "total_cost": 361.0,
+      "cost_per_query": 9.025
+    },
+    {
+      "threshold": 0.9,
+      "hit_rate": 0.325,
+      "false_hit_rate": 0.1,
+      "cache_hits": 11,
+      "correct_misses": 27,
+      "false_hits": 2,
+      "total_cost": 341.0,
+      "cost_per_query": 8.525
+    },
+    {
+      "threshold": 0.95,
+      "hit_rate": 0.25,
+      "false_hit_rate": 0.0,
+      "cache_hits": 10,
+      "correct_misses": 30,
+      "false_hits": 0,
+      "total_cost": 310.0,
+      "cost_per_query": 7.75
+    }
+  ],
+  "recommended_threshold": 0.95,
+  "recommendation_reason": "Choose the highest-correctness threshold with zero false hits for vulnerability answers."
+}

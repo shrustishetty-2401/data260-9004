@@ -1,0 +1,307 @@
+{
+  "reference_file": "reports/hw09/data/reference_data.json",
+  "training_file": "reports/hw09/data/training_data.json",
+  "validation_file": "reports/hw09/data/validation_data.json",
+  "test_file": "reports/hw09/data/test_data.json",
+  "training_count": 5,
+  "validation_count": 5,
+  "test_count": 5,
+  "lesson_count": 1,
+  "max_attempts": 2,
+  "variants": [
+    {
+      "variant": "Baseline",
+      "question_count": 5,
+      "correct_answers": 4,
+      "incorrect_answers": 1,
+      "accuracy": 0.8,
+      "repaired_count": 0,
+      "average_attempts": 1.0,
+      "average_latency_ms": 0.007041596109047532,
+      "max_attempts": 2,
+      "rows": [
+        {
+          "question_id": "test-001",
+          "question": "Which Kafka topic receives vulnerability responses?",
+          "initial_or_final_answer": "Vulnerability responses use the s9004_vulnerability_responses topic.",
+          "attempts": 1,
+          "repaired": false,
+          "evaluation": "PASS",
+          "passed": true,
+          "explanation": "The answer matches the reference facts.",
+          "feedback": "No revision needed.",
+          "latency_ms": 0.009374984074383974
+        },
+        {
+          "question_id": "test-002",
+          "question": "What does Redis keep for a cached response?",
+          "initial_or_final_answer": "Redis stores the query, embedding, answer, and data-version marker.",
+          "attempts": 1,
+          "repaired": false,
+          "evaluation": "PASS",
+          "passed": true,
+          "explanation": "The answer matches the reference facts.",
+          "feedback": "No revision needed.",
+          "latency_ms": 0.007833004929125309
+        },
+        {
+          "question_id": "test-003",
+          "question": "Which similarity measure does the cache use?",
+          "initial_or_final_answer": "The semantic cache uses cosine similarity.",
+          "attempts": 1,
+          "repaired": false,
+          "evaluation": "PASS",
+          "passed": true,
+          "explanation": "The answer matches the reference facts.",
+          "feedback": "No revision needed.",
+          "latency_ms": 0.0048340007197111845
+        },
+        {
+          "question_id": "test-004",
+          "question": "What threshold was selected for the cache?",
+          "initial_or_final_answer": "Threshold 0.95 was selected because it produced zero false hits.",
+          "attempts": 1,
+          "repaired": false,
+          "evaluation": "PASS",
+          "passed": true,
+          "explanation": "The answer matches the reference facts.",
+          "feedback": "No revision needed.",
+          "latency_ms": 0.005582987796515226
+        },
+        {
+          "question_id": "test-005",
+          "question": "What happens when a cached answer becomes stale?",
+          "initial_or_final_answer": "The cache always returns the previous answer without checking for stale data.",
+          "attempts": 1,
+          "repaired": false,
+          "evaluation": "REVISE",
+          "passed": false,
+          "explanation": "The answer does not correctly address the reference facts.",
+          "feedback": "Check the reference data and correct the stale-data explanation.",
+          "latency_ms": 0.0075830030255019665
+        }
+      ]
+    },
+    {
+      "variant": "Evaluator Repair",
+      "question_count": 5,
+      "correct_answers": 5,
+      "incorrect_answers": 0,
+      "accuracy": 1.0,
+      "repaired_count": 1,
+      "average_attempts": 1.2,
+      "average_latency_ms": 0.005608599167317152,
+      "max_attempts": 2,
+      "rows": [
+        {
+          "question_id": "test-001",
+          "question": "Which Kafka topic receives vulnerability responses?",
+          "initial_or_final_answer": "Vulnerability responses use the s9004_vulnerability_responses topic.",
+          "attempts": 1,
+          "repaired": false,
+          "evaluation": "PASS",
+          "passed": true,
+          "explanation": "The answer matches the reference facts.",
+          "feedback": "No revision needed.",
+          "latency_ms": 0.004250003257766366
+        },
+        {
+          "question_id": "test-002",
+          "question": "What does Redis keep for a cached response?",
+          "initial_or_final_answer": "Redis stores the query, embedding, answer, and data-version marker.",
+          "attempts": 1,
+          "repaired": false,
+          "evaluation": "PASS",
+          "passed": true,
+          "explanation": "The answer matches the reference facts.",
+          "feedback": "No revision needed.",
+          "latency_ms": 0.004583998816087842
+        },
+        {
+          "question_id": "test-003",
+          "question": "Which similarity measure does the cache use?",
+          "initial_or_final_answer": "The semantic cache uses cosine similarity.",
+          "attempts": 1,
+          "repaired": false,
+          "evaluation": "PASS",
+          "passed": true,
+          "explanation": "The answer matches the reference facts.",
+          "feedback": "No revision needed.",
+          "latency_ms": 0.0032920215744525194
+        },
+        {
+          "question_id": "test-004",
+          "question": "What threshold was selected for the cache?",
+          "initial_or_final_answer": "Threshold 0.95 was selected because it produced zero false hits.",
+          "attempts": 1,
+          "repaired": false,
+          "evaluation": "PASS",
+          "passed": true,
+          "explanation": "The answer matches the reference facts.",
+          "feedback": "No revision needed.",
+          "latency_ms": 0.004332978278398514
+        },
+        {
+          "question_id": "test-005",
+          "question": "What happens when a cached answer becomes stale?",
+          "initial_or_final_answer": "The data-version marker prevents stale answers from being reused after reference data changes.",
+          "attempts": 2,
+          "repaired": true,
+          "evaluation": "PASS",
+          "passed": true,
+          "explanation": "The answer matches the reference facts.",
+          "feedback": "No revision needed.",
+          "latency_ms": 0.011583993909880519
+        }
+      ]
+    },
+    {
+      "variant": "Lesson Memory",
+      "question_count": 5,
+      "correct_answers": 5,
+      "incorrect_answers": 0,
+      "accuracy": 1.0,
+      "repaired_count": 0,
+      "average_attempts": 1.0,
+      "average_latency_ms": 0.004025193629786372,
+      "max_attempts": 2,
+      "rows": [
+        {
+          "question_id": "test-001",
+          "question": "Which Kafka topic receives vulnerability responses?",
+          "initial_or_final_answer": "Vulnerability responses use the s9004_vulnerability_responses topic.",
+          "attempts": 1,
+          "repaired": false,
+          "evaluation": "PASS",
+          "passed": true,
+          "explanation": "The answer matches the reference facts.",
+          "feedback": "No revision needed.",
+          "latency_ms": 0.003374996595084667
+        },
+        {
+          "question_id": "test-002",
+          "question": "What does Redis keep for a cached response?",
+          "initial_or_final_answer": "Redis stores the query, embedding, answer, and data-version marker.",
+          "attempts": 1,
+          "repaired": false,
+          "evaluation": "PASS",
+          "passed": true,
+          "explanation": "The answer matches the reference facts.",
+          "feedback": "No revision needed.",
+          "latency_ms": 0.0040000013541430235
+        },
+        {
+          "question_id": "test-003",
+          "question": "Which similarity measure does the cache use?",
+          "initial_or_final_answer": "The semantic cache uses cosine similarity.",
+          "attempts": 1,
+          "repaired": false,
+          "evaluation": "PASS",
+          "passed": true,
+          "explanation": "The answer matches the reference facts.",
+          "feedback": "No revision needed.",
+          "latency_ms": 0.0029589864425361156
+        },
+        {
+          "question_id": "test-004",
+          "question": "What threshold was selected for the cache?",
+          "initial_or_final_answer": "Threshold 0.95 was selected because it produced zero false hits.",
+          "attempts": 1,
+          "repaired": false,
+          "evaluation": "PASS",
+          "passed": true,
+          "explanation": "The answer matches the reference facts.",
+          "feedback": "No revision needed.",
+          "latency_ms": 0.0038750004023313522
+        },
+        {
+          "question_id": "test-005",
+          "question": "What happens when a cached answer becomes stale?",
+          "initial_or_final_answer": "The data-version marker prevents stale answers from being reused after reference data changes.",
+          "attempts": 1,
+          "repaired": false,
+          "evaluation": "PASS",
+          "passed": true,
+          "explanation": "The answer matches the reference facts.",
+          "feedback": "No revision needed.",
+          "latency_ms": 0.005916983354836702
+        }
+      ]
+    },
+    {
+      "variant": "Validated Improvement",
+      "question_count": 5,
+      "correct_answers": 5,
+      "incorrect_answers": 0,
+      "accuracy": 1.0,
+      "repaired_count": 0,
+      "average_attempts": 1.0,
+      "average_latency_ms": 0.003624800592660904,
+      "max_attempts": 2,
+      "rows": [
+        {
+          "question_id": "test-001",
+          "question": "Which Kafka topic receives vulnerability responses?",
+          "initial_or_final_answer": "Vulnerability responses use the s9004_vulnerability_responses topic.",
+          "attempts": 1,
+          "repaired": false,
+          "evaluation": "PASS",
+          "passed": true,
+          "explanation": "The answer matches the reference facts.",
+          "feedback": "No revision needed.",
+          "latency_ms": 0.0027500209398567677
+        },
+        {
+          "question_id": "test-002",
+          "question": "What does Redis keep for a cached response?",
+          "initial_or_final_answer": "Redis stores the query, embedding, answer, and data-version marker.",
+          "attempts": 1,
+          "repaired": false,
+          "evaluation": "PASS",
+          "passed": true,
+          "explanation": "The answer matches the reference facts.",
+          "feedback": "No revision needed.",
+          "latency_ms": 0.003583001671358943
+        },
+        {
+          "question_id": "test-003",
+          "question": "Which similarity measure does the cache use?",
+          "initial_or_final_answer": "The semantic cache uses cosine similarity.",
+          "attempts": 1,
+          "repaired": false,
+          "evaluation": "PASS",
+          "passed": true,
+          "explanation": "The answer matches the reference facts.",
+          "feedback": "No revision needed.",
+          "latency_ms": 0.0028329959604889154
+        },
+        {
+          "question_id": "test-004",
+          "question": "What threshold was selected for the cache?",
+          "initial_or_final_answer": "Threshold 0.95 was selected because it produced zero false hits.",
+          "attempts": 1,
+          "repaired": false,
+          "evaluation": "PASS",
+          "passed": true,
+          "explanation": "The answer matches the reference facts.",
+          "feedback": "No revision needed.",
+          "latency_ms": 0.0036249984987080097
+        },
+        {
+          "question_id": "test-005",
+          "question": "What happens when a cached answer becomes stale?",
+          "initial_or_final_answer": "The data-version marker prevents stale answers from being reused after reference data changes.",
+          "attempts": 1,
+          "repaired": false,
+          "evaluation": "PASS",
+          "passed": true,
+          "explanation": "The answer matches the reference facts.",
+          "feedback": "No revision needed.",
+          "latency_ms": 0.005332985892891884
+        }
+      ]
+    }
+  ]
+}
+Saved lessons to reports/hw09/raw/lessons.json
+Saved results to reports/hw09/raw/part4_results.json

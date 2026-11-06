@@ -1,0 +1,29 @@
+{
+  "query": "What package contains vulnerability HW9-001?",
+  "initial_version": "v1",
+  "updated_version": "v2",
+  "initial_result": {
+    "answer": "Vulnerability HW9-001 belongs to package-0 and is categorized as Input Validation.",
+    "is_cached": false,
+    "similarity": null,
+    "latency_ms": 171.4585830050055,
+    "data_version": "v1"
+  },
+  "stale_result_before_invalidation": {
+    "answer": "Vulnerability HW9-001 belongs to package-0 and is categorized as Input Validation.",
+    "is_cached": true,
+    "similarity": 1.0,
+    "latency_ms": 10.550541017437354,
+    "data_version": "v1"
+  },
+  "invalidated_entries": 1,
+  "fresh_result_after_invalidation": {
+    "answer": "Vulnerability HW9-001 belongs to package-1 and is categorized as Dependency Risk.",
+    "is_cached": false,
+    "similarity": null,
+    "latency_ms": 8.45866699819453,
+    "data_version": "v2"
+  },
+  "stale_answer_was_returned": true,
+  "fresh_answer_was_returned": true
+}

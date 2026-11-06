@@ -1,0 +1,39 @@
+{
+  "threshold": 0.85,
+  "false_hit_count": 3,
+  "false_hits": [
+    {
+      "case_id": "similar_different_01",
+      "label": "similar_different_answer",
+      "query": "Which package depends on vulnerability HW9-001?",
+      "expected_hit": false,
+      "actual_hit": true,
+      "false_hit": true,
+      "similarity": 0.9207778573036,
+      "latency_ms": 8.924333000322804,
+      "data_version": "sweep-0.85"
+    },
+    {
+      "case_id": "similar_different_03",
+      "label": "similar_different_answer",
+      "query": "Which category should vulnerability HW9-001 be excluded from?",
+      "expected_hit": false,
+      "actual_hit": true,
+      "false_hit": true,
+      "similarity": 0.852123498917,
+      "latency_ms": 9.89495898829773,
+      "data_version": "sweep-0.85"
+    },
+    {
+      "case_id": "similar_different_06",
+      "label": "similar_different_answer",
+      "query": "Which Kafka topic stores failed vulnerability requests?",
+      "expected_hit": false,
+      "actual_hit": true,
+      "false_hit": true,
+      "similarity": 0.9168137311935,
+      "latency_ms": 9.546791989123449,
+      "data_version": "sweep-0.85"
+    }
+  ]
+}

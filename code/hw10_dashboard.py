@@ -124,11 +124,6 @@ st.markdown(
         font-weight: 700;
         display: inline-block;
     }
-
-    [data-testid="stDataFrame"] {
-        border: 2px solid #dbe5f2;
-        border-radius: 12px;
-    }
     </style>
     """,
     unsafe_allow_html=True,
@@ -172,26 +167,10 @@ if page == "Summary":
 
     columns = st.columns(5)
 
-    columns[0].metric(
-        "Traces",
-        trace_count,
-    )
-
-    columns[1].metric(
-        "Cache hits",
-        hit_count,
-    )
-
-    columns[2].metric(
-        "Cache misses",
-        miss_count,
-    )
-
-    columns[3].metric(
-        "Failed spans",
-        failed_count,
-    )
-
+    columns[0].metric("Traces", trace_count)
+    columns[1].metric("Cache hits", hit_count)
+    columns[2].metric("Cache misses", miss_count)
+    columns[3].metric("Failed spans", failed_count)
     columns[4].metric(
         "Total p95",
         f"{fmt(total.get('p95_ms'))} ms",
@@ -337,12 +316,14 @@ elif page == "Evaluation":
 
     if repeats:
         for item in repeats:
+            summary = item.get("summary", {})
+
             st.write(
                 f"Repeat {item.get('repeat')}: "
                 f"Spearman = "
-                f"{fmt(item.get('spearman_correlation'), 3)}, "
+                f"{fmt(summary.get('spearman_correlation'), 3)}, "
                 f"MAD = "
-                f"{fmt(item.get('mean_absolute_difference'), 3)}"
+                f"{fmt(summary.get('mean_absolute_difference'), 3)}"
             )
     else:
         st.warning("Judge validation repeat results are not available.")

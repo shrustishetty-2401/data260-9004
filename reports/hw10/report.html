@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>report</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="report.css" />
+</head>
+<body>
+<h1 id="data-260-homework-10">DATA-260 Homework 10</h1>
+<h2 id="student-and-configuration">Student and Configuration</h2>
+<ul>
+<li>Student: Shrusti Shetty</li>
+<li>SID4: 9004</li>
+<li>Prefix: <code>s9004</code></li>
+<li>Branch: <code>hw10</code></li>
+<li>Kafka bootstrap server: <code>localhost:29092</code></li>
+<li>Local judge model: <code>qwen3:8b</code> through Ollama</li>
+</ul>
+<h2 id="overview">Overview</h2>
+<p>This homework extends the HW8 Kafka multi-agent pipeline with
+automated evaluation, human judge validation, distributed tracing,
+latency measurements, and a Streamlit operations dashboard.</p>
+<p>The HW10 implementation evaluates the Planner, Writer, and Reviewer
+stages. It preserves the same <code>correlation_id</code> across
+pipeline messages, evaluates the generated plan and answers, records
+cache and pipeline traces, measures latency, and presents the results
+through a dashboard.</p>
+<p>The implementation uses:</p>
+<ul>
+<li>Kafka and <code>aiokafka</code></li>
+<li>Redis semantic-cache evidence from HW9</li>
+<li>DeepEval</li>
+<li>Ollama with the local <code>qwen3:8b</code> model</li>
+<li>Streamlit</li>
+<li>JSON and JSONL evidence files</li>
+</ul>
+<h2 id="part-1-operations-dashboard">Part 1: Operations Dashboard</h2>
+<p>The operations dashboard is implemented in:</p>
+<pre class="text"><code>code/hw10_dashboard.py</code></pre>
+<p>It is launched with:</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">streamlit</span> run code/hw10_dashboard.py</span></code></pre></div>
+<p>The dashboard contains three pages.</p>
+<h3 id="summary-page">Summary Page</h3>
+<p>The Summary page displays:</p>
+<ul>
+<li>Number of captured traces</li>
+<li>Cache-hit count</li>
+<li>Cache-miss count</li>
+<li>Failed-span count</li>
+<li>Total latency p50 and p95</li>
+<li>Planner, Writer, Reviewer, and queue latency</li>
+<li>Dominant p95 latency contributor</li>
+<li>Confirmed cache-miss count</li>
+<li>Data source and experiment time window</li>
+</ul>
+<p>The dashboard reads:</p>
+<pre class="text"><code>reports/hw10/raw/traces.jsonl
+reports/hw10/raw/latency_benchmark.json
+reports/hw10/raw/pipeline_evaluation.json
+reports/hw10/raw/judge_validation.json
+reports/hw10/raw/trace_examples.json</code></pre>
+<p>The latency chart shows p95 latency for queue wait, Planner, Writer,
+Reviewer, and the total pipeline.</p>
+<h3 id="evaluation-page">Evaluation Page</h3>
+<p>The Evaluation page displays:</p>
+<ul>
+<li>Plan Quality score</li>
+<li>Writer Helpfulness score</li>
+<li>Final Answer Helpfulness score</li>
+<li>Draft score</li>
+<li>Final-answer score</li>
+<li>Final-versus-draft interpretation</li>
+<li>Spearman correlation from judge validation</li>
+<li>Mean absolute difference from human labels</li>
+<li>Repeated judge-validation results</li>
+</ul>
+<p>The tested final response did not improve over the draft. Both the
+draft and final answer received a judge score of 1.0 because the
+generated answer was generic and did not explain Kafka coordination
+mechanisms.</p>
+<h3 id="trace-lookup-page">Trace Lookup Page</h3>
+<p>The Trace Lookup page allows a user to select a trace ID and
+inspect:</p>
+<ul>
+<li>Cache lookup</li>
+<li>Cache hit or miss status</li>
+<li>Inbox stage</li>
+<li>Planner stage</li>
+<li>Writer stage</li>
+<li>Reviewer stage</li>
+<li>Evaluation stage</li>
+<li>Start and end timestamps</li>
+<li>Success or failure status</li>
+<li>Error details</li>
+<li>Stage metadata</li>
+</ul>
+<h2 id="part-2-automated-pipeline-evaluation">Part 2: Automated Pipeline
+Evaluation</h2>
+<p>The Kafka pipeline uses:</p>
+<pre class="text"><code>s9004_inbox
+s9004_tasks
+s9004_drafts
+s9004_final</code></pre>
+<p>The original HW8 components are:</p>
+<pre class="text"><code>code/hw8_planner.py
+code/hw8_writer.py
+code/hw8_reviewer.py
+code/hw8_send_question.py</code></pre>
+<p>The evaluation program is:</p>
+<pre class="text"><code>code/hw10_pipeline_evaluator.py</code></pre>
+<p>The evaluator joins Planner, Writer, and Reviewer messages using the
+same <code>correlation_id</code>.</p>
+<p>The evaluator preserves:</p>
+<ul>
+<li><code>task_id</code></li>
+<li><code>correlation_id</code></li>
+<li>Question text</li>
+<li>Planner output</li>
+<li>Writer draft</li>
+<li>Reviewer output</li>
+<li>Kafka topic information</li>
+<li>Partition and offset metadata when available</li>
+</ul>
+<p>The evaluator uses the local Ollama model:</p>
+<pre class="text"><code>qwen3:8b</code></pre>
+<p>The evaluation criteria are:</p>
+<ol type="1">
+<li>Plan Quality</li>
+<li>Writer Helpfulness</li>
+<li>Final Answer Helpfulness</li>
+<li>Final-versus-Draft Improvement</li>
+</ol>
+<p>Scores use a 1–5 scale.</p>
+<h3 id="end-to-end-question">End-to-End Question</h3>
+<p>The tested question was:</p>
+<blockquote>
+<p>How does Kafka improve coordination between independent agents?</p>
+</blockquote>
+<p>The trace ID was:</p>
+<pre class="text"><code>f9c6814e-8ce7-4b4e-b537-5b08d76df0b2</code></pre>
+<p>The task ID was:</p>
+<pre class="text"><code>7be2045f-e63d-4744-9591-f791a5b1b3d5</code></pre>
+<p>The pipeline completed successfully and produced an approved final
+result.</p>
+<p>However, the generated answer was generic. It described a planning
+process instead of explaining Kafka's coordination mechanisms. The local
+judge therefore gave:</p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th style="text-align: right;">Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Plan Quality</td>
+<td style="text-align: right;">1.0</td>
+</tr>
+<tr>
+<td>Writer Helpfulness</td>
+<td style="text-align: right;">1.0</td>
+</tr>
+<tr>
+<td>Final Answer Helpfulness</td>
+<td style="text-align: right;">1.0</td>
+</tr>
+<tr>
+<td>Draft score</td>
+<td style="text-align: right;">1.0</td>
+</tr>
+<tr>
+<td>Final score</td>
+<td style="text-align: right;">1.0</td>
+</tr>
+<tr>
+<td>Final improvement</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+</tbody>
+</table>
+<p>The final answer did not improve over the draft. This negative result
+is reported directly rather than being presented as a positive
+improvement.</p>
+<p>Evidence:</p>
+<pre class="text"><code>reports/hw10/raw/part2_planner.log
+reports/hw10/raw/part2_writer.log
+reports/hw10/raw/part2_reviewer.log
+reports/hw10/raw/part2_sender.log
+reports/hw10/raw/part2_evaluation.log
+reports/hw10/raw/pipeline_evaluation.json
+code/hw10_pipeline_evaluator.py</code></pre>
+<h2 id="part-3-human-judge-validation">Part 3: Human Judge
+Validation</h2>
+<p>The evaluation cases were generated with:</p>
+<pre class="text"><code>code/hw10_prepare_eval_cases.py</code></pre>
+<p>The resulting dataset contains 20 Writer cases:</p>
+<pre class="text"><code>reports/hw10/data/eval_cases.json</code></pre>
+<p>Human labels were recorded manually in:</p>
+<pre class="text"><code>reports/hw10/data/human_labels.csv</code></pre>
+<p>The labels used a 1–5 helpfulness scale.</p>
+<p>The final label distribution was:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Human label</th>
+<th style="text-align: right;">Count</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">14</td>
+</tr>
+<tr>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr>
+<td style="text-align: right;">Total</td>
+<td style="text-align: right;">20</td>
+</tr>
+</tbody>
+</table>
+<p>The judge-validation program is:</p>
+<pre class="text"><code>code/hw10_judge_validation.py</code></pre>
+<p>The judge was run on the same 20 cases using the local Ollama
+<code>qwen3:8b</code> model. Three repeated validation runs were
+performed.</p>
+<p>The final repeated-validation result was:</p>
+<pre class="text"><code>Spearman correlation: 0.0421
+Mean absolute difference: 1.02
+Case count: 20</code></pre>
+<p>The very low Spearman correlation indicates that the local judge did
+not strongly agree with the human helpfulness labels. The mean absolute
+difference of 1.02 shows noticeable disagreement between the judge and
+manual ratings.</p>
+<p>This result means that the local judge should not be treated as a
+fully reliable replacement for human evaluation. It is useful as an
+automated diagnostic signal, but human review remains necessary for
+final quality decisions.</p>
+<p>Evidence:</p>
+<pre class="text"><code>reports/hw10/data/eval_cases.json
+reports/hw10/data/human_labels.csv
+reports/hw10/raw/judge_validation.json
+reports/hw10/raw/judge_validation.log
+code/hw10_prepare_eval_cases.py
+code/hw10_judge_validation.py</code></pre>
+<h2 id="part-4-distributed-tracing">Part 4: Distributed Tracing</h2>
+<p>Tracing utilities are implemented in:</p>
+<pre class="text"><code>code/hw10_trace_utils.py
+code/hw10_trace_capture.py</code></pre>
+<p>Each trace span contains:</p>
+<ul>
+<li><code>trace_id</code></li>
+<li>Stage name</li>
+<li>Start timestamp</li>
+<li>End timestamp</li>
+<li>Status</li>
+<li>Error field when applicable</li>
+<li>Stage metadata</li>
+</ul>
+<p>The trace ID is based on the same identifier used to correlate the
+Kafka pipeline.</p>
+<p>The captured stages include:</p>
+<pre class="text"><code>cache_lookup
+inbox
+planner
+writer
+reviewer
+evaluation</code></pre>
+<p>The cache lookup span distinguishes:</p>
+<pre class="text"><code>cache_status = hit
+cache_status = miss</code></pre>
+<p>The trace output is stored in:</p>
+<pre class="text"><code>reports/hw10/raw/traces.jsonl
+reports/hw10/raw/trace_examples.json
+reports/hw10/raw/trace_capture.log</code></pre>
+<h3 id="cache-hit-trace">Cache-Hit Trace</h3>
+<pre class="text"><code>d6af01fe-3915-4e0b-9e1c-8d48f17b0c72</code></pre>
+<p>This trace records a semantic-cache hit.</p>
+<h3 id="failed-trace">Failed Trace</h3>
+<pre class="text"><code>49241c44-b04f-4a1c-8ac5-84268d8babe9</code></pre>
+<p>This trace records a cache miss followed by a failed Planner stage.
+The failure evidence includes an error message describing the malformed
+request.</p>
+<h3 id="successful-cache-miss-trace">Successful Cache-Miss Trace</h3>
+<pre class="text"><code>c1703237-df58-4bbf-bef7-2ee6fb61530b</code></pre>
+<p>This trace records a successful cache miss followed by the Kafka
+Planner, Writer, Reviewer, and evaluation stages.</p>
+<p>The trace capture produced 10 spans across the required trace
+examples.</p>
+<h2 id="part-5-latency-benchmark">Part 5: Latency Benchmark</h2>
+<p>The latency benchmark is implemented in:</p>
+<pre class="text"><code>code/hw10_latency_benchmark.py</code></pre>
+<p>The benchmark generated 50 confirmed cache-miss requests. Every
+request passed through the Kafka pipeline.</p>
+<p>The output files are:</p>
+<pre class="text"><code>reports/hw10/raw/latency_benchmark.json
+reports/hw10/raw/latency_benchmark.log</code></pre>
+<h3 id="latency-results">Latency Results</h3>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th style="text-align: right;">p50 latency</th>
+<th style="text-align: right;">p95 latency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Queue wait</td>
+<td style="text-align: right;">1.01 ms</td>
+<td style="text-align: right;">2.87 ms</td>
+</tr>
+<tr>
+<td>Planner</td>
+<td style="text-align: right;">1.51 ms</td>
+<td style="text-align: right;">6.23 ms</td>
+</tr>
+<tr>
+<td>Writer</td>
+<td style="text-align: right;">3.06 ms</td>
+<td style="text-align: right;">12.80 ms</td>
+</tr>
+<tr>
+<td>Reviewer</td>
+<td style="text-align: right;">4.35 ms</td>
+<td style="text-align: right;">15.03 ms</td>
+</tr>
+<tr>
+<td>Total pipeline</td>
+<td style="text-align: right;">5.49 ms</td>
+<td style="text-align: right;">20.77 ms</td>
+</tr>
+</tbody>
+</table>
+<p>The benchmark recorded:</p>
+<pre class="text"><code>Confirmed cache misses: 50
+Dominant p95 contributor: reviewer
+Reviewer contribution: 72.34%</code></pre>
+<p>The Reviewer stage was the dominant p95 contributor. This indicates
+that the final pipeline stage contributed the greatest observed latency
+in the experiment.</p>
+<p>Cache-hit performance is reported separately from the 50 confirmed
+cache misses. This avoids mixing cache-hit behavior with full pipeline
+execution latency.</p>
+<h2 id="conclusions">Conclusions</h2>
+<p>The HW10 implementation demonstrates how automated evaluation and
+distributed tracing can be added to a Kafka-based multi-agent
+pipeline.</p>
+<p>Kafka preserved coordination between independent agents by carrying
+messages across separate topics while maintaining the same
+<code>correlation_id</code>. This allowed the evaluator to join Planner,
+Writer, and Reviewer outputs into one complete pipeline record.</p>
+<p>The local judge successfully produced structured scores and
+explanations, but judge validation showed weak agreement with human
+labels:</p>
+<pre class="text"><code>Spearman correlation: 0.0421
+Mean absolute difference: 1.02</code></pre>
+<p>Therefore, the judge is useful for automated diagnostics but should
+not replace human review.</p>
+<p>The tracing implementation distinguished cache hits, successful cache
+misses, and failed traces. The latency benchmark confirmed 50 cache
+misses and measured p50 and p95 latency for each major stage.</p>
+<p>The Reviewer stage was the dominant p95 contributor at 72.34% of the
+total p95 latency. This identifies the Reviewer stage as the main
+optimization target for future improvement.</p>
+<h2 id="reproducibility-evidence">Reproducibility Evidence</h2>
+<pre class="text"><code>code/hw8_planner.py
+code/hw8_writer.py
+code/hw8_reviewer.py
+code/hw8_send_question.py
+code/hw10_dashboard.py
+code/hw10_pipeline_evaluator.py
+code/hw10_prepare_eval_cases.py
+code/hw10_judge_validation.py
+code/hw10_trace_utils.py
+code/hw10_trace_capture.py
+code/hw10_latency_benchmark.py
+reports/hw10/data/eval_cases.json
+reports/hw10/data/human_labels.csv
+reports/hw10/raw/part2_planner.log
+reports/hw10/raw/part2_writer.log
+reports/hw10/raw/part2_reviewer.log
+reports/hw10/raw/part2_sender.log
+reports/hw10/raw/part2_evaluation.log
+reports/hw10/raw/pipeline_evaluation.json
+reports/hw10/raw/judge_validation.json
+reports/hw10/raw/judge_validation.log
+reports/hw10/raw/traces.jsonl
+reports/hw10/raw/trace_examples.json
+reports/hw10/raw/trace_capture.log
+reports/hw10/raw/latency_benchmark.json
+reports/hw10/raw/latency_benchmark.log</code></pre>
+<h2 id="ai-use">AI Use</h2>
+<p>AI assistance was used to draft the HW10 evaluator, judge-validation
+logic, trace utilities, latency benchmark, dashboard, and report
+text.</p>
+<p>The student ran the Kafka pipeline locally, configured the Ollama
+judge, created human labels, executed the three judge-validation
+repeats, captured successful and failed traces, ran the 50-request
+latency benchmark, inspected the dashboard, and reviewed the resulting
+evidence.</p>
+<p>The local judge result was reported honestly. The final answer did
+not improve over the draft, and the low judge-human correlation was
+included as a limitation rather than hidden.</p>
+<h2 id="dashboard-evidence">Dashboard Evidence</h2>
+<h3 id="figure-1-operations-summary-dashboard">Figure 1. Operations
+Summary Dashboard</h3>
+<p><img src="evidence/dashboard_summary.png"
+alt="Operations summary dashboard" /></p>
+<p>The Summary page reports trace count, cache hits and misses, failed
+spans, total p95 latency, stage latency, and the 50-request cache-miss
+benchmark.</p>
+<h3 id="figure-2-evaluation-dashboard">Figure 2. Evaluation
+Dashboard</h3>
+<p><img src="evidence/dashboard_evaluation.png"
+alt="Evaluation dashboard" /></p>
+<p>The Evaluation page reports Plan Quality, Writer Helpfulness, Final
+Answer Helpfulness, final-versus-draft comparison, and the three
+judge-validation repeats.</p>
+<h3 id="figure-3-cache-hit-trace">Figure 3. Cache-Hit Trace</h3>
+<p><img src="evidence/dashboard_trace_hit.png"
+alt="Cache-hit trace" /></p>
+<p>The Trace Lookup page shows the cache-hit path and the
+<code>cache_status: "hit"</code> metadata.</p>
+<h3 id="figure-4-successful-cache-miss-trace">Figure 4. Successful
+Cache-Miss Trace</h3>
+<p><img src="evidence/dashboard_trace_miss.png"
+alt="Successful cache-miss trace" /></p>
+<p>The Trace Lookup page shows the successful cache-miss path through
+the Kafka pipeline.</p>
+<h3 id="figure-5-failed-trace">Figure 5. Failed Trace</h3>
+<p><img src="evidence/dashboard_trace_failed.png"
+alt="Failed trace" /></p>
+<p>The Trace Lookup page shows the failed Planner stage and its recorded
+error.</p>
+<h2 id="submission-information">Submission Information</h2>
+<p>The final HW10 report target is:</p>
+<pre class="text"><code>reports/hw10/Shetty_HW10.pdf</code></pre>
+</body>
+</html>

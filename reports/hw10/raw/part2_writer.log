@@ -1,0 +1,5 @@
+[WRITER] Listening on s9004_tasks
+[WRITER] Received task_id=7be2045f-e63d-4744-9591-f791a5b1b3d5 partition=0 offset=0
+[WRITER] sequence=None entity_key=None
+[WRITER] Draft sent to s9004_drafts task_id=7be2045f-e63d-4744-9591-f791a5b1b3d5
+[WRITER] Offset committed for task_id=7be2045f-e63d-4744-9591-f791a5b1b3d5

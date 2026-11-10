@@ -1,0 +1,142 @@
+[
+  {
+    "case_id": "writer-001",
+    "correlation_id": "55da2192-d18d-4fdd-8db6-9897bdad7ad3",
+    "question": "How does Kafka improve coordination between independent agents?",
+    "writer_draft": "Answer draft for 'How does Kafka improve coordination between independent agents?': Following the planner's approach, Plan for the question 'How does Kafka improve coordination between independent agents?': 1. Identify the main goal. 2. Gather the relevant facts. 3. Organize the answer clearly. 4. Ask the Writer to produce a concise response. The main recommendation is to use a clear, evidence-based answer that directly addresses the question.",
+    "source": "hw8_writer.build_draft"
+  },
+  {
+    "case_id": "writer-002",
+    "correlation_id": "e2c8a59e-7a19-452b-a607-f14924f90e4f",
+    "question": "What is the role of the Planner in the pipeline?",
+    "writer_draft": "Answer draft for 'What is the role of the Planner in the pipeline?': Following the planner's approach, Plan for the question 'What is the role of the Planner in the pipeline?': 1. Identify the main goal. 2. Gather the relevant facts. 3. Organize the answer clearly. 4. Ask the Writer to produce a concise response. The main recommendation is to use a clear, evidence-based answer that directly addresses the question.",
+    "source": "hw8_writer.build_draft"
+  },
+  {
+    "case_id": "writer-003",
+    "correlation_id": "3c0801bd-72e1-495f-913c-a8155190d083",
+    "question": "What does the Writer send after creating a draft?",
+    "writer_draft": "Answer draft for 'What does the Writer send after creating a draft?': Following the planner's approach, Plan for the question 'What does the Writer send after creating a draft?': 1. Identify the main goal. 2. Gather the relevant facts. 3. Organize the answer clearly. 4. Ask the Writer to produce a concise response. The main recommendation is to use a clear, evidence-based answer that directly addresses the question.",
+    "source": "hw8_writer.build_draft"
+  },
+  {
+    "case_id": "writer-004",
+    "correlation_id": "b87cca59-0316-4ee7-bae5-baa3831b8fd6",
+    "question": "What does the Reviewer return to the sender?",
+    "writer_draft": "Answer draft for 'What does the Reviewer return to the sender?': Following the planner's approach, Plan for the question 'What does the Reviewer return to the sender?': 1. Identify the main goal. 2. Gather the relevant facts. 3. Organize the answer clearly. 4. Ask the Writer to produce a concise response. The main recommendation is to use a clear, evidence-based answer that directly addresses the question.",
+    "source": "hw8_writer.build_draft"
+  },
+  {
+    "case_id": "writer-005",
+    "correlation_id": "7c085119-f330-43cd-ac13-62031cd04155",
+    "question": "Why are correlation IDs important in the pipeline?",
+    "writer_draft": "Answer draft for 'Why are correlation IDs important in the pipeline?': Following the planner's approach, Plan for the question 'Why are correlation IDs important in the pipeline?': 1. Identify the main goal. 2. Gather the relevant facts. 3. Organize the answer clearly. 4. Ask the Writer to produce a concise response. The main recommendation is to use a clear, evidence-based answer that directly addresses the question.",
+    "source": "hw8_writer.build_draft"
+  },
+  {
+    "case_id": "writer-006",
+    "correlation_id": "24ce3c2e-6c0e-4003-b569-0025870bcf64",
+    "question": "How does Kafka decouple the Planner from the Writer?",
+    "writer_draft": "Answer draft for 'How does Kafka decouple the Planner from the Writer?': Following the planner's approach, Plan for the question 'How does Kafka decouple the Planner from the Writer?': 1. Identify the main goal. 2. Gather the relevant facts. 3. Organize the answer clearly. 4. Ask the Writer to produce a concise response. The main recommendation is to use a clear, evidence-based answer that directly addresses the question.",
+    "source": "hw8_writer.build_draft"
+  },
+  {
+    "case_id": "writer-007",
+    "correlation_id": "49ac54ae-1c74-440c-87bc-a151b82724b5",
+    "question": "What happens when the Writer receives a task?",
+    "writer_draft": "Answer draft for 'What happens when the Writer receives a task?': Following the planner's approach, Plan for the question 'What happens when the Writer receives a task?': 1. Identify the main goal. 2. Gather the relevant facts. 3. Organize the answer clearly. 4. Ask the Writer to produce a concise response. The main recommendation is to use a clear, evidence-based answer that directly addresses the question.",
+    "source": "hw8_writer.build_draft"
+  },
+  {
+    "case_id": "writer-008",
+    "correlation_id": "1e6f0349-c065-401c-941f-2e12f535d819",
+    "question": "How does the Reviewer evaluate a draft?",
+    "writer_draft": "Answer draft for 'How does the Reviewer evaluate a draft?': Following the planner's approach, Plan for the question 'How does the Reviewer evaluate a draft?': 1. Identify the main goal. 2. Gather the relevant facts. 3. Organize the answer clearly. 4. Ask the Writer to produce a concise response. The main recommendation is to use a clear, evidence-based answer that directly addresses the question.",
+    "source": "hw8_writer.build_draft"
+  },
+  {
+    "case_id": "writer-009",
+    "correlation_id": "fa3db081-9a36-4704-b59e-5b6522252320",
+    "question": "Which topic carries Planner tasks?",
+    "writer_draft": "Answer draft for 'Which topic carries Planner tasks?': Following the planner's approach, Plan for the question 'Which topic carries Planner tasks?': 1. Identify the main goal. 2. Gather the relevant facts. 3. Organize the answer clearly. 4. Ask the Writer to produce a concise response. The main recommendation is to use a clear, evidence-based answer that directly addresses the question.",
+    "source": "hw8_writer.build_draft"
+  },
+  {
+    "case_id": "writer-010",
+    "correlation_id": "f283e8fa-c82f-4462-9120-b405bcaefe2f",
+    "question": "Which topic carries Writer drafts?",
+    "writer_draft": "Answer draft for 'Which topic carries Writer drafts?': Following the planner's approach, Plan for the question 'Which topic carries Writer drafts?': 1. Identify the main goal. 2. Gather the relevant facts. 3. Organize the answer clearly. 4. Ask the Writer to produce a concise response. The main recommendation is to use a clear, evidence-based answer that directly addresses the question.",
+    "source": "hw8_writer.build_draft"
+  },
+  {
+    "case_id": "writer-011",
+    "correlation_id": "2406cf70-aa1e-4e5d-a6fa-9088045d451b",
+    "question": "Which topic carries final Reviewer results?",
+    "writer_draft": "Answer draft for 'Which topic carries final Reviewer results?': Following the planner's approach, Plan for the question 'Which topic carries final Reviewer results?': 1. Identify the main goal. 2. Gather the relevant facts. 3. Organize the answer clearly. 4. Ask the Writer to produce a concise response. The main recommendation is to use a clear, evidence-based answer that directly addresses the question.",
+    "source": "hw8_writer.build_draft"
+  },
+  {
+    "case_id": "writer-012",
+    "correlation_id": "9182b2bf-300e-472f-8e27-14b3477373cd",
+    "question": "How can a sender match a response to its request?",
+    "writer_draft": "Answer draft for 'How can a sender match a response to its request?': Following the planner's approach, Plan for the question 'How can a sender match a response to its request?': 1. Identify the main goal. 2. Gather the relevant facts. 3. Organize the answer clearly. 4. Ask the Writer to produce a concise response. The main recommendation is to use a clear, evidence-based answer that directly addresses the question.",
+    "source": "hw8_writer.build_draft"
+  },
+  {
+    "case_id": "writer-013",
+    "correlation_id": "ecf0a598-0680-42cc-93ed-abc6ec4f634b",
+    "question": "What benefit do independent consumer groups provide?",
+    "writer_draft": "Answer draft for 'What benefit do independent consumer groups provide?': Following the planner's approach, Plan for the question 'What benefit do independent consumer groups provide?': 1. Identify the main goal. 2. Gather the relevant facts. 3. Organize the answer clearly. 4. Ask the Writer to produce a concise response. The main recommendation is to use a clear, evidence-based answer that directly addresses the question.",
+    "source": "hw8_writer.build_draft"
+  },
+  {
+    "case_id": "writer-014",
+    "correlation_id": "1243db78-e67b-4140-8b2f-4c1c3f9f70f2",
+    "question": "How does Kafka support reliable message delivery?",
+    "writer_draft": "Answer draft for 'How does Kafka support reliable message delivery?': Following the planner's approach, Plan for the question 'How does Kafka support reliable message delivery?': 1. Identify the main goal. 2. Gather the relevant facts. 3. Organize the answer clearly. 4. Ask the Writer to produce a concise response. The main recommendation is to use a clear, evidence-based answer that directly addresses the question.",
+    "source": "hw8_writer.build_draft"
+  },
+  {
+    "case_id": "writer-015",
+    "correlation_id": "31af2534-705f-4c6d-9f8a-d599bbf21700",
+    "question": "Why are task IDs included in pipeline messages?",
+    "writer_draft": "Answer draft for 'Why are task IDs included in pipeline messages?': Following the planner's approach, Plan for the question 'Why are task IDs included in pipeline messages?': 1. Identify the main goal. 2. Gather the relevant facts. 3. Organize the answer clearly. 4. Ask the Writer to produce a concise response. The main recommendation is to use a clear, evidence-based answer that directly addresses the question.",
+    "source": "hw8_writer.build_draft"
+  },
+  {
+    "case_id": "writer-016",
+    "correlation_id": "067e5efa-518a-4a96-a77a-9f82a306c417",
+    "question": "What information should a Planner include in a plan?",
+    "writer_draft": "Answer draft for 'What information should a Planner include in a plan?': Following the planner's approach, Plan for the question 'What information should a Planner include in a plan?': 1. Identify the main goal. 2. Gather the relevant facts. 3. Organize the answer clearly. 4. Ask the Writer to produce a concise response. The main recommendation is to use a clear, evidence-based answer that directly addresses the question.",
+    "source": "hw8_writer.build_draft"
+  },
+  {
+    "case_id": "writer-017",
+    "correlation_id": "32b4685c-92d7-457f-ae5e-dafc640d639d",
+    "question": "What makes a Writer draft helpful?",
+    "writer_draft": "Answer draft for 'What makes a Writer draft helpful?': Following the planner's approach, Plan for the question 'What makes a Writer draft helpful?': 1. Identify the main goal. 2. Gather the relevant facts. 3. Organize the answer clearly. 4. Ask the Writer to produce a concise response. The main recommendation is to use a clear, evidence-based answer that directly addresses the question.",
+    "source": "hw8_writer.build_draft"
+  },
+  {
+    "case_id": "writer-018",
+    "correlation_id": "e9d13698-1d4b-478c-9505-309e3723e514",
+    "question": "What makes a Reviewer result useful?",
+    "writer_draft": "Answer draft for 'What makes a Reviewer result useful?': Following the planner's approach, Plan for the question 'What makes a Reviewer result useful?': 1. Identify the main goal. 2. Gather the relevant facts. 3. Organize the answer clearly. 4. Ask the Writer to produce a concise response. The main recommendation is to use a clear, evidence-based answer that directly addresses the question.",
+    "source": "hw8_writer.build_draft"
+  },
+  {
+    "case_id": "writer-019",
+    "correlation_id": "2dd35202-2a4f-407c-b92c-2c2dc839ba04",
+    "question": "How does the pipeline handle work between stages?",
+    "writer_draft": "Answer draft for 'How does the pipeline handle work between stages?': Following the planner's approach, Plan for the question 'How does the pipeline handle work between stages?': 1. Identify the main goal. 2. Gather the relevant facts. 3. Organize the answer clearly. 4. Ask the Writer to produce a concise response. The main recommendation is to use a clear, evidence-based answer that directly addresses the question.",
+    "source": "hw8_writer.build_draft"
+  },
+  {
+    "case_id": "writer-020",
+    "correlation_id": "ddd0875b-56d9-4165-9ebb-770b6a5294cb",
+    "question": "What is one limitation of the current Writer response?",
+    "writer_draft": "Answer draft for 'What is one limitation of the current Writer response?': Following the planner's approach, Plan for the question 'What is one limitation of the current Writer response?': 1. Identify the main goal. 2. Gather the relevant facts. 3. Organize the answer clearly. 4. Ask the Writer to produce a concise response. The main recommendation is to use a clear, evidence-based answer that directly addresses the question.",
+    "source": "hw8_writer.build_draft"
+  }
+]

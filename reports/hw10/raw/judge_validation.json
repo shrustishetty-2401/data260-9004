@@ -1,0 +1,583 @@
+{
+  "judge_model": "qwen3:8b",
+  "ollama_base_url": "http://localhost:11434",
+  "score_scale": "1-5",
+  "repeat_count": 3,
+  "case_count": 20,
+  "repeated_score_changes": 0,
+  "repeat_comparison_count": 40,
+  "mean_absolute_repeat_change": 0.0,
+  "maximum_absolute_repeat_change": 0.0,
+  "repeats": [
+    {
+      "repeat": 1,
+      "summary": {
+        "spearman_correlation": 0.04209360449419127,
+        "mean_absolute_difference": 1.02,
+        "case_count": 20
+      },
+      "cases": [
+        {
+          "case_id": "writer-001",
+          "question": "How does Kafka improve coordination between independent agents?",
+          "human_label": 2,
+          "judge_score": 1.0,
+          "normalized_score": 0.0,
+          "reason": "The Actual Output fails to address the specific question about Kafka's coordination mechanisms, instead providing a generic planning framework. It lacks factual accuracy, clarity, and direct relevance to the input's intent, offering no substantive explanation of Kafka's features or benefits for agent coordination.",
+          "latency_ms": 54411.51
+        },
+        {
+          "case_id": "writer-002",
+          "question": "What is the role of the Planner in the pipeline?",
+          "human_label": 2,
+          "judge_score": 1.8,
+          "normalized_score": 0.2,
+          "reason": "The Actual Output fails to address the specific question about the Planner's role, instead providing a generic outline of answer-creation steps. It lacks factual information, is not actionable for the query, and does not align with the input's intent to understand the Planner's specific function in the pipeline.",
+          "latency_ms": 39354.88
+        },
+        {
+          "case_id": "writer-003",
+          "question": "What does the Writer send after creating a draft?",
+          "human_label": 2,
+          "judge_score": 2.6,
+          "normalized_score": 0.4,
+          "reason": "The Actual Output addresses the intent by recommending a concise response but fails to directly answer what the Writer sends post-draft. It focuses on planning steps rather than specifying the content sent, lacking clarity and factual alignment with the question's specific request.",
+          "latency_ms": 33315.75
+        },
+        {
+          "case_id": "writer-004",
+          "question": "What does the Reviewer return to the sender?",
+          "human_label": 2,
+          "judge_score": 1.0,
+          "normalized_score": 0.0,
+          "reason": "The Actual Output fails to directly answer the specific question about what the Reviewer returns to the sender, instead providing a generic planning process. It lacks factual content, is not concise, and does not align with the input's intent to obtain a direct answer.",
+          "latency_ms": 34782.68
+        },
+        {
+          "case_id": "writer-005",
+          "question": "Why are correlation IDs important in the pipeline?",
+          "human_label": 2,
+          "judge_score": 1.0,
+          "normalized_score": 0.0,
+          "reason": "The Actual Output fails to address the specific question about correlation IDs' importance, instead providing a generic plan for answering questions. It lacks factual content, is not concise, and does not align with the input's intent to explain the significance of correlation IDs in pipelines.",
+          "latency_ms": 25550.0
+        },
+        {
+          "case_id": "writer-006",
+          "question": "How does Kafka decouple the Planner from the Writer?",
+          "human_label": 3,
+          "judge_score": 1.0,
+          "normalized_score": 0.0,
+          "reason": "The Actual Output fails to address Kafka's specific decoupling mechanism between Planner and Writer, instead providing a generic answer-drafting process. It lacks factual alignment with the input's technical question, is vague, and introduces irrelevant content about answer formulation rather than explaining Kafka's architecture. This results in poor responsiveness, accuracy, clarity, and intent alignment.",
+          "latency_ms": 32219.82
+        },
+        {
+          "case_id": "writer-007",
+          "question": "What happens when the Writer receives a task?",
+          "human_label": 2,
+          "judge_score": 1.8,
+          "normalized_score": 0.2,
+          "reason": "The Actual Output fails to directly address the input's question about the Writer's experience when receiving a task. Instead, it focuses on creating an answer plan, which is irrelevant to the intent. The response is generic and lacks specific information about the Writer's process, violating steps 1, 2, and 4.",
+          "latency_ms": 53938.1
+        },
+        {
+          "case_id": "writer-008",
+          "question": "How does the Reviewer evaluate a draft?",
+          "human_label": 2,
+          "judge_score": 1.0,
+          "normalized_score": 0.0,
+          "reason": "The Actual Output fails to address the specific question about how the Reviewer evaluates a draft, instead focusing on planning steps for creating an answer. It lacks factual alignment with the input's intent, contains vague language, and introduces irrelevant content about 'planner's approach' rather than explaining the Reviewer's evaluation criteria. This results in poor responsiveness, accuracy, and relevance.",
+          "latency_ms": 40774.63
+        },
+        {
+          "case_id": "writer-009",
+          "question": "Which topic carries Planner tasks?",
+          "human_label": 2,
+          "judge_score": 1.0,
+          "normalized_score": 0.0,
+          "reason": "The Actual Output fails to address the specific question about which topic carries Planner tasks, instead providing a generic process for answering questions. It lacks factual alignment with the input's requirements, is not concise or actionable, and introduces irrelevant content about creating an answer rather than directly answering the question.",
+          "latency_ms": 32184.39
+        },
+        {
+          "case_id": "writer-010",
+          "question": "Which topic carries Writer drafts?",
+          "human_label": 2,
+          "judge_score": 1.0,
+          "normalized_score": 0.0,
+          "reason": "The Actual Output fails to directly answer the specific question about which topic carries Writer drafts. Instead, it provides a generic planning process, lacking factual alignment, clarity, and responsiveness to the input's intent. It introduces vague steps without addressing the required topic-specific information.",
+          "latency_ms": 27324.15
+        },
+        {
+          "case_id": "writer-011",
+          "question": "Which topic carries final Reviewer results?",
+          "human_label": 2,
+          "judge_score": 1.0,
+          "normalized_score": 0.0,
+          "reason": "The Actual Output fails to directly answer the specific question about which topic carries final Reviewer results. Instead, it provides a generic planning process without factual information, lacking responsiveness, accuracy, and clarity as required by the evaluation steps.",
+          "latency_ms": 28502.3
+        },
+        {
+          "case_id": "writer-012",
+          "question": "How can a sender match a response to its request?",
+          "human_label": 2,
+          "judge_score": 1.8,
+          "normalized_score": 0.2,
+          "reason": "The Actual Output fails to address the specific question about matching responses to requests, instead offering generic planning steps unrelated to the task. It lacks actionable guidance and factual alignment with the input's intent.",
+          "latency_ms": 31548.6
+        },
+        {
+          "case_id": "writer-013",
+          "question": "What benefit do independent consumer groups provide?",
+          "human_label": 3,
+          "judge_score": 1.0,
+          "normalized_score": 0.0,
+          "reason": "The Actual Output fails to directly address the question about the benefits of independent consumer groups, instead providing a generic planning process. It lacks factual information, is not concise, and does not meet the input's intent of explaining specific benefits.",
+          "latency_ms": 27055.01
+        },
+        {
+          "case_id": "writer-014",
+          "question": "How does Kafka support reliable message delivery?",
+          "human_label": 3,
+          "judge_score": 1.0,
+          "normalized_score": 0.0,
+          "reason": "The Actual Output fails to address Kafka's specific mechanisms for reliable message delivery, instead providing a generic process for answering questions. It lacks factual details on features like acknowledgments, idempotence, or replication, and does not align with the Input's intent to understand Kafka's implementation of reliable delivery.",
+          "latency_ms": 25372.92
+        },
+        {
+          "case_id": "writer-015",
+          "question": "Why are task IDs included in pipeline messages?",
+          "human_label": 2,
+          "judge_score": 1.0,
+          "normalized_score": 0.0,
+          "reason": "The Actual Output fails to address the specific question about task IDs in pipeline messages. It instead outlines a generic answer-planning process without providing factual or logical explanations, lacking responsiveness, accuracy, clarity, and relevance to the input's intent.",
+          "latency_ms": 25976.75
+        },
+        {
+          "case_id": "writer-016",
+          "question": "What information should a Planner include in a plan?",
+          "human_label": 3,
+          "judge_score": 2.2,
+          "normalized_score": 0.3,
+          "reason": "The Actual Output fails to specify concrete elements a Planner should include in a plan, instead focusing on the process of planning. It lacks factual details about content components (e.g., objectives, tasks, timelines) and provides vague recommendations, which misaligns with the Input's request for specific information.",
+          "latency_ms": 27214.77
+        },
+        {
+          "case_id": "writer-017",
+          "question": "What makes a Writer draft helpful?",
+          "human_label": 2,
+          "judge_score": 3.8,
+          "normalized_score": 0.7,
+          "reason": "The Actual Output addresses the question by outlining a structured approach but lacks specificity in explaining what makes a draft helpful. While accurate and concise, it uses generic steps without detailing key elements like clarity, evidence, or audience focus, which are critical to the input's intent.",
+          "latency_ms": 34637.73
+        },
+        {
+          "case_id": "writer-018",
+          "question": "What makes a Reviewer result useful?",
+          "human_label": 2,
+          "judge_score": 1.8,
+          "normalized_score": 0.2,
+          "reason": "The Actual Output fails to directly address the specific question about what makes a Reviewer result useful, instead focusing on a generic planning process. It lacks factual alignment with the input's requirements and provides vague, non-actionable guidance rather than concrete criteria for usefulness.",
+          "latency_ms": 40661.19
+        },
+        {
+          "case_id": "writer-019",
+          "question": "How does the pipeline handle work between stages?",
+          "human_label": 3,
+          "judge_score": 1.8,
+          "normalized_score": 0.2,
+          "reason": "The Actual Output fails to address the specific question about pipeline work handling between stages, instead focusing on the planning process for answering questions. It lacks factual details on pipeline mechanics, is vague, and does not align with the input's intent, resulting in poor responsiveness, accuracy, clarity, and relevance.",
+          "latency_ms": 30150.78
+        },
+        {
+          "case_id": "writer-020",
+          "question": "What is one limitation of the current Writer response?",
+          "human_label": 3,
+          "judge_score": 1.8,
+          "normalized_score": 0.2,
+          "reason": "The Actual Output fails to address the specific question about the Writer's limitation, instead providing a generic plan for answering questions. It lacks factual alignment with the Input's request and does not offer a concise, actionable response about the Writer's specific limitation.",
+          "latency_ms": 34162.92
+        }
+      ]
+    },
+    {
+      "repeat": 2,
+      "summary": {
+        "spearman_correlation": 0.04209360449419127,
+        "mean_absolute_difference": 1.02,
+        "case_count": 20
+      },
+      "cases": [
+        {
+          "case_id": "writer-001",
+          "question": "How does Kafka improve coordination between independent agents?",
+          "human_label": 2,
+          "judge_score": 1.0,
+          "normalized_score": 0.0,
+          "reason": "The Actual Output fails to address the specific question about Kafka's coordination mechanisms, instead providing a generic planning framework. It lacks factual accuracy, clarity, and direct relevance to the input's intent, offering no substantive explanation of Kafka's features or benefits for agent coordination.",
+          "latency_ms": 47472.95
+        },
+        {
+          "case_id": "writer-002",
+          "question": "What is the role of the Planner in the pipeline?",
+          "human_label": 2,
+          "judge_score": 1.8,
+          "normalized_score": 0.2,
+          "reason": "The Actual Output fails to address the specific question about the Planner's role, instead providing a generic outline of answer-creation steps. It lacks factual information, is not actionable for the query, and does not align with the input's intent to understand the Planner's specific function in the pipeline.",
+          "latency_ms": 36627.65
+        },
+        {
+          "case_id": "writer-003",
+          "question": "What does the Writer send after creating a draft?",
+          "human_label": 2,
+          "judge_score": 2.6,
+          "normalized_score": 0.4,
+          "reason": "The Actual Output addresses the intent by recommending a concise response but fails to directly answer what the Writer sends post-draft. It focuses on planning steps rather than specifying the content sent, lacking clarity and factual alignment with the question's specific request.",
+          "latency_ms": 31666.8
+        },
+        {
+          "case_id": "writer-004",
+          "question": "What does the Reviewer return to the sender?",
+          "human_label": 2,
+          "judge_score": 1.0,
+          "normalized_score": 0.0,
+          "reason": "The Actual Output fails to directly answer the specific question about what the Reviewer returns to the sender, instead providing a generic planning process. It lacks factual content, is not concise, and does not align with the input's intent to obtain a direct answer.",
+          "latency_ms": 31930.91
+        },
+        {
+          "case_id": "writer-005",
+          "question": "Why are correlation IDs important in the pipeline?",
+          "human_label": 2,
+          "judge_score": 1.0,
+          "normalized_score": 0.0,
+          "reason": "The Actual Output fails to address the specific question about correlation IDs' importance, instead providing a generic plan for answering questions. It lacks factual content, is not concise, and does not align with the input's intent to explain the significance of correlation IDs in pipelines.",
+          "latency_ms": 23983.22
+        },
+        {
+          "case_id": "writer-006",
+          "question": "How does Kafka decouple the Planner from the Writer?",
+          "human_label": 3,
+          "judge_score": 1.0,
+          "normalized_score": 0.0,
+          "reason": "The Actual Output fails to address Kafka's specific decoupling mechanism between Planner and Writer, instead providing a generic answer-drafting process. It lacks factual alignment with the input's technical question, is vague, and introduces irrelevant content about answer formulation rather than explaining Kafka's architecture. This results in poor responsiveness, accuracy, clarity, and intent alignment.",
+          "latency_ms": 29668.26
+        },
+        {
+          "case_id": "writer-007",
+          "question": "What happens when the Writer receives a task?",
+          "human_label": 2,
+          "judge_score": 1.8,
+          "normalized_score": 0.2,
+          "reason": "The Actual Output fails to address the specific question about the Writer's process when receiving a task, instead focusing on planning to answer the question. It lacks factual alignment with the input's intent and introduces irrelevant content about answer planning rather than explaining task reception steps.",
+          "latency_ms": 31337.9
+        },
+        {
+          "case_id": "writer-008",
+          "question": "How does the Reviewer evaluate a draft?",
+          "human_label": 2,
+          "judge_score": 1.0,
+          "normalized_score": 0.0,
+          "reason": "The Actual Output fails to address the specific question about how the Reviewer evaluates a draft, instead focusing on planning steps for creating an answer. It lacks factual alignment with the input's intent, contains vague language, and introduces irrelevant content about 'planner's approach' rather than explaining the Reviewer's evaluation criteria. This results in poor responsiveness, accuracy, and relevance.",
+          "latency_ms": 37646.0
+        },
+        {
+          "case_id": "writer-009",
+          "question": "Which topic carries Planner tasks?",
+          "human_label": 2,
+          "judge_score": 1.0,
+          "normalized_score": 0.0,
+          "reason": "The Actual Output fails to address the specific question about which topic carries Planner tasks, instead providing a generic process for answering questions. It lacks factual alignment with the input's requirements, is not concise or actionable, and introduces irrelevant content about creating an answer rather than directly answering the question.",
+          "latency_ms": 31650.59
+        },
+        {
+          "case_id": "writer-010",
+          "question": "Which topic carries Writer drafts?",
+          "human_label": 2,
+          "judge_score": 1.0,
+          "normalized_score": 0.0,
+          "reason": "The Actual Output fails to directly answer the specific question about which topic carries Writer drafts. Instead, it provides a generic planning process, lacking factual alignment, clarity, and responsiveness to the input's intent. It introduces vague steps without addressing the required topic-specific information.",
+          "latency_ms": 25906.8
+        },
+        {
+          "case_id": "writer-011",
+          "question": "Which topic carries final Reviewer results?",
+          "human_label": 2,
+          "judge_score": 1.0,
+          "normalized_score": 0.0,
+          "reason": "The Actual Output fails to directly answer the specific question about which topic carries final Reviewer results, instead providing a generic planning methodology. It lacks factual alignment with the input's requirement for a concise, actionable response and introduces vague content rather than addressing the intent.",
+          "latency_ms": 27695.61
+        },
+        {
+          "case_id": "writer-012",
+          "question": "How can a sender match a response to its request?",
+          "human_label": 2,
+          "judge_score": 1.8,
+          "normalized_score": 0.2,
+          "reason": "The Actual Output fails to address the specific question about matching responses to requests, instead offering generic planning steps unrelated to the task. It lacks actionable guidance and factual alignment with the input's intent.",
+          "latency_ms": 30614.56
+        },
+        {
+          "case_id": "writer-013",
+          "question": "What benefit do independent consumer groups provide?",
+          "human_label": 3,
+          "judge_score": 1.0,
+          "normalized_score": 0.0,
+          "reason": "The Actual Output fails to directly address the question about the benefits of independent consumer groups, instead providing a generic planning process. It lacks factual information, is not concise, and does not meet the input's intent of explaining specific benefits.",
+          "latency_ms": 27160.67
+        },
+        {
+          "case_id": "writer-014",
+          "question": "How does Kafka support reliable message delivery?",
+          "human_label": 3,
+          "judge_score": 1.0,
+          "normalized_score": 0.0,
+          "reason": "The Actual Output fails to address Kafka's specific mechanisms for reliable message delivery, instead providing a generic process for answering questions. It lacks factual details on features like acknowledgments, idempotence, or replication, and does not align with the Input's intent to understand Kafka's implementation of reliable delivery.",
+          "latency_ms": 25452.37
+        },
+        {
+          "case_id": "writer-015",
+          "question": "Why are task IDs included in pipeline messages?",
+          "human_label": 2,
+          "judge_score": 1.0,
+          "normalized_score": 0.0,
+          "reason": "The Actual Output fails to address the specific question about task IDs in pipeline messages. It instead outlines a generic answer-planning process without providing factual or logical explanations, lacking responsiveness, accuracy, clarity, and relevance to the input's intent.",
+          "latency_ms": 25939.06
+        },
+        {
+          "case_id": "writer-016",
+          "question": "What information should a Planner include in a plan?",
+          "human_label": 3,
+          "judge_score": 2.2,
+          "normalized_score": 0.3,
+          "reason": "The Actual Output fails to specify concrete elements a Planner should include in a plan, instead focusing on the process of planning. It lacks factual details about content components (e.g., objectives, tasks, timelines) and provides vague recommendations, which misaligns with the Input's request for specific information.",
+          "latency_ms": 27366.62
+        },
+        {
+          "case_id": "writer-017",
+          "question": "What makes a Writer draft helpful?",
+          "human_label": 2,
+          "judge_score": 3.8,
+          "normalized_score": 0.7,
+          "reason": "The Actual Output addresses the question by outlining a structured approach but lacks specificity in explaining what makes a draft helpful. While accurate and concise, it uses generic steps without detailing key elements like clarity, evidence, or audience focus, which are critical to the input's intent.",
+          "latency_ms": 33770.41
+        },
+        {
+          "case_id": "writer-018",
+          "question": "What makes a Reviewer result useful?",
+          "human_label": 2,
+          "judge_score": 1.8,
+          "normalized_score": 0.2,
+          "reason": "The Actual Output fails to directly address the specific question about what makes a Reviewer result useful, instead focusing on a generic planning process. It lacks factual alignment with the input's requirements and provides vague, non-actionable guidance rather than concrete criteria for usefulness.",
+          "latency_ms": 39699.35
+        },
+        {
+          "case_id": "writer-019",
+          "question": "How does the pipeline handle work between stages?",
+          "human_label": 3,
+          "judge_score": 1.8,
+          "normalized_score": 0.2,
+          "reason": "The Actual Output fails to address the specific question about pipeline work handling between stages, instead focusing on the planning process for answering questions. It lacks factual details on pipeline mechanics, is vague, and does not align with the input's intent, resulting in poor responsiveness, accuracy, clarity, and relevance.",
+          "latency_ms": 29293.96
+        },
+        {
+          "case_id": "writer-020",
+          "question": "What is one limitation of the current Writer response?",
+          "human_label": 3,
+          "judge_score": 1.8,
+          "normalized_score": 0.2,
+          "reason": "The Actual Output fails to address the specific question about the Writer's limitation, instead providing a generic plan for answering questions. It lacks factual alignment with the Input's request and does not offer a concise, actionable response about the Writer's specific limitation.",
+          "latency_ms": 33257.05
+        }
+      ]
+    },
+    {
+      "repeat": 3,
+      "summary": {
+        "spearman_correlation": 0.04209360449419127,
+        "mean_absolute_difference": 1.02,
+        "case_count": 20
+      },
+      "cases": [
+        {
+          "case_id": "writer-001",
+          "question": "How does Kafka improve coordination between independent agents?",
+          "human_label": 2,
+          "judge_score": 1.0,
+          "normalized_score": 0.0,
+          "reason": "The Actual Output fails to address the specific question about Kafka's coordination mechanisms, instead providing a generic planning framework. It lacks factual accuracy, clarity, and direct relevance to the input's intent, offering no substantive explanation of Kafka's features or benefits for agent coordination.",
+          "latency_ms": 47486.69
+        },
+        {
+          "case_id": "writer-002",
+          "question": "What is the role of the Planner in the pipeline?",
+          "human_label": 2,
+          "judge_score": 1.8,
+          "normalized_score": 0.2,
+          "reason": "The Actual Output fails to address the specific question about the Planner's role, instead providing a generic outline of answer-creation steps. It lacks factual information, is not actionable for the query, and does not align with the input's intent to understand the Planner's specific function in the pipeline.",
+          "latency_ms": 36179.24
+        },
+        {
+          "case_id": "writer-003",
+          "question": "What does the Writer send after creating a draft?",
+          "human_label": 2,
+          "judge_score": 2.6,
+          "normalized_score": 0.4,
+          "reason": "The Actual Output addresses the intent by recommending a concise response but fails to directly answer what the Writer sends post-draft. It focuses on planning steps rather than specifying the content sent, lacking clarity and factual alignment with the question's specific request.",
+          "latency_ms": 30592.66
+        },
+        {
+          "case_id": "writer-004",
+          "question": "What does the Reviewer return to the sender?",
+          "human_label": 2,
+          "judge_score": 1.0,
+          "normalized_score": 0.0,
+          "reason": "The Actual Output fails to directly answer the specific question about what the Reviewer returns to the sender, instead providing a generic planning process. It lacks factual content, is not concise, and does not align with the input's intent to obtain a direct answer.",
+          "latency_ms": 31263.49
+        },
+        {
+          "case_id": "writer-005",
+          "question": "Why are correlation IDs important in the pipeline?",
+          "human_label": 2,
+          "judge_score": 1.0,
+          "normalized_score": 0.0,
+          "reason": "The Actual Output fails to address the specific question about correlation IDs' importance, instead providing a generic plan for answering questions. It lacks factual content, is not concise, and does not align with the input's intent to explain the significance of correlation IDs in pipelines.",
+          "latency_ms": 23937.93
+        },
+        {
+          "case_id": "writer-006",
+          "question": "How does Kafka decouple the Planner from the Writer?",
+          "human_label": 3,
+          "judge_score": 1.0,
+          "normalized_score": 0.0,
+          "reason": "The Actual Output fails to address Kafka's specific decoupling mechanism between Planner and Writer, instead providing a generic answer-drafting process. It lacks factual alignment with the input's technical question, is vague, and introduces irrelevant content about answer formulation rather than explaining Kafka's architecture. This results in poor responsiveness, accuracy, clarity, and intent alignment.",
+          "latency_ms": 29621.18
+        },
+        {
+          "case_id": "writer-007",
+          "question": "What happens when the Writer receives a task?",
+          "human_label": 2,
+          "judge_score": 1.8,
+          "normalized_score": 0.2,
+          "reason": "The Actual Output fails to address the specific question about the Writer's process when receiving a task, instead focusing on planning to answer the question. It lacks factual alignment with the input's intent and introduces irrelevant content about answer planning rather than explaining task reception steps.",
+          "latency_ms": 31283.65
+        },
+        {
+          "case_id": "writer-008",
+          "question": "How does the Reviewer evaluate a draft?",
+          "human_label": 2,
+          "judge_score": 1.0,
+          "normalized_score": 0.0,
+          "reason": "The Actual Output fails to address the specific question about how the Reviewer evaluates a draft, instead focusing on planning steps for creating an answer. It lacks factual alignment with the input's intent, contains vague language, and introduces irrelevant content about 'planner's approach' rather than explaining the Reviewer's evaluation criteria. This results in poor responsiveness, accuracy, and relevance.",
+          "latency_ms": 37773.39
+        },
+        {
+          "case_id": "writer-009",
+          "question": "Which topic carries Planner tasks?",
+          "human_label": 2,
+          "judge_score": 1.0,
+          "normalized_score": 0.0,
+          "reason": "The Actual Output fails to address the specific question about which topic carries Planner tasks, instead providing a generic process for answering questions. It lacks factual alignment with the input's requirements, is not concise or actionable, and introduces irrelevant content about creating an answer rather than directly answering the question.",
+          "latency_ms": 31429.82
+        },
+        {
+          "case_id": "writer-010",
+          "question": "Which topic carries Writer drafts?",
+          "human_label": 2,
+          "judge_score": 1.0,
+          "normalized_score": 0.0,
+          "reason": "The Actual Output fails to directly answer the specific question about which topic carries Writer drafts. Instead, it provides a generic planning process, lacking factual alignment, clarity, and responsiveness to the input's intent. It introduces vague steps without addressing the required topic-specific information.",
+          "latency_ms": 26124.05
+        },
+        {
+          "case_id": "writer-011",
+          "question": "Which topic carries final Reviewer results?",
+          "human_label": 2,
+          "judge_score": 1.0,
+          "normalized_score": 0.0,
+          "reason": "The Actual Output fails to directly answer the specific question about which topic carries final Reviewer results, instead providing a generic planning methodology. It lacks factual alignment with the input's requirement for a concise, actionable response and introduces vague content rather than addressing the intent.",
+          "latency_ms": 27425.7
+        },
+        {
+          "case_id": "writer-012",
+          "question": "How can a sender match a response to its request?",
+          "human_label": 2,
+          "judge_score": 1.8,
+          "normalized_score": 0.2,
+          "reason": "The Actual Output fails to address the specific question about matching responses to requests, instead offering generic planning steps unrelated to the task. It lacks actionable guidance and factual alignment with the input's intent.",
+          "latency_ms": 30649.61
+        },
+        {
+          "case_id": "writer-013",
+          "question": "What benefit do independent consumer groups provide?",
+          "human_label": 3,
+          "judge_score": 1.0,
+          "normalized_score": 0.0,
+          "reason": "The Actual Output fails to directly address the question about the benefits of independent consumer groups, instead providing a generic planning process. It lacks factual information, is not concise, and does not meet the input's intent of explaining specific benefits.",
+          "latency_ms": 26258.95
+        },
+        {
+          "case_id": "writer-014",
+          "question": "How does Kafka support reliable message delivery?",
+          "human_label": 3,
+          "judge_score": 1.0,
+          "normalized_score": 0.0,
+          "reason": "The Actual Output fails to address Kafka's specific mechanisms for reliable message delivery, instead providing a generic process for answering questions. It lacks factual details on features like acknowledgments, idempotence, or replication, and does not align with the Input's intent to understand Kafka's implementation of reliable delivery.",
+          "latency_ms": 24596.68
+        },
+        {
+          "case_id": "writer-015",
+          "question": "Why are task IDs included in pipeline messages?",
+          "human_label": 2,
+          "judge_score": 1.0,
+          "normalized_score": 0.0,
+          "reason": "The Actual Output fails to address the specific question about task IDs in pipeline messages. It instead outlines a generic answer-planning process without providing factual or logical explanations, lacking responsiveness, accuracy, clarity, and relevance to the input's intent.",
+          "latency_ms": 25821.64
+        },
+        {
+          "case_id": "writer-016",
+          "question": "What information should a Planner include in a plan?",
+          "human_label": 3,
+          "judge_score": 2.2,
+          "normalized_score": 0.3,
+          "reason": "The Actual Output fails to specify concrete elements a Planner should include in a plan, instead focusing on the process of planning. It lacks factual details about content components (e.g., objectives, tasks, timelines) and provides vague recommendations, which misaligns with the Input's request for specific information.",
+          "latency_ms": 26381.58
+        },
+        {
+          "case_id": "writer-017",
+          "question": "What makes a Writer draft helpful?",
+          "human_label": 2,
+          "judge_score": 3.8,
+          "normalized_score": 0.7,
+          "reason": "The Actual Output addresses the question by outlining a structured approach but lacks specificity in explaining what makes a draft helpful. While accurate and concise, it uses generic steps without detailing key elements like clarity, evidence, or audience focus, which are critical to the input's intent.",
+          "latency_ms": 33759.01
+        },
+        {
+          "case_id": "writer-018",
+          "question": "What makes a Reviewer result useful?",
+          "human_label": 2,
+          "judge_score": 1.8,
+          "normalized_score": 0.2,
+          "reason": "The Actual Output fails to directly address the specific question about what makes a Reviewer result useful, instead focusing on a generic planning process. It lacks factual alignment with the input's requirements and provides vague, non-actionable guidance rather than concrete criteria for usefulness.",
+          "latency_ms": 39758.71
+        },
+        {
+          "case_id": "writer-019",
+          "question": "How does the pipeline handle work between stages?",
+          "human_label": 3,
+          "judge_score": 1.8,
+          "normalized_score": 0.2,
+          "reason": "The Actual Output fails to address the specific question about pipeline work handling between stages, instead focusing on the planning process for answering questions. It lacks factual details on pipeline mechanics, is vague, and does not align with the input's intent, resulting in poor responsiveness, accuracy, clarity, and relevance.",
+          "latency_ms": 29473.59
+        },
+        {
+          "case_id": "writer-020",
+          "question": "What is one limitation of the current Writer response?",
+          "human_label": 3,
+          "judge_score": 1.8,
+          "normalized_score": 0.2,
+          "reason": "The Actual Output fails to address the specific question about the Writer's limitation, instead providing a generic plan for answering questions. It lacks factual alignment with the Input's request and does not offer a concise, actionable response about the Writer's specific limitation.",
+          "latency_ms": 33046.4
+        }
+      ]
+    }
+  ]
+}

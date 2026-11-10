@@ -1,0 +1,6 @@
+{
+  "cache_hit_trace_id": "d6af01fe-3915-4e0b-9e1c-8d48f17b0c72",
+  "failed_trace_id": "49241c44-b04f-4a1c-8ac5-84268d8babe9",
+  "cache_miss_trace_id": "c1703237-df58-4bbf-bef7-2ee6fb61530b"
+}
+Saved trace examples to reports/hw10/raw/trace_examples.json

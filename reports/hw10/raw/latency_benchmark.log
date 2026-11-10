@@ -1,0 +1,79 @@
+miss 1/50 trace_id=00e5be0e-57c0-4bc0-8768-7249d5948702
+miss 2/50 trace_id=13f0b837-1693-4a19-a042-fac8e77a45ca
+miss 3/50 trace_id=e0414076-14ab-4f8d-bc30-642d7933b4ed
+miss 4/50 trace_id=b5247bb0-a93f-4a28-a84b-9f730abb41f9
+miss 5/50 trace_id=2f600e37-693b-4614-a924-6af5cbd62e71
+miss 6/50 trace_id=edddc517-5457-4dde-9296-9b9caa1560c7
+miss 7/50 trace_id=610b3db1-d8a8-42fc-b510-e76b55ddf66d
+miss 8/50 trace_id=7e2577a7-97a3-4a5d-be42-84b38f18ab02
+miss 9/50 trace_id=7e4a3543-5a0c-43b0-99cb-93c5e7892221
+miss 10/50 trace_id=17bb3424-ac7c-4696-a15a-78df5a831c5b
+miss 11/50 trace_id=a14c2fc5-248c-4979-a95c-3a2bb06a4322
+miss 12/50 trace_id=01c3cab0-f12b-4a1a-9956-33ab6b426f21
+miss 13/50 trace_id=5bec6ace-101a-4dc4-bc05-b4cc9ef3e495
+miss 14/50 trace_id=b135e2a3-888f-4b00-a8fa-8b4a1a14e540
+miss 15/50 trace_id=28a51e65-d85c-425a-882d-5a73390ec349
+miss 16/50 trace_id=b9b46aec-1603-4e81-a424-7051dde73263
+miss 17/50 trace_id=529a359b-df33-4631-b323-1dde2da6134a
+miss 18/50 trace_id=26202e2a-6aa6-4725-b8bd-d90fe6c311cc
+miss 19/50 trace_id=ad5fdd62-e2d6-4cb3-8aaf-7b8daab778d6
+miss 20/50 trace_id=8cad9a56-75bf-4d7a-8bcf-a2585c4499fa
+miss 21/50 trace_id=e22c8c56-f5d2-470c-b42c-a2d6fa71853e
+miss 22/50 trace_id=5407a8bd-8c93-4084-95c2-c7d41f361369
+miss 23/50 trace_id=cdf49153-3437-4f89-a554-d9965cac5e46
+miss 24/50 trace_id=e8ffcd79-4343-468a-848a-817d8419dc03
+miss 25/50 trace_id=c17c1ef6-20d3-48bd-a987-c036ac152b5a
+miss 26/50 trace_id=a8f81c83-fdca-43f9-ae35-d80cbff87ef5
+miss 27/50 trace_id=5e9f5789-0de5-4f67-b6a6-f03c0d6e492f
+miss 28/50 trace_id=5f3b8770-ed6f-456f-a8c3-72f968c17782
+miss 29/50 trace_id=7404c736-8a7d-442c-8c69-84cdb92661b5
+miss 30/50 trace_id=ce52b0cf-1fc8-4757-b174-39655b1bbaa1
+miss 31/50 trace_id=02d56b09-4116-4d21-975c-bf30d3d7c3a2
+miss 32/50 trace_id=1ee36420-6979-4ff2-ab10-18063ce58b1a
+miss 33/50 trace_id=4e29cc01-b9a0-420e-ad60-9e9d150d536d
+miss 34/50 trace_id=d34bb348-8ce2-4a9a-83d8-6d23c16f9527
+miss 35/50 trace_id=0b1a7385-6f12-40e1-b884-61154ad13aee
+miss 36/50 trace_id=d0e6b073-71c5-41f8-8d64-fd75a33ed757
+miss 37/50 trace_id=2145c051-6d51-4f2c-80b5-976bae7373a1
+miss 38/50 trace_id=e8a47ba8-2aeb-4d3b-b3d4-92f87baae180
+miss 39/50 trace_id=73fb9ded-43c6-4329-86d4-9e0805e56dd3
+miss 40/50 trace_id=e601027d-74c8-4117-a35e-3db22bd0ed7e
+miss 41/50 trace_id=56773920-6808-4dc8-983d-4dcdaa4d6158
+miss 42/50 trace_id=aaa97d28-cf51-4fe2-9c6c-15f86c4e596c
+miss 43/50 trace_id=7c6b938d-521e-433d-8d6d-da2a8c0c2568
+miss 44/50 trace_id=8421d981-6900-4a95-bb39-5bc1a284a100
+miss 45/50 trace_id=8bfbf23f-95d0-4f2b-b55a-6f2a7d64c2d8
+miss 46/50 trace_id=dc3b25dd-1dd7-4dae-8e7b-0ad211edd3ee
+miss 47/50 trace_id=66cbef10-f2f2-4a71-8369-c5c8c44fb061
+miss 48/50 trace_id=a58c0a75-88f4-4f07-b365-44cf718aaac6
+miss 49/50 trace_id=63725366-bdbd-45dd-a67c-dbdaa0d66364
+miss 50/50 trace_id=696282b4-863a-4d2c-a181-d0a4f72ad961
+{
+  "cache_miss_count": 50,
+  "confirmed_cache_miss_count": 50,
+  "metrics": {
+    "planner": {
+      "p50_ms": 1.5101880017027725,
+      "p95_ms": 6.225924848331488
+    },
+    "writer": {
+      "p50_ms": 3.064187500058324,
+      "p95_ms": 12.804370651065254
+    },
+    "reviewer": {
+      "p50_ms": 4.350229000920081,
+      "p95_ms": 15.029164399311409
+    },
+    "queue_wait": {
+      "p50_ms": 1.0116249995917315,
+      "p95_ms": 2.870697549769825
+    },
+    "total": {
+      "p50_ms": 5.485749999934342,
+      "p95_ms": 20.77438314936442
+    }
+  },
+  "p95_dominant_contributor": "reviewer",
+  "p95_contributor_percent": 72.34469630820887
+}
+Saved latency benchmark to reports/hw10/raw/latency_benchmark.json

@@ -3,3 +3,207 @@
 [WRITER] sequence=None entity_key=None
 [WRITER] Draft sent to s9004_drafts task_id=7be2045f-e63d-4744-9591-f791a5b1b3d5
 [WRITER] Offset committed for task_id=7be2045f-e63d-4744-9591-f791a5b1b3d5
+[WRITER] Received task_id=e1bfdfdb-82e9-4ec1-a5da-ccb1e279708f partition=1 offset=0
+[WRITER] sequence=None entity_key=None
+[WRITER] Draft sent to s9004_drafts task_id=e1bfdfdb-82e9-4ec1-a5da-ccb1e279708f
+[WRITER] Offset committed for task_id=e1bfdfdb-82e9-4ec1-a5da-ccb1e279708f
+[WRITER] Received task_id=c997dce3-b034-4264-bd8e-3fb47c9a7c34 partition=1 offset=1
+[WRITER] sequence=None entity_key=None
+[WRITER] Draft sent to s9004_drafts task_id=c997dce3-b034-4264-bd8e-3fb47c9a7c34
+[WRITER] Offset committed for task_id=c997dce3-b034-4264-bd8e-3fb47c9a7c34
+[WRITER] Received task_id=11b63527-d596-4a73-b7c5-f4cd37060d91 partition=0 offset=1
+[WRITER] sequence=None entity_key=None
+[WRITER] Draft sent to s9004_drafts task_id=11b63527-d596-4a73-b7c5-f4cd37060d91
+[WRITER] Offset committed for task_id=11b63527-d596-4a73-b7c5-f4cd37060d91
+[WRITER] Received task_id=64e48d7f-051d-4759-886b-b94cb95ff4ee partition=0 offset=2
+[WRITER] sequence=None entity_key=None
+[WRITER] Draft sent to s9004_drafts task_id=64e48d7f-051d-4759-886b-b94cb95ff4ee
+[WRITER] Offset committed for task_id=64e48d7f-051d-4759-886b-b94cb95ff4ee
+[WRITER] Received task_id=56e14cc6-e5c0-489b-9465-3bc3ae01d84c partition=0 offset=3
+[WRITER] sequence=None entity_key=None
+[WRITER] Draft sent to s9004_drafts task_id=56e14cc6-e5c0-489b-9465-3bc3ae01d84c
+[WRITER] Offset committed for task_id=56e14cc6-e5c0-489b-9465-3bc3ae01d84c
+[WRITER] Received task_id=ceb8673e-a437-48a3-8154-04ab8e44efcb partition=0 offset=4
+[WRITER] sequence=None entity_key=None
+[WRITER] Draft sent to s9004_drafts task_id=ceb8673e-a437-48a3-8154-04ab8e44efcb
+[WRITER] Offset committed for task_id=ceb8673e-a437-48a3-8154-04ab8e44efcb
+[WRITER] Received task_id=2ccf1fa6-471a-4baa-a78b-5864ec0564d3 partition=0 offset=5
+[WRITER] sequence=None entity_key=None
+[WRITER] Draft sent to s9004_drafts task_id=2ccf1fa6-471a-4baa-a78b-5864ec0564d3
+[WRITER] Offset committed for task_id=2ccf1fa6-471a-4baa-a78b-5864ec0564d3
+[WRITER] Received task_id=86c4b16c-67e9-4952-b48d-87b9d3e26d36 partition=0 offset=6
+[WRITER] sequence=None entity_key=None
+[WRITER] Draft sent to s9004_drafts task_id=86c4b16c-67e9-4952-b48d-87b9d3e26d36
+[WRITER] Offset committed for task_id=86c4b16c-67e9-4952-b48d-87b9d3e26d36
+[WRITER] Received task_id=37b467a4-e0f4-4348-a8be-3307dfeabd0a partition=1 offset=2
+[WRITER] sequence=None entity_key=None
+[WRITER] Draft sent to s9004_drafts task_id=37b467a4-e0f4-4348-a8be-3307dfeabd0a
+[WRITER] Offset committed for task_id=37b467a4-e0f4-4348-a8be-3307dfeabd0a
+[WRITER] Received task_id=fbda8f62-71f1-47b4-bc67-28641bac12ca partition=1 offset=3
+[WRITER] sequence=None entity_key=None
+[WRITER] Draft sent to s9004_drafts task_id=fbda8f62-71f1-47b4-bc67-28641bac12ca
+[WRITER] Offset committed for task_id=fbda8f62-71f1-47b4-bc67-28641bac12ca
+[WRITER] Received task_id=7c4496ad-8334-4dc4-bb42-3f03a7ecef72 partition=1 offset=4
+[WRITER] sequence=None entity_key=None
+[WRITER] Draft sent to s9004_drafts task_id=7c4496ad-8334-4dc4-bb42-3f03a7ecef72
+[WRITER] Offset committed for task_id=7c4496ad-8334-4dc4-bb42-3f03a7ecef72
+[WRITER] Received task_id=37bcc2d7-9fb7-4491-af45-60a052e847d8 partition=0 offset=7
+[WRITER] sequence=None entity_key=None
+[WRITER] Draft sent to s9004_drafts task_id=37bcc2d7-9fb7-4491-af45-60a052e847d8
+[WRITER] Offset committed for task_id=37bcc2d7-9fb7-4491-af45-60a052e847d8
+[WRITER] Received task_id=c8f54d2c-714b-409f-9fc3-2a4fef40eb47 partition=0 offset=8
+[WRITER] sequence=None entity_key=None
+[WRITER] Draft sent to s9004_drafts task_id=c8f54d2c-714b-409f-9fc3-2a4fef40eb47
+[WRITER] Offset committed for task_id=c8f54d2c-714b-409f-9fc3-2a4fef40eb47
+[WRITER] Received task_id=d04323a4-c085-4d69-bd57-861f35f1b2e5 partition=0 offset=9
+[WRITER] sequence=None entity_key=None
+[WRITER] Draft sent to s9004_drafts task_id=d04323a4-c085-4d69-bd57-861f35f1b2e5
+[WRITER] Offset committed for task_id=d04323a4-c085-4d69-bd57-861f35f1b2e5
+[WRITER] Received task_id=5d858c49-4773-44b6-abda-dba17ced2cd2 partition=1 offset=5
+[WRITER] sequence=None entity_key=None
+[WRITER] Draft sent to s9004_drafts task_id=5d858c49-4773-44b6-abda-dba17ced2cd2
+[WRITER] Offset committed for task_id=5d858c49-4773-44b6-abda-dba17ced2cd2
+[WRITER] Received task_id=ef5648de-b590-42d3-b2fc-f74bec44a4be partition=0 offset=10
+[WRITER] sequence=None entity_key=None
+[WRITER] Draft sent to s9004_drafts task_id=ef5648de-b590-42d3-b2fc-f74bec44a4be
+[WRITER] Offset committed for task_id=ef5648de-b590-42d3-b2fc-f74bec44a4be
+[WRITER] Received task_id=f069d58e-46c1-4eb5-a6cd-f84c2ba9b4a2 partition=1 offset=6
+[WRITER] sequence=None entity_key=None
+[WRITER] Draft sent to s9004_drafts task_id=f069d58e-46c1-4eb5-a6cd-f84c2ba9b4a2
+[WRITER] Offset committed for task_id=f069d58e-46c1-4eb5-a6cd-f84c2ba9b4a2
+[WRITER] Received task_id=ead2c64c-d513-4425-815f-3da9a571cff6 partition=1 offset=7
+[WRITER] sequence=None entity_key=None
+[WRITER] Draft sent to s9004_drafts task_id=ead2c64c-d513-4425-815f-3da9a571cff6
+[WRITER] Offset committed for task_id=ead2c64c-d513-4425-815f-3da9a571cff6
+[WRITER] Received task_id=3008c5f4-edda-46d3-8953-5f882d974e42 partition=0 offset=11
+[WRITER] sequence=None entity_key=None
+[WRITER] Draft sent to s9004_drafts task_id=3008c5f4-edda-46d3-8953-5f882d974e42
+[WRITER] Offset committed for task_id=3008c5f4-edda-46d3-8953-5f882d974e42
+[WRITER] Received task_id=bc3a4aa6-3d41-48ff-88d5-1ebfb95cbafe partition=0 offset=12
+[WRITER] sequence=None entity_key=None
+[WRITER] Draft sent to s9004_drafts task_id=bc3a4aa6-3d41-48ff-88d5-1ebfb95cbafe
+[WRITER] Offset committed for task_id=bc3a4aa6-3d41-48ff-88d5-1ebfb95cbafe
+[WRITER] Received task_id=dcf9f955-8c6d-4df4-962d-c6b3ffe6b179 partition=1 offset=8
+[WRITER] sequence=None entity_key=None
+[WRITER] Draft sent to s9004_drafts task_id=dcf9f955-8c6d-4df4-962d-c6b3ffe6b179
+[WRITER] Offset committed for task_id=dcf9f955-8c6d-4df4-962d-c6b3ffe6b179
+[WRITER] Received task_id=a524584b-dc00-46f0-beba-c8ed32a1fa88 partition=0 offset=13
+[WRITER] sequence=None entity_key=None
+[WRITER] Draft sent to s9004_drafts task_id=a524584b-dc00-46f0-beba-c8ed32a1fa88
+[WRITER] Offset committed for task_id=a524584b-dc00-46f0-beba-c8ed32a1fa88
+[WRITER] Received task_id=fb43ff8c-77b8-47cb-a491-eca6b9f9ffe1 partition=0 offset=14
+[WRITER] sequence=None entity_key=None
+[WRITER] Draft sent to s9004_drafts task_id=fb43ff8c-77b8-47cb-a491-eca6b9f9ffe1
+[WRITER] Offset committed for task_id=fb43ff8c-77b8-47cb-a491-eca6b9f9ffe1
+[WRITER] Received task_id=c209c513-027b-4fa9-b373-14218d68498b partition=1 offset=9
+[WRITER] sequence=None entity_key=None
+[WRITER] Draft sent to s9004_drafts task_id=c209c513-027b-4fa9-b373-14218d68498b
+[WRITER] Offset committed for task_id=c209c513-027b-4fa9-b373-14218d68498b
+[WRITER] Received task_id=ddab09e9-3a54-4284-b58f-3c7dd0f4fc99 partition=1 offset=10
+[WRITER] sequence=None entity_key=None
+[WRITER] Draft sent to s9004_drafts task_id=ddab09e9-3a54-4284-b58f-3c7dd0f4fc99
+[WRITER] Offset committed for task_id=ddab09e9-3a54-4284-b58f-3c7dd0f4fc99
+[WRITER] Received task_id=4bc5c3c8-5033-488a-b3c2-89aff5570947 partition=0 offset=15
+[WRITER] sequence=None entity_key=None
+[WRITER] Draft sent to s9004_drafts task_id=4bc5c3c8-5033-488a-b3c2-89aff5570947
+[WRITER] Offset committed for task_id=4bc5c3c8-5033-488a-b3c2-89aff5570947
+[WRITER] Received task_id=60ba8a77-9739-4ed3-b092-eb020fa0e32f partition=0 offset=16
+[WRITER] sequence=None entity_key=None
+[WRITER] Draft sent to s9004_drafts task_id=60ba8a77-9739-4ed3-b092-eb020fa0e32f
+[WRITER] Offset committed for task_id=60ba8a77-9739-4ed3-b092-eb020fa0e32f
+[WRITER] Received task_id=efa2d273-190e-432b-a7d1-232b1eaa1374 partition=0 offset=17
+[WRITER] sequence=None entity_key=None
+[WRITER] Draft sent to s9004_drafts task_id=efa2d273-190e-432b-a7d1-232b1eaa1374
+[WRITER] Offset committed for task_id=efa2d273-190e-432b-a7d1-232b1eaa1374
+[WRITER] Received task_id=98369405-47ad-4f5b-88bc-18b8eee12363 partition=0 offset=18
+[WRITER] sequence=None entity_key=None
+[WRITER] Draft sent to s9004_drafts task_id=98369405-47ad-4f5b-88bc-18b8eee12363
+[WRITER] Offset committed for task_id=98369405-47ad-4f5b-88bc-18b8eee12363
+[WRITER] Received task_id=98c3d869-aa30-464a-95ee-5a5461dec93b partition=0 offset=19
+[WRITER] sequence=None entity_key=None
+[WRITER] Draft sent to s9004_drafts task_id=98c3d869-aa30-464a-95ee-5a5461dec93b
+[WRITER] Offset committed for task_id=98c3d869-aa30-464a-95ee-5a5461dec93b
+[WRITER] Received task_id=9787744c-2336-451f-9a0c-d40f2e8bffe7 partition=0 offset=20
+[WRITER] sequence=None entity_key=None
+[WRITER] Draft sent to s9004_drafts task_id=9787744c-2336-451f-9a0c-d40f2e8bffe7
+[WRITER] Offset committed for task_id=9787744c-2336-451f-9a0c-d40f2e8bffe7
+[WRITER] Received task_id=2d59aad2-7817-43a9-86be-7e9abb8204eb partition=0 offset=21
+[WRITER] sequence=None entity_key=None
+[WRITER] Draft sent to s9004_drafts task_id=2d59aad2-7817-43a9-86be-7e9abb8204eb
+[WRITER] Offset committed for task_id=2d59aad2-7817-43a9-86be-7e9abb8204eb
+[WRITER] Received task_id=8b76fd06-5411-4869-a206-82514db81200 partition=0 offset=22
+[WRITER] sequence=None entity_key=None
+[WRITER] Draft sent to s9004_drafts task_id=8b76fd06-5411-4869-a206-82514db81200
+[WRITER] Offset committed for task_id=8b76fd06-5411-4869-a206-82514db81200
+[WRITER] Received task_id=f8a39798-a361-47bc-a31a-6134d7b2dda8 partition=1 offset=11
+[WRITER] sequence=None entity_key=None
+[WRITER] Draft sent to s9004_drafts task_id=f8a39798-a361-47bc-a31a-6134d7b2dda8
+[WRITER] Offset committed for task_id=f8a39798-a361-47bc-a31a-6134d7b2dda8
+[WRITER] Received task_id=3a4c7f8e-0dee-4318-b6ce-dbe64511be94 partition=0 offset=23
+[WRITER] sequence=None entity_key=None
+[WRITER] Draft sent to s9004_drafts task_id=3a4c7f8e-0dee-4318-b6ce-dbe64511be94
+[WRITER] Offset committed for task_id=3a4c7f8e-0dee-4318-b6ce-dbe64511be94
+[WRITER] Received task_id=12621e4d-0ebb-4500-9f32-f927989529b4 partition=0 offset=24
+[WRITER] sequence=None entity_key=None
+[WRITER] Draft sent to s9004_drafts task_id=12621e4d-0ebb-4500-9f32-f927989529b4
+[WRITER] Offset committed for task_id=12621e4d-0ebb-4500-9f32-f927989529b4
+[WRITER] Received task_id=1a912d2c-a69c-491f-8eaf-f742d8363152 partition=0 offset=25
+[WRITER] sequence=None entity_key=None
+[WRITER] Draft sent to s9004_drafts task_id=1a912d2c-a69c-491f-8eaf-f742d8363152
+[WRITER] Offset committed for task_id=1a912d2c-a69c-491f-8eaf-f742d8363152
+[WRITER] Received task_id=c411785f-fa1d-4aa1-a362-4e4832baeeae partition=1 offset=12
+[WRITER] sequence=None entity_key=None
+[WRITER] Draft sent to s9004_drafts task_id=c411785f-fa1d-4aa1-a362-4e4832baeeae
+[WRITER] Offset committed for task_id=c411785f-fa1d-4aa1-a362-4e4832baeeae
+[WRITER] Received task_id=39ccb656-5793-4f14-a13e-38cd8ec72409 partition=1 offset=13
+[WRITER] sequence=None entity_key=None
+[WRITER] Draft sent to s9004_drafts task_id=39ccb656-5793-4f14-a13e-38cd8ec72409
+[WRITER] Offset committed for task_id=39ccb656-5793-4f14-a13e-38cd8ec72409
+[WRITER] Received task_id=fda8e397-2b59-4afa-b522-2122b985cd46 partition=1 offset=14
+[WRITER] sequence=None entity_key=None
+[WRITER] Draft sent to s9004_drafts task_id=fda8e397-2b59-4afa-b522-2122b985cd46
+[WRITER] Offset committed for task_id=fda8e397-2b59-4afa-b522-2122b985cd46
+[WRITER] Received task_id=fc333a8e-6ca0-481c-a6c3-3f8be0b3efdf partition=1 offset=15
+[WRITER] sequence=None entity_key=None
+[WRITER] Draft sent to s9004_drafts task_id=fc333a8e-6ca0-481c-a6c3-3f8be0b3efdf
+[WRITER] Offset committed for task_id=fc333a8e-6ca0-481c-a6c3-3f8be0b3efdf
+[WRITER] Received task_id=32d13f68-3447-4db2-a32a-5bffef720df7 partition=1 offset=16
+[WRITER] sequence=None entity_key=None
+[WRITER] Draft sent to s9004_drafts task_id=32d13f68-3447-4db2-a32a-5bffef720df7
+[WRITER] Offset committed for task_id=32d13f68-3447-4db2-a32a-5bffef720df7
+[WRITER] Received task_id=a6453b85-f17d-4594-a15c-a34bbf4e5d1e partition=0 offset=26
+[WRITER] sequence=None entity_key=None
+[WRITER] Draft sent to s9004_drafts task_id=a6453b85-f17d-4594-a15c-a34bbf4e5d1e
+[WRITER] Offset committed for task_id=a6453b85-f17d-4594-a15c-a34bbf4e5d1e
+[WRITER] Received task_id=8b7d9dda-75d4-409c-94f1-16fe7784bb72 partition=1 offset=17
+[WRITER] sequence=None entity_key=None
+[WRITER] Draft sent to s9004_drafts task_id=8b7d9dda-75d4-409c-94f1-16fe7784bb72
+[WRITER] Offset committed for task_id=8b7d9dda-75d4-409c-94f1-16fe7784bb72
+[WRITER] Received task_id=bf2edfff-7913-4b26-aa0f-9674fb7cfa5e partition=0 offset=27
+[WRITER] sequence=None entity_key=None
+[WRITER] Draft sent to s9004_drafts task_id=bf2edfff-7913-4b26-aa0f-9674fb7cfa5e
+[WRITER] Offset committed for task_id=bf2edfff-7913-4b26-aa0f-9674fb7cfa5e
+[WRITER] Received task_id=1b2ceeca-9ebd-4447-8976-0c5b042b19e8 partition=0 offset=28
+[WRITER] sequence=None entity_key=None
+[WRITER] Draft sent to s9004_drafts task_id=1b2ceeca-9ebd-4447-8976-0c5b042b19e8
+[WRITER] Offset committed for task_id=1b2ceeca-9ebd-4447-8976-0c5b042b19e8
+[WRITER] Received task_id=66ac714e-c29c-4c09-966b-73b9ca22322b partition=1 offset=18
+[WRITER] sequence=None entity_key=None
+[WRITER] Draft sent to s9004_drafts task_id=66ac714e-c29c-4c09-966b-73b9ca22322b
+[WRITER] Offset committed for task_id=66ac714e-c29c-4c09-966b-73b9ca22322b
+[WRITER] Received task_id=0bebb9a5-0d6e-479e-9462-71d74651cca3 partition=1 offset=19
+[WRITER] sequence=None entity_key=None
+[WRITER] Draft sent to s9004_drafts task_id=0bebb9a5-0d6e-479e-9462-71d74651cca3
+[WRITER] Offset committed for task_id=0bebb9a5-0d6e-479e-9462-71d74651cca3
+[WRITER] Received task_id=3e7ede1e-ce10-4e3f-a962-0546714b0c48 partition=1 offset=20
+[WRITER] sequence=None entity_key=None
+[WRITER] Draft sent to s9004_drafts task_id=3e7ede1e-ce10-4e3f-a962-0546714b0c48
+[WRITER] Offset committed for task_id=3e7ede1e-ce10-4e3f-a962-0546714b0c48
+[WRITER] Received task_id=3af8edb8-dcab-4faf-b4fa-cf85bd6d5ca4 partition=0 offset=29
+[WRITER] sequence=None entity_key=None
+[WRITER] Draft sent to s9004_drafts task_id=3af8edb8-dcab-4faf-b4fa-cf85bd6d5ca4
+[WRITER] Offset committed for task_id=3af8edb8-dcab-4faf-b4fa-cf85bd6d5ca4
+[WRITER] Received task_id=c555de47-906d-498b-86f3-ecc653fdb3b2 partition=1 offset=21
+[WRITER] sequence=None entity_key=None
+[WRITER] Draft sent to s9004_drafts task_id=c555de47-906d-498b-86f3-ecc653fdb3b2
+[WRITER] Offset committed for task_id=c555de47-906d-498b-86f3-ecc653fdb3b2

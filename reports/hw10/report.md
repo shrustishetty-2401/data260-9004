@@ -1,5 +1,7 @@
 # DATA-260 Homework 10
 
+Final PDF: [Shetty_HW10.pdf](https://github.com/shrustishetty-2401/data260-9004/blob/hw10/reports/hw10/Shetty_HW10.pdf)
+
 ## Student and Configuration
 
 - Student: Shrusti Shetty

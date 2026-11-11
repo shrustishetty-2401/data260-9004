@@ -464,9 +464,9 @@ The Trace Lookup page shows the failed Planner stage and its recorded error.
 ## Final Git Verification
 
 - Branch: `hw10`
-- Final commit: `f5ebd56b82fd9074fbbc1562ff9bfdac86060c68`
+- Final commit: `ac1853397b680c6463bc24f793f9d2cd2f7c98bd`
 - Final tag: `hw10-final`
-- Tagged commit: `f5ebd56b82fd9074fbbc1562ff9bfdac86060c68`
+- Tagged commit: `ac1853397b680c6463bc24f793f9d2cd2f7c98bd`
 
 
 ## Submission Information

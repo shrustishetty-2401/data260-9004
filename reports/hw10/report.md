@@ -74,6 +74,8 @@ reports/hw10/raw/trace_examples.json
 
 The latency chart shows p95 latency for queue wait, Planner, Writer, Reviewer, and the total pipeline.
 
+The Summary page reports the semantic-cache hit rate separately from cache misses. In the captured evidence, there was 1 cache hit and 2 cache misses, giving a cache-hit rate of 33.3%. The dashboard also reports the error rate and total end-to-end latency using the local HW10 experiment time window and JSON/JSONL evidence files.
+
 ### Evaluation Page
 
 The Evaluation page displays:
@@ -90,6 +92,8 @@ The Evaluation page displays:
 
 The tested final response did not improve over the draft. Both the draft and final answer received a judge score of 1.0 because the generated answer was generic and did not explain Kafka coordination mechanisms.
 
+The Evaluation page also displays the per-case judge results for all 20 Writer cases, including case ID, human label, judge score, normalized score, question, and judge reason. This makes the case-level comparison directly inspectable in the dashboard.
+
 ### Trace Lookup Page
 
 The Trace Lookup page allows a user to select a trace ID and inspect:
@@ -105,6 +109,8 @@ The Trace Lookup page allows a user to select a trace ID and inspect:
 - Success or failure status
 - Error details
 - Stage metadata
+
+Each displayed trace span includes its calculated duration in milliseconds in addition to the trace ID, stage, start time, end time, status, error, and metadata. The spans are displayed in request order from cache lookup through evaluation.
 
 ## Part 2: Automated Pipeline Evaluation
 
@@ -439,11 +445,15 @@ The local judge result was reported honestly. The final answer did not improve o
 
 The Summary page reports trace count, cache hits and misses, failed spans, total p95 latency, stage latency, and the 50-request cache-miss benchmark.
 
+The dashboard reports a semantic-cache hit rate of 33.3%, based on 1 cache hit and 2 cache misses. It also reports the error rate and total end-to-end latency for the local HW10 experiment window.
+
 ### Figure 2. Evaluation Dashboard
 
 ![Evaluation dashboard](evidence/dashboard_evaluation.png)
 
 The Evaluation page reports Plan Quality, Writer Helpfulness, Final Answer Helpfulness, final-versus-draft comparison, and the three judge-validation repeats.
+
+The Evaluation page displays per-case results for all 20 Writer cases, including the case ID, human label, judge score, normalized score, question, and judge reason.
 
 ### Figure 3. Cache-Hit Trace
 
@@ -462,6 +472,8 @@ The Trace Lookup page shows the successful cache-miss path through the Kafka pip
 ![Failed trace](evidence/dashboard_trace_failed.png)
 
 The Trace Lookup page shows the failed Planner stage and its recorded error.
+
+Each trace span displays its calculated duration in milliseconds, along with the trace ID, stage, start time, end time, status, error, and metadata. Trace stages are displayed in request order.
 
 ## Final Git Verification
 

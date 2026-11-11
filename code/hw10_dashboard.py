@@ -1,4 +1,5 @@
 import json
+from datetime import datetime
 from pathlib import Path
 
 import streamlit as st
@@ -6,6 +7,15 @@ import streamlit as st
 
 ROOT = Path(__file__).resolve().parents[1]
 RAW = ROOT / "reports" / "hw10" / "raw"
+
+STAGE_ORDER = [
+    "cache_lookup",
+    "inbox",
+    "planner",
+    "writer",
+    "reviewer",
+    "evaluation",
+]
 
 
 @st.cache_data
@@ -37,6 +47,34 @@ def fmt(value, digits=2):
         return f"{value:.{digits}f}"
 
     return "—"
+
+
+def add_duration(span):
+    result = dict(span)
+
+    if result.get("duration_ms") is not None:
+        return result
+
+    start = result.get("start_time")
+    end = result.get("end_time")
+
+    try:
+        start_time = datetime.fromisoformat(start.replace("Z", "+00:00"))
+        end_time = datetime.fromisoformat(end.replace("Z", "+00:00"))
+
+        result["duration_ms"] = round(
+            (end_time - start_time).total_seconds() * 1000,
+            3,
+        )
+    except (AttributeError, TypeError, ValueError):
+        result["duration_ms"] = None
+
+    return result
+
+
+def stage_position(span):
+    stage = span.get("stage", "")
+    return STAGE_ORDER.index(stage) if stage in STAGE_ORDER else len(STAGE_ORDER)
 
 
 st.set_page_config(
@@ -195,6 +233,11 @@ st.markdown(
         border: 1px solid #b8c7dc !important;
         border-radius: 8px !important;
     }
+
+    [data-testid="stDataFrame"] {
+        background: white !important;
+        border-radius: 10px;
+    }
     </style>
     """,
     unsafe_allow_html=True,
@@ -223,9 +266,9 @@ page = st.sidebar.radio(
 if page == "Summary":
     st.header("Operations Summary")
 
-    st.write("Evidence source: local Kafka and evaluator experiment outputs")
+    st.write("Evidence source: local Kafka and evaluator experiment outputs.")
 
-    st.write("Window: timestamps recorded during HW10 experiments")
+    st.write("Time window: timestamps recorded during the HW10 experiments.")
 
     hit_count = sum(
         row.get("metadata", {}).get("cache_status") == "hit" for row in traces
@@ -235,9 +278,13 @@ if page == "Summary":
         row.get("metadata", {}).get("cache_status") == "miss" for row in traces
     )
 
+    cache_total = hit_count + miss_count
+
+    cache_hit_rate = hit_count / cache_total if cache_total else 0
+
     failed_count = sum(row.get("status") == "failed" for row in traces)
 
-    trace_count = len({row.get("trace_id") for row in traces})
+    trace_count = len({row.get("trace_id") for row in traces if row.get("trace_id")})
 
     error_rate = failed_count / trace_count if trace_count else 0
 
@@ -310,6 +357,29 @@ if page == "Summary":
         unsafe_allow_html=True,
     )
 
+    st.subheader("Semantic Cache Summary")
+
+    st.write(
+        "Cache-hit rate: "
+        f"**{cache_hit_rate:.1%}** "
+        f"({hit_count} hits out of {cache_total} cache requests)"
+    )
+
+    st.write(
+        "Cache misses are shown separately because the latency benchmark "
+        "used confirmed cache-miss requests only."
+    )
+
+    st.markdown(
+        "</div>",
+        unsafe_allow_html=True,
+    )
+
+    st.markdown(
+        '<div class="card">',
+        unsafe_allow_html=True,
+    )
+
     st.subheader("Latency by Stage")
 
     chart_data = {
@@ -356,11 +426,22 @@ if page == "Summary":
         f"Confirmed cache misses: **{latency.get('confirmed_cache_miss_count', '—')}**"
     )
 
-    st.write(
-        f"Dominant p95 contributor: **{latency.get('p95_dominant_contributor', '—')}**"
+    dominant = latency.get(
+        "p95_dominant_contributor",
+        "—",
     )
 
-    st.write(f"Contributor share: **{fmt(latency.get('p95_contributor_percent'))}%**")
+    contributor_percent = latency.get("p95_contributor_percent")
+
+    if contributor_percent is None:
+        contributor_percent = latency.get(
+            "p95_percent_of_total",
+            {},
+        ).get(dominant)
+
+    st.write(f"Dominant p95 contributor: **{dominant}**")
+
+    st.write(f"Contributor share: **{fmt(contributor_percent)}%**")
 
     st.markdown(
         "</div>",
@@ -377,6 +458,10 @@ elif page == "Evaluation":
         "over the draft."
     )
 
+    st.subheader("Pipeline Stage Scores")
+
+    stage_scores = []
+
     for key, label in [
         ("plan_quality", "Plan Quality"),
         ("writer_helpfulness", "Writer Helpfulness"),
@@ -387,19 +472,22 @@ elif page == "Evaluation":
     ]:
         result = evaluation.get(key, {})
 
-        st.subheader(label)
-
-        st.metric(
-            "Judge score",
-            result.get("score", "—"),
+        stage_scores.append(
+            {
+                "Stage": label,
+                "Score": result.get("score", "—"),
+                "Reason": result.get(
+                    "reason",
+                    "No explanation available.",
+                ),
+            }
         )
 
-        st.write(
-            result.get(
-                "reason",
-                "No explanation available.",
-            )
-        )
+    st.dataframe(
+        stage_scores,
+        use_container_width=True,
+        hide_index=True,
+    )
 
     st.subheader("Final Versus Draft")
 
@@ -412,6 +500,8 @@ elif page == "Evaluation":
 
     st.write(f"Final score: **{comparison.get('final_score', '—')}**")
 
+    st.write(f"Score difference: **{comparison.get('difference', '—')}**")
+
     st.write(
         comparison.get(
             "interpretation",
@@ -419,23 +509,84 @@ elif page == "Evaluation":
         )
     )
 
-    st.subheader("Judge Validation Repeats")
+    st.subheader("Judge Validation")
 
     repeats = judge.get("repeats", [])
 
     if repeats:
+        repeat_rows = []
+
         for item in repeats:
             summary = item.get("summary", {})
 
-            st.write(
-                f"Repeat {item.get('repeat')}: "
-                f"Spearman = "
-                f"{fmt(summary.get('spearman_correlation'), 3)}, "
-                f"MAD = "
-                f"{fmt(summary.get('mean_absolute_difference'), 3)}"
+            repeat_rows.append(
+                {
+                    "Repeat": item.get("repeat"),
+                    "Spearman": fmt(
+                        summary.get("spearman_correlation"),
+                        3,
+                    ),
+                    "MAD": fmt(
+                        summary.get("mean_absolute_difference"),
+                        3,
+                    ),
+                    "Cases": summary.get(
+                        "case_count",
+                        "—",
+                    ),
+                }
             )
+
+        st.dataframe(
+            repeat_rows,
+            use_container_width=True,
+            hide_index=True,
+        )
+
     else:
         st.warning("Judge validation repeat results are not available.")
+
+    st.write(
+        f"Score changes across repeats: **{judge.get('repeated_score_changes', '—')}**"
+    )
+
+    st.write(
+        "Mean absolute repeat change: "
+        f"**{fmt(judge.get('mean_absolute_repeat_change'), 3)}**"
+    )
+
+    st.write(
+        "Maximum absolute repeat change: "
+        f"**{fmt(judge.get('maximum_absolute_repeat_change'), 3)}**"
+    )
+
+    st.subheader("Per-Case Judge Results")
+
+    cases = []
+
+    if repeats:
+        cases = repeats[0].get("cases", [])
+
+    if cases:
+        case_rows = [
+            {
+                "Case ID": case.get("case_id"),
+                "Human Label": case.get("human_label"),
+                "Judge Score": case.get("judge_score"),
+                "Normalized Score": case.get("normalized_score"),
+                "Question": case.get("question"),
+                "Reason": case.get("reason"),
+            }
+            for case in cases
+        ]
+
+        st.dataframe(
+            case_rows,
+            use_container_width=True,
+            hide_index=True,
+        )
+    else:
+        st.warning("Per-case judge results are not available.")
 
     st.write(
         "The same correlation ID was preserved across Planner, "
@@ -463,9 +614,13 @@ else:
         selected = st.text_input(
             "Enter trace_id",
             value=selected_example,
-        )
+        ).strip()
 
-        matches = [row for row in traces if row.get("trace_id") == selected]
+        matches = [
+            add_duration(row) for row in traces if row.get("trace_id") == selected
+        ]
+
+        matches.sort(key=stage_position)
 
         if not matches:
             st.warning("Trace ID not found. Use one of the example IDs:")
@@ -488,10 +643,23 @@ else:
             st.write(f"Trace ID: `{selected}`")
 
             for row in matches:
+                duration = row.get("duration_ms")
+
+                duration_text = (
+                    f"{fmt(duration, 3)} ms"
+                    if isinstance(
+                        duration,
+                        (int, float),
+                    )
+                    else "—"
+                )
+
                 with st.expander(
-                    f"{row.get('stage')} — {row.get('status')}",
+                    f"{row.get('stage')} — {row.get('status')} — {duration_text}",
                     expanded=True,
                 ):
+                    st.write(f"Duration: **{duration_text}**")
+
                     st.json(row)
 
 

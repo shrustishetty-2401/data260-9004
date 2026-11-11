@@ -90,7 +90,7 @@
     code span.vs { color: #4070a0; } /* VerbatimString */
     code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="report.css" />
+  <link rel="stylesheet" href="reports/hw10/report.css" />
 </head>
 <body>
 <h1 id="data-260-homework-10">DATA-260 Homework 10</h1>
@@ -160,6 +160,11 @@ reports/hw10/raw/judge_validation.json
 reports/hw10/raw/trace_examples.json</code></pre>
 <p>The latency chart shows p95 latency for queue wait, Planner, Writer,
 Reviewer, and the total pipeline.</p>
+<p>The Summary page reports the semantic-cache hit rate separately from
+cache misses. In the captured evidence, there was 1 cache hit and 2
+cache misses, giving a cache-hit rate of 33.3%. The dashboard also
+reports the error rate and total end-to-end latency using the local HW10
+experiment time window and JSON/JSONL evidence files.</p>
 <h3 id="evaluation-page">Evaluation Page</h3>
 <p>The Evaluation page displays:</p>
 <ul>
@@ -177,6 +182,10 @@ Reviewer, and the total pipeline.</p>
 draft and final answer received a judge score of 1.0 because the
 generated answer was generic and did not explain Kafka coordination
 mechanisms.</p>
+<p>The Evaluation page also displays the per-case judge results for all
+20 Writer cases, including case ID, human label, judge score, normalized
+score, question, and judge reason. This makes the case-level comparison
+directly inspectable in the dashboard.</p>
 <h3 id="trace-lookup-page">Trace Lookup Page</h3>
 <p>The Trace Lookup page allows a user to select a trace ID and
 inspect:</p>
@@ -193,6 +202,10 @@ inspect:</p>
 <li>Error details</li>
 <li>Stage metadata</li>
 </ul>
+<p>Each displayed trace span includes its calculated duration in
+milliseconds in addition to the trace ID, stage, start time, end time,
+status, error, and metadata. The spans are displayed in request order
+from cache lookup through evaluation.</p>
 <h2 id="part-2-automated-pipeline-evaluation">Part 2: Automated Pipeline
 Evaluation</h2>
 <p>The Kafka pipeline uses:</p>
@@ -242,7 +255,7 @@ same <code>correlation_id</code>.</p>
 <p>The pipeline completed successfully and produced an approved final
 result.</p>
 <p>However, the generated answer was generic. It described a planning
-process instead of explaining Kafka's coordination mechanisms. The local
+process instead of explaining Kafka’s coordination mechanisms. The local
 judge therefore gave:</p>
 <table>
 <thead>
@@ -518,36 +531,58 @@ evidence.</p>
 not improve over the draft, and the low judge-human correlation was
 included as a limitation rather than hidden.</p>
 <h2 id="dashboard-evidence">Dashboard Evidence</h2>
-<h3 id="figure-1-operations-summary-dashboard">Figure 1. Operations
+<h3 id="figure-1.-operations-summary-dashboard">Figure 1. Operations
 Summary Dashboard</h3>
-<p><img src="evidence/dashboard_summary.png"
-alt="Operations summary dashboard" /></p>
+<figure>
+<img src="evidence/dashboard_summary.png"
+alt="Operations summary dashboard" />
+<figcaption aria-hidden="true">Operations summary dashboard</figcaption>
+</figure>
 <p>The Summary page reports trace count, cache hits and misses, failed
 spans, total p95 latency, stage latency, and the 50-request cache-miss
 benchmark.</p>
-<h3 id="figure-2-evaluation-dashboard">Figure 2. Evaluation
+<p>The dashboard reports a semantic-cache hit rate of 33.3%, based on 1
+cache hit and 2 cache misses. It also reports the error rate and total
+end-to-end latency for the local HW10 experiment window.</p>
+<h3 id="figure-2.-evaluation-dashboard">Figure 2. Evaluation
 Dashboard</h3>
-<p><img src="evidence/dashboard_evaluation.png"
-alt="Evaluation dashboard" /></p>
+<figure>
+<img src="evidence/dashboard_evaluation.png"
+alt="Evaluation dashboard" />
+<figcaption aria-hidden="true">Evaluation dashboard</figcaption>
+</figure>
 <p>The Evaluation page reports Plan Quality, Writer Helpfulness, Final
 Answer Helpfulness, final-versus-draft comparison, and the three
 judge-validation repeats.</p>
-<h3 id="figure-3-cache-hit-trace">Figure 3. Cache-Hit Trace</h3>
-<p><img src="evidence/dashboard_trace_hit.png"
-alt="Cache-hit trace" /></p>
+<p>The Evaluation page displays per-case results for all 20 Writer
+cases, including the case ID, human label, judge score, normalized
+score, question, and judge reason.</p>
+<h3 id="figure-3.-cache-hit-trace">Figure 3. Cache-Hit Trace</h3>
+<figure>
+<img src="evidence/dashboard_trace_hit.png" alt="Cache-hit trace" />
+<figcaption aria-hidden="true">Cache-hit trace</figcaption>
+</figure>
 <p>The Trace Lookup page shows the cache-hit path and the
 <code>cache_status: "hit"</code> metadata.</p>
-<h3 id="figure-4-successful-cache-miss-trace">Figure 4. Successful
+<h3 id="figure-4.-successful-cache-miss-trace">Figure 4. Successful
 Cache-Miss Trace</h3>
-<p><img src="evidence/dashboard_trace_miss.png"
-alt="Successful cache-miss trace" /></p>
+<figure>
+<img src="evidence/dashboard_trace_miss.png"
+alt="Successful cache-miss trace" />
+<figcaption aria-hidden="true">Successful cache-miss trace</figcaption>
+</figure>
 <p>The Trace Lookup page shows the successful cache-miss path through
 the Kafka pipeline.</p>
-<h3 id="figure-5-failed-trace">Figure 5. Failed Trace</h3>
-<p><img src="evidence/dashboard_trace_failed.png"
-alt="Failed trace" /></p>
+<h3 id="figure-5.-failed-trace">Figure 5. Failed Trace</h3>
+<figure>
+<img src="evidence/dashboard_trace_failed.png" alt="Failed trace" />
+<figcaption aria-hidden="true">Failed trace</figcaption>
+</figure>
 <p>The Trace Lookup page shows the failed Planner stage and its recorded
 error.</p>
+<p>Each trace span displays its calculated duration in milliseconds,
+along with the trace ID, stage, start time, end time, status, error, and
+metadata. Trace stages are displayed in request order.</p>
 <h2 id="final-git-verification">Final Git Verification</h2>
 <ul>
 <li>Branch: <code>hw10</code></li>

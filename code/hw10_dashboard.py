@@ -8,17 +8,23 @@ ROOT = Path(__file__).resolve().parents[1]
 RAW = ROOT / "reports" / "hw10" / "raw"
 
 
+@st.cache_data
 def load_json(name, default=None):
     path = RAW / name
+
     if not path.exists():
         return default if default is not None else {}
+
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+@st.cache_data
 def load_jsonl(name):
     path = RAW / name
+
     if not path.exists():
         return []
+
     return [
         json.loads(line)
         for line in path.read_text(encoding="utf-8").splitlines()
@@ -29,6 +35,7 @@ def load_jsonl(name):
 def fmt(value, digits=2):
     if isinstance(value, (int, float)):
         return f"{value:.{digits}f}"
+
     return "—"
 
 
@@ -41,24 +48,33 @@ st.set_page_config(
 st.markdown(
     """
     <style>
-    .main {
-        background: linear-gradient(
-            135deg,
-            #f7f9fc 0%,
-            #eef4ff 100%
-        );
+    .stApp {
+        background: #f6f8fc !important;
+        color: #202124 !important;
+    }
+
+    .main .block-container {
+        background: transparent !important;
     }
 
     [data-testid="stMetric"] {
-        background: white;
+        background: white !important;
+        color: #173b72 !important;
         border: 1px solid #dbe5f2;
         border-radius: 16px;
         padding: 16px;
         box-shadow: 0 4px 12px rgba(30, 60, 100, .08);
     }
 
+    [data-testid="stMetricLabel"],
+    [data-testid="stMetricValue"],
+    [data-testid="stMetricDelta"] {
+        color: #173b72 !important;
+    }
+
     h1 {
         color: #173b72 !important;
+        font-size: 14pt !important;
         font-weight: 800 !important;
         border-bottom: 5px solid #4f8cff;
         padding-bottom: 12px;
@@ -66,11 +82,12 @@ st.markdown(
 
     h2 {
         color: #214f91 !important;
+        font-size: 12pt !important;
         background: linear-gradient(
             90deg,
             #dceaff,
             #f4f8ff,
-            transparent
+            white
         );
         border-left: 7px solid #3478db;
         border-radius: 8px;
@@ -79,11 +96,19 @@ st.markdown(
     }
 
     h3 {
-        color: #8a3ffc !important;
+        color: #7138c8 !important;
+        font-size: 12pt !important;
         background: #f1eaff;
         border-left: 5px solid #8a3ffc;
         border-radius: 7px;
         padding: 8px 12px;
+    }
+
+    p,
+    li,
+    label,
+    .card {
+        color: #202124 !important;
     }
 
     [data-testid="stSidebar"] {
@@ -91,7 +116,7 @@ st.markdown(
             180deg,
             #173b72,
             #285b9f
-        );
+        ) !important;
     }
 
     [data-testid="stSidebar"] * {
@@ -99,7 +124,8 @@ st.markdown(
     }
 
     .card {
-        background: white;
+        background: white !important;
+        color: #202124 !important;
         border: 1px solid #dbe5f2;
         border-radius: 16px;
         padding: 20px;
@@ -108,7 +134,7 @@ st.markdown(
     }
 
     .good {
-        color: #137333;
+        color: #137333 !important;
         background: #e6f4ea;
         border-radius: 20px;
         padding: 7px 15px;
@@ -117,12 +143,57 @@ st.markdown(
     }
 
     .bad {
-        color: #b3261e;
+        color: #b3261e !important;
         background: #fce8e6;
         border-radius: 20px;
         padding: 7px 15px;
         font-weight: 700;
         display: inline-block;
+    }
+
+    div[data-baseweb="select"] {
+        background: white !important;
+        color: #202124 !important;
+    }
+
+    div[data-baseweb="select"] > div {
+        background: white !important;
+        color: #202124 !important;
+        border: 1px solid #b8c7dc !important;
+        border-radius: 8px !important;
+    }
+
+    div[data-baseweb="select"] * {
+        color: #202124 !important;
+    }
+
+    div[data-baseweb="select"] input {
+        background: white !important;
+        color: #202124 !important;
+        caret-color: #202124 !important;
+    }
+
+    [role="listbox"] {
+        background: white !important;
+        border: 1px solid #b8c7dc !important;
+    }
+
+    [role="option"] {
+        background: white !important;
+        color: #202124 !important;
+    }
+
+    [role="option"]:hover {
+        background: #dceaff !important;
+        color: #173b72 !important;
+    }
+
+    [data-testid="stTextInput"] input {
+        background: white !important;
+        color: #202124 !important;
+        caret-color: #202124 !important;
+        border: 1px solid #b8c7dc !important;
+        border-radius: 8px !important;
     }
     </style>
     """,
@@ -136,11 +207,16 @@ judge = load_json("judge_validation.json")
 examples = load_json("trace_examples.json")
 
 st.title("📊 DATA-260 HW10 Operations Dashboard")
+
 st.caption("Kafka multi-agent pipeline • semantic cache • evaluator • trace evidence")
 
 page = st.sidebar.radio(
     "Dashboard pages",
-    ["Summary", "Evaluation", "Trace Lookup"],
+    [
+        "Summary",
+        "Evaluation",
+        "Trace Lookup",
+    ],
 )
 
 
@@ -148,6 +224,7 @@ if page == "Summary":
     st.header("Operations Summary")
 
     st.write("Evidence source: local Kafka and evaluator experiment outputs")
+
     st.write("Window: timestamps recorded during HW10 experiments")
 
     hit_count = sum(
@@ -162,18 +239,41 @@ if page == "Summary":
 
     trace_count = len({row.get("trace_id") for row in traces})
 
+    error_rate = failed_count / trace_count if trace_count else 0
+
     metrics = latency.get("metrics", {})
     total = metrics.get("total", {})
 
-    columns = st.columns(5)
+    columns = st.columns(6)
 
-    columns[0].metric("Traces", trace_count)
-    columns[1].metric("Cache hits", hit_count)
-    columns[2].metric("Cache misses", miss_count)
-    columns[3].metric("Failed spans", failed_count)
+    columns[0].metric(
+        "Traces",
+        trace_count,
+    )
+
+    columns[1].metric(
+        "Cache hits",
+        hit_count,
+    )
+
+    columns[2].metric(
+        "Cache misses",
+        miss_count,
+    )
+
+    columns[3].metric(
+        "Failed spans",
+        failed_count,
+    )
+
     columns[4].metric(
         "Total p95",
         f"{fmt(total.get('p95_ms'))} ms",
+    )
+
+    columns[5].metric(
+        "Error rate",
+        f"{error_rate:.1%}",
     )
 
     st.markdown(
@@ -200,7 +300,10 @@ if page == "Summary":
         f"and {failed_count} failed span."
     )
 
-    st.markdown("</div>", unsafe_allow_html=True)
+    st.markdown(
+        "</div>",
+        unsafe_allow_html=True,
+    )
 
     st.markdown(
         '<div class="card">',
@@ -237,7 +340,10 @@ if page == "Summary":
             f"p95: {fmt(values.get('p95_ms'))} ms"
         )
 
-    st.markdown("</div>", unsafe_allow_html=True)
+    st.markdown(
+        "</div>",
+        unsafe_allow_html=True,
+    )
 
     st.markdown(
         '<div class="card">',
@@ -256,7 +362,10 @@ if page == "Summary":
 
     st.write(f"Contributor share: **{fmt(latency.get('p95_contributor_percent'))}%**")
 
-    st.markdown("</div>", unsafe_allow_html=True)
+    st.markdown(
+        "</div>",
+        unsafe_allow_html=True,
+    )
 
 
 elif page == "Evaluation":
@@ -346,15 +455,22 @@ else:
     if not trace_ids:
         st.error("No example trace IDs were found.")
     else:
-        selected = st.selectbox(
+        selected_example = st.selectbox(
             "Choose an example trace",
             trace_ids,
+        )
+
+        selected = st.text_input(
+            "Enter trace_id",
+            value=selected_example,
         )
 
         matches = [row for row in traces if row.get("trace_id") == selected]
 
         if not matches:
-            st.error("This trace ID was not found in traces.jsonl.")
+            st.warning("Trace ID not found. Use one of the example IDs:")
+
+            st.code("\n".join(trace_ids))
         else:
             failed = any(row.get("status") == "failed" for row in matches)
 

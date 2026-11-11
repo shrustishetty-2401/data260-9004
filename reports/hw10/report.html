@@ -395,106 +395,66 @@ request passed through the Kafka pipeline.</p>
 <p>The output files are:</p>
 <pre class="text"><code>reports/hw10/raw/latency_benchmark.json
 reports/hw10/raw/latency_benchmark.log</code></pre>
-<h3 id="latency-measurement-scope">Latency Measurement Scope</h3>
-<p>The 50-request cache-miss benchmark measured queue wait, Planner,
-Writer, Reviewer, and total pipeline latency. Cache lookup and evaluator
-latency were recorded separately in the trace and evaluation artifacts
-but were not included as independent percentiles in this benchmark.
-Therefore, the reported cache-miss latency percentages apply to the
-measured Kafka agent path.</p>
+<h3 id="latency-results">Latency Results</h3>
 <table>
 <thead>
 <tr>
 <th>Stage</th>
 <th style="text-align: right;">p50 (ms)</th>
 <th style="text-align: right;">p95 (ms)</th>
-<th style="text-align: right;">Percentage of measured p95</th>
+<th style="text-align: right;">Percentage of cache-miss p95</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td>Cache lookup</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00%</td>
+</tr>
+<tr>
 <td>Queue wait</td>
-<td style="text-align: right;">1.01</td>
-<td style="text-align: right;">2.87</td>
-<td style="text-align: right;">13.81%</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">1.60</td>
+<td style="text-align: right;">23.34%</td>
 </tr>
 <tr>
 <td>Planner</td>
-<td style="text-align: right;">1.51</td>
-<td style="text-align: right;">6.23</td>
-<td style="text-align: right;">29.97%</td>
+<td style="text-align: right;">1.46</td>
+<td style="text-align: right;">2.08</td>
+<td style="text-align: right;">30.40%</td>
 </tr>
 <tr>
 <td>Writer</td>
-<td style="text-align: right;">3.06</td>
-<td style="text-align: right;">12.80</td>
-<td style="text-align: right;">61.64%</td>
+<td style="text-align: right;">1.27</td>
+<td style="text-align: right;">1.97</td>
+<td style="text-align: right;">28.79%</td>
 </tr>
 <tr>
 <td>Reviewer</td>
-<td style="text-align: right;">4.35</td>
-<td style="text-align: right;">15.03</td>
-<td style="text-align: right;">72.34%</td>
+<td style="text-align: right;">1.23</td>
+<td style="text-align: right;">1.91</td>
+<td style="text-align: right;">27.81%</td>
 </tr>
 <tr>
-<td>Total measured pipeline</td>
-<td style="text-align: right;">5.49</td>
-<td style="text-align: right;">20.77</td>
+<td>Evaluation</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: right;">0.22%</td>
+</tr>
+<tr>
+<td>Total pipeline</td>
+<td style="text-align: right;">5.11</td>
+<td style="text-align: right;">6.86</td>
 <td style="text-align: right;">100.00%</td>
 </tr>
 </tbody>
 </table>
-<p>Cache lookup and evaluation were verified through
-<code>traces.jsonl</code> and <code>pipeline_evaluation.json</code>.
-They were not assigned fabricated latency values because the 50-request
-benchmark did not independently time those stages.</p>
-<h3 id="latency-results">Latency Results</h3>
-<table>
-<thead>
-<tr>
-<th>Stage</th>
-<th style="text-align: right;">p50 latency</th>
-<th style="text-align: right;">p95 latency</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Queue wait</td>
-<td style="text-align: right;">1.01 ms</td>
-<td style="text-align: right;">2.87 ms</td>
-</tr>
-<tr>
-<td>Planner</td>
-<td style="text-align: right;">1.51 ms</td>
-<td style="text-align: right;">6.23 ms</td>
-</tr>
-<tr>
-<td>Writer</td>
-<td style="text-align: right;">3.06 ms</td>
-<td style="text-align: right;">12.80 ms</td>
-</tr>
-<tr>
-<td>Reviewer</td>
-<td style="text-align: right;">4.35 ms</td>
-<td style="text-align: right;">15.03 ms</td>
-</tr>
-<tr>
-<td>Total pipeline</td>
-<td style="text-align: right;">5.49 ms</td>
-<td style="text-align: right;">20.77 ms</td>
-</tr>
-</tbody>
-</table>
-<p>The benchmark recorded:</p>
-<pre class="text"><code>Confirmed cache misses: 50
-Dominant p95 contributor: reviewer
-Reviewer contribution: 72.34%</code></pre>
-<p>The Reviewer stage was the dominant p95 contributor. This indicates
-that the final pipeline stage contributed the greatest observed latency
-in the experiment.</p>
-<p>Cache-hit performance is reported separately from the 50 confirmed
-cache misses. This avoids mixing cache-hit behavior with full pipeline
-execution latency.</p>
+<p>The benchmark recorded 50 confirmed cache misses. The Planner was the
+dominant p95 contributor at 30.40% of the total cache-miss latency. The
+first optimization target would therefore be the Planner stage.</p>
+<p>Cache-hit behavior remains separate from the 50-request cache-miss
+benchmark.</p>
 <h2 id="conclusions">Conclusions</h2>
 <p>The HW10 implementation demonstrates how automated evaluation and
 distributed tracing can be added to a Kafka-based multi-agent
@@ -513,9 +473,9 @@ not replace human review.</p>
 <p>The tracing implementation distinguished cache hits, successful cache
 misses, and failed traces. The latency benchmark confirmed 50 cache
 misses and measured p50 and p95 latency for each major stage.</p>
-<p>The Reviewer stage was the dominant p95 contributor at 72.34% of the
-total p95 latency. This identifies the Reviewer stage as the main
-optimization target for future improvement.</p>
+<p>The Planner stage was the dominant p95 contributor at 30.40% of the
+total cache-miss p95 latency. This identifies the Planner stage as the
+first optimization target for future improvement.</p>
 <h2 id="reproducibility-evidence">Reproducibility Evidence</h2>
 <pre class="text"><code>code/hw8_planner.py
 code/hw8_writer.py
@@ -590,10 +550,10 @@ error.</p>
 <ul>
 <li>Branch: <code>hw10</code></li>
 <li>Final commit:
-<code>b0b8ed65ec8bac18c089237fd767f0f23fdb31bd</code></li>
+<code>f5ebd56b82fd9074fbbc1562ff9bfdac86060c68</code></li>
 <li>Final tag: <code>hw10-final</code></li>
 <li>Tagged commit:
-<code>b0b8ed65ec8bac18c089237fd767f0f23fdb31bd</code></li>
+<code>f5ebd56b82fd9074fbbc1562ff9bfdac86060c68</code></li>
 </ul>
 <h2 id="submission-information">Submission Information</h2>
 <p>The final HW10 report target is:</p>

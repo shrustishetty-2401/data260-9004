@@ -2,629 +2,745 @@
   "cache_miss_count": 50,
   "confirmed_cache_miss_count": 50,
   "metrics": {
-    "planner": {
-      "p50_ms": 1.5101880017027725,
-      "p95_ms": 6.225924848331488
-    },
-    "writer": {
-      "p50_ms": 3.064187500058324,
-      "p95_ms": 12.804370651065254
-    },
-    "reviewer": {
-      "p50_ms": 4.350229000920081,
-      "p95_ms": 15.029164399311409
+    "cache_lookup": {
+      "p50_ms": 0.00012500095181167126,
+      "p95_ms": 0.0003187484253430736
     },
     "queue_wait": {
-      "p50_ms": 1.0116249995917315,
-      "p95_ms": 2.870697549769825
+      "p50_ms": 1.000354499410605,
+      "p95_ms": 1.6008040987799177
+    },
+    "planner": {
+      "p50_ms": 1.4633329992648214,
+      "p95_ms": 2.0849291970080226
+    },
+    "writer": {
+      "p50_ms": 1.2731040005746763,
+      "p95_ms": 1.9747415506571993
+    },
+    "reviewer": {
+      "p50_ms": 1.2344164970272686,
+      "p95_ms": 1.9076498469075887
+    },
+    "evaluation": {
+      "p50_ms": 0.01018799957819283,
+      "p95_ms": 0.014989547344157469
     },
     "total": {
-      "p50_ms": 5.485749999934342,
-      "p95_ms": 20.77438314936442
+      "p50_ms": 5.112480001116637,
+      "p95_ms": 6.858722945253247
     }
   },
-  "p95_dominant_contributor": "reviewer",
-  "p95_contributor_percent": 72.34469630820887,
+  "p95_percent_of_total": {
+    "cache_lookup": 0.004647343651104489,
+    "queue_wait": 23.33968162233167,
+    "planner": 30.398212810898716,
+    "writer": 28.791679827567158,
+    "reviewer": 27.813484552949113,
+    "evaluation": 0.2185472057087736
+  },
+  "p95_dominant_contributor": "planner",
+  "p95_contributor_percent": 30.398212810898716,
   "rows": [
     {
       "request_number": 1,
-      "trace_id": "00e5be0e-57c0-4bc0-8768-7249d5948702",
+      "trace_id": "4829c533-b41d-4214-b49b-6bdaf18fc6a3",
       "cache_status": "miss",
-      "queue_wait_ms": 11.437374996603467,
+      "cache_lookup_ms": 0.0022080057533457875,
+      "queue_wait_ms": 5.805291002616286,
       "stages": {
-        "planner": 4.422917001647875,
-        "writer": 9.906667000905145,
-        "reviewer": 13.118584000039846
+        "planner": 3.7419590007630177,
+        "writer": 2.5957499965443276,
+        "reviewer": 1.345333002973348,
+        "evaluation": 0.013833996490575373
       },
-      "total_latency_ms": 24.555958996643312
+      "total_latency_ms": 13.5043750051409
     },
     {
       "request_number": 2,
-      "trace_id": "13f0b837-1693-4a19-a042-fac8e77a45ca",
+      "trace_id": "0d975abb-5411-42ec-9d13-0419756e713e",
       "cache_status": "miss",
-      "queue_wait_ms": 1.916667002660688,
+      "cache_lookup_ms": 0.00012500095181167126,
+      "queue_wait_ms": 1.0225419973721728,
       "stages": {
-        "planner": 6.214832999830833,
-        "writer": 13.021082999330247,
-        "reviewer": 15.50445799875888
+        "planner": 1.4284159988164902,
+        "writer": 1.3109999999869615,
+        "reviewer": 1.2448749985196628,
+        "evaluation": 0.008584000170230865
       },
-      "total_latency_ms": 17.42112500141957
+      "total_latency_ms": 5.01554199581733
     },
     {
       "request_number": 3,
-      "trace_id": "e0414076-14ab-4f8d-bc30-642d7933b4ed",
+      "trace_id": "8a3c5e50-0ac2-4ab5-bc46-4eed1a3855aa",
       "cache_status": "miss",
-      "queue_wait_ms": 1.9667500018840656,
+      "cache_lookup_ms": 0.0002500019036233425,
+      "queue_wait_ms": 0.9447080010431819,
       "stages": {
-        "planner": 4.127707998122787,
-        "writer": 7.247082998219412,
-        "reviewer": 9.335665999969933
+        "planner": 1.3288339978316799,
+        "writer": 1.2251660009496845,
+        "reviewer": 0.9953339977073483,
+        "evaluation": 0.007874994480516762
       },
-      "total_latency_ms": 11.302416001853999
+      "total_latency_ms": 4.502166993916035
     },
     {
       "request_number": 4,
-      "trace_id": "b5247bb0-a93f-4a28-a84b-9f730abb41f9",
+      "trace_id": "8a81dd59-9086-4e7e-875c-95005a7faf58",
       "cache_status": "miss",
-      "queue_wait_ms": 1.4058749984542374,
+      "cache_lookup_ms": 8.400093065574765e-05,
+      "queue_wait_ms": 0.8525000012014061,
       "stages": {
-        "planner": 1.9429160020081326,
-        "writer": 12.539500003185822,
-        "reviewer": 14.448249999986729
+        "planner": 1.26629199803574,
+        "writer": 1.2552499974844977,
+        "reviewer": 0.9940000018104911,
+        "evaluation": 0.009625000529922545
       },
-      "total_latency_ms": 15.854124998440966
+      "total_latency_ms": 4.377750999992713
     },
     {
       "request_number": 5,
-      "trace_id": "2f600e37-693b-4614-a924-6af5cbd62e71",
+      "trace_id": "0708bdf8-7af9-4bf4-8ab4-23000bb1563d",
       "cache_status": "miss",
-      "queue_wait_ms": 1.0521250005695038,
+      "cache_lookup_ms": 0.00012500095181167126,
+      "queue_wait_ms": 0.8061249973252416,
       "stages": {
-        "planner": 1.3959999996586703,
-        "writer": 3.13987499976065,
-        "reviewer": 8.342375000211177
+        "planner": 1.3621250036521815,
+        "writer": 1.1485829963930883,
+        "reviewer": 1.0262089999741875,
+        "evaluation": 0.009665993275120854
       },
-      "total_latency_ms": 9.394500000780681
+      "total_latency_ms": 4.352832991571631
     },
     {
       "request_number": 6,
-      "trace_id": "edddc517-5457-4dde-9296-9b9caa1560c7",
+      "trace_id": "90af6008-4a49-4276-ba09-034ecccd7495",
       "cache_status": "miss",
-      "queue_wait_ms": 1.015666999592213,
+      "cache_lookup_ms": 0.00012500095181167126,
+      "queue_wait_ms": 0.7266660031746142,
       "stages": {
-        "planner": 1.9698329997481778,
-        "writer": 3.2502909998584073,
-        "reviewer": 4.94033300128649
+        "planner": 1.3361250021262094,
+        "writer": 1.341791998129338,
+        "reviewer": 1.3316670010681264,
+        "evaluation": 0.010249998013023287
       },
-      "total_latency_ms": 5.956000000878703
+      "total_latency_ms": 4.746625003463123
     },
     {
       "request_number": 7,
-      "trace_id": "610b3db1-d8a8-42fc-b510-e76b55ddf66d",
+      "trace_id": "572f881a-d087-48ed-b227-cc1ac2e6a3ae",
       "cache_status": "miss",
-      "queue_wait_ms": 1.3629589993797708,
+      "cache_lookup_ms": 0.000166997779160738,
+      "queue_wait_ms": 1.0060830027214251,
       "stages": {
-        "planner": 2.03933300144854,
-        "writer": 3.8827499993203674,
-        "reviewer": 5.651375002344139
+        "planner": 1.4029579979251139,
+        "writer": 1.3993750035297126,
+        "reviewer": 1.2300419984967448,
+        "evaluation": 0.01049999991664663
       },
-      "total_latency_ms": 7.01433400172391
+      "total_latency_ms": 5.049125000368804
     },
     {
       "request_number": 8,
-      "trace_id": "7e2577a7-97a3-4a5d-be42-84b38f18ab02",
+      "trace_id": "42182c7f-223a-4b72-884f-d8fabd797f25",
       "cache_status": "miss",
-      "queue_wait_ms": 1.0242499993182719,
+      "cache_lookup_ms": 4.1000021155923605e-05,
+      "queue_wait_ms": 1.1125419987365603,
       "stages": {
-        "planner": 1.4599999994970858,
-        "writer": 3.023000001121545,
-        "reviewer": 4.458625000552274
+        "planner": 1.5963330006343313,
+        "writer": 1.2583749994519167,
+        "reviewer": 1.4821670047240332,
+        "evaluation": 0.009082999895326793
       },
-      "total_latency_ms": 5.482874999870546
+      "total_latency_ms": 5.458541003463324
     },
     {
       "request_number": 9,
-      "trace_id": "7e4a3543-5a0c-43b0-99cb-93c5e7892221",
+      "trace_id": "5e8d00b3-5b94-436a-a900-94e71a25aea0",
       "cache_status": "miss",
-      "queue_wait_ms": 1.2830000014218967,
+      "cache_lookup_ms": 4.200410330668092e-05,
+      "queue_wait_ms": 0.9733749975566752,
       "stages": {
-        "planner": 1.5276250014721882,
-        "writer": 3.5245840008428786,
-        "reviewer": 5.5312090007646475
+        "planner": 1.7338750039925799,
+        "writer": 1.3751669976045378,
+        "reviewer": 1.1308750035823323,
+        "evaluation": 0.013500000932253897
       },
-      "total_latency_ms": 6.814209002186544
+      "total_latency_ms": 5.226834007771686
     },
     {
       "request_number": 10,
-      "trace_id": "17bb3424-ac7c-4696-a15a-78df5a831c5b",
+      "trace_id": "836c161d-d5e6-4bfc-9a20-ba7925c584e1",
       "cache_status": "miss",
-      "queue_wait_ms": 0.9098330010601785,
+      "cache_lookup_ms": 0.00016600097296759486,
+      "queue_wait_ms": 1.08712499786634,
       "stages": {
-        "planner": 2.059582999208942,
-        "writer": 4.530957998213125,
-        "reviewer": 5.90974999795435
+        "planner": 1.4425830013351515,
+        "writer": 1.4831669977866113,
+        "reviewer": 1.4373329977388494,
+        "evaluation": 0.011290998372714967
       },
-      "total_latency_ms": 6.8195829990145285
+      "total_latency_ms": 5.461664994072635
     },
     {
       "request_number": 11,
-      "trace_id": "a14c2fc5-248c-4979-a95c-3a2bb06a4322",
+      "trace_id": "03e8c6f4-f124-4b86-97f9-249f58933998",
       "cache_status": "miss",
-      "queue_wait_ms": 1.3670419975824188,
+      "cache_lookup_ms": 0.000166997779160738,
+      "queue_wait_ms": 0.9385840021423064,
       "stages": {
-        "planner": 1.6102500012493692,
-        "writer": 3.03258300118614,
-        "reviewer": 4.67729099909775
+        "planner": 1.3256659949547611,
+        "writer": 1.109875003749039,
+        "reviewer": 1.119041997299064,
+        "evaluation": 0.008999995770864189
       },
-      "total_latency_ms": 6.044332996680168
+      "total_latency_ms": 4.502333991695195
     },
     {
       "request_number": 12,
-      "trace_id": "01c3cab0-f12b-4a1a-9956-33ab6b426f21",
+      "trace_id": "617c225a-e033-42d6-8a92-be836f7ea9bb",
       "cache_status": "miss",
-      "queue_wait_ms": 1.930708000145387,
+      "cache_lookup_ms": 0.00016700505511835217,
+      "queue_wait_ms": 0.8350420030183159,
       "stages": {
-        "planner": 6.234999997104751,
-        "writer": 7.789874998707091,
-        "reviewer": 9.48779199825367
+        "planner": 1.419124993844889,
+        "writer": 1.0738330020103604,
+        "reviewer": 1.1242079999647103,
+        "evaluation": 0.008709001122042537
       },
-      "total_latency_ms": 11.418499998399056
+      "total_latency_ms": 4.461084005015437
     },
     {
       "request_number": 13,
-      "trace_id": "5bec6ace-101a-4dc4-bc05-b4cc9ef3e495",
+      "trace_id": "d03dd8ce-93a2-4abb-bb36-23e7b7489c7d",
       "cache_status": "miss",
-      "queue_wait_ms": 1.2432080002326984,
+      "cache_lookup_ms": 0.00012500095181167126,
+      "queue_wait_ms": 0.8661250030854717,
       "stages": {
-        "planner": 2.0084999996470287,
-        "writer": 3.456917002040427,
-        "reviewer": 4.833333001442952
+        "planner": 1.6712910000933334,
+        "writer": 1.105458999518305,
+        "reviewer": 1.2387909955577925,
+        "evaluation": 0.00954199640545994
       },
-      "total_latency_ms": 6.0765410016756505
+      "total_latency_ms": 4.891332995612174
     },
     {
       "request_number": 14,
-      "trace_id": "b135e2a3-888f-4b00-a8fa-8b4a1a14e540",
+      "trace_id": "03e45337-cbea-4380-a836-153632432f4e",
       "cache_status": "miss",
-      "queue_wait_ms": 1.229957997566089,
+      "cache_lookup_ms": 0.00012500095181167126,
+      "queue_wait_ms": 0.927166998735629,
       "stages": {
-        "planner": 1.8155830002797302,
-        "writer": 3.538292003213428,
-        "reviewer": 5.374250002205372
+        "planner": 1.3259580009616911,
+        "writer": 1.2098750012228265,
+        "reviewer": 1.1122079959022813,
+        "evaluation": 0.010084004316013306
       },
-      "total_latency_ms": 6.604207999771461
+      "total_latency_ms": 4.585417002090253
     },
     {
       "request_number": 15,
-      "trace_id": "28a51e65-d85c-425a-882d-5a73390ec349",
+      "trace_id": "8de53471-a2b4-42f6-968e-ba7629628be8",
       "cache_status": "miss",
-      "queue_wait_ms": 4.830666999623645,
+      "cache_lookup_ms": 0.00016700505511835217,
+      "queue_wait_ms": 1.0212499983026646,
       "stages": {
-        "planner": 1.5627079992555082,
-        "writer": 2.97599999976228,
-        "reviewer": 4.400082998472499
+        "planner": 1.3264580047689378,
+        "writer": 1.2104999987059273,
+        "reviewer": 1.3863330023013987,
+        "evaluation": 0.010707997716963291
       },
-      "total_latency_ms": 9.230749998096144
+      "total_latency_ms": 4.95541600685101
     },
     {
       "request_number": 16,
-      "trace_id": "b9b46aec-1603-4e81-a424-7051dde73263",
+      "trace_id": "fdc2b80c-d4fd-4192-940d-1ac3410e2653",
       "cache_status": "miss",
-      "queue_wait_ms": 0.964915998338256,
+      "cache_lookup_ms": 0.00012500095181167126,
+      "queue_wait_ms": 1.000374999421183,
       "stages": {
-        "planner": 1.502917002653703,
-        "writer": 3.096792002907023,
-        "reviewer": 4.225709002639633
+        "planner": 1.68041700089816,
+        "writer": 1.69116700271843,
+        "reviewer": 1.6171660026884638,
+        "evaluation": 0.014416997146327049
       },
-      "total_latency_ms": 5.190625000977889
+      "total_latency_ms": 6.003667003824376
     },
     {
       "request_number": 17,
-      "trace_id": "529a359b-df33-4631-b323-1dde2da6134a",
+      "trace_id": "dc4bb5d9-310e-4bb9-aef3-91bedef3ddc2",
       "cache_status": "miss",
-      "queue_wait_ms": 0.9928750005201437,
+      "cache_lookup_ms": 8.299684850499034e-05,
+      "queue_wait_ms": 1.6091659999801777,
       "stages": {
-        "planner": 1.4405419969989453,
-        "writer": 2.8329999986453913,
-        "reviewer": 4.2092919975402765
+        "planner": 2.2601669988944195,
+        "writer": 1.837542004068382,
+        "reviewer": 1.466290996177122,
+        "evaluation": 0.011292002454865724
       },
-      "total_latency_ms": 5.20216699806042
+      "total_latency_ms": 7.184540998423472
     },
     {
       "request_number": 18,
-      "trace_id": "26202e2a-6aa6-4725-b8bd-d90fe6c311cc",
+      "trace_id": "ff7ebd97-c55a-4f80-bbcd-60f0634f3ad8",
       "cache_status": "miss",
-      "queue_wait_ms": 1.1947500024689361,
+      "cache_lookup_ms": 0.000166997779160738,
+      "queue_wait_ms": 1.073207997251302,
       "stages": {
-        "planner": 2.0343329997558612,
-        "writer": 9.957165999367135,
-        "reviewer": 11.383499997464241
+        "planner": 1.766374996805098,
+        "writer": 1.4131670031929389,
+        "reviewer": 1.2209580017952248,
+        "evaluation": 0.009125003998633474
       },
-      "total_latency_ms": 12.578249999933178
+      "total_latency_ms": 5.483000000822358
     },
     {
       "request_number": 19,
-      "trace_id": "ad5fdd62-e2d6-4cb3-8aaf-7b8daab778d6",
+      "trace_id": "cc0d1114-2100-4e2d-bcc5-ae4d7aef878c",
       "cache_status": "miss",
-      "queue_wait_ms": 0.987750001513632,
+      "cache_lookup_ms": 0.00012500095181167126,
+      "queue_wait_ms": 1.221375001478009,
       "stages": {
-        "planner": 1.7684169979474973,
-        "writer": 3.379249999852618,
-        "reviewer": 4.717125000752276
+        "planner": 1.781500002834946,
+        "writer": 1.3850420000380836,
+        "reviewer": 1.3612920010928065,
+        "evaluation": 0.009791998309083283
       },
-      "total_latency_ms": 5.704875002265908
+      "total_latency_ms": 5.75912600470474
     },
     {
       "request_number": 20,
-      "trace_id": "8cad9a56-75bf-4d7a-8bcf-a2585c4499fa",
+      "trace_id": "300ba2bf-7437-41be-b678-e8189ae4904d",
       "cache_status": "miss",
-      "queue_wait_ms": 1.0514169989619404,
+      "cache_lookup_ms": 0.00012500095181167126,
+      "queue_wait_ms": 1.2234999958309345,
       "stages": {
-        "planner": 19.571415999962483,
-        "writer": 21.17300000099931,
-        "reviewer": 22.46654099872103
+        "planner": 1.3688330000150017,
+        "writer": 1.269792002858594,
+        "reviewer": 0.9893329988699406,
+        "evaluation": 0.00945899955695495
       },
-      "total_latency_ms": 23.51795799768297
+      "total_latency_ms": 4.861041998083238
     },
     {
       "request_number": 21,
-      "trace_id": "e22c8c56-f5d2-470c-b42c-a2d6fa71853e",
+      "trace_id": "a2c364ca-c232-488e-a564-587405b8fc9e",
       "cache_status": "miss",
-      "queue_wait_ms": 0.9514169978501741,
+      "cache_lookup_ms": 0.00012500095181167126,
+      "queue_wait_ms": 1.3754589963355102,
       "stages": {
-        "planner": 2.0313750028435607,
-        "writer": 3.1352080004580785,
-        "reviewer": 6.274833001953084
+        "planner": 1.4465409985859878,
+        "writer": 1.104625000152737,
+        "reviewer": 1.136834005592391,
+        "evaluation": 0.010167001164518297
       },
-      "total_latency_ms": 7.226249999803258
+      "total_latency_ms": 5.073751002782956
     },
     {
       "request_number": 22,
-      "trace_id": "5407a8bd-8c93-4084-95c2-c7d41f361369",
+      "trace_id": "5bc8b1d2-3998-46e3-89cf-6f4918070f69",
       "cache_status": "miss",
-      "queue_wait_ms": 1.583834000484785,
+      "cache_lookup_ms": 0.000166997779160738,
+      "queue_wait_ms": 0.8937910024542361,
       "stages": {
-        "planner": 1.3938329975644592,
-        "writer": 3.2165829979931004,
-        "reviewer": 4.370208000182174
+        "planner": 1.3333750030142255,
+        "writer": 1.3522919980459847,
+        "reviewer": 0.906000001123175,
+        "evaluation": 0.027833004423882812
       },
-      "total_latency_ms": 5.954042000666959
+      "total_latency_ms": 4.513458006840665
     },
     {
       "request_number": 23,
-      "trace_id": "cdf49153-3437-4f89-a554-d9965cac5e46",
+      "trace_id": "b8dde82d-c08b-4f61-9106-141af855bfa6",
       "cache_status": "miss",
-      "queue_wait_ms": 0.9693330030131619,
+      "cache_lookup_ms": 0.00016700505511835217,
+      "queue_wait_ms": 1.0561250019236468,
       "stages": {
-        "planner": 1.5971249995345715,
-        "writer": 3.0957919989305083,
-        "reviewer": 4.273167000064859
+        "planner": 1.4826249971520156,
+        "writer": 2.058666999801062,
+        "reviewer": 1.8771249960991554,
+        "evaluation": 0.012542004697024822
       },
-      "total_latency_ms": 5.242500003078021
+      "total_latency_ms": 6.487251004728023
     },
     {
       "request_number": 24,
-      "trace_id": "e8ffcd79-4343-468a-848a-817d8419dc03",
+      "trace_id": "cc77c8a0-6442-4e07-8c7f-3b075f602707",
       "cache_status": "miss",
-      "queue_wait_ms": 0.9047500025189947,
+      "cache_lookup_ms": 0.0003749955794773996,
+      "queue_wait_ms": 1.462583000829909,
       "stages": {
-        "planner": 1.2611249985639006,
-        "writer": 2.5102500003413297,
-        "reviewer": 3.650791997642955
+        "planner": 1.6746250039432198,
+        "writer": 2.1245839961920865,
+        "reviewer": 1.72125000244705,
+        "evaluation": 0.012874996173195541
       },
-      "total_latency_ms": 4.5555420001619495
+      "total_latency_ms": 6.996291995164938
     },
     {
       "request_number": 25,
-      "trace_id": "c17c1ef6-20d3-48bd-a987-c036ac152b5a",
+      "trace_id": "7e891d99-7b02-4d38-85d1-baa054b7db81",
       "cache_status": "miss",
-      "queue_wait_ms": 0.8597920023021288,
+      "cache_lookup_ms": 0.00012500095181167126,
+      "queue_wait_ms": 1.0328749995096587,
       "stages": {
-        "planner": 1.381750000291504,
-        "writer": 2.571332999650622,
-        "reviewer": 3.7987499999871943
+        "planner": 1.8797919983626343,
+        "writer": 1.213166004163213,
+        "reviewer": 1.4112919961917214,
+        "evaluation": 0.010667004971764982
       },
-      "total_latency_ms": 4.658542002289323
+      "total_latency_ms": 5.547917004150804
     },
     {
       "request_number": 26,
-      "trace_id": "a8f81c83-fdca-43f9-ae35-d80cbff87ef5",
+      "trace_id": "1496d54c-88b9-4854-af53-be19d13c3d03",
       "cache_status": "miss",
-      "queue_wait_ms": 0.9292089998780284,
+      "cache_lookup_ms": 0.0002079978003166616,
+      "queue_wait_ms": 0.9632080036681145,
       "stages": {
-        "planner": 35.7408329982718,
-        "writer": 39.484332999563776,
-        "reviewer": 41.43141599706723
+        "planner": 1.6065829986473545,
+        "writer": 1.3778749998891726,
+        "reviewer": 2.2036250011296943,
+        "evaluation": 0.03679099609144032
       },
-      "total_latency_ms": 42.36062499694526
+      "total_latency_ms": 6.188289997226093
     },
     {
       "request_number": 27,
-      "trace_id": "5e9f5789-0de5-4f67-b6a6-f03c0d6e492f",
+      "trace_id": "b6919061-3ed5-48fd-92a4-30f89bf07c96",
       "cache_status": "miss",
-      "queue_wait_ms": 1.0802500000863802,
+      "cache_lookup_ms": 0.00012500095181167126,
+      "queue_wait_ms": 1.7286250003962778,
       "stages": {
-        "planner": 1.4736670018464793,
-        "writer": 3.4769170015351847,
-        "reviewer": 4.915292000077898
+        "planner": 1.768165995599702,
+        "writer": 1.2392500066198409,
+        "reviewer": 1.3042499995208345,
+        "evaluation": 0.01016599708236754
       },
-      "total_latency_ms": 5.995542000164278
+      "total_latency_ms": 6.050582000170834
     },
     {
       "request_number": 28,
-      "trace_id": "5f3b8770-ed6f-456f-a8c3-72f968c17782",
+      "trace_id": "ef8a4193-fc44-46b8-b1e5-1f2088206b81",
       "cache_status": "miss",
-      "queue_wait_ms": 1.0512910012039356,
+      "cache_lookup_ms": 8.299684850499034e-05,
+      "queue_wait_ms": 1.0071670039906166,
       "stages": {
-        "planner": 1.5174590007518418,
-        "writer": 3.1966669994289987,
-        "reviewer": 4.437333998794202
+        "planner": 1.4093749996391125,
+        "writer": 1.4563329968950711,
+        "reviewer": 1.3941249999334104,
+        "evaluation": 0.010040996130555868
       },
-      "total_latency_ms": 5.488624999998137
+      "total_latency_ms": 5.277123993437272
     },
     {
       "request_number": 29,
-      "trace_id": "7404c736-8a7d-442c-8c69-84cdb92661b5",
+      "trace_id": "37a2f1b6-6420-44da-b981-59a9a7b1ecfb",
       "cache_status": "miss",
-      "queue_wait_ms": 0.9707909994176589,
+      "cache_lookup_ms": 0.00012500095181167126,
+      "queue_wait_ms": 1.0416670047561638,
       "stages": {
-        "planner": 2.110875000653323,
-        "writer": 3.864999998768326,
-        "reviewer": 5.205624998779967
+        "planner": 1.836791998357512,
+        "writer": 1.2268749997019768,
+        "reviewer": 1.2937909996253438,
+        "evaluation": 0.011083000572398305
       },
-      "total_latency_ms": 6.176415998197626
+      "total_latency_ms": 5.4103330039652064
     },
     {
       "request_number": 30,
-      "trace_id": "ce52b0cf-1fc8-4757-b174-39655b1bbaa1",
+      "trace_id": "18e5b164-62f8-4e3a-91b3-bbe46dcba8c9",
       "cache_status": "miss",
-      "queue_wait_ms": 3.61029099804,
+      "cache_lookup_ms": 8.300412446260452e-05,
+      "queue_wait_ms": 0.941999998758547,
       "stages": {
-        "planner": 2.2022090015525464,
-        "writer": 9.262999999918975,
-        "reviewer": 12.970625000889413
+        "planner": 1.2921250017825514,
+        "writer": 1.3602920007542707,
+        "reviewer": 1.9209999954910018,
+        "evaluation": 0.011624993931036443
       },
-      "total_latency_ms": 16.580915998929413
+      "total_latency_ms": 5.52712499484187
     },
     {
       "request_number": 31,
-      "trace_id": "02d56b09-4116-4d21-975c-bf30d3d7c3a2",
+      "trace_id": "583308a1-fbc2-42ad-a592-692245943b4e",
       "cache_status": "miss",
-      "queue_wait_ms": 1.5660409990232438,
+      "cache_lookup_ms": 8.300412446260452e-05,
+      "queue_wait_ms": 1.5905839973129332,
       "stages": {
-        "planner": 1.678249998803949,
-        "writer": 3.217500001483131,
-        "reviewer": 4.330250001657987
+        "planner": 1.948707998963073,
+        "writer": 1.1801669970736839,
+        "reviewer": 1.227541004482191,
+        "evaluation": 0.009333001798950136
       },
-      "total_latency_ms": 5.896291000681231
+      "total_latency_ms": 5.956416003755294
     },
     {
       "request_number": 32,
-      "trace_id": "1ee36420-6979-4ff2-ab10-18063ce58b1a",
+      "trace_id": "59b8b0dc-7267-4876-84b0-9fd4f149151c",
       "cache_status": "miss",
-      "queue_wait_ms": 0.879082999745151,
+      "cache_lookup_ms": 8.300412446260452e-05,
+      "queue_wait_ms": 0.858457999129314,
       "stages": {
-        "planner": 1.351291997707449,
-        "writer": 2.5342919980175793,
-        "reviewer": 3.8216670000110753
+        "planner": 1.3158330039004795,
+        "writer": 0.9900840013870038,
+        "reviewer": 1.1076250011683442,
+        "evaluation": 0.010208997991867363
       },
-      "total_latency_ms": 4.700749999756226
+      "total_latency_ms": 4.2822920077014714
     },
     {
       "request_number": 33,
-      "trace_id": "4e29cc01-b9a0-420e-ad60-9e9d150d536d",
+      "trace_id": "b7c403f6-e6ae-44cb-af6f-db5fb05a932f",
       "cache_status": "miss",
-      "queue_wait_ms": 0.979290998657234,
+      "cache_lookup_ms": 0.0004169996827840805,
+      "queue_wait_ms": 0.9966249999706633,
       "stages": {
-        "planner": 1.2992920019314624,
-        "writer": 2.6490840027690865,
-        "reviewer": 3.882875000272179
+        "planner": 1.2097500002710149,
+        "writer": 1.2093330005882308,
+        "reviewer": 1.2576669978443533,
+        "evaluation": 0.00954199640545994
       },
-      "total_latency_ms": 4.862165998929413
+      "total_latency_ms": 4.683333994762506
     },
     {
       "request_number": 34,
-      "trace_id": "d34bb348-8ce2-4a9a-83d8-6d23c16f9527",
+      "trace_id": "32603404-bc6d-48cb-a99b-729a03de70d9",
       "cache_status": "miss",
-      "queue_wait_ms": 1.0086660004162695,
+      "cache_lookup_ms": 8.300412446260452e-05,
+      "queue_wait_ms": 1.000333999400027,
       "stages": {
-        "planner": 1.375916999677429,
-        "writer": 2.862291999917943,
-        "reviewer": 3.996916999312816
+        "planner": 1.480124999943655,
+        "writer": 1.239375000295695,
+        "reviewer": 1.8913329986389726,
+        "evaluation": 0.010833005944732577
       },
-      "total_latency_ms": 5.005582999729086
+      "total_latency_ms": 5.622083008347545
     },
     {
       "request_number": 35,
-      "trace_id": "0b1a7385-6f12-40e1-b884-61154ad13aee",
+      "trace_id": "91d51c29-9ade-422f-a795-e750fe6f3f71",
       "cache_status": "miss",
-      "queue_wait_ms": 1.0587079996184912,
+      "cache_lookup_ms": 0.00016600097296759486,
+      "queue_wait_ms": 1.300999996601604,
       "stages": {
-        "planner": 1.4195420008036308,
-        "writer": 2.7501670010678936,
-        "reviewer": 3.9370829981635325
+        "planner": 2.1742919998359866,
+        "writer": 1.8721660017035902,
+        "reviewer": 1.3325839972821996,
+        "evaluation": 0.010374998964834958
       },
-      "total_latency_ms": 4.995790997782024
+      "total_latency_ms": 6.690582995361183
     },
     {
       "request_number": 36,
-      "trace_id": "d0e6b073-71c5-41f8-8d64-fd75a33ed757",
+      "trace_id": "5019bb25-121f-43dc-a8ea-8fb81c1e0c8f",
       "cache_status": "miss",
-      "queue_wait_ms": 1.020125000650296,
+      "cache_lookup_ms": 0.0002500019036233425,
+      "queue_wait_ms": 0.8568329940317199,
       "stages": {
-        "planner": 1.381709000270348,
-        "writer": 2.7106669986096676,
-        "reviewer": 3.9387920005538035
+        "planner": 1.5548330047749914,
+        "writer": 1.644500000111293,
+        "reviewer": 1.1492919948068447,
+        "evaluation": 0.009875002433545887
       },
-      "total_latency_ms": 4.9589170012040995
+      "total_latency_ms": 5.215582998062018
     },
     {
       "request_number": 37,
-      "trace_id": "2145c051-6d51-4f2c-80b5-976bae7373a1",
+      "trace_id": "fd472c5a-0f49-45d3-b7d6-347f840d4907",
       "cache_status": "miss",
-      "queue_wait_ms": 0.9333340021839831,
+      "cache_lookup_ms": 0.0002090018824674189,
+      "queue_wait_ms": 0.989042004221119,
       "stages": {
-        "planner": 1.3596249991678633,
-        "writer": 2.706832998228492,
-        "reviewer": 4.131749999942258
+        "planner": 1.2667919945670292,
+        "writer": 1.1442910035839304,
+        "reviewer": 2.0430840013432316,
+        "evaluation": 0.011083997378591448
       },
-      "total_latency_ms": 5.065084002126241
+      "total_latency_ms": 5.454502002976369
     },
     {
       "request_number": 38,
-      "trace_id": "e8a47ba8-2aeb-4d3b-b3d4-92f87baae180",
+      "trace_id": "fddbde26-7cb1-43e1-9cdf-b4fc5f36efe1",
       "cache_status": "miss",
-      "queue_wait_ms": 0.9543749984004535,
+      "cache_lookup_ms": 4.1000021155923605e-05,
+      "queue_wait_ms": 1.3000830003875308,
       "stages": {
-        "planner": 1.7108339998230804,
-        "writer": 2.8521670028567314,
-        "reviewer": 3.8602090025960933
+        "planner": 1.949917001184076,
+        "writer": 1.3982079981360584,
+        "reviewer": 1.2660420034080744,
+        "evaluation": 0.011042000551242381
       },
-      "total_latency_ms": 4.814584000996547
+      "total_latency_ms": 5.925333003688138
     },
     {
       "request_number": 39,
-      "trace_id": "73fb9ded-43c6-4329-86d4-9e0805e56dd3",
+      "trace_id": "da460c91-5d95-4c48-9a13-755f267107c5",
       "cache_status": "miss",
-      "queue_wait_ms": 0.756458000978455,
+      "cache_lookup_ms": 0.000166997779160738,
+      "queue_wait_ms": 0.9824999942793511,
       "stages": {
-        "planner": 1.2876250002591405,
-        "writer": 2.647582998179132,
-        "reviewer": 4.0021669992711395
+        "planner": 1.7415840047760867,
+        "writer": 1.2764159982907586,
+        "reviewer": 1.1365000027581118,
+        "evaluation": 0.014042001566849649
       },
-      "total_latency_ms": 4.7586250002495944
+      "total_latency_ms": 5.1512089994503185
     },
     {
       "request_number": 40,
-      "trace_id": "e601027d-74c8-4117-a35e-3db22bd0ed7e",
+      "trace_id": "9af321ad-8163-40cf-afd0-0ff231cb6ca9",
       "cache_status": "miss",
-      "queue_wait_ms": 0.9844590022112243,
+      "cache_lookup_ms": 0.000166997779160738,
+      "queue_wait_ms": 0.9436250038561411,
       "stages": {
-        "planner": 1.3762499984295573,
-        "writer": 2.613374999782536,
-        "reviewer": 4.039832998387283
+        "planner": 1.5078749929671176,
+        "writer": 1.2495830014813691,
+        "reviewer": 1.1512499986565672,
+        "evaluation": 0.010374998964834958
       },
-      "total_latency_ms": 5.024292000598507
+      "total_latency_ms": 4.862874993705191
     },
     {
       "request_number": 41,
-      "trace_id": "56773920-6808-4dc8-983d-4dcdaa4d6158",
+      "trace_id": "8ba9d7c4-874e-4591-b789-4b66923bd1cf",
       "cache_status": "miss",
-      "queue_wait_ms": 1.0315840008843224,
+      "cache_lookup_ms": 0.0002090018824674189,
+      "queue_wait_ms": 1.0057920007966459,
       "stages": {
-        "planner": 1.3213749989517964,
-        "writer": 2.5895409999066032,
-        "reviewer": 3.691500001878012
+        "planner": 1.2864579985034652,
+        "writer": 1.2567500016302802,
+        "reviewer": 1.2050000004819594,
+        "evaluation": 0.00954199640545994
       },
-      "total_latency_ms": 4.723084002762334
+      "total_latency_ms": 4.763750999700278
     },
     {
       "request_number": 42,
-      "trace_id": "aaa97d28-cf51-4fe2-9c6c-15f86c4e596c",
+      "trace_id": "53253bd4-9490-486c-bbef-0b219464326a",
       "cache_status": "miss",
-      "queue_wait_ms": 0.7948330021463335,
+      "cache_lookup_ms": 4.1996827349066734e-05,
+      "queue_wait_ms": 0.8603329988545738,
       "stages": {
-        "planner": 1.1832919990411028,
-        "writer": 2.431499997328501,
-        "reviewer": 3.4796670006471686
+        "planner": 1.3892499991925433,
+        "writer": 1.1661249955068342,
+        "reviewer": 1.072625003871508,
+        "evaluation": 0.010124997061211616
       },
-      "total_latency_ms": 4.274500002793502
+      "total_latency_ms": 4.49849999131402
     },
     {
       "request_number": 43,
-      "trace_id": "7c6b938d-521e-433d-8d6d-da2a8c0c2568",
+      "trace_id": "bafd085a-fe28-44ed-b220-21c35680cd3c",
       "cache_status": "miss",
-      "queue_wait_ms": 0.8194170004571788,
+      "cache_lookup_ms": 0.00012499367585405707,
+      "queue_wait_ms": 1.142749999416992,
       "stages": {
-        "planner": 1.1736659980670083,
-        "writer": 2.424708000035025,
-        "reviewer": 3.6163330005365424
+        "planner": 1.4971249984228052,
+        "writer": 1.381791997118853,
+        "reviewer": 1.0241660056635737,
+        "evaluation": 0.00970800465438515
       },
-      "total_latency_ms": 4.435750000993721
+      "total_latency_ms": 5.055665998952463
     },
     {
       "request_number": 44,
-      "trace_id": "8421d981-6900-4a95-bb39-5bc1a284a100",
+      "trace_id": "23300611-789f-45af-8ec0-eb23c7320793",
       "cache_status": "miss",
-      "queue_wait_ms": 0.9025420004036278,
+      "cache_lookup_ms": 8.299684850499034e-05,
+      "queue_wait_ms": 0.8824159958749078,
       "stages": {
-        "planner": 1.1945829974138178,
-        "writer": 2.5849579978967085,
-        "reviewer": 3.7393749989860225
+        "planner": 1.2974589990335517,
+        "writer": 1.2545410063466989,
+        "reviewer": 1.0446249943925068,
+        "evaluation": 0.015457997506018728
       },
-      "total_latency_ms": 4.64191699938965
+      "total_latency_ms": 4.494581990002189
     },
     {
       "request_number": 45,
-      "trace_id": "8bfbf23f-95d0-4f2b-b55a-6f2a7d64c2d8",
+      "trace_id": "512c1057-dc63-4396-80e4-341af7a645e5",
       "cache_status": "miss",
-      "queue_wait_ms": 1.0145839987671934,
+      "cache_lookup_ms": 0.00012500095181167126,
+      "queue_wait_ms": 0.9382909993291833,
       "stages": {
-        "planner": 1.640040998609038,
-        "writer": 2.9147079985705204,
-        "reviewer": 4.054958000779152
+        "planner": 1.1692089974530973,
+        "writer": 1.321458003076259,
+        "reviewer": 1.5392079949378967,
+        "evaluation": 0.010000003385357559
       },
-      "total_latency_ms": 5.069541999546345
+      "total_latency_ms": 4.9782909991336055
     },
     {
       "request_number": 46,
-      "trace_id": "dc3b25dd-1dd7-4dae-8e7b-0ad211edd3ee",
+      "trace_id": "1ecfedf6-7556-44d7-8edf-821832910309",
       "cache_status": "miss",
-      "queue_wait_ms": 0.9538339982100297,
+      "cache_lookup_ms": 4.1000021155923605e-05,
+      "queue_wait_ms": 1.0593339975457639,
       "stages": {
-        "planner": 1.472833002480911,
-        "writer": 2.9015830004937015,
-        "reviewer": 4.23962499917252
+        "planner": 1.6010830004233867,
+        "writer": 1.292625005589798,
+        "reviewer": 0.9681249939603731,
+        "evaluation": 0.010583004041109234
       },
-      "total_latency_ms": 5.19345899738255
+      "total_latency_ms": 4.931791001581587
     },
     {
       "request_number": 47,
-      "trace_id": "66cbef10-f2f2-4a71-8369-c5c8c44fb061",
+      "trace_id": "3fedf0a6-ec7b-4bcc-a392-11f63bfea1ee",
       "cache_status": "miss",
-      "queue_wait_ms": 0.9065000012924429,
+      "cache_lookup_ms": 0.00016599369700998068,
+      "queue_wait_ms": 0.8242080002673902,
       "stages": {
-        "planner": 1.2979159982933197,
-        "writer": 2.384332998190075,
-        "reviewer": 3.5008749982807785
+        "planner": 1.3939999989815988,
+        "writer": 1.193582997075282,
+        "reviewer": 1.173791999462992,
+        "evaluation": 0.009792005585040897
       },
-      "total_latency_ms": 4.407374999573221
+      "total_latency_ms": 4.595540995069314
     },
     {
       "request_number": 48,
-      "trace_id": "a58c0a75-88f4-4f07-b365-44cf718aaac6",
+      "trace_id": "89a7e593-500a-49a7-8550-67ab4710562e",
       "cache_status": "miss",
-      "queue_wait_ms": 0.9539170023344923,
+      "cache_lookup_ms": 0.00016600097296759486,
+      "queue_wait_ms": 0.9059590011020191,
       "stages": {
-        "planner": 1.2256659974809736,
-        "writer": 2.6567909990262706,
-        "reviewer": 3.7447909999173135
+        "planner": 1.3298330013640225,
+        "writer": 1.2473329989006743,
+        "reviewer": 1.144249996286817,
+        "evaluation": 0.009291004971601069
       },
-      "total_latency_ms": 4.698708002251806
+      "total_latency_ms": 4.636832003598101
     },
     {
       "request_number": 49,
-      "trace_id": "63725366-bdbd-45dd-a67c-dbdaa0d66364",
+      "trace_id": "c76efd2f-2c89-47ef-ae35-a47d1d613787",
       "cache_status": "miss",
-      "queue_wait_ms": 0.8631250020698644,
+      "cache_lookup_ms": 0.000166997779160738,
+      "queue_wait_ms": 0.9452079975744709,
       "stages": {
-        "planner": 1.2894999999844003,
-        "writer": 2.3936249999678694,
-        "reviewer": 3.510583999741357
+        "planner": 1.5149579994613305,
+        "writer": 1.5004590022726916,
+        "reviewer": 1.4774999945075251,
+        "evaluation": 0.01049999991664663
       },
-      "total_latency_ms": 4.373709001811221
+      "total_latency_ms": 5.4487919915118255
     },
     {
       "request_number": 50,
-      "trace_id": "696282b4-863a-4d2c-a181-d0a4f72ad961",
+      "trace_id": "60c59d2a-8265-4bf8-a35d-4d654edab06d",
       "cache_status": "miss",
-      "queue_wait_ms": 0.8661250030854717,
+      "cache_lookup_ms": 0.00012500095181167126,
+      "queue_wait_ms": 1.511959002527874,
       "stages": {
-        "planner": 1.4519579999614507,
-        "writer": 2.8171659978397656,
-        "reviewer": 3.9400829991791397
+        "planner": 1.975707993551623,
+        "writer": 1.5482080052606761,
+        "reviewer": 1.1188749995199032,
+        "evaluation": 0.009667004633229226
       },
-      "total_latency_ms": 4.806208002264611
+      "total_latency_ms": 6.164542006445117
     }
   ]
 }

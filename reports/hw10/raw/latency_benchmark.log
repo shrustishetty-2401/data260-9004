@@ -1,79 +1,95 @@
-miss 1/50 trace_id=00e5be0e-57c0-4bc0-8768-7249d5948702
-miss 2/50 trace_id=13f0b837-1693-4a19-a042-fac8e77a45ca
-miss 3/50 trace_id=e0414076-14ab-4f8d-bc30-642d7933b4ed
-miss 4/50 trace_id=b5247bb0-a93f-4a28-a84b-9f730abb41f9
-miss 5/50 trace_id=2f600e37-693b-4614-a924-6af5cbd62e71
-miss 6/50 trace_id=edddc517-5457-4dde-9296-9b9caa1560c7
-miss 7/50 trace_id=610b3db1-d8a8-42fc-b510-e76b55ddf66d
-miss 8/50 trace_id=7e2577a7-97a3-4a5d-be42-84b38f18ab02
-miss 9/50 trace_id=7e4a3543-5a0c-43b0-99cb-93c5e7892221
-miss 10/50 trace_id=17bb3424-ac7c-4696-a15a-78df5a831c5b
-miss 11/50 trace_id=a14c2fc5-248c-4979-a95c-3a2bb06a4322
-miss 12/50 trace_id=01c3cab0-f12b-4a1a-9956-33ab6b426f21
-miss 13/50 trace_id=5bec6ace-101a-4dc4-bc05-b4cc9ef3e495
-miss 14/50 trace_id=b135e2a3-888f-4b00-a8fa-8b4a1a14e540
-miss 15/50 trace_id=28a51e65-d85c-425a-882d-5a73390ec349
-miss 16/50 trace_id=b9b46aec-1603-4e81-a424-7051dde73263
-miss 17/50 trace_id=529a359b-df33-4631-b323-1dde2da6134a
-miss 18/50 trace_id=26202e2a-6aa6-4725-b8bd-d90fe6c311cc
-miss 19/50 trace_id=ad5fdd62-e2d6-4cb3-8aaf-7b8daab778d6
-miss 20/50 trace_id=8cad9a56-75bf-4d7a-8bcf-a2585c4499fa
-miss 21/50 trace_id=e22c8c56-f5d2-470c-b42c-a2d6fa71853e
-miss 22/50 trace_id=5407a8bd-8c93-4084-95c2-c7d41f361369
-miss 23/50 trace_id=cdf49153-3437-4f89-a554-d9965cac5e46
-miss 24/50 trace_id=e8ffcd79-4343-468a-848a-817d8419dc03
-miss 25/50 trace_id=c17c1ef6-20d3-48bd-a987-c036ac152b5a
-miss 26/50 trace_id=a8f81c83-fdca-43f9-ae35-d80cbff87ef5
-miss 27/50 trace_id=5e9f5789-0de5-4f67-b6a6-f03c0d6e492f
-miss 28/50 trace_id=5f3b8770-ed6f-456f-a8c3-72f968c17782
-miss 29/50 trace_id=7404c736-8a7d-442c-8c69-84cdb92661b5
-miss 30/50 trace_id=ce52b0cf-1fc8-4757-b174-39655b1bbaa1
-miss 31/50 trace_id=02d56b09-4116-4d21-975c-bf30d3d7c3a2
-miss 32/50 trace_id=1ee36420-6979-4ff2-ab10-18063ce58b1a
-miss 33/50 trace_id=4e29cc01-b9a0-420e-ad60-9e9d150d536d
-miss 34/50 trace_id=d34bb348-8ce2-4a9a-83d8-6d23c16f9527
-miss 35/50 trace_id=0b1a7385-6f12-40e1-b884-61154ad13aee
-miss 36/50 trace_id=d0e6b073-71c5-41f8-8d64-fd75a33ed757
-miss 37/50 trace_id=2145c051-6d51-4f2c-80b5-976bae7373a1
-miss 38/50 trace_id=e8a47ba8-2aeb-4d3b-b3d4-92f87baae180
-miss 39/50 trace_id=73fb9ded-43c6-4329-86d4-9e0805e56dd3
-miss 40/50 trace_id=e601027d-74c8-4117-a35e-3db22bd0ed7e
-miss 41/50 trace_id=56773920-6808-4dc8-983d-4dcdaa4d6158
-miss 42/50 trace_id=aaa97d28-cf51-4fe2-9c6c-15f86c4e596c
-miss 43/50 trace_id=7c6b938d-521e-433d-8d6d-da2a8c0c2568
-miss 44/50 trace_id=8421d981-6900-4a95-bb39-5bc1a284a100
-miss 45/50 trace_id=8bfbf23f-95d0-4f2b-b55a-6f2a7d64c2d8
-miss 46/50 trace_id=dc3b25dd-1dd7-4dae-8e7b-0ad211edd3ee
-miss 47/50 trace_id=66cbef10-f2f2-4a71-8369-c5c8c44fb061
-miss 48/50 trace_id=a58c0a75-88f4-4f07-b365-44cf718aaac6
-miss 49/50 trace_id=63725366-bdbd-45dd-a67c-dbdaa0d66364
-miss 50/50 trace_id=696282b4-863a-4d2c-a181-d0a4f72ad961
+miss 1/50 trace_id=4829c533-b41d-4214-b49b-6bdaf18fc6a3
+miss 2/50 trace_id=0d975abb-5411-42ec-9d13-0419756e713e
+miss 3/50 trace_id=8a3c5e50-0ac2-4ab5-bc46-4eed1a3855aa
+miss 4/50 trace_id=8a81dd59-9086-4e7e-875c-95005a7faf58
+miss 5/50 trace_id=0708bdf8-7af9-4bf4-8ab4-23000bb1563d
+miss 6/50 trace_id=90af6008-4a49-4276-ba09-034ecccd7495
+miss 7/50 trace_id=572f881a-d087-48ed-b227-cc1ac2e6a3ae
+miss 8/50 trace_id=42182c7f-223a-4b72-884f-d8fabd797f25
+miss 9/50 trace_id=5e8d00b3-5b94-436a-a900-94e71a25aea0
+miss 10/50 trace_id=836c161d-d5e6-4bfc-9a20-ba7925c584e1
+miss 11/50 trace_id=03e8c6f4-f124-4b86-97f9-249f58933998
+miss 12/50 trace_id=617c225a-e033-42d6-8a92-be836f7ea9bb
+miss 13/50 trace_id=d03dd8ce-93a2-4abb-bb36-23e7b7489c7d
+miss 14/50 trace_id=03e45337-cbea-4380-a836-153632432f4e
+miss 15/50 trace_id=8de53471-a2b4-42f6-968e-ba7629628be8
+miss 16/50 trace_id=fdc2b80c-d4fd-4192-940d-1ac3410e2653
+miss 17/50 trace_id=dc4bb5d9-310e-4bb9-aef3-91bedef3ddc2
+miss 18/50 trace_id=ff7ebd97-c55a-4f80-bbcd-60f0634f3ad8
+miss 19/50 trace_id=cc0d1114-2100-4e2d-bcc5-ae4d7aef878c
+miss 20/50 trace_id=300ba2bf-7437-41be-b678-e8189ae4904d
+miss 21/50 trace_id=a2c364ca-c232-488e-a564-587405b8fc9e
+miss 22/50 trace_id=5bc8b1d2-3998-46e3-89cf-6f4918070f69
+miss 23/50 trace_id=b8dde82d-c08b-4f61-9106-141af855bfa6
+miss 24/50 trace_id=cc77c8a0-6442-4e07-8c7f-3b075f602707
+miss 25/50 trace_id=7e891d99-7b02-4d38-85d1-baa054b7db81
+miss 26/50 trace_id=1496d54c-88b9-4854-af53-be19d13c3d03
+miss 27/50 trace_id=b6919061-3ed5-48fd-92a4-30f89bf07c96
+miss 28/50 trace_id=ef8a4193-fc44-46b8-b1e5-1f2088206b81
+miss 29/50 trace_id=37a2f1b6-6420-44da-b981-59a9a7b1ecfb
+miss 30/50 trace_id=18e5b164-62f8-4e3a-91b3-bbe46dcba8c9
+miss 31/50 trace_id=583308a1-fbc2-42ad-a592-692245943b4e
+miss 32/50 trace_id=59b8b0dc-7267-4876-84b0-9fd4f149151c
+miss 33/50 trace_id=b7c403f6-e6ae-44cb-af6f-db5fb05a932f
+miss 34/50 trace_id=32603404-bc6d-48cb-a99b-729a03de70d9
+miss 35/50 trace_id=91d51c29-9ade-422f-a795-e750fe6f3f71
+miss 36/50 trace_id=5019bb25-121f-43dc-a8ea-8fb81c1e0c8f
+miss 37/50 trace_id=fd472c5a-0f49-45d3-b7d6-347f840d4907
+miss 38/50 trace_id=fddbde26-7cb1-43e1-9cdf-b4fc5f36efe1
+miss 39/50 trace_id=da460c91-5d95-4c48-9a13-755f267107c5
+miss 40/50 trace_id=9af321ad-8163-40cf-afd0-0ff231cb6ca9
+miss 41/50 trace_id=8ba9d7c4-874e-4591-b789-4b66923bd1cf
+miss 42/50 trace_id=53253bd4-9490-486c-bbef-0b219464326a
+miss 43/50 trace_id=bafd085a-fe28-44ed-b220-21c35680cd3c
+miss 44/50 trace_id=23300611-789f-45af-8ec0-eb23c7320793
+miss 45/50 trace_id=512c1057-dc63-4396-80e4-341af7a645e5
+miss 46/50 trace_id=1ecfedf6-7556-44d7-8edf-821832910309
+miss 47/50 trace_id=3fedf0a6-ec7b-4bcc-a392-11f63bfea1ee
+miss 48/50 trace_id=89a7e593-500a-49a7-8550-67ab4710562e
+miss 49/50 trace_id=c76efd2f-2c89-47ef-ae35-a47d1d613787
+miss 50/50 trace_id=60c59d2a-8265-4bf8-a35d-4d654edab06d
 {
   "cache_miss_count": 50,
   "confirmed_cache_miss_count": 50,
   "metrics": {
-    "planner": {
-      "p50_ms": 1.5101880017027725,
-      "p95_ms": 6.225924848331488
-    },
-    "writer": {
-      "p50_ms": 3.064187500058324,
-      "p95_ms": 12.804370651065254
-    },
-    "reviewer": {
-      "p50_ms": 4.350229000920081,
-      "p95_ms": 15.029164399311409
+    "cache_lookup": {
+      "p50_ms": 0.00012500095181167126,
+      "p95_ms": 0.0003187484253430736
     },
     "queue_wait": {
-      "p50_ms": 1.0116249995917315,
-      "p95_ms": 2.870697549769825
+      "p50_ms": 1.000354499410605,
+      "p95_ms": 1.6008040987799177
+    },
+    "planner": {
+      "p50_ms": 1.4633329992648214,
+      "p95_ms": 2.0849291970080226
+    },
+    "writer": {
+      "p50_ms": 1.2731040005746763,
+      "p95_ms": 1.9747415506571993
+    },
+    "reviewer": {
+      "p50_ms": 1.2344164970272686,
+      "p95_ms": 1.9076498469075887
+    },
+    "evaluation": {
+      "p50_ms": 0.01018799957819283,
+      "p95_ms": 0.014989547344157469
     },
     "total": {
-      "p50_ms": 5.485749999934342,
-      "p95_ms": 20.77438314936442
+      "p50_ms": 5.112480001116637,
+      "p95_ms": 6.858722945253247
     }
   },
-  "p95_dominant_contributor": "reviewer",
-  "p95_contributor_percent": 72.34469630820887
+  "p95_percent_of_total": {
+    "cache_lookup": 0.004647343651104489,
+    "queue_wait": 23.33968162233167,
+    "planner": 30.398212810898716,
+    "writer": 28.791679827567158,
+    "reviewer": 27.813484552949113,
+    "evaluation": 0.2185472057087736
+  },
+  "p95_dominant_contributor": "planner",
+  "p95_contributor_percent": 30.398212810898716
 }
 Saved latency benchmark to reports/hw10/raw/latency_benchmark.json

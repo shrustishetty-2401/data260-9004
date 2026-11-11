@@ -353,42 +353,23 @@ The output files are:
 reports/hw10/raw/latency_benchmark.json
 reports/hw10/raw/latency_benchmark.log
 ```
-### Latency Measurement Scope
-
-The 50-request cache-miss benchmark measured queue wait, Planner, Writer, Reviewer, and total pipeline latency. Cache lookup and evaluator latency were recorded separately in the trace and evaluation artifacts but were not included as independent percentiles in this benchmark. Therefore, the reported cache-miss latency percentages apply to the measured Kafka agent path.
-
-| Stage | p50 (ms) | p95 (ms) | Percentage of measured p95 |
-|---|---:|---:|---:|
-| Queue wait | 1.01 | 2.87 | 13.81% |
-| Planner | 1.51 | 6.23 | 29.97% |
-| Writer | 3.06 | 12.80 | 61.64% |
-| Reviewer | 4.35 | 15.03 | 72.34% |
-| Total measured pipeline | 5.49 | 20.77 | 100.00% |
-
-Cache lookup and evaluation were verified through `traces.jsonl` and `pipeline_evaluation.json`. They were not assigned fabricated latency values because the 50-request benchmark did not independently time those stages.
 
 
 ### Latency Results
 
-| Stage | p50 latency | p95 latency |
-|---|---:|---:|
-| Queue wait | 1.01 ms | 2.87 ms |
-| Planner | 1.51 ms | 6.23 ms |
-| Writer | 3.06 ms | 12.80 ms |
-| Reviewer | 4.35 ms | 15.03 ms |
-| Total pipeline | 5.49 ms | 20.77 ms |
+| Stage | p50 (ms) | p95 (ms) | Percentage of cache-miss p95 |
+|---|---:|---:|---:|
+| Cache lookup | 0.00 | 0.00 | 0.00% |
+| Queue wait | 1.00 | 1.60 | 23.34% |
+| Planner | 1.46 | 2.08 | 30.40% |
+| Writer | 1.27 | 1.97 | 28.79% |
+| Reviewer | 1.23 | 1.91 | 27.81% |
+| Evaluation | 0.01 | 0.01 | 0.22% |
+| Total pipeline | 5.11 | 6.86 | 100.00% |
 
-The benchmark recorded:
+The benchmark recorded 50 confirmed cache misses. The Planner was the dominant p95 contributor at 30.40% of the total cache-miss latency. The first optimization target would therefore be the Planner stage.
 
-```text
-Confirmed cache misses: 50
-Dominant p95 contributor: reviewer
-Reviewer contribution: 72.34%
-```
-
-The Reviewer stage was the dominant p95 contributor. This indicates that the final pipeline stage contributed the greatest observed latency in the experiment.
-
-Cache-hit performance is reported separately from the 50 confirmed cache misses. This avoids mixing cache-hit behavior with full pipeline execution latency.
+Cache-hit behavior remains separate from the 50-request cache-miss benchmark.
 
 ## Conclusions
 
@@ -407,7 +388,7 @@ Therefore, the judge is useful for automated diagnostics but should not replace 
 
 The tracing implementation distinguished cache hits, successful cache misses, and failed traces. The latency benchmark confirmed 50 cache misses and measured p50 and p95 latency for each major stage.
 
-The Reviewer stage was the dominant p95 contributor at 72.34% of the total p95 latency. This identifies the Reviewer stage as the main optimization target for future improvement.
+The Planner stage was the dominant p95 contributor at 30.40% of the total cache-miss p95 latency. This identifies the Planner stage as the first optimization target for future improvement.
 
 ## Reproducibility Evidence
 
@@ -483,9 +464,9 @@ The Trace Lookup page shows the failed Planner stage and its recorded error.
 ## Final Git Verification
 
 - Branch: `hw10`
-- Final commit: `b0b8ed65ec8bac18c089237fd767f0f23fdb31bd`
+- Final commit: `f5ebd56b82fd9074fbbc1562ff9bfdac86060c68`
 - Final tag: `hw10-final`
-- Tagged commit: `b0b8ed65ec8bac18c089237fd767f0f23fdb31bd`
+- Tagged commit: `f5ebd56b82fd9074fbbc1562ff9bfdac86060c68`
 
 
 ## Submission Information

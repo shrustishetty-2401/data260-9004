@@ -128,6 +128,15 @@ through a dashboard.</p>
 <div class="sourceCode" id="cb2"><pre
 class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">streamlit</span> run code/hw10_dashboard.py</span></code></pre></div>
 <p>The dashboard contains three pages.</p>
+<h3 id="judge-repeatability">Judge Repeatability</h3>
+<p>Across the three repeated judge runs, zero of the 20 case scores
+changed. The mean absolute repeat change was 0.0 points, and the maximum
+absolute repeat change was 0.0 points. The judge was therefore
+repeatable under the documented settings, but its low Spearman
+correlation of 0.0421 means it should not gate deployment without
+additional human-labeled validation and expert review.</p>
+<p>The dashboard uses Streamlit <code>@st.cache_data</code> to cache
+reusable JSON and JSONL evidence-loading operations.</p>
 <h3 id="summary-page">Summary Page</h3>
 <p>The Summary page displays:</p>
 <ul>
@@ -386,6 +395,59 @@ request passed through the Kafka pipeline.</p>
 <p>The output files are:</p>
 <pre class="text"><code>reports/hw10/raw/latency_benchmark.json
 reports/hw10/raw/latency_benchmark.log</code></pre>
+<h3 id="latency-measurement-scope">Latency Measurement Scope</h3>
+<p>The 50-request cache-miss benchmark measured queue wait, Planner,
+Writer, Reviewer, and total pipeline latency. Cache lookup and evaluator
+latency were recorded separately in the trace and evaluation artifacts
+but were not included as independent percentiles in this benchmark.
+Therefore, the reported cache-miss latency percentages apply to the
+measured Kafka agent path.</p>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th style="text-align: right;">p50 (ms)</th>
+<th style="text-align: right;">p95 (ms)</th>
+<th style="text-align: right;">Percentage of measured p95</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Queue wait</td>
+<td style="text-align: right;">1.01</td>
+<td style="text-align: right;">2.87</td>
+<td style="text-align: right;">13.81%</td>
+</tr>
+<tr>
+<td>Planner</td>
+<td style="text-align: right;">1.51</td>
+<td style="text-align: right;">6.23</td>
+<td style="text-align: right;">29.97%</td>
+</tr>
+<tr>
+<td>Writer</td>
+<td style="text-align: right;">3.06</td>
+<td style="text-align: right;">12.80</td>
+<td style="text-align: right;">61.64%</td>
+</tr>
+<tr>
+<td>Reviewer</td>
+<td style="text-align: right;">4.35</td>
+<td style="text-align: right;">15.03</td>
+<td style="text-align: right;">72.34%</td>
+</tr>
+<tr>
+<td>Total measured pipeline</td>
+<td style="text-align: right;">5.49</td>
+<td style="text-align: right;">20.77</td>
+<td style="text-align: right;">100.00%</td>
+</tr>
+</tbody>
+</table>
+<p>Cache lookup and evaluation were verified through
+<code>traces.jsonl</code> and <code>pipeline_evaluation.json</code>.
+They were not assigned fabricated latency values because the 50-request
+benchmark did not independently time those stages.</p>
 <h3 id="latency-results">Latency Results</h3>
 <table>
 <thead>
@@ -524,6 +586,15 @@ the Kafka pipeline.</p>
 alt="Failed trace" /></p>
 <p>The Trace Lookup page shows the failed Planner stage and its recorded
 error.</p>
+<h2 id="final-git-verification">Final Git Verification</h2>
+<ul>
+<li>Branch: <code>hw10</code></li>
+<li>Final commit:
+<code>b0b8ed65ec8bac18c089237fd767f0f23fdb31bd</code></li>
+<li>Final tag: <code>hw10-final</code></li>
+<li>Tagged commit:
+<code>b0b8ed65ec8bac18c089237fd767f0f23fdb31bd</code></li>
+</ul>
 <h2 id="submission-information">Submission Information</h2>
 <p>The final HW10 report target is:</p>
 <pre class="text"><code>reports/hw10/Shetty_HW10.pdf</code></pre>

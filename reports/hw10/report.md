@@ -40,6 +40,12 @@ streamlit run code/hw10_dashboard.py
 
 The dashboard contains three pages.
 
+### Judge Repeatability
+
+Across the three repeated judge runs, zero of the 20 case scores changed. The mean absolute repeat change was 0.0 points, and the maximum absolute repeat change was 0.0 points. The judge was therefore repeatable under the documented settings, but its low Spearman correlation of 0.0421 means it should not gate deployment without additional human-labeled validation and expert review.
+
+The dashboard uses Streamlit `@st.cache_data` to cache reusable JSON and JSONL evidence-loading operations.
+
 ### Summary Page
 
 The Summary page displays:
@@ -347,6 +353,20 @@ The output files are:
 reports/hw10/raw/latency_benchmark.json
 reports/hw10/raw/latency_benchmark.log
 ```
+### Latency Measurement Scope
+
+The 50-request cache-miss benchmark measured queue wait, Planner, Writer, Reviewer, and total pipeline latency. Cache lookup and evaluator latency were recorded separately in the trace and evaluation artifacts but were not included as independent percentiles in this benchmark. Therefore, the reported cache-miss latency percentages apply to the measured Kafka agent path.
+
+| Stage | p50 (ms) | p95 (ms) | Percentage of measured p95 |
+|---|---:|---:|---:|
+| Queue wait | 1.01 | 2.87 | 13.81% |
+| Planner | 1.51 | 6.23 | 29.97% |
+| Writer | 3.06 | 12.80 | 61.64% |
+| Reviewer | 4.35 | 15.03 | 72.34% |
+| Total measured pipeline | 5.49 | 20.77 | 100.00% |
+
+Cache lookup and evaluation were verified through `traces.jsonl` and `pipeline_evaluation.json`. They were not assigned fabricated latency values because the 50-request benchmark did not independently time those stages.
+
 
 ### Latency Results
 
@@ -459,6 +479,14 @@ The Trace Lookup page shows the successful cache-miss path through the Kafka pip
 ![Failed trace](evidence/dashboard_trace_failed.png)
 
 The Trace Lookup page shows the failed Planner stage and its recorded error.
+
+## Final Git Verification
+
+- Branch: `hw10`
+- Final commit: `b0b8ed65ec8bac18c089237fd767f0f23fdb31bd`
+- Final tag: `hw10-final`
+- Tagged commit: `b0b8ed65ec8bac18c089237fd767f0f23fdb31bd`
+
 
 ## Submission Information
 

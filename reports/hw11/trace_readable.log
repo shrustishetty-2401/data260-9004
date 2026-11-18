@@ -1,0 +1,264 @@
+[
+  {
+    "ts": "2026-11-18T05:53:40+00:00",
+    "run_id": "20261117-215340-bbf3",
+    "effect_id": null,
+    "step": "run_start",
+    "detail": {
+      "mode": "fixtures",
+      "sources": [
+        "prices_demo",
+        "edgar_demo",
+        "newswire_demo"
+      ]
+    }
+  },
+  {
+    "ts": "2026-11-18T05:53:40+00:00",
+    "run_id": "20261117-215340-bbf3",
+    "effect_id": "f5d15e2e0f54",
+    "step": "dedup_skip",
+    "detail": {
+      "source": "prices_demo",
+      "why": "already decided (notify) in an earlier run"
+    }
+  },
+  {
+    "ts": "2026-11-18T05:53:40+00:00",
+    "run_id": "20261117-215340-bbf3",
+    "effect_id": "83341d0c3272",
+    "step": "retrieved",
+    "detail": {
+      "source": "prices_demo",
+      "url": "https://example-newswire.example/quote/cbds.us",
+      "key": "price:CBDS:2026-11-11"
+    }
+  },
+  {
+    "ts": "2026-11-18T05:53:40+00:00",
+    "run_id": "20261117-215340-bbf3",
+    "effect_id": "c622af97949e",
+    "step": "dedup_skip",
+    "detail": {
+      "source": "prices_demo",
+      "why": "already decided (digest) in an earlier run"
+    }
+  },
+  {
+    "ts": "2026-11-18T05:53:40+00:00",
+    "run_id": "20261117-215340-bbf3",
+    "effect_id": null,
+    "step": "source_done",
+    "detail": {
+      "source": "prices_demo",
+      "items": 3
+    }
+  },
+  {
+    "ts": "2026-11-18T05:53:40+00:00",
+    "run_id": "20261117-215340-bbf3",
+    "effect_id": "2f7af71d6b4c",
+    "step": "retrieved",
+    "detail": {
+      "source": "edgar_demo",
+      "url": "https://www.sec.gov/Archives/edgar/data/9999902/000999990226000077/0009999902-26-000077-index.htm",
+      "key": "sec:0009999902-26-000077"
+    }
+  },
+  {
+    "ts": "2026-11-18T05:53:40+00:00",
+    "run_id": "20261117-215340-bbf3",
+    "effect_id": "ccd1888294ba",
+    "step": "retrieved",
+    "detail": {
+      "source": "edgar_demo",
+      "url": "https://www.sec.gov/Archives/edgar/data/9999903/000999990326000045/0009999903-26-000045-index.htm",
+      "key": "sec:0009999903-26-000045"
+    }
+  },
+  {
+    "ts": "2026-11-18T05:53:40+00:00",
+    "run_id": "20261117-215340-bbf3",
+    "effect_id": "af7c3a1d075b",
+    "step": "dedup_skip",
+    "detail": {
+      "source": "edgar_demo",
+      "why": "already decided (notify) in an earlier run"
+    }
+  },
+  {
+    "ts": "2026-11-18T05:53:40+00:00",
+    "run_id": "20261117-215340-bbf3",
+    "effect_id": "32f4815f941c",
+    "step": "dedup_skip",
+    "detail": {
+      "source": "edgar_demo",
+      "why": "already decided (quiet) in an earlier run"
+    }
+  },
+  {
+    "ts": "2026-11-18T05:53:40+00:00",
+    "run_id": "20261117-215340-bbf3",
+    "effect_id": null,
+    "step": "source_done",
+    "detail": {
+      "source": "edgar_demo",
+      "items": 4
+    }
+  },
+  {
+    "ts": "2026-11-18T05:53:40+00:00",
+    "run_id": "20261117-215340-bbf3",
+    "effect_id": "2f7af71d6b4c",
+    "step": "dedup_merge",
+    "detail": {
+      "source": "newswire_demo",
+      "why": "same item already found in this run from another source"
+    }
+  },
+  {
+    "ts": "2026-11-18T05:53:40+00:00",
+    "run_id": "20261117-215340-bbf3",
+    "effect_id": "cf9bdc9e06d4",
+    "step": "retrieved",
+    "detail": {
+      "source": "newswire_demo",
+      "url": "https://example-newswire.example/markets/wrap-1111",
+      "key": "title:market wrap indexes edge higher in quiet trading"
+    }
+  },
+  {
+    "ts": "2026-11-18T05:53:40+00:00",
+    "run_id": "20261117-215340-bbf3",
+    "effect_id": null,
+    "step": "source_done",
+    "detail": {
+      "source": "newswire_demo",
+      "items": 2
+    }
+  },
+  {
+    "ts": "2026-11-18T05:53:41+00:00",
+    "run_id": "20261117-215340-bbf3",
+    "effect_id": "83341d0c3272",
+    "step": "importance_scored",
+    "detail": {
+      "score": 0.9,
+      "reason": "CBDS up 12.5% on the day"
+    }
+  },
+  {
+    "ts": "2026-11-18T05:53:41+00:00",
+    "run_id": "20261117-215340-bbf3",
+    "effect_id": "83341d0c3272",
+    "step": "decision",
+    "detail": {
+      "decision": "notify"
+    }
+  },
+  {
+    "ts": "2026-11-18T05:53:41+00:00",
+    "run_id": "20261117-215340-bbf3",
+    "effect_id": "83341d0c3272",
+    "step": "effect",
+    "detail": {
+      "type": "SendToUser",
+      "effect_id": "83341d0c3272"
+    }
+  },
+  {
+    "ts": "2026-11-18T05:53:41+00:00",
+    "run_id": "20261117-215340-bbf3",
+    "effect_id": "2f7af71d6b4c",
+    "step": "importance_scored",
+    "detail": {
+      "score": 0.85,
+      "reason": "Material agreement (Item 1.01): $1.2B supply deal"
+    }
+  },
+  {
+    "ts": "2026-11-18T05:53:41+00:00",
+    "run_id": "20261117-215340-bbf3",
+    "effect_id": "2f7af71d6b4c",
+    "step": "decision",
+    "detail": {
+      "decision": "notify"
+    }
+  },
+  {
+    "ts": "2026-11-18T05:53:41+00:00",
+    "run_id": "20261117-215340-bbf3",
+    "effect_id": "2f7af71d6b4c",
+    "step": "effect",
+    "detail": {
+      "type": "SendToUser",
+      "effect_id": "2f7af71d6b4c"
+    }
+  },
+  {
+    "ts": "2026-11-18T05:53:41+00:00",
+    "run_id": "20261117-215340-bbf3",
+    "effect_id": "ccd1888294ba",
+    "step": "importance_scored",
+    "detail": {
+      "score": 0.1,
+      "reason": "Amendment corrects a date only"
+    }
+  },
+  {
+    "ts": "2026-11-18T05:53:41+00:00",
+    "run_id": "20261117-215340-bbf3",
+    "effect_id": "ccd1888294ba",
+    "step": "decision",
+    "detail": {
+      "decision": "quiet"
+    }
+  },
+  {
+    "ts": "2026-11-18T05:53:41+00:00",
+    "run_id": "20261117-215340-bbf3",
+    "effect_id": "cf9bdc9e06d4",
+    "step": "importance_scored",
+    "detail": {
+      "score": 0.05,
+      "reason": "General market wrap"
+    }
+  },
+  {
+    "ts": "2026-11-18T05:53:41+00:00",
+    "run_id": "20261117-215340-bbf3",
+    "effect_id": "cf9bdc9e06d4",
+    "step": "decision",
+    "detail": {
+      "decision": "quiet"
+    }
+  },
+  {
+    "ts": "2026-11-18T05:53:41+00:00",
+    "run_id": "20261117-215340-bbf3",
+    "effect_id": null,
+    "step": "blocked_url",
+    "detail": {
+      "url": "https://desk.example-newswire.example/priority",
+      "why": "host not in sources.json allowlist"
+    }
+  },
+  {
+    "ts": "2026-11-18T05:53:42+00:00",
+    "run_id": "20261117-215340-bbf3",
+    "effect_id": "af7c3a1d075b",
+    "step": "decide_rejected",
+    "detail": {
+      "why": "ALREADY_REPORTED",
+      "previous": {
+        "effect_id": "af7c3a1d075b",
+        "run_id": "20261117-215339-1bc3",
+        "decided": "2026-11-18T05:53:40+00:00",
+        "score": 0.85,
+        "decision": "notify",
+        "reason": "Q3 results (Item 2.02); guidance raised",
+        "notified": 1
+      }
+    }
+  }
+]

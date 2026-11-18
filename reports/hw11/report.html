@@ -244,8 +244,9 @@ Stock Watch Agent</h1>
 <li>Student: Shrusti Shetty</li>
 <li>Course: DATA-260</li>
 <li>Branch: <code>hw11</code></li>
-<li>Final commit:
+<li>Implementation commit:
 <code>134573371c3f661c7a29789e61d9187c79e9f377</code></li>
+<li>Final tag: <code>hw11-final</code></li>
 <li>Repository:
 https://github.com/shrustishetty-2401/data260-9004/tree/hw11</li>
 <li>Project directory: <code>stock-watch</code></li>
@@ -394,13 +395,28 @@ alert is sent only after the decision stage returns:</p>
 <li>the effect ID;</li>
 <li>the recorded state.</li>
 </ul>
+<h3 id="readable-high-alert-trace-excerpt">Readable HIGH-alert trace
+excerpt</h3>
+<pre class="text"><code>run_id: 20261117-215340-bbf3
+effect_id: 2f7af71d6b4c
+source: edgar_demo
+evidence_key: sec:0009999902-26-000077
+score: 0.85
+reason: Material agreement (Item 1.01): $1.2B supply deal
+decision: notify
+effect: SendToUser
+send_notification: true
+latency: reported separately by benchmark artifacts
+tokens_per_accepted_notification: 500000</code></pre>
 <figure>
 <img src="evidence/trace_high_alert.png"
 alt="Accepted HIGH alert trace" />
 <figcaption aria-hidden="true">Accepted HIGH alert trace</figcaption>
 </figure>
 <h2 id="part-6-metrics">Part 6: Metrics</h2>
-<p>The final fixture evaluation produced the following results:</p>
+<p>The final fixture evaluation produced the following results. The
+executable fixture stream contains 10 cases; the completed submission
+golden set contains 12 labeled cases.</p>
 <table>
 <thead>
 <tr>
@@ -410,7 +426,7 @@ alt="Accepted HIGH alert trace" />
 </thead>
 <tbody>
 <tr>
-<td>Cases</td>
+<td>Executable demo cases</td>
 <td style="text-align: right;">10</td>
 </tr>
 <tr>
@@ -534,11 +550,12 @@ student.</p>
 stock-watch/policy.md
 stock-watch/sources.json
 stock-watch/golden/gold_demo.json
+stock-watch/golden/gold_hw11.json
 stock-watch/demo_test.sh
 reports/hw11/demo_test.log
 reports/hw11/commit.txt</code></pre>
 <h2 id="final-verification">Final Verification</h2>
-<p>The final HW11 commit is:</p>
+<p>The implementation commit is:</p>
 <pre class="text"><code>134573371c3f661c7a29789e61d9187c79e9f377</code></pre>
 <p>The demo completed successfully with all required safety, recovery,
 duplicate-suppression, and metric checks.</p>

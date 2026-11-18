@@ -5,7 +5,8 @@
 - Student: Shrusti Shetty
 - Course: DATA-260
 - Branch: `hw11`
-- Final commit: `134573371c3f661c7a29789e61d9187c79e9f377`
+- Implementation commit: `134573371c3f661c7a29789e61d9187c79e9f377`
+- Final tag: `hw11-final`
 - Repository: https://github.com/shrustishetty-2401/data260-9004/tree/hw11
 - Project directory: `stock-watch`
 
@@ -151,15 +152,31 @@ The resulting alert includes:
 - the effect ID;
 - the recorded state.
 
+### Readable HIGH-alert trace excerpt
+
+```text
+run_id: 20261117-215340-bbf3
+effect_id: 2f7af71d6b4c
+source: edgar_demo
+evidence_key: sec:0009999902-26-000077
+score: 0.85
+reason: Material agreement (Item 1.01): $1.2B supply deal
+decision: notify
+effect: SendToUser
+send_notification: true
+latency: reported separately by benchmark artifacts
+tokens_per_accepted_notification: 500000
+```
+
 ![Accepted HIGH alert trace](evidence/trace_high_alert.png)
 
 ## Part 6: Metrics
 
-The final fixture evaluation produced the following results:
+The final fixture evaluation produced the following results. The executable fixture stream contains 10 cases; the completed submission golden set contains 12 labeled cases.
 
 | Metric | Result |
 |---|---:|
-| Cases | 10 |
+| Executable demo cases | 10 |
 | Decision accuracy | 1.0 |
 | Precision for notifications | 1.0 |
 | Recall for notifications | 1.0 |
@@ -228,6 +245,7 @@ stock-watch/watch.py
 stock-watch/policy.md
 stock-watch/sources.json
 stock-watch/golden/gold_demo.json
+stock-watch/golden/gold_hw11.json
 stock-watch/demo_test.sh
 reports/hw11/demo_test.log
 reports/hw11/commit.txt
@@ -235,7 +253,7 @@ reports/hw11/commit.txt
 
 ## Final Verification
 
-The final HW11 commit is:
+The implementation commit is:
 
 ```text
 134573371c3f661c7a29789e61d9187c79e9f377

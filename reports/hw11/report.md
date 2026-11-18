@@ -158,7 +158,7 @@ The resulting alert includes:
 run_id: 20261117-215340-bbf3
 effect_id: 2f7af71d6b4c
 source: edgar_demo
-source_link: https://www.sec.gov/Archives/edgar/data/9999902/000999990226000077/0009999902-26-000077-index.htm
+source_link: https://www.sec.gov/
 evidence_key: sec:0009999902-26-000077
 score: 0.85
 reason: Material agreement (Item 1.01): $1.2B supply deal
